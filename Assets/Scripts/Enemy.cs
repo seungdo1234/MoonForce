@@ -33,7 +33,7 @@ public class Enemy : MonoBehaviour
 
 
     private void FixedUpdate() // 물리적인 이동은 FixedUpdate
-    { 
+    {
         if (!isLive || anim.GetCurrentAnimatorStateInfo(0).IsName("Hit")) // Enemy가 죽었다면 return
         {
             return;
@@ -108,6 +108,7 @@ public class Enemy : MonoBehaviour
             rigid.simulated = false; // rigidbody2D 정지
             spriteRenderer.sortingOrder = 1; // 죽은 ENemy가 다른 Enemy를 가리지 않도록 OrderLayer를 1로 내림
             anim.SetBool("Dead", true);
+            GameManager.instance.kill++;
         }
     }
 

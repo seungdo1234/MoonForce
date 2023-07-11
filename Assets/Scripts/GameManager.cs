@@ -11,12 +11,71 @@ public class GameManager : MonoBehaviour
     public PoolManager pool;
     public Player player;
 
-   
+    [Header("# Player Data")]
+    public float maxHealth;
+    public float curHealth;
+
+    [Header("# Stage Data")]
+    public bool gameStop;
+    public float maxGameTime;
+    public float curGameTime;
+    public int kill;
+    public int[] enemyMaxNum;
+    public int enemyCurNum = 9999;
+    public int level;
+
+    [Header("# UI")]
+    public GameObject startBtn;
+
     private void Awake()
     {
         // 자기 자신으로 초기화
         instance = this;
+        curHealth = maxHealth;
     }
 
-  
+    private void Start()
+    {
+        Time.timeScale = 0f;
+    }
+    public void GameStart()
+    {
+        startBtn.SetActive(false);
+        Time.timeScale = 1f;
+        curGameTime = maxGameTime;
+        enemyCurNum = 0;
+        kill = 0;
+        gameStop = false;
+    }
+    private bool isClear()
+    {
+        if(kill == enemyMaxNum[level])
+        {
+            return true;
+        }
+        return false;
+    }
+    private IEnumerator StageClear()
+    {
+        gameStop = true;
+        yield return new WaitForSeconds(3f);
+        level++;
+        Time.timeScale = 0f;
+        startBtn.SetActive(true);
+    }
+    private void Update()
+    {
+        if (gameStop)
+        {
+            return;
+        }
+
+        if (isClear())
+        {
+            StartCoroutine(StageClear());
+        }
+        curGameTime -= Time.deltaTime;
+        
+    }
+
 }
