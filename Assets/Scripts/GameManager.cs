@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [Header("# Game Object")]
     public PoolManager pool;
     public Player player;
+    public SkillManager skillManager;
 
     [Header("# Player Data")]
     public float maxHealth;
@@ -25,7 +26,11 @@ public class GameManager : MonoBehaviour
     public int level;
 
     [Header("# UI")]
+    public GameObject clearReward;
     public GameObject startBtn;
+
+    [Header("# Reward")]
+    public int[] chestPercent;
 
     private void Awake()
     {
@@ -36,7 +41,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        Time.timeScale = 0f;
+      //  Time.timeScale = 0f;
     }
     public void GameStart()
     {
@@ -60,8 +65,17 @@ public class GameManager : MonoBehaviour
         gameStop = true;
         yield return new WaitForSeconds(3f);
         level++;
+        clearReward.SetActive(true);
         Time.timeScale = 0f;
-        startBtn.SetActive(true);
+    }
+    public void NextStage()
+    {
+        Time.timeScale = 1f;
+        gameStop = false;
+        curGameTime = maxGameTime;
+        enemyCurNum = 0;
+        kill = 0;
+        clearReward.SetActive(false);
     }
     private void Update()
     {
