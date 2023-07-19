@@ -10,11 +10,13 @@ public class GameManager : MonoBehaviour
     [Header("# Game Object")]
     public PoolManager pool;
     public Player player;
-    public SkillManager skillManager;
 
     [Header("# Player Data")]
     public float maxHealth;
     public float curHealth;
+    public float attack;
+    public float rate;
+    public float moveSpeed;
 
     [Header("# Stage Data")]
     public bool gameStop;
@@ -31,6 +33,10 @@ public class GameManager : MonoBehaviour
 
     [Header("# Reward")]
     public int[] chestPercent;
+    public int[] bronzeChest;
+    public int[] silverChest;
+    public int[] goldChest;
+    public int[] specialChest;
 
     private void Awake()
     {

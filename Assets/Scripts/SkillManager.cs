@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkillManager : MonoBehaviour
+public class ItemManager : MonoBehaviour
 {
     public SkillData[] skillData;
     public void StageClearRewardSelection(int skillNum)
