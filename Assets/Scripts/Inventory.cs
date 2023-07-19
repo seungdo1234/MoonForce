@@ -27,7 +27,7 @@ public class Inventory : MonoBehaviour
         // 이미지 로딩을 다음 프레임까지 연기
         yield return null;
 
-        for (int i = 0; i < waitEqquipments.Length; i++)
+        for (int i = 0; i < 2; i++)
         {
             waitEqquipments[i].ImageLoading();
         }

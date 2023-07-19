@@ -17,9 +17,17 @@ public class RewardManager : MonoBehaviour
     private float rate;
     private float moveSpeed;
 
+    private void Start()
+    {
+        for(int i = 0; i < 2; i++)
+        {
+            ItemCreate(0);
+        }
+    }
+
+
     public void ItemCreate(int itemRank)
     {
-
 
         type = ItemType.Staff;
 
