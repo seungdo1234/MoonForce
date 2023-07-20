@@ -99,6 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   rank: 0
+  quality: 0
   commonStaffImage:
   - {fileID: 1851899433, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
   - {fileID: 651604591, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
@@ -121,15 +122,33 @@ MonoBehaviour:
   epicitemName: []
   epicItemDesc: []
   additionalOption: []
-  startAttack:
+  baseAttack:
   - 3
-  endAttack:
-  - 5
-  startRate:
-  - 0.1
-  endRate:
-  - 0.2
-  startMoveSpeed:
   - 0
-  endMoveSpeed:
-  - 1
+  - 0
+  - 0
+  baseRate:
+  - 0.1
+  - 0
+  - 0
+  - 0
+  MoveSpeed:
+  - 0
+  - 0
+  - 0
+  - 0
+  increaseAttack:
+  - 2
+  - 0
+  - 0
+  - 0
+  increaseRate:
+  - 0.05
+  - 0
+  - 0
+  - 0
+  increaseMoveSpeed:
+  - 0
+  - 0
+  - 0
+  - 0

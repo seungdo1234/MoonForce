@@ -2,6 +2,7 @@ using UnityEngine;
 
 public enum ItemType { Default, Staff, Book }
 public enum ItemRank { Default, Common, Rare, Epic, Legendary }
+public enum ItemQuality { Default, Low, Normal, High }
 
 public class ItemInfo : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class ItemInfo : MonoBehaviour
     [Header("# Item Infomation")]
     public ItemType type;
     public ItemRank rank;
+    public ItemQuality quality;
     [Header("# Common Item")]
     public Sprite[] commonStaffImage;
     public string[] commonItemName;
@@ -26,16 +28,15 @@ public class ItemInfo : MonoBehaviour
     public string[] epicItemDesc;
     public string[] additionalOption;
 
-    [Header("# Item Random Stat")]
-    public float[] startAttack;
-    public float[] endAttack;
-    public float[] startRate;
-    public float[] endRate;
-    public float[] startMoveSpeed;
-    public float[] endMoveSpeed;
+    [Header("# Item Base Stat")]
+    public int[] baseAttack;
+    public float[] baseRate;
+    public float[] MoveSpeed;
 
 
-
-
+    [Header("# Item Increase Stat")]
+    public int[] increaseAttack;
+    public float[] increaseRate;
+    public float[] increaseMoveSpeed;
 
 }

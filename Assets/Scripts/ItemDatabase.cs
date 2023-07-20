@@ -16,9 +16,9 @@ public class ItemDatabase : MonoBehaviour
     {
 
     }
-    public void Get(ItemType type, ItemRank rank, Sprite itemSprite, string itemName, float attack, float rate, float moveSpeed, string itemDesc)
+    public void Get(ItemType type, ItemRank rank, ItemQuality quality, Sprite itemSprite ,  string itemName, int attack, float rate, float moveSpeed, string itemDesc)
     {
-        Item newItem = new Item(type, rank, itemSprite, itemName, attack, rate, moveSpeed, itemDesc);
+        Item newItem = new Item(type, rank, quality ,itemSprite, itemName, attack, rate, moveSpeed, itemDesc);
         itemDB.Add(newItem);
     }
 
@@ -32,14 +32,4 @@ public class ItemDatabase : MonoBehaviour
         return itemDB.Count;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            for (int i = 0; i < itemDB.Count; i++)
-            {
-                Debug.Log(itemDB[i].itemSprite.name);
-            }
-        }
-    }
 }

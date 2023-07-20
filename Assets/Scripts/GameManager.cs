@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     [Header("# Player Data")]
     public float maxHealth;
     public float curHealth;
-    public float attack;
+    public int attack;
     public float rate;
     public float moveSpeed;
 
@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
     public int[] silverChest;
     public int[] goldChest;
     public int[] specialChest;
+    public int[] itemQualityPercent;
 
     private void Awake()
     {
