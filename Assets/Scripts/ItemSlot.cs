@@ -9,6 +9,7 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler , IPointerE
 {
 
     public SlotType slotType;
+
     public Image CloneImage; // 클릭했을때 나오는 이미지
     public ItemPreview preview;
     public bool fixedPreview;
@@ -82,7 +83,8 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler , IPointerE
 
         // 드래그한 슬롯의 이미지가 다른 슬롯 위에 있다면 교환
         ItemSlot targetSlot = eventData.pointerCurrentRaycast.gameObject.GetComponent<ItemSlot>();
-        if (targetSlot != null && targetSlot != this)
+        // 장비를 바꾸는 과정에서 무기는 스태프, 마법책은 서브 장비칸이 맞나 확인 후 장비 교체
+        if (targetSlot != null && targetSlot != this && ((item.type ==ItemType.Staff && targetSlot.slotType != SlotType.sub) || (item.type == ItemType.Book && targetSlot.slotType != SlotType.main)))
         {
             Item tempItem = targetSlot.item;
             targetSlot.item = item;
@@ -121,8 +123,16 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler , IPointerE
     public void OnPointerExit(PointerEventData eventData)
     {
 
-            preview.gameObject.SetActive(false);
+            preview.gameObject.SetActive(false);  
+    }
 
-     
+    private void Update()
+    {
+        if(slotType == SlotType.main)
+        {
+            GameManager.instance.attack = GameManager.instance.baseAttack + item.attack;
+            GameManager.instance.rate = GameManager.instance.baseRate + item.rate;
+            GameManager.instance.moveSpeed = GameManager.instance.baseMoveSpeed + item.moveSpeed;
+        }
     }
 }

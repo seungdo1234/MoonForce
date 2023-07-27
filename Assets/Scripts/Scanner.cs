@@ -8,7 +8,6 @@ public class Scanner : MonoBehaviour
     public RaycastHit2D[] targets;
     public Transform[] nearestTarget;
 
-    public Weapon weapon;
     private void FixedUpdate()
     {
         // CircleCastAll : 원형의 캐스트를 쏘고 모든 결과를 반환하는 함수
@@ -20,10 +19,10 @@ public class Scanner : MonoBehaviour
     // 가장 가까운 Enemy Transform 정보 반환
     private Transform[] GetNearest()
     {
-        Transform[] result = new Transform[weapon.weaponNum]; // 발사하는 탄환의 갯수 만큼 초기회
+        Transform[] result = new Transform[GameManager.instance.weaponNum]; // 발사하는 탄환의 갯수 만큼 초기회
         List<Transform> uniqueTargets = new List<Transform>(); // 이미 Target으로 설정된 Enemy 리스트
 
-        for (int i = 0; i < weapon.weaponNum; i++)
+        for (int i = 0; i < GameManager.instance.weaponNum; i++)
         {
             float closestDistance = float.MaxValue;
             Transform closestTarget = null;

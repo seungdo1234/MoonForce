@@ -52,6 +52,7 @@ public class StageClear : MonoBehaviour
             chestReward = GameManager.instance.specialChest;
         }
 
+        // 상자 당 ItemRank의 확률을 구함
         RandomValue(chestReward, 1);
 
     }

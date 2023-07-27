@@ -222,11 +222,14 @@ MonoBehaviour:
     rank: 0
     quality: 0
     itemSprite: {fileID: 0}
+    itemAttribute: 0
     itemName: 
     attack: 0
     rate: 0
     moveSpeed: 0
     itemDesc: 
+    skillNum: 
+    skillDesc: []
 --- !u!1 &6132365
 GameObject:
   m_ObjectHideFlags: 0
@@ -675,11 +678,14 @@ MonoBehaviour:
     rank: 0
     quality: 0
     itemSprite: {fileID: 0}
+    itemAttribute: 0
     itemName: 
     attack: 0
     rate: 0
     moveSpeed: 0
     itemDesc: 
+    skillNum: 
+    skillDesc: []
 --- !u!1 &66060421
 GameObject:
   m_ObjectHideFlags: 0
@@ -779,11 +785,14 @@ MonoBehaviour:
     rank: 0
     quality: 0
     itemSprite: {fileID: 0}
+    itemAttribute: 0
     itemName: 
     attack: 0
     rate: 0
     moveSpeed: 0
     itemDesc: 
+    skillNum: 
+    skillDesc: []
 --- !u!1 &69067986
 GameObject:
   m_ObjectHideFlags: 0
@@ -1286,11 +1295,14 @@ MonoBehaviour:
     rank: 0
     quality: 0
     itemSprite: {fileID: 0}
+    itemAttribute: 0
     itemName: 
     attack: 0
     rate: 0
     moveSpeed: 0
     itemDesc: 
+    skillNum: 
+    skillDesc: []
 --- !u!1 &124120846
 GameObject:
   m_ObjectHideFlags: 0
@@ -2410,11 +2422,14 @@ MonoBehaviour:
     rank: 0
     quality: 0
     itemSprite: {fileID: 0}
+    itemAttribute: 0
     itemName: 
     attack: 0
     rate: 0
     moveSpeed: 0
     itemDesc: 
+    skillNum: 
+    skillDesc: []
 --- !u!1 &291540213
 GameObject:
   m_ObjectHideFlags: 0
@@ -3846,11 +3861,14 @@ MonoBehaviour:
     rank: 0
     quality: 0
     itemSprite: {fileID: 0}
+    itemAttribute: 0
     itemName: 
     attack: 0
     rate: 0
     moveSpeed: 0
     itemDesc: 
+    skillNum: 
+    skillDesc: []
 --- !u!1 &447337049
 GameObject:
   m_ObjectHideFlags: 0
@@ -4229,11 +4247,14 @@ MonoBehaviour:
     rank: 0
     quality: 0
     itemSprite: {fileID: 0}
+    itemAttribute: 0
     itemName: 
     attack: 0
     rate: 0
     moveSpeed: 0
     itemDesc: 
+    skillNum: 
+    skillDesc: []
 --- !u!1 &522508558
 GameObject:
   m_ObjectHideFlags: 0
@@ -4360,8 +4381,13 @@ MonoBehaviour:
   maxHealth: 4
   curHealth: 0
   attack: 3
+  baseAttack: 3
   rate: 1
+  baseRate: 1
   moveSpeed: 3
+  baseMoveSpeed: 3
+  penetration: 0
+  weaponNum: 0
   gameStop: 1
   maxGameTime: 300
   curGameTime: 0
@@ -4832,11 +4858,14 @@ MonoBehaviour:
     rank: 0
     quality: 0
     itemSprite: {fileID: 0}
+    itemAttribute: 0
     itemName: 
     attack: 0
     rate: 0
     moveSpeed: 0
     itemDesc: 
+    skillNum: 
+    skillDesc: []
 --- !u!1 &603702956
 GameObject:
   m_ObjectHideFlags: 0
@@ -5413,11 +5442,14 @@ MonoBehaviour:
     rank: 0
     quality: 0
     itemSprite: {fileID: 0}
+    itemAttribute: 0
     itemName: 
     attack: 0
     rate: 0
     moveSpeed: 0
     itemDesc: 
+    skillNum: 
+    skillDesc: []
 --- !u!1 &678982001
 GameObject:
   m_ObjectHideFlags: 0
@@ -5914,11 +5946,14 @@ MonoBehaviour:
     rank: 0
     quality: 0
     itemSprite: {fileID: 0}
+    itemAttribute: 0
     itemName: 
     attack: 0
     rate: 0
     moveSpeed: 0
     itemDesc: 
+    skillNum: 
+    skillDesc: []
 --- !u!1 &740128098
 GameObject:
   m_ObjectHideFlags: 0
@@ -6219,11 +6254,14 @@ MonoBehaviour:
     rank: 0
     quality: 0
     itemSprite: {fileID: 0}
+    itemAttribute: 0
     itemName: 
     attack: 0
     rate: 0
     moveSpeed: 0
     itemDesc: 
+    skillNum: 
+    skillDesc: []
 --- !u!1 &743519845
 GameObject:
   m_ObjectHideFlags: 0
@@ -6438,11 +6476,14 @@ MonoBehaviour:
     rank: 0
     quality: 0
     itemSprite: {fileID: 0}
+    itemAttribute: 0
     itemName: 
     attack: 0
     rate: 0
     moveSpeed: 0
     itemDesc: 
+    skillNum: 
+    skillDesc: []
 --- !u!1 &774755086
 GameObject:
   m_ObjectHideFlags: 0
@@ -7046,11 +7087,14 @@ MonoBehaviour:
     rank: 0
     quality: 0
     itemSprite: {fileID: 0}
+    itemAttribute: 0
     itemName: 
     attack: 0
     rate: 0
     moveSpeed: 0
     itemDesc: 
+    skillNum: 
+    skillDesc: []
 --- !u!1 &846084929
 GameObject:
   m_ObjectHideFlags: 0
@@ -7262,11 +7306,14 @@ MonoBehaviour:
     rank: 0
     quality: 0
     itemSprite: {fileID: 0}
+    itemAttribute: 0
     itemName: 
     attack: 0
     rate: 0
     moveSpeed: 0
     itemDesc: 
+    skillNum: 
+    skillDesc: []
 --- !u!1 &854884540
 GameObject:
   m_ObjectHideFlags: 0
@@ -8084,11 +8131,14 @@ MonoBehaviour:
     rank: 0
     quality: 0
     itemSprite: {fileID: 0}
+    itemAttribute: 0
     itemName: 
     attack: 0
     rate: 0
     moveSpeed: 0
     itemDesc: 
+    skillNum: 
+    skillDesc: []
 --- !u!1 &948611469
 GameObject:
   m_ObjectHideFlags: 0
@@ -8571,11 +8621,14 @@ MonoBehaviour:
     rank: 0
     quality: 0
     itemSprite: {fileID: 0}
+    itemAttribute: 0
     itemName: 
     attack: 0
     rate: 0
     moveSpeed: 0
     itemDesc: 
+    skillNum: 
+    skillDesc: []
 --- !u!1 &1090824788
 GameObject:
   m_ObjectHideFlags: 0
@@ -9251,7 +9304,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1182522692
 Transform:
   m_ObjectHideFlags: 0
@@ -9279,10 +9332,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9bf17281833cbd499f6c548d94aea40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponNum: 1
-  damage: 3
-  rate: 1
-  penetration: 1
 --- !u!1 &1183357293
 GameObject:
   m_ObjectHideFlags: 0
@@ -9600,11 +9649,14 @@ MonoBehaviour:
     rank: 0
     quality: 0
     itemSprite: {fileID: 0}
+    itemAttribute: 0
     itemName: 
     attack: 0
     rate: 0
     moveSpeed: 0
     itemDesc: 
+    skillNum: 
+    skillDesc: []
 --- !u!1 &1244689280
 GameObject:
   m_ObjectHideFlags: 0
@@ -11226,11 +11278,14 @@ MonoBehaviour:
     rank: 0
     quality: 0
     itemSprite: {fileID: 0}
+    itemAttribute: 0
     itemName: 
     attack: 0
     rate: 0
     moveSpeed: 0
     itemDesc: 
+    skillNum: 
+    skillDesc: []
 --- !u!1 &1426159410
 GameObject:
   m_ObjectHideFlags: 0
@@ -12134,11 +12189,14 @@ MonoBehaviour:
     rank: 0
     quality: 0
     itemSprite: {fileID: 0}
+    itemAttribute: 0
     itemName: 
     attack: 0
     rate: 0
     moveSpeed: 0
     itemDesc: 
+    skillNum: 
+    skillDesc: []
 --- !u!1 &1535498162
 GameObject:
   m_ObjectHideFlags: 0
@@ -12353,7 +12411,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   nearestTarget: []
-  weapon: {fileID: 1182522693}
 --- !u!1 &1539373799
 GameObject:
   m_ObjectHideFlags: 0
@@ -13471,11 +13528,14 @@ MonoBehaviour:
     rank: 0
     quality: 0
     itemSprite: {fileID: 0}
+    itemAttribute: 0
     itemName: 
     attack: 0
     rate: 0
     moveSpeed: 0
     itemDesc: 
+    skillNum: 
+    skillDesc: []
 --- !u!1 &1674779706
 GameObject:
   m_ObjectHideFlags: 0
@@ -14450,11 +14510,14 @@ MonoBehaviour:
     rank: 0
     quality: 0
     itemSprite: {fileID: 0}
+    itemAttribute: 0
     itemName: 
     attack: 0
     rate: 0
     moveSpeed: 0
     itemDesc: 
+    skillNum: 
+    skillDesc: []
 --- !u!1 &1832470975
 GameObject:
   m_ObjectHideFlags: 0
@@ -15246,11 +15309,14 @@ MonoBehaviour:
     rank: 0
     quality: 0
     itemSprite: {fileID: 0}
+    itemAttribute: 0
     itemName: 
     attack: 0
     rate: 0
     moveSpeed: 0
     itemDesc: 
+    skillNum: 
+    skillDesc: []
 --- !u!1 &1957476992
 GameObject:
   m_ObjectHideFlags: 0
@@ -15458,11 +15524,14 @@ MonoBehaviour:
     rank: 0
     quality: 0
     itemSprite: {fileID: 0}
+    itemAttribute: 0
     itemName: 
     attack: 0
     rate: 0
     moveSpeed: 0
     itemDesc: 
+    skillNum: 
+    skillDesc: []
 --- !u!1 &2051478469
 GameObject:
   m_ObjectHideFlags: 0
@@ -16190,11 +16259,14 @@ MonoBehaviour:
     rank: 0
     quality: 0
     itemSprite: {fileID: 0}
+    itemAttribute: 0
     itemName: 
     attack: 0
     rate: 0
     moveSpeed: 0
     itemDesc: 
+    skillNum: 
+    skillDesc: []
 --- !u!1 &2129839263
 GameObject:
   m_ObjectHideFlags: 0

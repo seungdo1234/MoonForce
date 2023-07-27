@@ -15,8 +15,13 @@ public class GameManager : MonoBehaviour
     public float maxHealth;
     public float curHealth;
     public int attack;
+    public int baseAttack;
     public float rate;
+    public float baseRate;
     public float moveSpeed;
+    public float baseMoveSpeed;
+    public int penetration;
+    public int weaponNum; // ÃÑ : ÇÑ¹ø¿¡ ¹ß»ç µÇ´Â ÃÑÅº, ±ÙÁ¢ : »ğÀÇ °¹¼ö
 
     [Header("# Stage Data")]
     public bool gameStop;

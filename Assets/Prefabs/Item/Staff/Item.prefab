@@ -1,0 +1,295 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5157423486868873346
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5157423486868873359}
+  - component: {fileID: 5157423486868873356}
+  - component: {fileID: 5157423486868873357}
+  m_Layer: 0
+  m_Name: Item
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5157423486868873359
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5157423486868873346}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &5157423486868873356
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5157423486868873346}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: ab86d9d5302a35843ba32ca3d29449e3, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.8, y: 0.8}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &5157423486868873357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5157423486868873346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cfe9c043134d9c4c9f9ed69ce176ff6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  rank: 0
+  quality: 0
+  commonImage:
+  - {fileID: 1851899433, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: 651604591, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: -1886100011, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: -726814621, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: 1011854270, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: 254493689, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: -1349100755, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: 218311661, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: 1588209868, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: 1283028731, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: -743774813, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: 1316263844, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: -1006428272, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: -832316534, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: 841371860, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: 1734833924, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: 468554157, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  commonItemName:
+  - "\uCD08\uBCF4\uC790\uC6A9 \uC9C0\uD321\uC774"
+  - "\uD070 \uC9C0\uD321\uC774"
+  commonItemDesc:
+  - "\uAD6C\uC0C9\uB9CC \uAC16\uCD98 \uC9C0\uD321\uC774\uC774\uB2E4."
+  - "\uC4F8\uB370\uC5C6\uC774 \uD070 \uC9C0\uD321\uC774\uB2E4"
+  rareImage:
+  - {fileID: -1048086212, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: 1114528376, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: 1884788725, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: -980078868, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: -1087489316, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: 1706685912, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: 1540908555, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: 766313320, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: 1375803394, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: -1804577088, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: -1189745449, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: 1286252541, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: 263672659, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: 1655738578, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: 1381333903, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: 674193288, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: 1591009030, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: 571373922, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: -1859055486, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  rareItemName:
+  - "\uACAC\uC2B5\uC6A9 \uC9C0\uD321\uC774"
+  - "\uC4F8\uB9CC\uD55C \uC9C0\uD321\uC774"
+  rareItemDesc:
+  - "\uAC00\uC7A5 \uAE30\uBCF8\uC801\uC778 \uC9C0\uD321\uC774\uB2E4."
+  - "\uC4F8\uB9CC\uD55C \uC9C0\uD321\uC774\uC774\uB2E4."
+  epicImage:
+  - {fileID: 1361226398, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: 2067797771, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: -2005817633, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: -2064882852, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: 1383043614, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: 2036335627, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: 1938317447, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: -121707469, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: -1338821933, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: 1443554711, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: -1483061522, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: 656354272, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  epicItemName:
+  - "\uC219\uB828\uC790\uC6A9 \uC9C0\uD321\uC774"
+  - "\uACE0\uAE09 \uC9C0\uD321\uC774"
+  epicItemDesc:
+  - "\uC219\uB828\uC790\uAC00 \uC4F0\uAE30 \uC88B\uC740 \uC9C0\uD321\uC774\uB2E4."
+  - "\uB9E4\uC6B0 \uC88B\uC740 \uACE0\uAE09 \uC9C0\uD321\uC774\uB2E4."
+  additionalOption:
+  - 
+  - 
+  - 
+  - 
+  - 
+  baseAttack: 03000000050000000a00000014000000
+  baseRate:
+  - 0.1
+  - 0.15
+  - 0.2
+  - 0.3
+  MoveSpeed:
+  - 0
+  - 0
+  - 0
+  - 0
+  increaseAttack: 02000000030000000400000005000000
+  increaseRate:
+  - 0.05
+  - 0.05
+  - 0.1
+  - 0.2
+  increaseMoveSpeed:
+  - 0
+  - 0
+  - 0.05
+  - 0.1
+  bookNames:
+  - "\uACF5\uC6A9  \uB9C8\uBC95\uC11C"
+  - "\uD654\uC5FC\uC758 \uB9C8\uBC95\uC11C"
+  - "\uBB3C\uC758 \uB9C8\uBC95\uC11C"
+  - "\uB545\uC758 \uB9C8\uBC95\uC11C"
+  - "\uC790\uC5F0\uC758 \uB9C8\uBC95\uC11C"
+  - "\uC5B4\uB460\uC758 \uB9C8\uBC95\uC11C"
+  - "\uCC9C\uC0C1\uC758 \uB9C8\uBC95\uC11C"
+  fireMagicBookSprites:
+  - {fileID: 21300000, guid: 8684a287d5efb12499fbdfc928c80164, type: 3}
+  - {fileID: 21300000, guid: 1bc5bab7de521e6498e3e68d687ad784, type: 3}
+  - {fileID: 21300000, guid: e7e6e1bdb3d5f7d4699896e9d2450e71, type: 3}
+  - {fileID: 21300000, guid: c1e54c4f2766dbb4a98665efb5cf7ef7, type: 3}
+  - {fileID: 21300000, guid: b4014a1782566be4e9ba62a8fc65e6a3, type: 3}
+  - {fileID: 21300000, guid: 9c24e12e37e1d88408d89940962f62d1, type: 3}
+  fireLowMagicDesc:
+  - "\uB9C8\uB825\uD0C4 \uB370\uBBF8\uC9C0 \uC99D\uAC00 (\uD654\uC5FC\uD0C4 \uC77C
+    \uACBD\uC6B0 \uB370\uBBF8\uC9C0 \uCD94\uAC00 \uC99D\uAC00)"
+  - "\uD654\uC5FC\uAD6C \uBC1C\uC0AC"
+  - "\uB9C8\uB825\uD0C4 \uAC2F\uC218 \uC99D\uAC00"
+  fireNormalMagicDesc:
+  - "\uBD88 \uC911\uAC04\uC911\uAC04"
+  fireHighMagicDesc:
+  - "\uBD88 \uD558\uC774"
+  waterMagicBookSprites:
+  - {fileID: 21300000, guid: d2eb37d16ea41464eb62a1703ceae4f3, type: 3}
+  - {fileID: 21300000, guid: 1ed7ddf14fdf8cc41a9c4def28c78b8e, type: 3}
+  - {fileID: 21300000, guid: 83051fc613666d1429804149b8cdc907, type: 3}
+  - {fileID: 21300000, guid: 0514325c0cf4b7c40bf8b299f443f48b, type: 3}
+  - {fileID: 21300000, guid: 6e626ac1c7bfff745b8a66048a8f89df, type: 3}
+  - {fileID: 21300000, guid: 76a894a694703c84984552d045ba944b, type: 3}
+  waterLowMagicDesc:
+  - "\uBB3C \uB85C\uC6B0"
+  waterNormalMagicDesc:
+  - "\uBB3C \uB178\uB9D0"
+  waterHighMagicDesc:
+  - "\uBB3C \uD558"
+  nonMagicBookSprites:
+  - {fileID: 21300000, guid: 4a5aad4e351f78141b78d28a44c45d04, type: 3}
+  - {fileID: 21300000, guid: c48e9e19015c97a4a9b1612ef8aad452, type: 3}
+  - {fileID: 21300000, guid: dbebad4047c0b754cab0369d3f31fdfe, type: 3}
+  - {fileID: 21300000, guid: 093132710b33a324e806f675a8462d6b, type: 3}
+  - {fileID: 21300000, guid: 14e8da274f3ee5b44b37cae9fe55c733, type: 3}
+  - {fileID: 21300000, guid: c8e6531d3c55da442887b90d8deee06e, type: 3}
+  nonLowMagicDesc:
+  - "\uBB34 \uB85C\uC6B0"
+  nonNormalMagicDesc:
+  - "\uBB34 \uB178\uB9D0"
+  nonHighMagicDesc:
+  - "\uBB34 \uD558"
+  grassMagicBookSprites:
+  - {fileID: 21300000, guid: 9dd87755e3d7d584e9e44ae8bdfa8443, type: 3}
+  - {fileID: 21300000, guid: 3a173976b041bb146a600efbb158fb07, type: 3}
+  - {fileID: 21300000, guid: 361e9f630273f1d4fb9dbe98f69d50fb, type: 3}
+  - {fileID: 21300000, guid: bb839dcfc304c6c48a0e08b65b02198f, type: 3}
+  - {fileID: 21300000, guid: b8b3f850eea4aaf47b45d7a80c5cb6f7, type: 3}
+  - {fileID: 21300000, guid: fa5fed44764347b4690dc0a4565c4037, type: 3}
+  grassLowMagicDesc:
+  - "\uD480 \uB85C\uC6B0"
+  grassNormalMagicDesc:
+  - "\uD480 \uB178\uB9D0"
+  grassHighMagicDesc:
+  - "\uD480 \uD558"
+  earthMagicBookSprites:
+  - {fileID: 21300000, guid: 0a14ad159ce6c544690bce692cf1db75, type: 3}
+  - {fileID: 21300000, guid: 0304976fccf81a543be2aed7e3d3d99c, type: 3}
+  - {fileID: 21300000, guid: db87af9ba088e5b4bb5d92ae48c03c55, type: 3}
+  - {fileID: 21300000, guid: 3d46e549fd6833d44b7a7c0ec67260c2, type: 3}
+  - {fileID: 21300000, guid: c2c2a6d5880c2a24788d8228d6bfef1f, type: 3}
+  - {fileID: 21300000, guid: 7385513c284897d46aa4f0998910030d, type: 3}
+  earthLowMagicDesc:
+  - "\uB545 \uB85C\uC6B0"
+  earthNormalMagicDesc:
+  - "\uB545 \uB178\uB9D0"
+  earthHighMagicDesc:
+  - "\uB545 \uD558"
+  darkMagicBookSprites:
+  - {fileID: 21300000, guid: 3b833fa413a712541b45c1221bf611b0, type: 3}
+  - {fileID: 21300000, guid: d79ac3fdec2dd8e4393e710b5c01b5d5, type: 3}
+  - {fileID: 21300000, guid: 629414bec9fa1fd49b6c88c418b713e5, type: 3}
+  - {fileID: 21300000, guid: ce05c998c8a2b2949abd673c51bc77d1, type: 3}
+  - {fileID: 21300000, guid: 3078c841eca753d49bb57578b6361490, type: 3}
+  - {fileID: 21300000, guid: 9ec407ca747489442bd2dad77277e18e, type: 3}
+  darkLowMagicDesc:
+  - "\uC5B4\uB460 \uB85C\uC6B0"
+  darkNormalMagicDesc:
+  - "\uC5B4\uB460 \uB178\uB9D0"
+  darkHighMagicDesc:
+  - "\uC5B4\uB460 \uD558\uC774"
+  - "\uC5B4\uB460 \uD558\uC774 2"
+  holyMagicBookSprites:
+  - {fileID: 21300000, guid: 4dfde124886466e4a9e2e2ee444b2674, type: 3}
+  - {fileID: 21300000, guid: b66dc6450fb2f5b439533bad1734f417, type: 3}
+  - {fileID: 21300000, guid: b83e66a0681b0e8489c33ac1f35e1f41, type: 3}
+  holyMagicDesc:
+  - "\uC131\uC18D\uC131 \uB9C8\uBC95"

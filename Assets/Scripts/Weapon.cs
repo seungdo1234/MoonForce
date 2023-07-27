@@ -4,13 +4,9 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    [Header("Weapon Stat")]
-    public int weaponNum; // 총 : 한번에 발사 되는 총탄, 근접 : 삽의 갯수
-    public int damage; // 데미지
-    public float rate; // 공격 속도
-    public int penetration; // 관통력
 
     private Player player;
+
     private float timer;
     private void Start()
     {
@@ -22,6 +18,8 @@ public class Weapon : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
+
+        float rate = (GameManager.instance.baseRate - GameManager.instance.rate) + GameManager.instance.baseRate;
 
         if (timer > rate)
         {
@@ -38,7 +36,7 @@ public class Weapon : MonoBehaviour
         }
 
         // Enemy 위치, 방향 구하기
-        for(int i = 0; i< weaponNum; i++)
+        for(int i = 0; i< GameManager.instance.weaponNum; i++)
         {
             if(player.scanner.nearestTarget[i] == null)
             {
@@ -56,8 +54,8 @@ public class Weapon : MonoBehaviour
             bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir); // Enemy 방향으로 bullet 회전
 
             // 원거리 공격은 Count는 관통력
-            bullet.GetComponent<Bullet>().Init(damage, penetration - 1, dir);
-            bullet.GetComponent<Bullet>().Init(damage, penetration - 1, dir);
+            bullet.GetComponent<Bullet>().Init(GameManager.instance.attack, GameManager.instance.penetration - 1, dir);
+            bullet.GetComponent<Bullet>().Init(GameManager.instance.attack, GameManager.instance.penetration - 1, dir);
         }
        
 
