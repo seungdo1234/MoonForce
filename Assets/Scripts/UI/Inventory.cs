@@ -15,7 +15,18 @@ public class Inventory : MonoBehaviour
         for (int i = 0; i < ItemDatabase.instance.itemCount(); i++)
         {
             item = ItemDatabase.instance.Set(i);
-            waitEqquipments[i].item = item;
+            if(!item.isLoad) // 이미 인벤토리에 로드된 아이템이라면 로드가 안되게 함
+            {
+                item.isLoad = true;
+                for(int j = 0; j <waitEqquipments.Length; j++) // 아이템을 빈 아이템 슬롯을 찾아 넣음 
+                {
+                    if(waitEqquipments[j].item.itemSprite == null)
+                    {
+                        waitEqquipments[j].item = item;
+                        break;
+                    }
+                }
+            }
         }
 
         StartCoroutine(LoadImages());

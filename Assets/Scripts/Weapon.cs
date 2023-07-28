@@ -19,9 +19,9 @@ public class Weapon : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        float rate = (GameManager.instance.baseRate - GameManager.instance.rate) + GameManager.instance.baseRate;
+  
 
-        if (timer > rate)
+        if (timer > GameManager.instance.rate)
         {
             timer = 0;
             Fire();

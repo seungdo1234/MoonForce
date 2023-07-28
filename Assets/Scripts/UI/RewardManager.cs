@@ -28,10 +28,7 @@ public class RewardManager : MonoBehaviour
     private string[] bookMagicDesc  ;
     private void Start()
     {
-        for (int i = 0; i < 10; i++)
-        {
-            ItemCreate(2);
-        }
+
     }
 
 
@@ -39,7 +36,7 @@ public class RewardManager : MonoBehaviour
     {
 
         type = (ItemType)Random.Range(1, 3);
-      //  type = (ItemType)2;
+
 
         rank = (ItemRank)itemRank + 1;
 
@@ -249,6 +246,7 @@ public class RewardManager : MonoBehaviour
                 break;
 
         }
+        rewardImage.sprite = itemSprite; // 보상 창에 이미지 띄움
 
         ItemDatabase.instance.GetBook(type, itemAttribute, quality, itemSprite, itemName, bookMagicNum, bookMagicDesc);
     }

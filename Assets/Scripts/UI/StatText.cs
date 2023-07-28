@@ -23,9 +23,10 @@ public class StatText : MonoBehaviour
     public void LoadStat()
     {
         float  addMoveSpeed = (int)((MainEquipment.item.moveSpeed + 1) * 100);
+        float rate = (GameManager.instance.baseRate * 2 - GameManager.instance.rate) * 100; 
 
         attackText.text = string.Format("공격력   : {0:F0}  ({1:F0} + <color=red>{2:F0}</color>)", GameManager.instance.attack, GameManager.instance.baseAttack, MainEquipment.item.attack);
-          rateText.text = string.Format("공격속도 : {0:F0}% ({1:F0}% + <color=red>{2:F0}</color>%)", GameManager.instance.rate * 100, GameManager.instance.baseRate * 100, MainEquipment.item.rate * 100);
+          rateText.text = string.Format("공격속도 : {0:F0}% ({1:F0}% + <color=red>{2:F0}</color>%)", rate, GameManager.instance.baseRate * 100, MainEquipment.item.rate * 100);
          SpeedText.text = string.Format("이동속도 : {0:F0}% ({1:F0}% + <color=red>{2:F0}</color>%)", addMoveSpeed,  100, MainEquipment.item.moveSpeed * 100);
         
 

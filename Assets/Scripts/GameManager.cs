@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
     [Header("# UI")]
     public GameObject clearReward;
     public GameObject startBtn;
+    public GameObject hud;
 
     [Header("# Reward")]
     public int[] chestPercent;
@@ -75,14 +76,17 @@ public class GameManager : MonoBehaviour
     private IEnumerator StageClear()
     {
         gameStop = true;
+        hud.SetActive(false);
         yield return new WaitForSeconds(3f);
         level++;
         clearReward.SetActive(true);
-        Time.timeScale = 0f;
+        player.gameObject.SetActive(false);
+        //    Time.timeScale = 0f;
     }
     public void NextStage()
     {
-        Time.timeScale = 1f;
+        //       Time.timeScale = 1f;
+        player.gameObject.SetActive(true);
         gameStop = false;
         curGameTime = maxGameTime;
         enemyCurNum = 0;

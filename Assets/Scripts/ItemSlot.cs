@@ -10,6 +10,9 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler , IPointerE
 
     public SlotType slotType;
 
+    public bool isEquip;
+
+
     public Image CloneImage; // 클릭했을때 나오는 이미지
     public ItemPreview preview;
     public bool fixedPreview;
@@ -86,9 +89,11 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler , IPointerE
         // 장비를 바꾸는 과정에서 무기는 스태프, 마법책은 서브 장비칸이 맞나 확인 후 장비 교체
         if (targetSlot != null && targetSlot != this && ((item.type ==ItemType.Staff && targetSlot.slotType != SlotType.sub) || (item.type == ItemType.Book && targetSlot.slotType != SlotType.main)))
         {
+
             Item tempItem = targetSlot.item;
             targetSlot.item = item;
             item = tempItem;
+
 
             // Item 데이터를 옮겻으니 해당 칸 이미지 재로딩
             targetSlot.ImageLoading();
@@ -128,11 +133,28 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler , IPointerE
 
     private void Update()
     {
-        if(slotType == SlotType.main)
+
+        if( slotType == SlotType.main)
         {
             GameManager.instance.attack = GameManager.instance.baseAttack + item.attack;
-            GameManager.instance.rate = GameManager.instance.baseRate + item.rate;
+            GameManager.instance.rate = GameManager.instance.baseRate - item.rate;
             GameManager.instance.moveSpeed = GameManager.instance.baseMoveSpeed + item.moveSpeed;
         }
+
+
+        if(slotType == SlotType.sub)
+        {
+            if(!isEquip && item.itemSprite != null)
+            {
+                GameManager.instance.weaponNum++;
+                isEquip = true;
+            }
+            else if(isEquip && item.itemSprite == null)
+            {
+                GameManager.instance.weaponNum--;
+                isEquip = false;
+            }
+        }
+
     }
 }

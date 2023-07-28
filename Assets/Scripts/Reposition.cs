@@ -12,7 +12,7 @@ public class Reposition : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Area"))
+        if (!collision.CompareTag("Area") || GameManager.instance.gameStop)
         {
             return;
         }

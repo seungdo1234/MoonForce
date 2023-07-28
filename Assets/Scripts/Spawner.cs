@@ -22,6 +22,11 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.instance.gameStop)
+        {
+            return;
+        }
+
         timer += Time.deltaTime;
         // FloorToInt 소수점 아래는 버리고 Int형으로 바꾸는 함수
         // CeilToInt 올림 후 Int형으로 바꿈

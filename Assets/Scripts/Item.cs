@@ -3,6 +3,8 @@ using UnityEngine;
 [System.Serializable]
 public class Item 
 {
+    public bool isLoad;
+
     [Header("BaseInfo")]
     public ItemType type;
     public ItemRank rank;

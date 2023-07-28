@@ -7,6 +7,7 @@ public class InventoryLoadExit : MonoBehaviour
     public GameObject inventoryStructure;
     public GameObject inventoryGameObject;
     public GameObject exitBtn;
+
     public void Load()
     {
         inventoryStructure.SetActive(true);
@@ -18,5 +19,6 @@ public class InventoryLoadExit : MonoBehaviour
         inventoryStructure.SetActive(false);
         exitBtn.SetActive(false);
         inventoryGameObject.SetActive(false);
+
     }
 }
