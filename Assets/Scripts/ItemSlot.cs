@@ -46,7 +46,6 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler , IPointerE
         }
     }
 
-
     public void OnDrag(PointerEventData eventData)
     {
         // eventData.button : 플레이어가 누른 키
@@ -139,6 +138,7 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler , IPointerE
             GameManager.instance.attack = GameManager.instance.baseAttack + item.attack;
             GameManager.instance.rate = GameManager.instance.baseRate - item.rate;
             GameManager.instance.moveSpeed = GameManager.instance.baseMoveSpeed + item.moveSpeed;
+            GameManager.instance.attribute = item.itemAttribute;
         }
 
 

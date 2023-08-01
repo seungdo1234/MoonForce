@@ -16,7 +16,16 @@ public class Bullet : MonoBehaviour
 
     public void Init(float damage, int per, Vector3 dir)
     {
-        this.damage = damage;
+        // 무속성일 때 마력탄 데미지 증가
+        if(GameManager.instance.attribute == ItemAttribute.Non)
+        {
+            this.damage = damage + (damage * 0.1f);
+        }
+        else
+        {
+            this.damage = damage;
+        }
+
         this.per = per;
 
         // 방향

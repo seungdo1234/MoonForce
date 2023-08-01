@@ -1,17 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
+public enum EnemyStatusEffect {Defalt, Burn, Wet, Earth, GrassRestraint, Darkness }
 public class Enemy : MonoBehaviour
 {
+    [Header("# EnemyBaseStat")]
     public float speed;
     public float health;
     public float maxHealth;
 
+    [Header("# EnemyStatusEffect")]
+    public EnemyStatusEffect statusEffect;
+    public float statusEffectTime;
+
+    private int burnningDamage;
+    private float lerpTime;
+
+    [Header("# EnemyType")]
     // 애니메이터의 데이터를 바꾸는 컴포넌트 => RuntimeAnimatorController
     public RuntimeAnimatorController[] animCon;
 
+
+    [Header("# TargetPlayer")]
     public Rigidbody2D target; // 타겟
+
+    [Header("# DamageText")]
+    public GameObject damageText; // 타겟
 
     private bool isLive; // Enmey가 살아있는지
 
@@ -91,8 +107,11 @@ public class Enemy : MonoBehaviour
         }
 
         // 피격
-        health -= collision.GetComponent<Bullet>().damage;
+       EnemyDamaged(Mathf.Floor( collision.GetComponent<Bullet>().damage));
         StartCoroutine(KnockBack());
+
+        StatusEffect();
+
 
         if (health > 0)
         {
@@ -103,6 +122,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
+            StopAllCoroutines();
             isLive = false; // 죽었다 체크
             col.enabled = false; // 콜라이더 비활성화
             rigid.simulated = false; // rigidbody2D 정지
@@ -112,6 +132,37 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private void StatusEffect()
+    {
+        switch (GameManager.instance.attribute)
+        {
+            case ItemAttribute.Fire:
+                if(statusEffect != EnemyStatusEffect.Burn)
+                {
+                    statusEffect = EnemyStatusEffect.Burn;
+                    StartCoroutine(Burning());
+                }
+                else // 이미 화상 상태라면 상태이상 시간과 횟수 초기화
+                {
+                    lerpTime = statusEffectTime;
+                    burnningDamage = (int)statusEffectTime;
+                }
+                break;
+            case ItemAttribute.Water:
+                break;
+           case ItemAttribute.Grass:
+                break;
+            case ItemAttribute.Eeath:
+                break;
+            case ItemAttribute.Dark:
+                break;
+            case ItemAttribute.Holy:
+                break;
+            default:
+                return;
+
+        }
+    }
     private IEnumerator KnockBack()
     {
         yield return wait; // 다음 하나의 물리 프레임을 딜레이
@@ -120,6 +171,40 @@ public class Enemy : MonoBehaviour
         rigid.AddForce(dirVec.normalized * 3, ForceMode2D.Impulse);
     }
 
+    private IEnumerator Burning() // 화상
+    {
+        lerpTime = statusEffectTime;
+        burnningDamage = (int)statusEffectTime;
+
+        SpriteRenderer sprite = GetComponent<SpriteRenderer>();
+
+        sprite.color = new Color(1, 0.7f, 0.7f, 1);
+
+        while(lerpTime > 0)
+        {
+            lerpTime -= Time.deltaTime;
+            if(lerpTime < burnningDamage)
+            {
+                burnningDamage--;
+                EnemyDamaged(Mathf.Floor(GameManager.instance.attack * 0.5f));
+                anim.SetTrigger("Hit");
+            }
+            yield return null;
+        }
+
+        statusEffect = EnemyStatusEffect.Defalt; 
+
+        yield return new WaitForSeconds(0.5f);
+
+        sprite.color = new Color(1, 1, 1, 1);
+
+    }
+
+
+    private void EnemyDamaged(float damage)
+    {
+        health -= damage;
+    }
     private void Dead()
     {
         gameObject.SetActive(false);

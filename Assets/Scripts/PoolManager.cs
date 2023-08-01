@@ -6,6 +6,10 @@ public class PoolManager : MonoBehaviour
     // 필요한 것 (변수나 리스트의 갯수는 무조건 동일해야함.)
     // 프리팹들을 보관할 변수 
     public GameObject[] prefabs;
+
+    // 속성에 따른 마력탄의 스프라이트
+    public Sprite[] bulletAttributes;
+    private ItemAttribute attribute;
     // 풀 담당을 하는 리스트들
     private List<GameObject>[] pools;
 
@@ -21,7 +25,15 @@ public class PoolManager : MonoBehaviour
             pools[i] = new List<GameObject>();
         }
     }
-
+    private void Update()
+    {
+        if(attribute != GameManager.instance.attribute)
+        {
+            attribute = GameManager.instance.attribute;
+            prefabs[1].gameObject.GetComponent<SpriteRenderer>().sprite = bulletAttributes[(int)attribute - 1];
+            
+        }
+    }
     // 폴링 함수
     public GameObject Get(int index)
     {

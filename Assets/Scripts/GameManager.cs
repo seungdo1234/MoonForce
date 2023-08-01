@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public Player player;
 
     [Header("# Player Data")]
+    public ItemAttribute attribute;
     public float maxHealth;
     public float curHealth;
     public int attack;

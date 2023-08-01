@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-
     private Player player;
 
     private float timer;
@@ -55,7 +54,7 @@ public class Weapon : MonoBehaviour
 
             // 원거리 공격은 Count는 관통력
             bullet.GetComponent<Bullet>().Init(GameManager.instance.attack, GameManager.instance.penetration - 1, dir);
-            bullet.GetComponent<Bullet>().Init(GameManager.instance.attack, GameManager.instance.penetration - 1, dir);
+ 
         }
        
 
