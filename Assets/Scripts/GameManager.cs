@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [Header("# Game Object")]
     public PoolManager pool;
     public Player player;
+    public DamageTextPool damageTextPool;
 
     [Header("# Player Data")]
     public ItemAttribute attribute;

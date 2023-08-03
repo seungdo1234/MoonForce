@@ -7,28 +7,42 @@ public class DamageText : MonoBehaviour
 {
     private Text text;
 
-    public float lerpTime;
+
+    private Vector3 target;
+    private RectTransform rect;
     private void Awake()
     {
         text = GetComponent<Text>();
+        rect = GetComponent<RectTransform>();
     }
 
     private void OnEnable()
     {
-        StartCoroutine(Alpha(1,0));
+//        StartCoroutine(Alpha(1,0));
     }
 
-    private IEnumerator Alpha(int start, int end)
+    public void Init(float damage, Vector3 target)
     {
-        float currentTime = 0f;
-        while (currentTime < lerpTime)
-        {
-            currentTime += Time.deltaTime;
-            float alpha = Mathf.Lerp(start, end, currentTime / lerpTime);
-            text.color = new Color(text.color.r, text.color.g, text.color.b, alpha);
-            yield return null;
-        }
+        this.target = target;
+        text.text = string.Format("{0:F1}", damage);
+
+        gameObject.SetActive(true);
+
+    }
+
+    public void TextEnd()
+    {
+        target = Vector3.zero;
 
         gameObject.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if(target != Vector3.zero)
+        {
+            Vector3 targetScreenPos = Camera.main.WorldToScreenPoint(target);
+            rect.position = targetScreenPos;
+        }
     }
 }

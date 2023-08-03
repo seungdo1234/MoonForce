@@ -107,7 +107,8 @@ public class Enemy : MonoBehaviour
         }
 
         // ÇÇ°Ý
-       EnemyDamaged(Mathf.Floor( collision.GetComponent<Bullet>().damage));
+     //  EnemyDamaged(Mathf.Floor( collision.GetComponent<Bullet>().damage));
+       EnemyDamaged(collision.GetComponent<Bullet>().damage);
         StartCoroutine(KnockBack());
 
         StatusEffect();
@@ -204,6 +205,10 @@ public class Enemy : MonoBehaviour
     private void EnemyDamaged(float damage)
     {
         health -= damage;
+
+        Vector3 textPos = transform.position + new Vector3(0, 0.5f, 0);
+
+        GameManager.instance.damageTextPool.Get(damage, textPos);
     }
     private void Dead()
     {
