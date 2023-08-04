@@ -22,7 +22,7 @@ public class DamageTextPool : MonoBehaviour
 
 
     // 폴링 함수
-    public void Get(float damage, Vector3 target)
+    public void Get(int damage, Vector3 target)
     {
         GameObject select = null;
 

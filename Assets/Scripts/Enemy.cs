@@ -85,6 +85,8 @@ public class Enemy : MonoBehaviour
         col.enabled = true; // 콜라이더 활성화
         rigid.simulated = true; // rigidbody2D 활성화
         spriteRenderer.sortingOrder = 2; // OrderLayer를 2로 내림
+        spriteRenderer.color = new Color(1, 1, 1, 1);
+        statusEffect = EnemyStatusEffect.Defalt;
         anim.SetBool("Dead", false);
     }
 
@@ -145,11 +147,12 @@ public class Enemy : MonoBehaviour
                 }
                 else // 이미 화상 상태라면 상태이상 시간과 횟수 초기화
                 {
-                    lerpTime = statusEffectTime;
+                    lerpTime = statusEffectTime + 1;
                     burnningDamage = (int)statusEffectTime;
                 }
                 break;
             case ItemAttribute.Water:
+
                 break;
            case ItemAttribute.Grass:
                 break;
@@ -174,12 +177,11 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator Burning() // 화상
     {
-        lerpTime = statusEffectTime;
+        lerpTime = statusEffectTime + 1;
         burnningDamage = (int)statusEffectTime;
 
-        SpriteRenderer sprite = GetComponent<SpriteRenderer>();
 
-        sprite.color = new Color(1, 0.7f, 0.7f, 1);
+        spriteRenderer.color = new Color(1, 0.7f, 0.7f, 1);
 
         while(lerpTime > 0)
         {
@@ -197,18 +199,20 @@ public class Enemy : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        sprite.color = new Color(1, 1, 1, 1);
+        spriteRenderer.color = new Color(1, 1, 1, 1);
 
     }
 
 
     private void EnemyDamaged(float damage)
     {
-        health -= damage;
+        int damageValue = (int)Mathf.Floor(damage);
+
+        health -= damageValue;
 
         Vector3 textPos = transform.position + new Vector3(0, 0.5f, 0);
 
-        GameManager.instance.damageTextPool.Get(damage, textPos);
+        GameManager.instance.damageTextPool.Get(damageValue, textPos);
     }
     private void Dead()
     {

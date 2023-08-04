@@ -27,6 +27,8 @@ public class PoolManager : MonoBehaviour
     }
     private void Update()
     {
+
+        // 현재 마력탄의 종류가 장착 무기 속성과 다를 때 스프라이트 변경 
         if(attribute != GameManager.instance.attribute)
         {
             attribute = GameManager.instance.attribute;

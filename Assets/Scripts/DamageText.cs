@@ -21,10 +21,10 @@ public class DamageText : MonoBehaviour
 //        StartCoroutine(Alpha(1,0));
     }
 
-    public void Init(float damage, Vector3 target)
+    public void Init(int damage, Vector3 target)
     {
         this.target = target;
-        text.text = string.Format("{0:F1}", damage);
+        text.text = string.Format("{0}", damage);
 
         gameObject.SetActive(true);
 
