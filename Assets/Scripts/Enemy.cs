@@ -1,9 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public enum EnemyStatusEffect {Defalt, Burn, Wet, Earth, GrassRestraint, Darkness }
+public enum EnemyStatusEffect { Defalt, Burn, Wet, Earth, GrassRestraint, Darkness }
 public class Enemy : MonoBehaviour
 {
     [Header("# EnemyBaseStat")]
@@ -13,7 +11,12 @@ public class Enemy : MonoBehaviour
 
     [Header("# EnemyStatusEffect")]
     public EnemyStatusEffect statusEffect;
-    public float statusEffectTime;
+    public float burningEffectTime;
+    public float wettingEffectTime;
+    public float restraintEffectTime;
+    public bool isRestraint;
+    public float speedReducedEffectTime;
+    public float speedReducePer;
 
     private int burnningDamage;
     private float lerpTime;
@@ -26,11 +29,10 @@ public class Enemy : MonoBehaviour
     [Header("# TargetPlayer")]
     public Rigidbody2D target; // 타겟
 
-    [Header("# DamageText")]
-    public GameObject damageText; // 타겟
 
     private bool isLive; // Enmey가 살아있는지
 
+    private int hitAnimID;
     private Rigidbody2D rigid;
     private SpriteRenderer spriteRenderer;
     private Animator anim;
@@ -45,6 +47,7 @@ public class Enemy : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         wait = new WaitForFixedUpdate();
+        hitAnimID = Animator.StringToHash("Hit");
     }
 
 
@@ -67,7 +70,7 @@ public class Enemy : MonoBehaviour
     private void LateUpdate()
     {
 
-        if (!isLive)
+        if (isRestraint || !isLive)
         {
             return;
         }
@@ -84,9 +87,10 @@ public class Enemy : MonoBehaviour
         health = maxHealth;
         col.enabled = true; // 콜라이더 활성화
         rigid.simulated = true; // rigidbody2D 활성화
-        spriteRenderer.sortingOrder = 2; // OrderLayer를 2로 내림
-        spriteRenderer.color = new Color(1, 1, 1, 1);
-        statusEffect = EnemyStatusEffect.Defalt;
+        spriteRenderer.sortingOrder = 3; // OrderLayer를 3로 내림
+        spriteRenderer.color = new Color(1, 1, 1, 1); // 컬러 초기화
+        statusEffect = EnemyStatusEffect.Defalt; // 상태 초기화
+        gameObject.layer = 6; // 레이어를 Enemy로 변경
         anim.SetBool("Dead", false);
     }
 
@@ -109,23 +113,26 @@ public class Enemy : MonoBehaviour
         }
 
         // 피격
-     //  EnemyDamaged(Mathf.Floor( collision.GetComponent<Bullet>().damage));
-       EnemyDamaged(collision.GetComponent<Bullet>().damage);
-        StartCoroutine(KnockBack());
-
-        StatusEffect();
-
+        //  EnemyDamaged(Mathf.Floor( collision.GetComponent<Bullet>().damage));
+        EnemyDamaged(collision.GetComponent<Bullet>().damage);
 
         if (health > 0)
         {
             // Live, Hit Action
             anim.SetTrigger("Hit");
-
+            StatusEffect();
+            StartCoroutine(KnockBack());
 
         }
         else
         {
             StopAllCoroutines();
+            if (anim.speed != 1) // 디버프 상태에서 죽는다면
+            {
+                anim.speed = 1f;
+            }
+            isRestraint = false;
+            spriteRenderer.color = new Color(1, 1, 1, 1); // 색깔 되 돌리기
             isLive = false; // 죽었다 체크
             col.enabled = false; // 콜라이더 비활성화
             rigid.simulated = false; // rigidbody2D 정지
@@ -140,23 +147,44 @@ public class Enemy : MonoBehaviour
         switch (GameManager.instance.attribute)
         {
             case ItemAttribute.Fire:
-                if(statusEffect != EnemyStatusEffect.Burn)
+                lerpTime = burningEffectTime + 1;
+                burnningDamage = (int)burningEffectTime;
+
+                if (statusEffect != EnemyStatusEffect.Burn)
                 {
                     statusEffect = EnemyStatusEffect.Burn;
                     StartCoroutine(Burning());
                 }
-                else // 이미 화상 상태라면 상태이상 시간과 횟수 초기화
-                {
-                    lerpTime = statusEffectTime + 1;
-                    burnningDamage = (int)statusEffectTime;
-                }
                 break;
             case ItemAttribute.Water:
+                lerpTime = wettingEffectTime;
+
+                if (statusEffect != EnemyStatusEffect.Wet)
+                {
+                    statusEffect = EnemyStatusEffect.Wet;
+                    StartCoroutine(Wetting());
+                }
 
                 break;
-           case ItemAttribute.Grass:
+            case ItemAttribute.Grass:
+                lerpTime = restraintEffectTime;
+                if (statusEffect != EnemyStatusEffect.GrassRestraint)
+                {
+                    statusEffect = EnemyStatusEffect.GrassRestraint;
+                    StartCoroutine(Restraint());
+                }
+
                 break;
             case ItemAttribute.Eeath:
+
+                lerpTime = speedReducedEffectTime;
+
+                if (statusEffect != EnemyStatusEffect.Earth)
+                {
+                    statusEffect = EnemyStatusEffect.Earth;
+                    StartCoroutine(ReducedSpeed());
+                }
+
                 break;
             case ItemAttribute.Dark:
                 break;
@@ -177,16 +205,12 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator Burning() // 화상
     {
-        lerpTime = statusEffectTime + 1;
-        burnningDamage = (int)statusEffectTime;
-
-
         spriteRenderer.color = new Color(1, 0.7f, 0.7f, 1);
 
-        while(lerpTime > 0)
+        while (lerpTime > 0)
         {
             lerpTime -= Time.deltaTime;
-            if(lerpTime < burnningDamage)
+            if (lerpTime < burnningDamage)
             {
                 burnningDamage--;
                 EnemyDamaged(Mathf.Floor(GameManager.instance.attack * 0.5f));
@@ -195,7 +219,7 @@ public class Enemy : MonoBehaviour
             yield return null;
         }
 
-        statusEffect = EnemyStatusEffect.Defalt; 
+        statusEffect = EnemyStatusEffect.Defalt;
 
         yield return new WaitForSeconds(0.5f);
 
@@ -203,6 +227,83 @@ public class Enemy : MonoBehaviour
 
     }
 
+    private IEnumerator Wetting() // 젖은 상태라면 마법 데미지가 ++ 
+    {
+
+        spriteRenderer.color = new Color(0.6f, 0.6f, 1, 1);
+
+        while (lerpTime > 0)
+        {
+            lerpTime -= Time.deltaTime;
+
+            yield return null;
+        }
+
+        statusEffect = EnemyStatusEffect.Defalt;
+
+        yield return new WaitForSeconds(0.5f);
+
+        spriteRenderer.color = new Color(1, 1, 1, 1);
+    }
+    private IEnumerator ReducedSpeed() // 땅 속성 공격을 받은 상태라면 이동속도 --
+    {
+        float speed = this.speed;
+
+        spriteRenderer.color = new Color(1, 0.6f, 0.3f, 1);
+
+        anim.speed = 1 - speedReducePer;
+
+        this.speed -= this.speed * speedReducePer;
+
+        while (lerpTime > 0)
+        {
+            lerpTime -= Time.deltaTime;
+
+            yield return null;
+        }
+
+        statusEffect = EnemyStatusEffect.Defalt;
+
+        this.speed = speed;
+        anim.speed = 1;
+
+        yield return new WaitForSeconds(0.5f);
+
+        spriteRenderer.color = new Color(1, 1, 1, 1);
+    }
+
+    private IEnumerator Restraint() // 땅 속성 공격을 받은 상태라면 이동속도 --
+    {
+        float speed = this.speed;
+
+        spriteRenderer.color = new Color(0, 1, 0, 1);
+
+        isRestraint = true;
+        anim.speed = 0f;
+        gameObject.layer = 9;
+        spriteRenderer.sortingOrder = 2; // 속박당한 적이 지나가는 Enemy를 가리지 않기하기위해 
+        this.speed = 0f;
+        rigid.velocity = Vector2.zero;
+
+        anim.ResetTrigger(hitAnimID);
+        while (lerpTime > 0)
+        {
+            lerpTime -= Time.deltaTime;
+
+            yield return null;
+        }
+
+        isRestraint = false;
+
+        statusEffect = EnemyStatusEffect.Defalt;
+
+        anim.speed = 1f;
+        spriteRenderer.sortingOrder = 3;
+        gameObject.layer = 6;
+        this.speed = speed;
+        spriteRenderer.color = new Color(1, 1, 1, 1);
+
+    }
 
     private void EnemyDamaged(float damage)
     {
@@ -218,5 +319,6 @@ public class Enemy : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+
 
 }
