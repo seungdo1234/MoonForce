@@ -107,23 +107,22 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log(collision.gameObject.layer);
         // 필터
-        if (!(collision.CompareTag("Bullet") || collision.CompareTag("DarknessExplosion")) || !isLive)
+        if (!(collision.gameObject.layer == 10 || collision.gameObject.layer == 11) || !isLive)
         {
             return;
         }
 
-        if (collision.CompareTag("DarknessExplosion"))
+
+
+        EnemyDamaged(collision.GetComponent<Bullet>().damage);
+
+        if (collision.gameObject.layer == 11) // 만약 마력탄이라면
         {
-            EnemyDamaged(GameManager.instance.attack * 2);
-        }
-        else
-        {
-            // 피격
-            //  EnemyDamaged(Mathf.Floor( collision.GetComponent<Bullet>().damage));
-            EnemyDamaged(collision.GetComponent<Bullet>().damage);
             StatusEffect();
         }
+        
 
         if (health > 0)
         {
@@ -203,7 +202,7 @@ public class Enemy : MonoBehaviour
                 }
                 break;
             case ItemAttribute.Holy:
-                
+
                 break;
             default:
                 return;
@@ -333,8 +332,8 @@ public class Enemy : MonoBehaviour
             yield return null;
         }
 
-        GameManager.instance.magicEffects.darknessExplosion.SetActive(true);
-        GameManager.instance.magicEffects.darknessExplosion.transform.position = transform.position;
+        GameManager.instance.magicManager.darknessExplosion.SetActive(true);
+        GameManager.instance.magicManager.darknessExplosion.transform.position = transform.position;
 
         statusEffect = EnemyStatusEffect.Defalt;
 
@@ -355,8 +354,8 @@ public class Enemy : MonoBehaviour
                 damageValue = 999;
             }
         }
-     
-        if(damageValue == 0) // 즉사가 아니라면
+
+        if (damageValue == 0) // 즉사가 아니라면
         {
             damageValue = (int)Mathf.Floor(damage);
         }

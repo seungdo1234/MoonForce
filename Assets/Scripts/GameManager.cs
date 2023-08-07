@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public PoolManager pool;
     public Player player;
     public DamageTextPool damageTextPool;
-    public MagicEffects magicEffects;
+    public MagicManager magicManager;
 
     [Header("# Player Data")]
     public ItemAttribute attribute;
@@ -68,6 +68,7 @@ public class GameManager : MonoBehaviour
         enemyCurNum = 0;
         kill = 0;
         gameStop = false;
+        magicManager.StageStart();
     }
     private bool isClear()
     {
@@ -85,6 +86,7 @@ public class GameManager : MonoBehaviour
         level++;
         clearReward.SetActive(true);
         player.gameObject.SetActive(false);
+        magicManager.StageClear();
         //    Time.timeScale = 0f;
     }
     public void NextStage()
@@ -96,6 +98,7 @@ public class GameManager : MonoBehaviour
         enemyCurNum = 0;
         kill = 0;
         clearReward.SetActive(false);
+        magicManager.StageStart();
     }
     private void Update()
     {

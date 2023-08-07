@@ -16,11 +16,14 @@ public class Weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
+        if(timer < GameManager.instance.rate)
+        {
+            timer += Time.deltaTime;
+        }
 
   
 
-        if (timer > GameManager.instance.rate)
+        if (player.scanner.nearestTarget[0] && timer > GameManager.instance.rate)
         {
             timer = 0;
             Fire();
@@ -29,11 +32,6 @@ public class Weapon : MonoBehaviour
 
     private void Fire() // 가장 가까운 Enemy한테 총알 발사
     {
-        if (!player.scanner.nearestTarget[0])
-        {
-            return;
-        }
-
         // Enemy 위치, 방향 구하기
         for(int i = 0; i< GameManager.instance.weaponNum; i++)
         {
@@ -56,8 +54,10 @@ public class Weapon : MonoBehaviour
             bullet.GetComponent<Bullet>().Init(GameManager.instance.attack, GameManager.instance.penetration - 1, dir);
  
         }
-       
-
     }
+
+
+    
+
 
 }
