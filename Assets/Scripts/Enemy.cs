@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     public bool isRestraint;
     public float speedReducedEffectTime;
     public float speedReducePer;
+    public float darknessExpTime;
 
     private int burnningDamage;
     private float lerpTime;
@@ -107,20 +108,27 @@ public class Enemy : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // 필터
-        if (!collision.CompareTag("Bullet") || !isLive)
+        if (!(collision.CompareTag("Bullet") || collision.CompareTag("DarknessExplosion")) || !isLive)
         {
             return;
         }
 
-        // 피격
-        //  EnemyDamaged(Mathf.Floor( collision.GetComponent<Bullet>().damage));
-        EnemyDamaged(collision.GetComponent<Bullet>().damage);
+        if (collision.CompareTag("DarknessExplosion"))
+        {
+            EnemyDamaged(GameManager.instance.attack * 2);
+        }
+        else
+        {
+            // 피격
+            //  EnemyDamaged(Mathf.Floor( collision.GetComponent<Bullet>().damage));
+            EnemyDamaged(collision.GetComponent<Bullet>().damage);
+            StatusEffect();
+        }
 
         if (health > 0)
         {
             // Live, Hit Action
             anim.SetTrigger("Hit");
-            StatusEffect();
             StartCoroutine(KnockBack());
 
         }
@@ -187,8 +195,15 @@ public class Enemy : MonoBehaviour
 
                 break;
             case ItemAttribute.Dark:
+
+                if (statusEffect != EnemyStatusEffect.Darkness)
+                {
+                    statusEffect = EnemyStatusEffect.Darkness;
+                    StartCoroutine(DarknessExplosion());
+                }
                 break;
             case ItemAttribute.Holy:
+                
                 break;
             default:
                 return;
@@ -304,10 +319,47 @@ public class Enemy : MonoBehaviour
         spriteRenderer.color = new Color(1, 1, 1, 1);
 
     }
+    private IEnumerator DarknessExplosion() // 땅 속성 공격을 받은 상태라면 이동속도 --
+    {
+
+        spriteRenderer.color = new Color(1, 0.45f, 1, 1);
+
+        lerpTime = darknessExpTime;
+
+        while (lerpTime > 0)
+        {
+            lerpTime -= Time.deltaTime;
+
+            yield return null;
+        }
+
+        GameManager.instance.magicEffects.darknessExplosion.SetActive(true);
+        GameManager.instance.magicEffects.darknessExplosion.transform.position = transform.position;
+
+        statusEffect = EnemyStatusEffect.Defalt;
+
+        spriteRenderer.color = new Color(1, 1, 1, 1);
+
+    }
 
     private void EnemyDamaged(float damage)
     {
-        int damageValue = (int)Mathf.Floor(damage);
+        int damageValue = 0;
+
+        if (GameManager.instance.attribute == ItemAttribute.Holy)
+        {
+            int random = Random.Range(1, 101);
+
+            if (GameManager.instance.instantKillPer >= random) // 즉사
+            {
+                damageValue = 999;
+            }
+        }
+     
+        if(damageValue == 0) // 즉사가 아니라면
+        {
+            damageValue = (int)Mathf.Floor(damage);
+        }
 
         health -= damageValue;
 

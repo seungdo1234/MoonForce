@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public PoolManager pool;
     public Player player;
     public DamageTextPool damageTextPool;
+    public MagicEffects magicEffects;
 
     [Header("# Player Data")]
     public ItemAttribute attribute;
@@ -24,6 +25,7 @@ public class GameManager : MonoBehaviour
     public float baseMoveSpeed;
     public int penetration;
     public int weaponNum; // ÃÑ : ÇÑ¹ø¿¡ ¹ß»ç µÇ´Â ÃÑÅº, ±ÙÁ¢ : »ðÀÇ °¹¼ö
+    public int instantKillPer;
 
     [Header("# Stage Data")]
     public bool gameStop;

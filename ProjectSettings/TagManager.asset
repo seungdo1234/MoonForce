@@ -10,6 +10,7 @@ TagManager:
   - Bullet
   - PlayerDamaged
   - EnemyDamaged
+  - DarknessExplosion
   layers:
   - Default
   - TransparentFX

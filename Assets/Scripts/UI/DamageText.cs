@@ -26,6 +26,11 @@ public class DamageText : MonoBehaviour
         this.target = target;
         text.text = string.Format("{0}", damage);
 
+        if(GameManager.instance.attribute == ItemAttribute.Holy && damage == 999)
+        {
+            text.color = new Color(1, 1, 0.4f);
+        }
+
         gameObject.SetActive(true);
 
     }
@@ -33,6 +38,10 @@ public class DamageText : MonoBehaviour
     public void TextEnd()
     {
         target = Vector3.zero;
+
+
+        text.color = new Color(1, 1, 1);
+
 
         gameObject.SetActive(false);
     }

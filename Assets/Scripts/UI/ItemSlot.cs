@@ -135,23 +135,45 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler , IPointerE
 
         if( slotType == SlotType.main)
         {
-            GameManager.instance.attack = GameManager.instance.baseAttack + item.attack;
-            GameManager.instance.rate = GameManager.instance.baseRate - item.rate;
-            GameManager.instance.moveSpeed = GameManager.instance.baseMoveSpeed + item.moveSpeed;
             GameManager.instance.attribute = item.itemAttribute;
+            GameManager.instance.attack = GameManager.instance.baseAttack + item.attack;
+            if (GameManager.instance.attribute == ItemAttribute.Dark)
+            {
+                GameManager.instance.rate = GameManager.instance.baseRate * 2 - item.rate;
+            }
+            else
+            {
+                GameManager.instance.rate = GameManager.instance.baseRate - item.rate;
+            }
+            GameManager.instance.moveSpeed = GameManager.instance.baseMoveSpeed + item.moveSpeed;
         }
 
 
-        if(slotType == SlotType.sub)
+        if(slotType == SlotType.sub) // 마법책을 장착하면 적에게 발사하는 마력탄의 갯수가 늘어남
         {
+
             if(!isEquip && item.itemSprite != null)
             {
-                GameManager.instance.weaponNum++;
+                if(GameManager.instance.attribute != ItemAttribute.Dark)
+                {
+                    GameManager.instance.weaponNum++;
+                }
+                else // 암속성일 경우는 장착한 마법책의 갯수 만큼 폭발의 범위가 늘어남
+                {
+                    GameManager.instance.magicEffects.darknessExplosion.transform.localScale += new Vector3(0.15f, 0.15f, 0.15f);
+                }
                 isEquip = true;
             }
             else if(isEquip && item.itemSprite == null)
             {
-                GameManager.instance.weaponNum--;
+                if (GameManager.instance.attribute != ItemAttribute.Dark)
+                {
+                    GameManager.instance.weaponNum--;
+                }
+                else
+                {
+                    GameManager.instance.magicEffects.darknessExplosion.transform.localScale -= new Vector3(0.15f, 0.15f, 0.15f);
+                }
                 isEquip = false;
             }
         }
