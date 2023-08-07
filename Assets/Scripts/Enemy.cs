@@ -107,22 +107,30 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.gameObject.layer);
         // 필터
         if (!(collision.gameObject.layer == 10 || collision.gameObject.layer == 11) || !isLive)
         {
             return;
         }
 
-
-
-        EnemyDamaged(collision.GetComponent<Bullet>().damage);
-
         if (collision.gameObject.layer == 11) // 만약 마력탄이라면
         {
+            EnemyDamaged(collision.GetComponent<Bullet>().damage, 1);
             StatusEffect();
         }
-        
+        else // 마법이라면 
+        {
+            if (collision.CompareTag("Explosion")) // 폭발에 맞았다면
+            {
+                float damage = 2 * GameManager.instance.attack * GameManager.instance.magicManager.magicInfo[1].damagePer;
+                EnemyDamaged(damage, 2);
+            }
+            else // 날아가는 마법 일 경우 ex) 화염구
+            {
+                EnemyDamaged(collision.GetComponent<Bullet>().damage, 2);
+            }
+
+        }
 
         if (health > 0)
         {
@@ -227,7 +235,7 @@ public class Enemy : MonoBehaviour
             if (lerpTime < burnningDamage)
             {
                 burnningDamage--;
-                EnemyDamaged(Mathf.Floor(GameManager.instance.attack * 0.5f));
+                EnemyDamaged(Mathf.Floor(GameManager.instance.attack * 0.5f), 2);
                 anim.SetTrigger("Hit");
             }
             yield return null;
@@ -332,8 +340,12 @@ public class Enemy : MonoBehaviour
             yield return null;
         }
 
-        GameManager.instance.magicManager.darknessExplosion.SetActive(true);
-        GameManager.instance.magicManager.darknessExplosion.transform.position = transform.position;
+        Transform exp = GameManager.instance.magicManager.Get(1) .transform ;
+
+        exp.position = transform.position;
+
+        float expScale = (GameManager.instance.weaponNum - 1)  * 0.15f;
+        exp.localScale = new Vector3(1, 1, 1) + new Vector3(expScale, expScale, expScale);
 
         statusEffect = EnemyStatusEffect.Defalt;
 
@@ -341,11 +353,11 @@ public class Enemy : MonoBehaviour
 
     }
 
-    private void EnemyDamaged(float damage)
+    private void EnemyDamaged(float damage , int hitType)
     {
         int damageValue = 0;
 
-        if (GameManager.instance.attribute == ItemAttribute.Holy)
+        if (hitType == 1 && GameManager.instance.attribute == ItemAttribute.Holy)
         {
             int random = Random.Range(1, 101);
 

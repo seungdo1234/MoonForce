@@ -154,26 +154,13 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler , IPointerE
 
             if(!isEquip && item.itemSprite != null)
             {
-                if(GameManager.instance.attribute != ItemAttribute.Dark)
-                {
-                    GameManager.instance.weaponNum++;
-                }
-                else // 암속성일 경우는 장착한 마법책의 갯수 만큼 폭발의 범위가 늘어남
-                {
-                    GameManager.instance.magicManager.darknessExplosion.transform.localScale += new Vector3(0.15f, 0.15f, 0.15f);
-                }
+                GameManager.instance.weaponNum++;
+
                 isEquip = true;
             }
             else if(isEquip && item.itemSprite == null)
             {
-                if (GameManager.instance.attribute != ItemAttribute.Dark)
-                {
-                    GameManager.instance.weaponNum--;
-                }
-                else
-                {
-                    GameManager.instance.magicManager.darknessExplosion.transform.localScale -= new Vector3(0.15f, 0.15f, 0.15f);
-                }
+                GameManager.instance.weaponNum--;
                 isEquip = false;
             }
         }
