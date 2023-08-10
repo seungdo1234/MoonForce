@@ -12,6 +12,7 @@ TagManager:
   - EnemyDamaged
   - Explosion
   - Fireball
+  - EarthSpike
   layers:
   - Default
   - TransparentFX

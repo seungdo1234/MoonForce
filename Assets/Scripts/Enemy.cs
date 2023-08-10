@@ -120,15 +120,11 @@ public class Enemy : MonoBehaviour
         }
         else // 마법이라면 
         {
-            if (collision.CompareTag("Explosion")) // 폭발에 맞았다면
-            {
-                float damage = 2 * GameManager.instance.attack * GameManager.instance.magicManager.magicInfo[1].damagePer;
-                EnemyDamaged(damage, 2);
-            }
-            else // 날아가는 마법 일 경우 ex) 화염구
-            {
-                EnemyDamaged(collision.GetComponent<Bullet>().damage, 2);
-            }
+
+            int number = collision.GetComponent<MagicNumber>().magicNumber;
+            float damage = GameManager.instance.attack * GameManager.instance.magicManager.magicInfo[number].damagePer;
+
+            EnemyDamaged(damage, 2);
 
         }
 
@@ -340,11 +336,11 @@ public class Enemy : MonoBehaviour
             yield return null;
         }
 
-        Transform exp = GameManager.instance.magicManager.Get(1) .transform ;
+        Transform exp = GameManager.instance.magicManager.Get(1).transform;
 
         exp.position = transform.position;
 
-        float expScale = (GameManager.instance.weaponNum - 1)  * 0.15f;
+        float expScale = (GameManager.instance.weaponNum - 1) * 0.15f;
         exp.localScale = new Vector3(1, 1, 1) + new Vector3(expScale, expScale, expScale);
 
         statusEffect = EnemyStatusEffect.Defalt;
@@ -353,7 +349,7 @@ public class Enemy : MonoBehaviour
 
     }
 
-    private void EnemyDamaged(float damage , int hitType)
+    private void EnemyDamaged(float damage, int hitType)
     {
         int damageValue = 0;
 

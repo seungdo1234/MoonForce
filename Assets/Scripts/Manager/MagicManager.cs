@@ -7,8 +7,6 @@ public class MagicManager : MonoBehaviour
 
     public Magic[] magicInfo;
 
-    public GameObject darknessExplosion;
-
 
     // 풀 담당을 하는 리스트들
     private List<GameObject>[] pools;
@@ -68,6 +66,7 @@ public class MagicManager : MonoBehaviour
         if (!select)
         {
             select = Instantiate(magicInfo[index].magicEffect, transform);
+
             pools[index].Add(select);
         }
 
@@ -93,9 +92,13 @@ public class MagicManager : MonoBehaviour
                 }
                 timer = 0; // 있다면 쿨타임 초기화
 
-                if (magicNumber == 0) 
+                if (magicInfo[magicNumber].isFlying) 
                 {
                     Fire(magicNumber); // 파이어볼 발사 
+                }
+                else 
+                {
+                    SpawnMagic(magicNumber);
                 }
             }
             yield return null; // 반복 
@@ -117,9 +120,18 @@ public class MagicManager : MonoBehaviour
                                               // FromToRotation : 지정된 축을 중심으로 목표를 향해 회전하는 함수
         bullet.rotation = Quaternion.FromToRotation(Vector3.right, dir); // Enemy 방향으로 bullet 회전
 
+        bullet.GetComponent<Bullet>().Init(0, magicInfo[magicNumber].penetration, dir);
+    }
 
-        float damage = (GameManager.instance.attack * magicInfo[magicNumber].damagePer) + GameManager.instance.attack;
-        // 원거리 공격은 Count는 관통력
-        bullet.GetComponent<Bullet>().Init(damage, magicInfo[magicNumber].penetration, dir);
+    private void SpawnMagic(int magicNumber)
+    {
+
+        int random = Random.Range(0, player.scanner.nearestTarget.Length);
+
+
+        Transform magic = Get(magicNumber).transform;
+        magic.position = player.scanner.nearestTarget[random].transform.position;
+
+
     }
 }
