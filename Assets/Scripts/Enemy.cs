@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour
     public EnemyStatusEffect statusEffect;
     public float burningEffectTime;
     public float wettingEffectTime;
+    public bool isWetting; // wet 상태인지 (맞다면 마법 데미지 ++)
+    public float wetDamagePer;
     public float restraintEffectTime;
     public bool isRestraint;
     public float speedReducedEffectTime;
@@ -123,6 +125,7 @@ public class Enemy : MonoBehaviour
 
             int number = collision.GetComponent<MagicNumber>().magicNumber;
             float damage = GameManager.instance.attack * GameManager.instance.magicManager.magicInfo[number].damagePer;
+
 
             EnemyDamaged(damage, 2);
 
@@ -250,6 +253,8 @@ public class Enemy : MonoBehaviour
 
         spriteRenderer.color = new Color(0.6f, 0.6f, 1, 1);
 
+        isWetting = true;
+
         while (lerpTime > 0)
         {
             lerpTime -= Time.deltaTime;
@@ -258,6 +263,8 @@ public class Enemy : MonoBehaviour
         }
 
         statusEffect = EnemyStatusEffect.Defalt;
+
+        isWetting = false;
 
         yield return new WaitForSeconds(0.5f);
 
@@ -349,8 +356,13 @@ public class Enemy : MonoBehaviour
 
     }
 
-    private void EnemyDamaged(float damage, int hitType)
+    public void EnemyDamaged(float damage, int hitType)
     {
+        if (isWetting && hitType ==2)
+        {
+            damage *= wetDamagePer;
+        }
+
         int damageValue = 0;
 
         if (hitType == 1 && GameManager.instance.attribute == ItemAttribute.Holy)

@@ -125,12 +125,28 @@ public class MagicManager : MonoBehaviour
 
     private void SpawnMagic(int magicNumber)
     {
+        int length = 1;
 
-        int random = Random.Range(0, player.scanner.nearestTarget.Length);
+        for(int i =1 ; i < player.scanner.nearestTarget.Length; i++)
+        {
+            if(player.scanner.nearestTarget[i] == null)
+            {
+                break;
+            }
+            length++;
+        }
+
+        int random = Random.Range(0, length);
 
 
         Transform magic = Get(magicNumber).transform;
         magic.position = player.scanner.nearestTarget[random].transform.position;
+
+        if(magicNumber == 3)
+        {
+            Enemy enemy = player.scanner.nearestTarget[random].GetComponent<Enemy>();
+            magic.GetComponent<MoltenSpear>().Init(enemy);
+        }   
 
 
     }

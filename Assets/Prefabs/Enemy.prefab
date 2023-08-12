@@ -108,6 +108,8 @@ MonoBehaviour:
   statusEffect: 0
   burningEffectTime: 3
   wettingEffectTime: 3
+  isWetting: 0
+  wetDamagePer: 1.2
   restraintEffectTime: 1.5
   isRestraint: 0
   speedReducedEffectTime: 2

@@ -9662,14 +9662,32 @@ MonoBehaviour:
     magicCount: 0
     magicCoolTime: 0
     penetration: 0
-  - isMagicActive: 1
+  - isMagicActive: 0
     magicNumber: 2
     magicName: EarthSpike
     magicEffect: {fileID: 1108347652370906950, guid: a4870f0ee5ec8b945bf89bc7463f1068, type: 3}
     isFlying: 0
     damagePer: 2
     magicCount: 1
-    magicCoolTime: 3
+    magicCoolTime: 5
+    penetration: 0
+  - isMagicActive: 1
+    magicNumber: 3
+    magicName: MoltenSpear
+    magicEffect: {fileID: 4198508131217056016, guid: 344d1c27f2854244597308d42225d454, type: 3}
+    isFlying: 0
+    damagePer: 5
+    magicCount: 1
+    magicCoolTime: 5
+    penetration: 0
+  - isMagicActive: 0
+    magicNumber: 3
+    magicName: 
+    magicEffect: {fileID: 4198508131217056016, guid: 344d1c27f2854244597308d42225d454, type: 3}
+    isFlying: 0
+    damagePer: 5
+    magicCount: 1
+    magicCoolTime: 5
     penetration: 0
 --- !u!1 &1234221704
 GameObject:
@@ -9721,7 +9739,7 @@ MonoBehaviour:
     rank: 1
     quality: 1
     itemSprite: {fileID: 21300000, guid: 552525ce089a36749b7cbc7c212d47c9, type: 3}
-    itemAttribute: 6
+    itemAttribute: 3
     itemName: "\uC870\uC7A1\uD55C \uC9C0\uD321\uC774"
     attack: 3
     rate: 0.1
