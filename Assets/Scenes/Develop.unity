@@ -4453,7 +4453,7 @@ MonoBehaviour:
   maxGameTime: 300
   curGameTime: 0
   kill: 0
-  enemyMaxNum: 010000000a0000000f0000001e00000032000000
+  enemyMaxNum: 140000001e00000028000000320000003c000000
   enemyCurNum: 9999
   level: 0
   clearReward: {fileID: 124120846}
@@ -9677,13 +9677,13 @@ MonoBehaviour:
     magicEffect: {fileID: 4198508131217056016, guid: 344d1c27f2854244597308d42225d454, type: 3}
     isFlying: 0
     damagePer: 5
-    magicCount: 1
+    magicCount: 3
     magicCoolTime: 5
     penetration: 0
   - isMagicActive: 0
     magicNumber: 3
     magicName: 
-    magicEffect: {fileID: 4198508131217056016, guid: 344d1c27f2854244597308d42225d454, type: 3}
+    magicEffect: {fileID: 0}
     isFlying: 0
     damagePer: 5
     magicCount: 1

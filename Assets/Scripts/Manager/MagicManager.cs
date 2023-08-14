@@ -125,29 +125,42 @@ public class MagicManager : MonoBehaviour
 
     private void SpawnMagic(int magicNumber)
     {
-        int length = 1;
+        int length = 0;
 
-        for(int i =1 ; i < player.scanner.nearestTarget.Length; i++)
+        for (int i = 0; i < player.scanner.nearestTarget.Length; i++)
         {
-            if(player.scanner.nearestTarget[i] == null)
+            if (player.scanner.nearestTarget[i] == null)
             {
                 break;
             }
             length++;
         }
 
-        int random = Random.Range(0, length);
+        Debug.Log(magicInfo[magicNumber].magicCount);
+        int spawnCount = Mathf.Min(length, magicInfo[magicNumber].magicCount);
 
+        List<int> availableIndices = new List<int>();
 
-        Transform magic = Get(magicNumber).transform;
-        magic.position = player.scanner.nearestTarget[random].transform.position;
-
-        if(magicNumber == 3)
+        for (int i = 0; i < length; i++)
         {
-            Enemy enemy = player.scanner.nearestTarget[random].GetComponent<Enemy>();
-            magic.GetComponent<MoltenSpear>().Init(enemy);
-        }   
+            availableIndices.Add(i);
+        }
 
+        for (int i = 0; i < spawnCount; i++)
+        {
+            int randomIndex = Random.Range(0, availableIndices.Count);
+            int selectedIndex = availableIndices[randomIndex];
+            availableIndices.RemoveAt(randomIndex);
 
+            Transform magic = Get(magicNumber).transform;
+            magic.position = player.scanner.nearestTarget[selectedIndex].transform.position;
+
+            if (magicNumber == 3)
+            {
+                Enemy enemy = player.scanner.nearestTarget[selectedIndex].GetComponent<Enemy>();
+                magic.GetComponent<MoltenSpear>().Init(enemy);
+            }
+        }
     }
+
 }
