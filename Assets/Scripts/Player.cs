@@ -9,6 +9,9 @@ public class Player : MonoBehaviour
 
     public HUD healthUI;
 
+    [Header("Body of Rotation")]
+    public Transform rotationBody;
+
     [Header("Attack Target")]
     public Scanner scanner;
 

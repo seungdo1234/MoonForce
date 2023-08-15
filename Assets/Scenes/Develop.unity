@@ -9667,27 +9667,27 @@ MonoBehaviour:
     magicName: EarthSpike
     magicEffect: {fileID: 1108347652370906950, guid: a4870f0ee5ec8b945bf89bc7463f1068, type: 3}
     isFlying: 0
-    damagePer: 2
+    damagePer: 3
     magicCount: 1
     magicCoolTime: 5
     penetration: 0
-  - isMagicActive: 1
+  - isMagicActive: 0
     magicNumber: 3
     magicName: MoltenSpear
     magicEffect: {fileID: 4198508131217056016, guid: 344d1c27f2854244597308d42225d454, type: 3}
     isFlying: 0
     damagePer: 5
-    magicCount: 3
-    magicCoolTime: 5
-    penetration: 0
-  - isMagicActive: 0
-    magicNumber: 3
-    magicName: 
-    magicEffect: {fileID: 0}
-    isFlying: 0
-    damagePer: 5
     magicCount: 1
     magicCoolTime: 5
+    penetration: 0
+  - isMagicActive: 1
+    magicNumber: 4
+    magicName: Shovel
+    magicEffect: {fileID: 3908359112845046333, guid: 26031a6a67d3a924197f23e346b4f289, type: 3}
+    isFlying: 0
+    damagePer: 1.5
+    magicCount: 2
+    magicCoolTime: 0
     penetration: 0
 --- !u!1 &1234221704
 GameObject:
@@ -11217,6 +11217,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1386443331}
   m_CullTransparentMesh: 1
+--- !u!1 &1391490685
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1391490686}
+  - component: {fileID: 1391490687}
+  m_Layer: 0
+  m_Name: RotationBody
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1391490686
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1391490685}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1535498167}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1391490687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1391490685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 670a4f82474fd5747949b3abc590c64d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 80
 --- !u!1 &1392758799
 GameObject:
   m_ObjectHideFlags: 0
@@ -12580,6 +12625,7 @@ Transform:
   - {fileID: 743519846}
   - {fileID: 85269485}
   - {fileID: 1934122730}
+  - {fileID: 1391490686}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12598,6 +12644,7 @@ MonoBehaviour:
   inputVec: {x: 0, y: 0}
   moveSpeed: 3
   healthUI: {fileID: 1177554877}
+  rotationBody: {fileID: 1391490686}
   scanner: {fileID: 0}
 --- !u!114 &1535498169
 MonoBehaviour:

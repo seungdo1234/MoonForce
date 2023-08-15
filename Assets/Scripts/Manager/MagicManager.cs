@@ -27,6 +27,8 @@ public class MagicManager : MonoBehaviour
     private void Start()
     {
         player = GameManager.instance.player;
+
+      //  StageStart();
     }
 
     public void StageStart()
@@ -35,7 +37,14 @@ public class MagicManager : MonoBehaviour
         {
             if (magicInfo[i].isMagicActive)
             {
-                StartCoroutine(StartMagic(i));
+                if(magicInfo[i].magicCoolTime == 0)
+                {
+                    AlwaysPlayMagic(i);
+                }
+                else
+                {
+                    StartCoroutine(StartCoolTimeMagic(i));
+                }
             }
         }
     }
@@ -43,6 +52,20 @@ public class MagicManager : MonoBehaviour
     public void StageClear()
     {
         StopAllCoroutines();
+
+
+        // 스테이지를 클리어했기때문에 혹시나 활성화된 마법들을 비활성화 시킴 
+        for(int i = 0; i<magicInfo.Length; i++)
+        {
+            foreach (GameObject item in pools[i])
+            {
+                if (item.activeSelf)
+                {
+                    item.SetActive(false);
+                }
+            }
+        }
+
     }
 
     public GameObject Get(int index)
@@ -74,7 +97,7 @@ public class MagicManager : MonoBehaviour
     }
 
 
-    private IEnumerator StartMagic(int magicNumber)
+    private IEnumerator StartCoolTimeMagic(int magicNumber)
     {
         float timer = 0;
         while (!GameManager.instance.gameStop)
@@ -136,7 +159,6 @@ public class MagicManager : MonoBehaviour
             length++;
         }
 
-        Debug.Log(magicInfo[magicNumber].magicCount);
         int spawnCount = Mathf.Min(length, magicInfo[magicNumber].magicCount);
 
         List<int> availableIndices = new List<int>();
@@ -163,4 +185,31 @@ public class MagicManager : MonoBehaviour
         }
     }
 
+    private void AlwaysPlayMagic(int magicNumber)
+    {
+        for (int i = 0; i < magicInfo[magicNumber].magicCount; i++)
+        {
+            // bullet의 부모를 MagicManager에서  Player의 RotationBody로 바꾸기 위해 Transform으로 저장
+            Transform bullet;
+
+            bullet = Get(magicNumber).transform;
+            bullet.parent = GameManager.instance.player.rotationBody;
+          
+
+            //  초기화
+            bullet.localPosition = Vector3.zero;
+            bullet.localRotation = Quaternion.identity;
+
+
+            // Bullet의 각도 구하기
+            Vector3 rotVec = Vector3.forward * 360 * i / magicInfo[magicNumber].magicCount;
+            bullet.Rotate(rotVec);
+
+            
+            // 플레이어로 부터 일정 거리를 떨어뜨림
+            bullet.Translate(bullet.up * 1.5f, Space.World);
+
+        }
+
+    }
 }
