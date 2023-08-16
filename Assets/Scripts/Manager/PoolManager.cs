@@ -11,7 +11,7 @@ public class PoolManager : MonoBehaviour
     public Sprite[] bulletAttributes;
     private ItemAttribute attribute;
     // 풀 담당을 하는 리스트들
-    private List<GameObject>[] pools;
+    public List<GameObject>[] pools;
 
     private void Awake()
     {

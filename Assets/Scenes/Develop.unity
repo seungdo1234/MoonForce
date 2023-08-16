@@ -6797,7 +6797,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7936415486688412470, guid: 7dc290c25d6f3424e8a8e94e66eec4da, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7936415486688412470, guid: 7dc290c25d6f3424e8a8e94e66eec4da, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9680,13 +9680,22 @@ MonoBehaviour:
     magicCount: 1
     magicCoolTime: 5
     penetration: 0
-  - isMagicActive: 1
+  - isMagicActive: 0
     magicNumber: 4
     magicName: Shovel
     magicEffect: {fileID: 3908359112845046333, guid: 26031a6a67d3a924197f23e346b4f289, type: 3}
     isFlying: 0
     damagePer: 1.5
     magicCount: 2
+    magicCoolTime: 0
+    penetration: 0
+  - isMagicActive: 1
+    magicNumber: 5
+    magicName: Rake
+    magicEffect: {fileID: 4630648225108470752, guid: 352284580d74e82489853082c757db35, type: 3}
+    isFlying: 0
+    damagePer: 1
+    magicCount: 1
     magicCoolTime: 0
     penetration: 0
 --- !u!1 &1234221704
@@ -12598,7 +12607,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 10
   m_Sprite: {fileID: 1903303617, guid: 1ea933cb576e910418dee8d9be28359e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -13136,7 +13145,7 @@ Transform:
   m_Children:
   - {fileID: 966550058}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1612953452
 GameObject:
@@ -15539,7 +15548,7 @@ MonoBehaviour:
   spawnData:
   - spawnTime: 0.005
     spriteType: 1
-    health: 100
+    health: 50
     speed: 2
   levelTime: 0
 --- !u!1 &1937127242

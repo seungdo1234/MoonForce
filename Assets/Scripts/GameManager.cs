@@ -82,11 +82,11 @@ public class GameManager : MonoBehaviour
     {
         gameStop = true;
         hud.SetActive(false);
+        magicManager.StageClear();
         yield return new WaitForSeconds(3f);
         level++;
         clearReward.SetActive(true);
         player.gameObject.SetActive(false);
-        magicManager.StageClear();
         //    Time.timeScale = 0f;
     }
     public void NextStage()

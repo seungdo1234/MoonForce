@@ -39,7 +39,7 @@ public class MagicManager : MonoBehaviour
             {
                 if(magicInfo[i].magicCoolTime == 0)
                 {
-                    AlwaysPlayMagic(i);
+                    StartCoroutine( AlwaysPlayMagic(i));
                 }
                 else
                 {
@@ -185,7 +185,24 @@ public class MagicManager : MonoBehaviour
         }
     }
 
-    private void AlwaysPlayMagic(int magicNumber)
+    private IEnumerator AlwaysPlayMagic(int magicNumber)
+    {
+        yield return null;
+
+        switch (magicNumber)
+        {
+            case 4:
+                ShovelSpawn(magicNumber);
+                break;
+            case 5:
+                RakeSpawn(magicNumber);
+                break;
+        }
+
+
+    }
+
+    private void ShovelSpawn(int magicNumber)
     {
         for (int i = 0; i < magicInfo[magicNumber].magicCount; i++)
         {
@@ -194,7 +211,7 @@ public class MagicManager : MonoBehaviour
 
             bullet = Get(magicNumber).transform;
             bullet.parent = GameManager.instance.player.rotationBody;
-          
+
 
             //  초기화
             bullet.localPosition = Vector3.zero;
@@ -205,11 +222,23 @@ public class MagicManager : MonoBehaviour
             Vector3 rotVec = Vector3.forward * 360 * i / magicInfo[magicNumber].magicCount;
             bullet.Rotate(rotVec);
 
-            
+
             // 플레이어로 부터 일정 거리를 떨어뜨림
             bullet.Translate(bullet.up * 1.5f, Space.World);
 
         }
+    }
+    private void RakeSpawn(int magicNumber)
+    {
+        for (int i = 0; i < magicInfo[magicNumber].magicCount; i++)
+        {
+            // bullet의 부모를 MagicManager에서  Player의 RotationBody로 바꾸기 위해 Transform으로 저장
 
+            Transform bullet = Get(magicNumber).transform;
+            bullet.position = GameManager.instance.player.transform.position;
+
+
+
+        }
     }
 }
