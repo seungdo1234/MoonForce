@@ -9707,6 +9707,15 @@ MonoBehaviour:
     magicCount: 1
     magicCoolTime: 5
     penetration: 0
+  - isMagicActive: 0
+    magicNumber: 7
+    magicName: RockThrow
+    magicEffect: {fileID: 7026266901212579963, guid: 26d07e0878068d8478511340ea81316a, type: 3}
+    isFlying: 1
+    damagePer: 4
+    magicCount: 1
+    magicCoolTime: 1
+    penetration: 0
 --- !u!1 &1234221704
 GameObject:
   m_ObjectHideFlags: 0

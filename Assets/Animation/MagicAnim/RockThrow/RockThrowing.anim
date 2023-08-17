@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: RockThrow
+  m_Name: RockThrowing
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -29,16 +29,6 @@ AnimationClip:
       value: {fileID: 21300000, guid: 6882ff2d18c3b2a4a983b85a81d43100, type: 3}
     - time: 0.33333334
       value: {fileID: 21300000, guid: 5ba309c9bbfd9084e9e317da89a01b64, type: 3}
-    - time: 0.41666666
-      value: {fileID: 21300000, guid: e03f3ebcfab0e2e4bbb4ddbdcc6b9b39, type: 3}
-    - time: 0.5
-      value: {fileID: 21300000, guid: cacbc61e9271bc14fb0ca8fd58845de3, type: 3}
-    - time: 0.5833333
-      value: {fileID: 21300000, guid: 511c948e0eaff294fbce738507f21600, type: 3}
-    - time: 0.6666667
-      value: {fileID: 21300000, guid: b4d6381b2951d6940b5c927a202a4a9a, type: 3}
-    - time: 0.75
-      value: {fileID: 21300000, guid: 2c098fe9d506c3e4c844e563913a1fc0, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -63,17 +53,12 @@ AnimationClip:
     - {fileID: 21300000, guid: c958444d85f79da4b8e09aa23c08c730, type: 3}
     - {fileID: 21300000, guid: 6882ff2d18c3b2a4a983b85a81d43100, type: 3}
     - {fileID: 21300000, guid: 5ba309c9bbfd9084e9e317da89a01b64, type: 3}
-    - {fileID: 21300000, guid: e03f3ebcfab0e2e4bbb4ddbdcc6b9b39, type: 3}
-    - {fileID: 21300000, guid: cacbc61e9271bc14fb0ca8fd58845de3, type: 3}
-    - {fileID: 21300000, guid: 511c948e0eaff294fbce738507f21600, type: 3}
-    - {fileID: 21300000, guid: b4d6381b2951d6940b5c927a202a4a9a, type: 3}
-    - {fileID: 21300000, guid: 2c098fe9d506c3e4c844e563913a1fc0, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.8333333
+    m_StopTime: 0.4166667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

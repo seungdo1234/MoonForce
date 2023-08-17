@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1412b161c1781c45afcbd6e7c6bf79d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 200
+  rotationSpeed: 225
   lerpTime: 0
   throwSpeed: 10
   maxDistance: 8

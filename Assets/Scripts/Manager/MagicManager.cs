@@ -151,6 +151,10 @@ public class MagicManager : MonoBehaviour
         {
             magic.GetComponent<Hoe>().Init(dir);
         }
+        else if(magicNumber == 7)
+        {
+            magic.GetComponent<RockThrow>().Init(dir);
+        }
 
     }
 
