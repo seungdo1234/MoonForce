@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4630648225108470752
+--- !u!1 &6607189605220824418
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4630648225108470779}
-  - component: {fileID: 4630648225108470756}
-  - component: {fileID: 4630648225108470757}
-  - component: {fileID: 4630648225108470759}
+  - component: {fileID: 6607189605220824421}
+  - component: {fileID: 6607189605220824420}
+  - component: {fileID: 6607189605220824419}
+  - component: {fileID: 6607189605220824422}
+  - component: {fileID: -4956716208575793358}
   m_Layer: 10
-  m_Name: Rake
+  m_Name: MagicBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4630648225108470779
+--- !u!4 &6607189605220824421
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4630648225108470752}
+  m_GameObject: {fileID: 6607189605220824418}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.22, y: -4, z: 0}
+  m_LocalPosition: {x: 0.14890891, y: -5.1145816, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &4630648225108470756
+--- !u!212 &6607189605220824420
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4630648225108470752}
+  m_GameObject: {fileID: 6607189605220824418}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -75,24 +76,24 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 6
-  m_Sprite: {fileID: -703694536, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 154122315, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
+  m_Color: {r: 0.9716981, g: 0.47209862, b: 0.47209862, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.3888889, y: 1}
+  m_Size: {x: 0.33333334, y: 0.33333334}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!70 &4630648225108470757
-CapsuleCollider2D:
+--- !u!58 &6607189605220824419
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4630648225108470752}
+  m_GameObject: {fileID: 6607189605220824418}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -100,15 +101,39 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.3, y: 1}
-  m_Direction: 0
---- !u!114 &4630648225108470759
+  serializedVersion: 2
+  m_Radius: 0.155
+--- !u!114 &6607189605220824422
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4630648225108470752}
+  m_GameObject: {fileID: 6607189605220824418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c0908c517e129b4e9fa6132469814c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  rotationSpeed: 15
+  lerpTime: 1.5
+  curveValue: 0
+  p1: {x: -4, y: 0, z: 0}
+  p2: {x: -4, y: -6, z: 0}
+  p3: {x: 4, y: 6, z: 0}
+  p4: {x: 4, y: 0, z: 0}
+  cloneP1: {x: -4, y: 0, z: 0}
+  cloneP2: {x: -4, y: -6, z: 0}
+  cloneP3: {x: 4, y: 6, z: 0}
+  cloneP4: {x: 4, y: 0, z: 0}
+--- !u!114 &-4956716208575793358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6607189605220824418}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3c1884b606728c45ba64a5674c2a0dd, type: 3}

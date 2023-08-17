@@ -137,20 +137,28 @@ public class MagicManager : MonoBehaviour
         dir = dir.normalized; // 정규화
 
 
-        // bullet 생성
-        Transform bullet = Get(magicNumber).transform;
-        bullet.position = player.transform.position; // bullet의 위치
-                                              // FromToRotation : 지정된 축을 중심으로 목표를 향해 회전하는 함수
-        bullet.rotation = Quaternion.FromToRotation(Vector3.right, dir); // Enemy 방향으로 bullet 회전
+        // Magic 생성
+        Transform magic = Get(magicNumber).transform;
+        magic.position = player.transform.position; // Magict의 위치
+                                                    // FromToRotation : 지정된 축을 중심으로 목표를 향해 회전하는 함수
+        magic.rotation = Quaternion.FromToRotation(Vector3.right, dir); // Enemy 방향으로 bullet 회전
 
-        bullet.GetComponent<Bullet>().Init(0, magicInfo[magicNumber].penetration, dir);
+        if(magicNumber == 0)
+        {
+            magic.GetComponent<Bullet>().Init(0, magicInfo[magicNumber].penetration, dir);
+        }
+        else if(magicNumber == 6)
+        {
+            magic.GetComponent<Hoe>().Init(dir);
+        }
+
     }
 
     private void SpawnMagic(int magicNumber)
     {
         int length = 0;
 
-        for (int i = 0; i < player.scanner.nearestTarget.Length; i++)
+        for (int i = 0; i < player.scanner.nearestTarget.Length; i++) // 타겟 정하기
         {
             if (player.scanner.nearestTarget[i] == null)
             {
@@ -159,9 +167,9 @@ public class MagicManager : MonoBehaviour
             length++;
         }
 
-        int spawnCount = Mathf.Min(length, magicInfo[magicNumber].magicCount);
+        int spawnCount = Mathf.Min(length, magicInfo[magicNumber].magicCount); // 마법 몇개를 스폰할건지 정함.
 
-        List<int> availableIndices = new List<int>();
+        List<int> availableIndices = new List<int>(); // 중복된 Enemy 제거하귀 위한 리스트 선언
 
         for (int i = 0; i < length; i++)
         {
@@ -172,7 +180,7 @@ public class MagicManager : MonoBehaviour
         {
             int randomIndex = Random.Range(0, availableIndices.Count);
             int selectedIndex = availableIndices[randomIndex];
-            availableIndices.RemoveAt(randomIndex);
+            availableIndices.RemoveAt(randomIndex); // 이미 선택된 Enemy를 리스트에서 제거
 
             Transform magic = Get(magicNumber).transform;
             magic.position = player.scanner.nearestTarget[selectedIndex].transform.position;

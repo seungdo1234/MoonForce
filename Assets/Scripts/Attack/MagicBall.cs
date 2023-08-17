@@ -2,16 +2,13 @@ using System.Collections;
 using UnityEditor;
 using UnityEngine;
 
-public class Rake : MonoBehaviour
+public class MagicBall : MonoBehaviour
 {
-    public Transform target;
-    public float speed;
-    public float curveStrength; // 곡선의 강도
+    public Transform target; // Enemy
 
-    public float lerpTime;
+    public float rotationSpeed; // 회전 속도
+    public float lerpTime; // Target을 향해 무한대 곡선으로 공격할 때 공격 시간
 
-    private Vector3 initialPosition; // 발사 위치
-    private float timeStarted; // 발사된 시간
 
     [Header("# Bezier Curve")]
     [Range(0, 1)]
@@ -57,7 +54,6 @@ public class Rake : MonoBehaviour
     private IEnumerator ThrowStart(float start, float end)
     {
         float currentTime = 0f;
-        Vector3 prevPosition = transform.position; // 전의 베지어 곡선 위치값과 현재 베지어 곡선 위치값을 빼 회전 방향을 정함 
         cloneP1 = p1;
         cloneP2 = p2;
         cloneP3 = p3;
@@ -108,21 +104,6 @@ public class Rake : MonoBehaviour
             Vector3 newPosition = BezierCurve(cloneP1, cloneP2, cloneP3, cloneP4, curveValue);
 
 
-            Vector3 dir = newPosition - prevPosition;
-
-
-            dir = dir.normalized; // 정규화
-
-
-            // 진행 방향으로 회전
-           if (dir != Vector3.zero)
-           {
-               transform.rotation = Quaternion.FromToRotation(Vector3.up, dir); // 진행 방향으로 회전
-           }
-            
-
-            prevPosition = newPosition;
-            // Rake의 위치를 이동
             transform.position = newPosition;
 
             yield return null;
@@ -131,17 +112,17 @@ public class Rake : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        transform.Rotate(Vector3.back * rotationSpeed * Time.deltaTime);
     }
 }
 
 [CanEditMultipleObjects]
-[CustomEditor(typeof(Rake))]
+[CustomEditor(typeof(MagicBall))]
 public class Rake_Editor : Editor
 {
     private void OnSceneGUI()
     {
-        Rake rake = (Rake)target;
+        MagicBall rake = (MagicBall)target;
 
         rake.p1 = Handles.PositionHandle(rake.p1, Quaternion.identity);
         rake.p2 = Handles.PositionHandle(rake.p2, Quaternion.identity);
