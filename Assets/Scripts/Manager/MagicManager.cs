@@ -108,8 +108,9 @@ public class MagicManager : MonoBehaviour
             }
             if (timer > magicInfo[magicNumber].magicCoolTime) // 쿨타임이 찼을 때
             {
-                if (!player.scanner.nearestTarget[0]) // 주변이 ENemy가 없다면 continue
+                if (!player.scanner.nearestTarget[0] && !magicInfo[magicNumber].isNonTarget) // 주변이 ENemy가 없고 타겟이 필요한 스킬이라면 continue
                 {
+
                     yield return null; // 대기 상태로 전환
                     continue;
                 }
@@ -132,28 +133,52 @@ public class MagicManager : MonoBehaviour
 
     private void Fire(int magicNumber)
     {
-        Vector3 targetPos = player.scanner.nearestTarget[0].position;
-        Vector3 dir = targetPos - player.transform.position;
-        dir = dir.normalized; // 정규화
 
 
-        // Magic 생성
-        Transform magic = Get(magicNumber).transform;
-        magic.position = player.transform.position; // Magict의 위치
-                                                    // FromToRotation : 지정된 축을 중심으로 목표를 향해 회전하는 함수
-        magic.rotation = Quaternion.FromToRotation(Vector3.right, dir); // Enemy 방향으로 bullet 회전
+        for (int i = 0; i < magicInfo[magicNumber].magicCount; i++)
+        {
+            // Magic 생성
+            Transform magic = Get(magicNumber).transform;
 
-        if(magicNumber == 0)
-        {
-            magic.GetComponent<Bullet>().Init(0, magicInfo[magicNumber].penetration, dir);
-        }
-        else if(magicNumber == 6)
-        {
-            magic.GetComponent<Hoe>().Init(dir);
-        }
-        else if(magicNumber == 7)
-        {
-            magic.GetComponent<RockThrow>().Init(dir);
+
+            magic.position = player.transform.position; // Magict의 위치
+
+
+            if (magicNumber == 8) // 윈드 컷터
+            {
+                //  초기화
+                magic.localRotation = Quaternion.identity;
+
+
+                // Bullet의 각도 구하기
+                Vector3 rotVec = Vector3.forward * 360 * i / magicInfo[magicNumber].magicCount;
+
+
+                magic.Rotate(rotVec + new Vector3(0, 0, 90));
+
+                magic.GetComponent<WindCutter>().Init();
+                continue;
+            }
+
+            Vector3 targetPos = player.scanner.nearestTarget[0].position;
+            Vector3 dir = targetPos - player.transform.position;
+            dir = dir.normalized; // 정규화
+
+                                                // FromToRotation : 지정된 축을 중심으로 목표를 향해 회전하는 함수
+            magic.rotation = Quaternion.FromToRotation(Vector3.right, dir); // Enemy 방향으로 bullet 회전
+
+            if (magicNumber == 0) // 파이어볼
+            {
+                magic.GetComponent<Bullet>().Init(0, magicInfo[magicNumber].penetration, dir);
+            }
+            else if (magicNumber == 6) // 괭이
+            {
+                magic.GetComponent<Hoe>().Init(dir);
+            }
+            else if (magicNumber == 7) // 돌 던지기
+            {
+                magic.GetComponent<RockThrow>().Init(dir);
+            }
         }
 
     }
@@ -232,6 +257,7 @@ public class MagicManager : MonoBehaviour
 
             // Bullet의 각도 구하기
             Vector3 rotVec = Vector3.forward * 360 * i / magicInfo[magicNumber].magicCount;
+   
             bullet.Rotate(rotVec);
 
 
