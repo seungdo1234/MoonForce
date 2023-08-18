@@ -9724,7 +9724,7 @@ MonoBehaviour:
     magicCount: 1
     magicCoolTime: 7
     penetration: 0
-  - isMagicActive: 1
+  - isMagicActive: 0
     magicNumber: 8
     magicName: WindCutter
     magicEffect: {fileID: 3809043403037830521, guid: 34660ba0bf7f8f84faf26eb9d1182554, type: 3}
@@ -9733,6 +9733,16 @@ MonoBehaviour:
     damagePer: 2
     magicCount: 5
     magicCoolTime: 2
+    penetration: 0
+  - isMagicActive: 1
+    magicNumber: 9
+    magicName: Tornado
+    magicEffect: {fileID: 7269730197916001703, guid: 06d42618e988b3140a7caf36b6b337ea, type: 3}
+    isFlying: 0
+    isNonTarget: 0
+    damagePer: 2
+    magicCount: 1
+    magicCoolTime: 5
     penetration: 0
 --- !u!1 &1234221704
 GameObject:
@@ -15582,9 +15592,9 @@ MonoBehaviour:
   - {fileID: 974173417}
   - {fileID: 43295723}
   spawnData:
-  - spawnTime: 0.005
+  - spawnTime: 0.5
     spriteType: 1
-    health: 20
+    health: 200
     speed: 2
   levelTime: 0
 --- !u!1 &1937127242

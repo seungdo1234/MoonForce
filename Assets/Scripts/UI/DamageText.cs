@@ -40,7 +40,7 @@ public class DamageText : MonoBehaviour
         target = Vector3.zero;
 
 
-        text.color = new Color(1, 1, 1);
+        text.color = new Color(1, 0.4f, 0.4f);
 
 
         gameObject.SetActive(false);

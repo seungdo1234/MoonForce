@@ -105,6 +105,8 @@ MonoBehaviour:
   speed: 0
   health: 0
   maxHealth: 50
+  enemyDamaged: 0
+  damagedTime: 1
   statusEffect: 0
   burningEffectTime: 3
   wettingEffectTime: 3

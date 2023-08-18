@@ -9,6 +9,10 @@ public class Enemy : MonoBehaviour
     public float health;
     public float maxHealth;
 
+    [Header("# EnemyHit")]
+    public bool enemyDamaged; // 데미지를 받았다면 일정 시간동안 안받게함
+    public float damagedTime; // 몇초동안 무적일건지
+
     [Header("# EnemyStatusEffect")]
     public EnemyStatusEffect statusEffect;
     public float burningEffectTime;
@@ -86,6 +90,7 @@ public class Enemy : MonoBehaviour
     {
         target = GameManager.instance.player.GetComponent<Rigidbody2D>();
         isLive = true; // 생존 여부
+        enemyDamaged = false;
         // Enemy가 죽었을 때 오브젝트 폴링에 의해 다시 생겨날 때 health를 maxHealth로 초기화
         health = maxHealth;
         col.enabled = true; // 콜라이더 활성화
@@ -110,7 +115,7 @@ public class Enemy : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // 필터
-        if (!(collision.gameObject.layer == 10 || collision.gameObject.layer == 11) || !isLive)
+        if (!(collision.gameObject.layer == 10 || collision.gameObject.layer == 11) || !isLive || enemyDamaged)
         {
             return;
         }
@@ -126,11 +131,20 @@ public class Enemy : MonoBehaviour
             int number = collision.GetComponent<MagicNumber>().magicNumber;
             float damage = GameManager.instance.attack * GameManager.instance.magicManager.magicInfo[number].damagePer;
 
+            if (number == 9)
+            {
+                StartCoroutine(IsDamaged());
+            }
 
             EnemyDamaged(damage, 2);
 
-        }
 
+        }
+        EnemyHit();
+    }
+
+    private void EnemyHit()
+    {
         if (health > 0)
         {
             // Live, Hit Action
@@ -155,7 +169,33 @@ public class Enemy : MonoBehaviour
             GameManager.instance.kill++;
         }
     }
+    private void OnTriggerStay2D(Collider2D collision) // 지속적인 피해를 주는 마법과 충돌 중 일때
+    {
+        if (collision.gameObject.layer != 10 || enemyDamaged || !isLive)
+        {
+            return;
+        }
 
+        int number = collision.GetComponent<MagicNumber>().magicNumber;
+
+        if (number != 9) // 지속적인 피해를 주는 마법이 아니라면
+        {
+            return;
+        }
+        StartCoroutine(IsDamaged());
+
+        float damage = GameManager.instance.attack * GameManager.instance.magicManager.magicInfo[number].damagePer;
+
+        EnemyDamaged(damage, 2);
+
+        EnemyHit();
+    }
+    private IEnumerator IsDamaged() // Enemy가 지속적인 피해를 주는 마법 위에 있을경우 일정 시간뒤에 데미지를 받기 위한 코루틴
+    {
+        enemyDamaged = true;
+        yield return new WaitForSeconds(damagedTime);
+        enemyDamaged = false;
+    }
     private void StatusEffect()
     {
         switch (GameManager.instance.attribute)
