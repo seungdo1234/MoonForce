@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tornado : MonoBehaviour
+public class DurationMagic : MonoBehaviour
 {
     public float lerpTime;
 
@@ -19,15 +19,15 @@ public class Tornado : MonoBehaviour
     {
         col.enabled = true;
 
-        StartCoroutine(TornadoPlay());
+        StartCoroutine(MagicPlay());
     }
 
-    private IEnumerator TornadoPlay()
+    private IEnumerator MagicPlay()
     {
 
         yield return new WaitForSeconds(lerpTime);
 
-        anim.SetTrigger("TornadoExtinction");
+        anim.SetTrigger("End");
 
         col.enabled = false;
 

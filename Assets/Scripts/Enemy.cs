@@ -131,9 +131,15 @@ public class Enemy : MonoBehaviour
             int number = collision.GetComponent<MagicNumber>().magicNumber;
             float damage = GameManager.instance.attack * GameManager.instance.magicManager.magicInfo[number].damagePer;
 
-            if (number == 9)
+            if (number == 9 || number == 11)
             {
                 StartCoroutine(IsDamaged());
+                if(number == 11)
+                {
+                    GameObject elec = collision.gameObject;
+
+                    StartCoroutine(ElectricShock(elec));
+                }
             }
 
             EnemyDamaged(damage, 2);
@@ -178,7 +184,7 @@ public class Enemy : MonoBehaviour
 
         int number = collision.GetComponent<MagicNumber>().magicNumber;
 
-        if (number != 9) // 지속적인 피해를 주는 마법이 아니라면
+        if (number != 9 && number != 11) // 지속적인 피해를 주는 마법이 아니라면
         {
             return;
         }
@@ -261,9 +267,34 @@ public class Enemy : MonoBehaviour
         yield return wait; // 다음 하나의 물리 프레임을 딜레이
         Vector3 playerPos = GameManager.instance.player.transform.position;
         Vector3 dirVec = transform.position - playerPos;
-        rigid.AddForce(dirVec.normalized * 3, ForceMode2D.Impulse);
+        rigid.AddForce(dirVec.normalized * 5, ForceMode2D.Impulse);
     }
+    private IEnumerator ElectricShock(GameObject elec) // 전기쇼크를 맞았을 때 감전
+    {
+        float speed = this.speed;
 
+        spriteRenderer.color = new Color(1, 1, 0.5f, 1);
+
+        isRestraint = true;
+        anim.speed = 0f;
+        this.speed = 0f;
+        rigid.velocity = Vector2.zero;
+
+        while (true)
+        {
+            if (!elec.activeSelf)
+            {
+                break;
+            }
+
+            yield return null;
+        }
+
+        isRestraint = false;
+        anim.speed = 1f;
+        this.speed = speed;
+        spriteRenderer.color = new Color(1, 1, 1, 1);
+    }
     private IEnumerator Burning() // 화상
     {
         spriteRenderer.color = new Color(1, 0.7f, 0.7f, 1);
@@ -337,9 +368,10 @@ public class Enemy : MonoBehaviour
         spriteRenderer.color = new Color(1, 1, 1, 1);
     }
 
-    private IEnumerator Restraint() // 땅 속성 공격을 받은 상태라면 이동속도 --
+    private IEnumerator Restraint() // 풀 속성 공격을 받은 상태라면 속박
     {
         float speed = this.speed;
+
 
         spriteRenderer.color = new Color(0, 1, 0, 1);
 

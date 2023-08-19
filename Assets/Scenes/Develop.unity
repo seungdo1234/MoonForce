@@ -9734,7 +9734,7 @@ MonoBehaviour:
     magicCount: 5
     magicCoolTime: 2
     penetration: 0
-  - isMagicActive: 1
+  - isMagicActive: 0
     magicNumber: 9
     magicName: Tornado
     magicEffect: {fileID: 7269730197916001703, guid: 06d42618e988b3140a7caf36b6b337ea, type: 3}
@@ -9743,6 +9743,26 @@ MonoBehaviour:
     damagePer: 2
     magicCount: 1
     magicCoolTime: 5
+    penetration: 0
+  - isMagicActive: 0
+    magicNumber: 10
+    magicName: FireExplosion
+    magicEffect: {fileID: 3344825427565340877, guid: 38c608dd3f2d58949a126d5dd4a36011, type: 3}
+    isFlying: 0
+    isNonTarget: 0
+    damagePer: 10
+    magicCount: 1
+    magicCoolTime: 15
+    penetration: 0
+  - isMagicActive: 0
+    magicNumber: 11
+    magicName: ElectronicShock
+    magicEffect: {fileID: 1635677412450062184, guid: f92ce5cc728a332468006ca331c22722, type: 3}
+    isFlying: 0
+    isNonTarget: 0
+    damagePer: 3
+    magicCount: 1
+    magicCoolTime: 10
     penetration: 0
 --- !u!1 &1234221704
 GameObject:

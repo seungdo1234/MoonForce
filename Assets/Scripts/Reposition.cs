@@ -51,6 +51,14 @@ public class Reposition : MonoBehaviour
             case "Enemy":
                 if (col.enabled) // 만약 콜라이더가 살아있다면
                 {
+                    Enemy enemy = col.GetComponent<Enemy>();
+
+                    if (enemy.isRestraint)
+                    {
+                        enemy.isRestraint = false;
+                        enemy.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+                    }
+
                     Vector3 dist = playerPos - myPos;
                     Vector3 rand = new Vector3(Random.Range(-3, 4), Random.Range(-3, 4), 0); // 랜덤
 

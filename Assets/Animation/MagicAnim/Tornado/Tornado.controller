@@ -9,7 +9,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: TornadoExtinction
+    m_ConditionEvent: End
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 5715859400102547191}
@@ -34,7 +34,7 @@ AnimatorController:
   m_Name: Tornado
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: TornadoExtinction
+  - m_Name: End
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
