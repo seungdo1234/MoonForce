@@ -3,13 +3,10 @@ using UnityEngine.UI;
 public class HUD : MonoBehaviour
 {
     // enum : ¿­°ÅÇü
-    public enum InfoType { Goal, Level, Info, Time, Health }
+    public enum InfoType { Goal, Level, Kill, Time, Health }
 
     public InfoType type;
 
-    [Header("# Heart Image ")]
-    public Image[] heart;
-    public Sprite[] heartSprites;
 
     private Text myText;
     private Slider mySlider;
@@ -17,32 +14,18 @@ public class HUD : MonoBehaviour
     private void Awake()
     {
         mySlider = GetComponent<Slider>();
-        myText = GetComponent<Text>();
-
-    }
-
-    public void PlayerHit()
-    {
-        float heartCount = GameManager.instance.maxHealth / 2;
-        float curHealth = GameManager.instance.curHealth;
-
-        for (int i = 0; i < heartCount; i++)
+        if(type != InfoType.Health)
         {
-            if (curHealth > 1)
-            {
-                heart[i].sprite = heartSprites[0];
-            }
-            else if (curHealth == 1)
-            {
-                heart[i].sprite = heartSprites[1];
-            }
-            else
-            {
-                heart[i].sprite = heartSprites[2];
-            }
-            curHealth -= 2;
+            myText = GetComponent<Text>();
         }
+        else
+        {
+            myText = GetComponentInChildren<Text>();
+        }
+     
+
     }
+
 
     private void Update()
     {
@@ -51,12 +34,6 @@ public class HUD : MonoBehaviour
             return;
         }
 
-        if (type == InfoType.Goal)
-        {
-            float curKill = GameManager.instance.kill;
-            float maxKill = GameManager.instance.enemyMaxNum[GameManager.instance.level];
-            mySlider.value = curKill / maxKill;
-        }
     }
     private void LateUpdate()
     {
@@ -75,7 +52,11 @@ public class HUD : MonoBehaviour
                 myText.text = string.Format("Lv.{0:F0}", GameManager.instance.level + 1);
                 break;
 
-            case InfoType.Info:
+            case InfoType.Kill:
+                int curKill = GameManager.instance.kill;
+                int maxKill = GameManager.instance.enemyMaxNum[GameManager.instance.level];
+
+                myText.text = string.Format("{0}", maxKill - curKill);
                 break;
 
             case InfoType.Time:
@@ -86,9 +67,12 @@ public class HUD : MonoBehaviour
                 break;
 
             case InfoType.Health:
- 
+                float maxHealth = GameManager.instance.maxHealth;
+                float curHealth = GameManager.instance.curHealth;
 
-                
+                myText.text = string.Format("{0:F0}/{1:F0}", curHealth, maxHealth);
+                mySlider.value = curHealth / maxHealth;
+
                 break;
 
         }

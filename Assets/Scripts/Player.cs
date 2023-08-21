@@ -75,7 +75,6 @@ public class Player : MonoBehaviour
         isDamaged = true;
 
         GameManager.instance.curHealth--;
-        healthUI.PlayerHit();
         //   AudioManager.instance.PlayerSfx(AudioManager.Sfx.Hit);
 
         if (GameManager.instance.curHealth > 0)
