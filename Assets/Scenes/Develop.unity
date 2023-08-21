@@ -4449,11 +4449,12 @@ MonoBehaviour:
   penetration: 1
   weaponNum: 1
   instantKillPer: 80
+  knockBackValue: 500
   gameStop: 1
   maxGameTime: 300
   curGameTime: 0
   kill: 0
-  enemyMaxNum: 140000001e00000028000000320000003c000000
+  enemyMaxNum: 320000001e00000028000000320000003c000000
   enemyCurNum: 9999
   level: 0
   clearReward: {fileID: 124120846}
@@ -9654,6 +9655,7 @@ MonoBehaviour:
     magicCount: 1
     magicCoolTime: 3
     penetration: 999
+    knockBackValue: 700
   - isMagicActive: 0
     magicNumber: 1
     magicName: Explosion
@@ -9664,6 +9666,7 @@ MonoBehaviour:
     magicCount: 0
     magicCoolTime: 0
     penetration: 0
+    knockBackValue: 700
   - isMagicActive: 0
     magicNumber: 2
     magicName: EarthSpike
@@ -9674,6 +9677,7 @@ MonoBehaviour:
     magicCount: 1
     magicCoolTime: 5
     penetration: 0
+    knockBackValue: 800
   - isMagicActive: 0
     magicNumber: 3
     magicName: MoltenSpear
@@ -9684,6 +9688,7 @@ MonoBehaviour:
     magicCount: 1
     magicCoolTime: 5
     penetration: 0
+    knockBackValue: 500
   - isMagicActive: 0
     magicNumber: 4
     magicName: Shovel
@@ -9694,6 +9699,7 @@ MonoBehaviour:
     magicCount: 2
     magicCoolTime: 0
     penetration: 0
+    knockBackValue: 600
   - isMagicActive: 0
     magicNumber: 5
     magicName: MagicBall
@@ -9704,6 +9710,7 @@ MonoBehaviour:
     magicCount: 1
     magicCoolTime: 0
     penetration: 0
+    knockBackValue: 450
   - isMagicActive: 0
     magicNumber: 6
     magicName: Hoe
@@ -9714,6 +9721,7 @@ MonoBehaviour:
     magicCount: 1
     magicCoolTime: 5
     penetration: 0
+    knockBackValue: 550
   - isMagicActive: 0
     magicNumber: 7
     magicName: RockThrow
@@ -9722,8 +9730,9 @@ MonoBehaviour:
     isNonTarget: 0
     damagePer: 5
     magicCount: 1
-    magicCoolTime: 7
+    magicCoolTime: 5
     penetration: 0
+    knockBackValue: 1000
   - isMagicActive: 0
     magicNumber: 8
     magicName: WindCutter
@@ -9734,6 +9743,7 @@ MonoBehaviour:
     magicCount: 5
     magicCoolTime: 2
     penetration: 0
+    knockBackValue: 500
   - isMagicActive: 0
     magicNumber: 9
     magicName: Tornado
@@ -9744,6 +9754,7 @@ MonoBehaviour:
     magicCount: 1
     magicCoolTime: 5
     penetration: 0
+    knockBackValue: 500
   - isMagicActive: 0
     magicNumber: 10
     magicName: FireExplosion
@@ -9754,6 +9765,7 @@ MonoBehaviour:
     magicCount: 1
     magicCoolTime: 15
     penetration: 0
+    knockBackValue: 750
   - isMagicActive: 0
     magicNumber: 11
     magicName: ElectronicShock
@@ -9764,6 +9776,18 @@ MonoBehaviour:
     magicCount: 1
     magicCoolTime: 10
     penetration: 0
+    knockBackValue: 0
+  - isMagicActive: 0
+    magicNumber: 12
+    magicName: ChargeExplosion
+    magicEffect: {fileID: 8605108235234549128, guid: 139f50daa90cfb741970b35be73c7c95, type: 3}
+    isFlying: 0
+    isNonTarget: 1
+    damagePer: 3
+    magicCount: 1
+    magicCoolTime: 2
+    penetration: 0
+    knockBackValue: 1500
 --- !u!1 &1234221704
 GameObject:
   m_ObjectHideFlags: 0
@@ -12604,7 +12628,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 200
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0

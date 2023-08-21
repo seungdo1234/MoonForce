@@ -23,12 +23,15 @@ public class GameManager : MonoBehaviour
     public float baseRate;
     public float moveSpeed;
     public float baseMoveSpeed;
-    public int penetration;
+    public int penetration; // °üÅë·Â
     public int weaponNum; // ÃÑ : ÇÑ¹ø¿¡ ¹ß»ç µÇ´Â ÃÑÅº, ±ÙÁ¢ : »ğÀÇ °¹¼ö
-    public int instantKillPer;
+    public int instantKillPer; // Áï»ç È®·ü
+    public float knockBackValue; // Enemy°¡ ¸¶·ÂÅºÀ» ¸Â¾ÒÀ» ¶§ ³Ë¹é ¼öÄ¡
+
+
 
     [Header("# Stage Data")]
-    public bool gameStop;
+    public bool gameStop; // °ÔÀÓÀÌ ¸ØÃèÀ» ¶§ true
     public float maxGameTime;
     public float curGameTime;
     public int kill;

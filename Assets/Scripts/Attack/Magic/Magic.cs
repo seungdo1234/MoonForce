@@ -18,5 +18,6 @@ public class Magic
     public int magicCount; // 한번에 발사 되는 마법의 갯수
     public float magicCoolTime; // 마법의 쿨타임
     public int penetration; // 관통력
+    public float knockBackValue; // Enemy가 마법을 맞았을 때 넉백 수치
 
 }

@@ -37,7 +37,7 @@ public class MagicManager : MonoBehaviour
         {
             if (magicInfo[i].isMagicActive)
             {
-                if(magicInfo[i].magicCoolTime == 0)
+                if(magicInfo[i].magicCoolTime == 0 || i == 12)
                 {
                     StartCoroutine( AlwaysPlayMagic(i));
                 }
@@ -234,11 +234,19 @@ public class MagicManager : MonoBehaviour
             case 5:
                 RakeSpawn(magicNumber);
                 break;
+            case 12:
+                ChargeExplosionSpawn(magicNumber);
+                break;
         }
 
 
     }
+    private void ChargeExplosionSpawn(int magicNumber)
+    {
+        GameObject magic = Get(magicNumber);
 
+        magic.GetComponent<ChargeExplosion>().Init(magicInfo[magicNumber].magicCoolTime);
+    }
     private void ShovelSpawn(int magicNumber)
     {
         for (int i = 0; i < magicInfo[magicNumber].magicCount; i++)

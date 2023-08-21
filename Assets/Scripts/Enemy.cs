@@ -10,8 +10,10 @@ public class Enemy : MonoBehaviour
     public float maxHealth;
 
     [Header("# EnemyHit")]
+    public bool enemyKnockBack; // 넉백일 때
     public bool enemyDamaged; // 데미지를 받았다면 일정 시간동안 안받게함
     public float damagedTime; // 몇초동안 무적일건지
+    public float knockBackValue; // 피격 시 넉백 수치
 
     [Header("# EnemyStatusEffect")]
     public EnemyStatusEffect statusEffect;
@@ -64,6 +66,7 @@ public class Enemy : MonoBehaviour
         {
             return;
         }
+
         // 가야할 방향
         Vector2 dirVec = target.position - rigid.position;
         // 실제 이동
@@ -71,7 +74,10 @@ public class Enemy : MonoBehaviour
 
         rigid.MovePosition(rigid.position + nextVec);
         // 플레이어와 부딪혔을때 속도가 생기기 때문에 항상 0으로 초기화
-        rigid.velocity = Vector2.zero;
+        if (!enemyKnockBack) // 넉백 중 일때 속도를 초기화하면 안되기 때문에
+        {
+            rigid.velocity = Vector2.zero;
+        }
     }
 
     private void LateUpdate()
@@ -122,12 +128,12 @@ public class Enemy : MonoBehaviour
 
         if (collision.gameObject.layer == 11) // 만약 마력탄이라면
         {
+            knockBackValue = GameManager.instance.knockBackValue;
             EnemyDamaged(collision.GetComponent<Bullet>().damage, 1);
             StatusEffect();
         }
         else // 마법이라면 
         {
-
             int number = collision.GetComponent<MagicNumber>().magicNumber;
             float damage = GameManager.instance.attack * GameManager.instance.magicManager.magicInfo[number].damagePer;
 
@@ -142,6 +148,8 @@ public class Enemy : MonoBehaviour
                 }
             }
 
+            knockBackValue = GameManager.instance.magicManager.magicInfo[number].knockBackValue;
+
             EnemyDamaged(damage, 2);
 
 
@@ -151,6 +159,7 @@ public class Enemy : MonoBehaviour
 
     private void EnemyHit()
     {
+
         if (health > 0)
         {
             // Live, Hit Action
@@ -264,10 +273,16 @@ public class Enemy : MonoBehaviour
     }
     private IEnumerator KnockBack()
     {
+        enemyKnockBack = true;
         yield return wait; // 다음 하나의 물리 프레임을 딜레이
+        rigid.mass = 100;
         Vector3 playerPos = GameManager.instance.player.transform.position;
         Vector3 dirVec = transform.position - playerPos;
-        rigid.AddForce(dirVec.normalized * 5, ForceMode2D.Impulse);
+        rigid.AddForce(dirVec.normalized * knockBackValue, ForceMode2D.Impulse);
+        yield return wait; // 다음 하나의 물리 프레임을 딜레이
+        rigid.mass = 1;
+        enemyKnockBack = false;
+
     }
     private IEnumerator ElectricShock(GameObject elec) // 전기쇼크를 맞았을 때 감전
     {
