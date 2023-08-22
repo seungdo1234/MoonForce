@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  rotationSpeed: 200
+  rotationSpeed: 500
   lerpTime: 1.5
   curveValue: 0
   p1: {x: -4, y: 0, z: 0}
@@ -140,3 +140,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   magicNumber: 5
+  resetScale: {x: 1, y: 1, z: 1}
+  isSizeUp: 0

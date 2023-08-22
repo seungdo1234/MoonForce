@@ -27,8 +27,6 @@ public class MagicBall : MonoBehaviour
 
     private void OnEnable()
     {
-        int random = Random.Range(0, GameManager.instance.pool.pools[0].Count);
-        target = GameManager.instance.pool.pools[0][random].transform;
         StartCoroutine(ThrowStart(0, 1));
     }
 
@@ -59,6 +57,9 @@ public class MagicBall : MonoBehaviour
         cloneP3 = p3;
         cloneP4 = p4;
 
+        yield return new WaitForSeconds(1f);
+        int rand = Random.Range(0, GameManager.instance.pool.pools[0].Count);
+        target = GameManager.instance.pool.pools[0][rand].transform;
 
         while (true)
         {

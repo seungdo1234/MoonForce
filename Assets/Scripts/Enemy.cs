@@ -182,6 +182,10 @@ public class Enemy : MonoBehaviour
             spriteRenderer.sortingOrder = 1; // 죽은 ENemy가 다른 Enemy를 가리지 않도록 OrderLayer를 1로 내림
             anim.SetBool("Dead", true);
             GameManager.instance.kill++;
+            if(statusEffect == EnemyStatusEffect.Darkness)
+            {
+                ExplosionSpawn();
+            }
         }
     }
     private void OnTriggerStay2D(Collider2D collision) // 지속적인 피해를 주는 마법과 충돌 중 일때
@@ -430,17 +434,22 @@ public class Enemy : MonoBehaviour
             yield return null;
         }
 
-        Transform exp = GameManager.instance.magicManager.Get(1).transform;
-
-        exp.position = transform.position;
-
-        float expScale = (GameManager.instance.weaponNum - 1) * 0.15f;
-        exp.localScale = new Vector3(1, 1, 1) + new Vector3(expScale, expScale, expScale);
+        ExplosionSpawn();
 
         statusEffect = EnemyStatusEffect.Defalt;
 
         spriteRenderer.color = new Color(1, 1, 1, 1);
 
+    }
+
+    private void ExplosionSpawn()
+    {
+        Transform exp = GameManager.instance.magicManager.Get(0).transform;
+
+        exp.position = transform.position;
+
+        float expScale = (GameManager.instance.weaponNum - 1) * 0.15f;
+        exp.localScale = new Vector3(1, 1, 1) + new Vector3(expScale, expScale, expScale);
     }
 
     public void EnemyDamaged(float damage, int hitType)

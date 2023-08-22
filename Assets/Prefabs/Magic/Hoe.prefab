@@ -133,6 +133,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   magicNumber: 6
+  resetScale: {x: 0.9, y: 0.9, z: 0.9}
+  isSizeUp: 0
 --- !u!50 &7995961390300749001
 Rigidbody2D:
   serializedVersion: 4

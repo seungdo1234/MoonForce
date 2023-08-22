@@ -156,3 +156,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   magicNumber: 10
+  resetScale: {x: 1.2, y: 1.2, z: 1.2}
+  isSizeUp: 0

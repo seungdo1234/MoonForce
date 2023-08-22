@@ -16,17 +16,17 @@ public class ItemDatabase : MonoBehaviour
     {
 
     }
-    public void GetStaff(ItemType type, ItemRank rank, ItemQuality quality, Sprite itemSprite ,  string itemName, int attack, float rate, float moveSpeed, string itemDesc /*int[] skillNum, string[] skillDesc*/)
+    public void GetStaff(ItemType type, ItemRank rank, ItemQuality quality, Sprite itemSprite , ItemAttribute itemAttribute,string itemName, int attack, float rate, float moveSpeed, string itemDesc /*int[] skillNum, string[] skillDesc*/)
     {
         //Item newItem = new Item(type, rank, quality ,itemSprite, itemName, attack, rate, moveSpeed, itemDesc, skillNum,skillDesc);
         Item newItem = new Item();
-        newItem.Staff(type, rank, quality, itemSprite, itemName, attack, rate, moveSpeed, itemDesc);
+        newItem.Staff(type, rank, quality, itemSprite, itemAttribute, itemName, attack, rate, moveSpeed, itemDesc);
         itemDB.Add(newItem);
     }
-    public void GetBook(ItemType type, ItemAttribute itemAttribute, ItemQuality quality , Sprite itemSprite, string bookName,int[] skillNum, string[] skillDesc)
+    public void GetBook(ItemType type,  ItemQuality quality , Sprite itemSprite, string bookName,int skillNum, int[] aditionalAbility)
     {
         Item newItem = new Item();
-        newItem.Book(type, itemAttribute, quality, itemSprite, bookName, skillNum, skillDesc);
+        newItem.Book(type, quality, itemSprite, bookName, skillNum, aditionalAbility);
         itemDB.Add(newItem);
     }
     public Item Set(int itemNum)

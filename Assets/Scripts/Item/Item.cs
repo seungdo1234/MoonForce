@@ -19,31 +19,31 @@ public class Item
     public string itemDesc;
     [Header("Book")]
     public string bookName;
-    public int[] skillNum;
-    public string[] skillDesc;    
+    public int skillNum;
+    public int[] aditionalAbility;    
 
 
-    public void Staff(ItemType type, ItemRank rank, ItemQuality quality, Sprite itemSprite, string itemName, int attack, float rate, float moveSpeed, string itemDesc)
+    public void Staff(ItemType type, ItemRank rank, ItemQuality quality, Sprite itemSprite, ItemAttribute itemAttribute,string itemName, int attack, float rate, float moveSpeed, string itemDesc)
     {
         this.type = type;
         this.rank = rank;
         this.quality = quality;
         this.itemSprite = itemSprite;
+        this.itemAttribute = itemAttribute;
         this.itemName = itemName;
         this.attack = attack;
         this.rate = rate;
         this.moveSpeed = moveSpeed;
         this.itemDesc = itemDesc;
     }
-    public void Book(ItemType type, ItemAttribute itemAttribute, ItemQuality quality , Sprite itemSprite ,string bookName ,int[] skillNum, string[] skillDesc)
+    public void Book(ItemType type, ItemQuality quality , Sprite itemSprite ,string bookName ,int skillNum, int[] aditionalAbility)
     {
         this.type = type;
-        this.itemAttribute = itemAttribute;
         this.quality = quality;
         this.itemSprite = itemSprite;
         this.bookName = bookName;
         this.skillNum = skillNum;
-        this.skillDesc = skillDesc;
+        this.aditionalAbility = aditionalAbility;
     }
     public void reset()
     {
@@ -57,7 +57,7 @@ public class Item
         rate = 0f;
         moveSpeed = 0f;
         itemDesc = "";
-        skillNum = null;
-        skillDesc = null;
+        skillNum = -1;
+        aditionalAbility = null;
     }
 }

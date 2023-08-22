@@ -172,3 +172,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   magicNumber: 8
+  resetScale: {x: 1, y: 1, z: 1}
+  isSizeUp: 0

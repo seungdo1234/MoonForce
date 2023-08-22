@@ -3,14 +3,14 @@ using UnityEngine.UI;
 
 public class ItemPreview : MonoBehaviour
 {
-    public Text itemInfomation;
+    public Text[] itemInfomation;
 
     string itemNameColor;
     string itemRankColor;
     string itemQuality;
     private void Awake()
     {
-        itemInfomation = GetComponentInChildren<Text>();
+        itemInfomation = GetComponentsInChildren<Text>();
 
     }
 
@@ -48,40 +48,17 @@ public class ItemPreview : MonoBehaviour
             }
 
 
-            itemInfomation.text = string.Format("<color={0}>{1}</color> (<color={2}>{3}</color>)\n공격력 + {4}\n공격속도 + {5}%\n\n{6}", itemNameColor, item.itemName, itemRankColor, item.rank, item.attack, item.rate * 100, item.itemDesc);
+            itemInfomation[0].text = string.Format("<color={0}>{1}</color>", itemNameColor, item.itemName);
+            itemInfomation[1].text = string.Format("(<color={0}>{1}</color>)", itemRankColor, item.rank);
+            itemInfomation[2].text = string.Format("공격력 + {0}\n공격속도 + {1}%\n\n{2}", item.attack, item.rate * 100, item.itemDesc);
 
         }
         else if(item.type == ItemType.Book)
         {
-            switch (item.itemAttribute)
-            {
-                case ItemAttribute.Non:
-                    itemNameColor = "white";
-                    break;
-                case ItemAttribute.Fire:
-                    itemNameColor = "red";
-                    break;
-                case ItemAttribute.Water:
-                    itemNameColor = "blue";
-                    break;
-                case ItemAttribute.Eeath:
-                    itemNameColor = "brown";
-                    break;
-                case ItemAttribute.Grass:
-                    itemNameColor = "green";
-                    break;
-                case ItemAttribute.Dark:
-                    itemNameColor = "black";
-                    break;
-                case ItemAttribute.Holy:
-                    itemNameColor = "yellow";
-                    break;
-            }
-
             switch (item.quality)
             {
                 case ItemQuality.Low:
-                    itemQuality = "하급";
+                    itemQuality = "초급";
                     break;
                 case ItemQuality.Normal:
                     itemQuality = "중급";
@@ -91,13 +68,52 @@ public class ItemPreview : MonoBehaviour
                     break;
             }
 
-            itemInfomation.text = string.Format("<color={0}>{1}</color> ({2})\n\n", itemNameColor, item.bookName, itemQuality);
+            itemInfomation[2].text = null;
 
-            for(int i = 0; i < item.skillDesc.Length; i++)
+            for (int i = 0; i < item.aditionalAbility.Length;i++)
             {
-                itemInfomation.text += string.Format("{0}\n" , item.skillDesc[i]);
+                switch (item.aditionalAbility[i])
+                {
+                    case 0:
+                        itemInfomation[2].text += "마법 피해량 증가\n";
+                        break;
+                    case 1:
 
+                        if (GameManager.instance.magicManager.magicInfo[item.skillNum].magicCoolTime == 0)
+                        {
+                            itemInfomation[2].text += "마법 공격 속도 증가\n";
+                        }
+                        else
+                        {
+                            itemInfomation[2].text += "마법 쿨타임 감소\n";
+                        }
+                            break;
+                    case 2:
+                        if (GameManager.instance.magicManager.magicInfo[item.skillNum].magicCountIncrease)
+                        {
+                            itemInfomation[2].text += "마법 출력 갯수 증가\n";
+                        }
+                        else
+                        {
+                            itemInfomation[2].text += "마법 크기 증가\n";
+                        }
+                        break;
+                }
             }
+
+
+            itemInfomation[0].text = string.Format("<color=black>{0}</color>", item.bookName);
+            itemInfomation[1].text = itemQuality;
+
+
+
+            /*
+                        for(int i = 0; i < item..Length; i++)
+                        {
+                            itemInfomation.text += string.Format("{0}\n" , item.skillDesc[i]);
+
+                        }
+            */
 
         }
     }

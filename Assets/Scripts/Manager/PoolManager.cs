@@ -29,7 +29,7 @@ public class PoolManager : MonoBehaviour
     {
 
         // 현재 마력탄의 종류가 장착 무기 속성과 다를 때 스프라이트 변경 
-        if(attribute != GameManager.instance.attribute)
+        if(GameManager.instance.attribute != ItemAttribute.Default && attribute != GameManager.instance.attribute)
         {
             attribute = GameManager.instance.attribute;
             prefabs[1].gameObject.GetComponent<SpriteRenderer>().sprite = bulletAttributes[(int)attribute - 1];

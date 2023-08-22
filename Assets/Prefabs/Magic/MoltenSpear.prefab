@@ -120,6 +120,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   magicNumber: 3
+  resetScale: {x: 1, y: 1, z: 1}
+  isSizeUp: 0
 --- !u!114 &-1586579442433449068
 MonoBehaviour:
   m_ObjectHideFlags: 0

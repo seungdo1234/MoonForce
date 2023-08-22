@@ -61,6 +61,12 @@ public class MagicManager : MonoBehaviour
             {
                 if (item.activeSelf)
                 {
+                    MagicNumber magic = item.GetComponent<MagicNumber>();
+                    if (magic.isSizeUp)
+                    {
+                        magic.GetComponent<Transform>().localScale = magic.resetScale;
+                        magic.isSizeUp = false;
+                    }
                     item.SetActive(false);
                 }
             }
@@ -99,6 +105,7 @@ public class MagicManager : MonoBehaviour
 
     private IEnumerator StartCoolTimeMagic(int magicNumber)
     {
+
         float timer = 0;
         while (!GameManager.instance.gameStop)
         {
@@ -160,6 +167,9 @@ public class MagicManager : MonoBehaviour
                 continue;
             }
 
+
+            MagicSizeUp(magic, magicNumber);
+
             Vector3 targetPos = player.scanner.nearestTarget[0].position;
             Vector3 dir = targetPos - player.transform.position;
             dir = dir.normalized; // 정규화
@@ -167,7 +177,7 @@ public class MagicManager : MonoBehaviour
                                                 // FromToRotation : 지정된 축을 중심으로 목표를 향해 회전하는 함수
             magic.rotation = Quaternion.FromToRotation(Vector3.right, dir); // Enemy 방향으로 bullet 회전
 
-            if (magicNumber == 0) // 파이어볼
+            if (magicNumber == 1) // 파이어볼
             {
                 magic.GetComponent<Bullet>().Init(0, magicInfo[magicNumber].penetration, dir);
             }
@@ -213,7 +223,7 @@ public class MagicManager : MonoBehaviour
 
             Transform magic = Get(magicNumber).transform;
             magic.position = player.scanner.nearestTarget[selectedIndex].transform.position;
-
+            MagicSizeUp(magic, magicNumber);
             if (magicNumber == 3)
             {
                 Enemy enemy = player.scanner.nearestTarget[selectedIndex].GetComponent<Enemy>();
@@ -222,6 +232,16 @@ public class MagicManager : MonoBehaviour
         }
     }
 
+    private void MagicSizeUp(Transform magic , int magicNumber) // 마법 크기 Up
+    {
+        if (!magic.GetComponent<MagicNumber>().isSizeUp && !magicInfo[magicNumber].magicCountIncrease && magicInfo[magicNumber].magicSizeStep != 0)
+        {
+            int magicSizeStep = magicInfo[magicNumber].magicSizeStep;
+            Debug.Log(magic.localScale);
+            magic.localScale = new Vector3(magic.localScale.x + (magicSizeStep * 0.25f), magic.localScale.y + (magicSizeStep * 0.25f), magic.localScale.z + (magicSizeStep * 0.25f));
+            magic.GetComponent<MagicNumber>().isSizeUp = true;
+        }
+    }
     private IEnumerator AlwaysPlayMagic(int magicNumber)
     {
         yield return null;
@@ -232,7 +252,7 @@ public class MagicManager : MonoBehaviour
                 ShovelSpawn(magicNumber);
                 break;
             case 5:
-                RakeSpawn(magicNumber);
+                MagicBallSpawn(magicNumber);
                 break;
             case 12:
                 ChargeExplosionSpawn(magicNumber);
@@ -245,10 +265,13 @@ public class MagicManager : MonoBehaviour
     {
         GameObject magic = Get(magicNumber);
 
-        magic.GetComponent<ChargeExplosion>().Init(magicInfo[magicNumber].magicCoolTime);
+        magic.GetComponent<ChargeExplosion>().Init(magicInfo[magicNumber].magicCoolTime, magicInfo[magicNumber].magicSizeStep);
     }
     private void ShovelSpawn(int magicNumber)
     {
+        // 공격 속도 단계 만큼 삽의 회전 속도 ++
+        int rotationSpeed = 90 + (magicInfo[magicNumber].magicRateStep * 20);
+        GameManager.instance.player.rotationBody.GetComponent<RotationWeapon>().rotationSpeed = rotationSpeed;
         for (int i = 0; i < magicInfo[magicNumber].magicCount; i++)
         {
             // bullet의 부모를 MagicManager에서  Player의 RotationBody로 바꾸기 위해 Transform으로 저장
@@ -274,8 +297,11 @@ public class MagicManager : MonoBehaviour
 
         }
     }
-    private void RakeSpawn(int magicNumber)
+    private void MagicBallSpawn(int magicNumber)
     {
+        float lerpTime = 1.5f - (0.25f * magicInfo[magicNumber].magicRateStep);
+        magicInfo[magicNumber].magicEffect.GetComponent<MagicBall>().lerpTime = lerpTime;
+
         for (int i = 0; i < magicInfo[magicNumber].magicCount; i++)
         {
             // bullet의 부모를 MagicManager에서  Player의 RotationBody로 바꾸기 위해 Transform으로 저장

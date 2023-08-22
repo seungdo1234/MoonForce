@@ -268,8 +268,23 @@ MonoBehaviour:
     moveSpeed: 0
     itemDesc: 
     bookName: 
-    skillNum: 
-    skillDesc: []
+    skillNum: 0
+    aditionalAbility: 
+  prevItem:
+    isLoad: 0
+    type: 0
+    rank: 0
+    quality: 0
+    itemSprite: {fileID: 0}
+    itemAttribute: 0
+    itemName: 
+    attack: 0
+    rate: 0
+    moveSpeed: 0
+    itemDesc: 
+    bookName: 
+    skillNum: 0
+    aditionalAbility: 
 --- !u!1 &6132365
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,7 +357,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -281.4, y: 517.2}
+  m_AnchoredPosition: {x: 311.99997, y: 503.60004}
   m_SizeDelta: {x: 44.444458, y: 44.444458}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6778722
@@ -735,8 +750,23 @@ MonoBehaviour:
     moveSpeed: 0
     itemDesc: 
     bookName: 
-    skillNum: 
-    skillDesc: []
+    skillNum: 0
+    aditionalAbility: 
+  prevItem:
+    isLoad: 0
+    type: 0
+    rank: 0
+    quality: 0
+    itemSprite: {fileID: 0}
+    itemAttribute: 0
+    itemName: 
+    attack: 0
+    rate: 0
+    moveSpeed: 0
+    itemDesc: 
+    bookName: 
+    skillNum: 0
+    aditionalAbility: 
 --- !u!1 &66060421
 GameObject:
   m_ObjectHideFlags: 0
@@ -845,8 +875,23 @@ MonoBehaviour:
     moveSpeed: 0
     itemDesc: 
     bookName: 
-    skillNum: 
-    skillDesc: []
+    skillNum: 0
+    aditionalAbility: 
+  prevItem:
+    isLoad: 0
+    type: 0
+    rank: 0
+    quality: 0
+    itemSprite: {fileID: 0}
+    itemAttribute: 0
+    itemName: 
+    attack: 0
+    rate: 0
+    moveSpeed: 0
+    itemDesc: 
+    bookName: 
+    skillNum: 0
+    aditionalAbility: 
 --- !u!1 &80434616
 GameObject:
   m_ObjectHideFlags: 0
@@ -1124,8 +1169,23 @@ MonoBehaviour:
     moveSpeed: 0
     itemDesc: 
     bookName: 
-    skillNum: 
-    skillDesc: []
+    skillNum: 0
+    aditionalAbility: 
+  prevItem:
+    isLoad: 0
+    type: 0
+    rank: 0
+    quality: 0
+    itemSprite: {fileID: 0}
+    itemAttribute: 0
+    itemName: 
+    attack: 0
+    rate: 0
+    moveSpeed: 0
+    itemDesc: 
+    bookName: 
+    skillNum: 0
+    aditionalAbility: 
 --- !u!1 &124120846
 GameObject:
   m_ObjectHideFlags: 0
@@ -1224,7 +1284,7 @@ MonoBehaviour:
   - {fileID: 22100000, guid: 4080dbfae9085514baadc47025c6a4ba, type: 2}
   - {fileID: 22100000, guid: 17bd18a25f974e14493b5bd600e8c124, type: 2}
   - {fileID: 22100000, guid: 4a7043c7450108543bc0472e910f3c04, type: 2}
-  rewardManager: {fileID: 303485943}
+  rewardManager: {fileID: 303485945}
   reward: {fileID: 603702958}
 --- !u!1 &132971308
 GameObject:
@@ -1593,6 +1653,7 @@ RectTransform:
   - {fileID: 2059204953}
   - {fileID: 1769790986}
   - {fileID: 1263720611}
+  - {fileID: 1999837593}
   m_Father: {fileID: 854884544}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1709,8 +1770,23 @@ MonoBehaviour:
     moveSpeed: 0
     itemDesc: 
     bookName: 
-    skillNum: 
-    skillDesc: []
+    skillNum: 0
+    aditionalAbility: 
+  prevItem:
+    isLoad: 0
+    type: 0
+    rank: 0
+    quality: 0
+    itemSprite: {fileID: 0}
+    itemAttribute: 0
+    itemName: 
+    attack: 0
+    rate: 0
+    moveSpeed: 0
+    itemDesc: 
+    bookName: 
+    skillNum: 0
+    aditionalAbility: 
 --- !u!1 &291540213
 GameObject:
   m_ObjectHideFlags: 0
@@ -1800,7 +1876,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 303485944}
-  - component: {fileID: 303485943}
+  - component: {fileID: 303485945}
   m_Layer: 0
   m_Name: RewardManager
   m_TagString: Untagged
@@ -1808,20 +1884,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &303485943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 303485941}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e90d4d5b1b0bcf45956ca89c6ebf8a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemInfo: {fileID: 5157423486868873357, guid: 5d092b2764359044dafd50e346325bad, type: 3}
-  rewardImage: {fileID: 603702958}
 --- !u!4 &303485944
 Transform:
   m_ObjectHideFlags: 0
@@ -1837,6 +1899,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &303485945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303485941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6637229c4e7ad914abd87efa06f08b02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemInfo: {fileID: 5157423486868873357, guid: 5d092b2764359044dafd50e346325bad, type: 3}
+  rewardImage: {fileID: 603702958}
 --- !u!1 &311921781
 GameObject:
   m_ObjectHideFlags: 0
@@ -2126,7 +2202,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -251.19998, y: 532.6}
+  m_AnchoredPosition: {x: 345.1, y: 519}
   m_SizeDelta: {x: 64.6127, y: 30}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &395276030
@@ -2184,6 +2260,86 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 2
+--- !u!1 &425363178
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 425363179}
+  - component: {fileID: 425363181}
+  - component: {fileID: 425363180}
+  m_Layer: 2
+  m_Name: ItemQualityText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &425363179
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425363178}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 839489301}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 95.704, y: 57.700005}
+  m_SizeDelta: {x: 95.517, y: 30.2043}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &425363180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425363178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: e715fcabbb6163e48b780b3b92979f8e, type: 3}
+    m_FontSize: 18
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 40
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1.35
+  m_Text: "\uC911\uAE09"
+--- !u!222 &425363181
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425363178}
+  m_CullTransparentMesh: 1
 --- !u!1 &429440251
 GameObject:
   m_ObjectHideFlags: 0
@@ -2731,8 +2887,23 @@ MonoBehaviour:
     moveSpeed: 0
     itemDesc: 
     bookName: 
-    skillNum: 
-    skillDesc: []
+    skillNum: 0
+    aditionalAbility: 
+  prevItem:
+    isLoad: 0
+    type: 0
+    rank: 0
+    quality: 0
+    itemSprite: {fileID: 0}
+    itemAttribute: 0
+    itemName: 
+    attack: 0
+    rate: 0
+    moveSpeed: 0
+    itemDesc: 
+    bookName: 
+    skillNum: 0
+    aditionalAbility: 
 --- !u!1 &447337049
 GameObject:
   m_ObjectHideFlags: 0
@@ -3064,8 +3235,23 @@ MonoBehaviour:
     moveSpeed: 0
     itemDesc: 
     bookName: 
-    skillNum: 
-    skillDesc: []
+    skillNum: 0
+    aditionalAbility: 
+  prevItem:
+    isLoad: 0
+    type: 0
+    rank: 0
+    quality: 0
+    itemSprite: {fileID: 0}
+    itemAttribute: 0
+    itemName: 
+    attack: 0
+    rate: 0
+    moveSpeed: 0
+    itemDesc: 
+    bookName: 
+    skillNum: 0
+    aditionalAbility: 
 --- !u!1 &522508558
 GameObject:
   m_ObjectHideFlags: 0
@@ -3563,8 +3749,23 @@ MonoBehaviour:
     moveSpeed: 0
     itemDesc: 
     bookName: 
-    skillNum: 
-    skillDesc: []
+    skillNum: 0
+    aditionalAbility: 
+  prevItem:
+    isLoad: 0
+    type: 0
+    rank: 0
+    quality: 0
+    itemSprite: {fileID: 0}
+    itemAttribute: 0
+    itemName: 
+    attack: 0
+    rate: 0
+    moveSpeed: 0
+    itemDesc: 
+    bookName: 
+    skillNum: 0
+    aditionalAbility: 
 --- !u!1 &603702956
 GameObject:
   m_ObjectHideFlags: 0
@@ -3840,8 +4041,23 @@ MonoBehaviour:
     moveSpeed: 0
     itemDesc: 
     bookName: 
-    skillNum: 
-    skillDesc: []
+    skillNum: 0
+    aditionalAbility: 
+  prevItem:
+    isLoad: 0
+    type: 0
+    rank: 0
+    quality: 0
+    itemSprite: {fileID: 0}
+    itemAttribute: 0
+    itemName: 
+    attack: 0
+    rate: 0
+    moveSpeed: 0
+    itemDesc: 
+    bookName: 
+    skillNum: 0
+    aditionalAbility: 
 --- !u!1 &678982001
 GameObject:
   m_ObjectHideFlags: 0
@@ -4188,8 +4404,23 @@ MonoBehaviour:
     moveSpeed: 0
     itemDesc: 
     bookName: 
-    skillNum: 
-    skillDesc: []
+    skillNum: 0
+    aditionalAbility: 
+  prevItem:
+    isLoad: 0
+    type: 0
+    rank: 0
+    quality: 0
+    itemSprite: {fileID: 0}
+    itemAttribute: 0
+    itemName: 
+    attack: 0
+    rate: 0
+    moveSpeed: 0
+    itemDesc: 
+    bookName: 
+    skillNum: 0
+    aditionalAbility: 
 --- !u!1 &740128098
 GameObject:
   m_ObjectHideFlags: 0
@@ -4419,8 +4650,23 @@ MonoBehaviour:
     moveSpeed: 0
     itemDesc: 
     bookName: 
-    skillNum: 
-    skillDesc: []
+    skillNum: 0
+    aditionalAbility: 
+  prevItem:
+    isLoad: 0
+    type: 0
+    rank: 0
+    quality: 0
+    itemSprite: {fileID: 0}
+    itemAttribute: 0
+    itemName: 
+    attack: 0
+    rate: 0
+    moveSpeed: 0
+    itemDesc: 
+    bookName: 
+    skillNum: 0
+    aditionalAbility: 
 --- !u!1 &743519845
 GameObject:
   m_ObjectHideFlags: 0
@@ -4644,8 +4890,23 @@ MonoBehaviour:
     moveSpeed: 0
     itemDesc: 
     bookName: 
-    skillNum: 
-    skillDesc: []
+    skillNum: 0
+    aditionalAbility: 
+  prevItem:
+    isLoad: 0
+    type: 0
+    rank: 0
+    quality: 0
+    itemSprite: {fileID: 0}
+    itemAttribute: 0
+    itemName: 
+    attack: 0
+    rate: 0
+    moveSpeed: 0
+    itemDesc: 
+    bookName: 
+    skillNum: 0
+    aditionalAbility: 
 --- !u!1 &774755086
 GameObject:
   m_ObjectHideFlags: 0
@@ -5014,6 +5275,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1645136117}
+  - {fileID: 425363179}
+  - {fileID: 1649133889}
   m_Father: {fileID: 1623473218}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5072,7 +5335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a6ba8c74a1b7c240867a75231364ae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemInfomation: {fileID: 0}
+  itemInfomation: []
 --- !u!1 &843705040
 GameObject:
   m_ObjectHideFlags: 0
@@ -5181,8 +5444,23 @@ MonoBehaviour:
     moveSpeed: 0
     itemDesc: 
     bookName: 
-    skillNum: 
-    skillDesc: []
+    skillNum: 0
+    aditionalAbility: 
+  prevItem:
+    isLoad: 0
+    type: 0
+    rank: 0
+    quality: 0
+    itemSprite: {fileID: 0}
+    itemAttribute: 0
+    itemName: 
+    attack: 0
+    rate: 0
+    moveSpeed: 0
+    itemDesc: 
+    bookName: 
+    skillNum: 0
+    aditionalAbility: 
 --- !u!1 &846084929
 GameObject:
   m_ObjectHideFlags: 0
@@ -5403,8 +5681,23 @@ MonoBehaviour:
     moveSpeed: 0
     itemDesc: 
     bookName: 
-    skillNum: 
-    skillDesc: []
+    skillNum: 0
+    aditionalAbility: 
+  prevItem:
+    isLoad: 0
+    type: 0
+    rank: 0
+    quality: 0
+    itemSprite: {fileID: 0}
+    itemAttribute: 0
+    itemName: 
+    attack: 0
+    rate: 0
+    moveSpeed: 0
+    itemDesc: 
+    bookName: 
+    skillNum: 0
+    aditionalAbility: 
 --- !u!1 &854884540
 GameObject:
   m_ObjectHideFlags: 0
@@ -6078,8 +6371,23 @@ MonoBehaviour:
     moveSpeed: 0
     itemDesc: 
     bookName: 
-    skillNum: 
-    skillDesc: []
+    skillNum: 0
+    aditionalAbility: 
+  prevItem:
+    isLoad: 0
+    type: 0
+    rank: 0
+    quality: 0
+    itemSprite: {fileID: 0}
+    itemAttribute: 0
+    itemName: 
+    attack: 0
+    rate: 0
+    moveSpeed: 0
+    itemDesc: 
+    bookName: 
+    skillNum: 0
+    aditionalAbility: 
 --- !u!1 &948611469
 GameObject:
   m_ObjectHideFlags: 0
@@ -6453,8 +6761,23 @@ MonoBehaviour:
     moveSpeed: 0
     itemDesc: 
     bookName: 
-    skillNum: 
-    skillDesc: []
+    skillNum: 0
+    aditionalAbility: 
+  prevItem:
+    isLoad: 0
+    type: 0
+    rank: 0
+    quality: 0
+    itemSprite: {fileID: 0}
+    itemAttribute: 0
+    itemName: 
+    attack: 0
+    rate: 0
+    moveSpeed: 0
+    itemDesc: 
+    bookName: 
+    skillNum: 0
+    aditionalAbility: 
 --- !u!1 &1090824788
 GameObject:
   m_ObjectHideFlags: 0
@@ -6795,9 +7118,9 @@ RectTransform:
   m_Father: {fileID: 226571704}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -343.7, y: 560}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0.0000009536743, y: 560}
   m_SizeDelta: {x: 70.4492, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1152973442
@@ -6827,7 +7150,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
-    m_Alignment: 3
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -7252,19 +7575,9 @@ MonoBehaviour:
   magicInfo:
   - isMagicActive: 0
     magicNumber: 0
-    magicName: FireBall
-    magicEffect: {fileID: 926289742191996050, guid: 3442bfd10ca1c894a8c0180e6e401e58, type: 3}
-    isFlying: 1
-    isNonTarget: 0
-    damagePer: 1.5
-    magicCount: 1
-    magicCoolTime: 3
-    penetration: 999
-    knockBackValue: 700
-  - isMagicActive: 0
-    magicNumber: 1
-    magicName: Explosion
+    magicName: "\uD3ED\uBC1C"
     magicEffect: {fileID: 6012324148793620435, guid: 5cb9f213cca72bf4a9cfaf785e1848ed, type: 3}
+    magicCountIncrease: 0
     isFlying: 0
     isNonTarget: 0
     damagePer: 3
@@ -7272,32 +7585,63 @@ MonoBehaviour:
     magicCoolTime: 0
     penetration: 0
     knockBackValue: 700
+    damageIncreaseValue: 0
+    coolTimeDecreaseValue: 0
+    magicRateStep: 0
+    magicSizeStep: 0
+  - isMagicActive: 0
+    magicNumber: 1
+    magicName: "\uD654\uC5FC \uAD6C"
+    magicEffect: {fileID: 926289742191996050, guid: 3442bfd10ca1c894a8c0180e6e401e58, type: 3}
+    magicCountIncrease: 0
+    isFlying: 1
+    isNonTarget: 0
+    damagePer: 1.5
+    magicCount: 1
+    magicCoolTime: 3.5
+    penetration: 999
+    knockBackValue: 700
+    damageIncreaseValue: 0.75
+    coolTimeDecreaseValue: 0.5
+    magicRateStep: 0
+    magicSizeStep: 0
   - isMagicActive: 0
     magicNumber: 2
-    magicName: EarthSpike
+    magicName: "\uC2A4\uD30C\uC774\uD06C"
     magicEffect: {fileID: 1108347652370906950, guid: a4870f0ee5ec8b945bf89bc7463f1068, type: 3}
+    magicCountIncrease: 0
     isFlying: 0
     isNonTarget: 0
-    damagePer: 3
+    damagePer: 3.5
     magicCount: 1
-    magicCoolTime: 5
+    magicCoolTime: 5.5
     penetration: 0
     knockBackValue: 800
+    damageIncreaseValue: 2
+    coolTimeDecreaseValue: 0.5
+    magicRateStep: 0
+    magicSizeStep: 0
   - isMagicActive: 0
     magicNumber: 3
-    magicName: MoltenSpear
+    magicName: "\uC9C0\uC625\uC758 \uCC3D"
     magicEffect: {fileID: 4198508131217056016, guid: 344d1c27f2854244597308d42225d454, type: 3}
+    magicCountIncrease: 1
     isFlying: 0
     isNonTarget: 0
-    damagePer: 5
+    damagePer: 7
     magicCount: 1
-    magicCoolTime: 5
+    magicCoolTime: 4.5
     penetration: 0
     knockBackValue: 500
+    damageIncreaseValue: 3
+    coolTimeDecreaseValue: 0.5
+    magicRateStep: 0
+    magicSizeStep: 0
   - isMagicActive: 0
     magicNumber: 4
-    magicName: Shovel
+    magicName: "\uC0BD"
     magicEffect: {fileID: 3908359112845046333, guid: 26031a6a67d3a924197f23e346b4f289, type: 3}
+    magicCountIncrease: 1
     isFlying: 0
     isNonTarget: 0
     damagePer: 1.5
@@ -7305,10 +7649,15 @@ MonoBehaviour:
     magicCoolTime: 0
     penetration: 0
     knockBackValue: 600
+    damageIncreaseValue: 1
+    coolTimeDecreaseValue: 0
+    magicRateStep: 0
+    magicSizeStep: 0
   - isMagicActive: 0
     magicNumber: 5
-    magicName: MagicBall
+    magicName: "\uB9C8\uBC95 \uAD6C"
     magicEffect: {fileID: 6607189605220824418, guid: 2991177c87c373b449beae056d9fdc75, type: 3}
+    magicCountIncrease: 1
     isFlying: 0
     isNonTarget: 0
     damagePer: 1
@@ -7316,83 +7665,122 @@ MonoBehaviour:
     magicCoolTime: 0
     penetration: 0
     knockBackValue: 450
+    damageIncreaseValue: 0.5
+    coolTimeDecreaseValue: 0
+    magicRateStep: 0
+    magicSizeStep: 0
   - isMagicActive: 0
     magicNumber: 6
-    magicName: Hoe
+    magicName: "\uD638\uBBF8"
     magicEffect: {fileID: 4726081471949478498, guid: 54577d8cf300bef49a72debab144688e, type: 3}
+    magicCountIncrease: 0
     isFlying: 1
     isNonTarget: 0
     damagePer: 1
     magicCount: 1
-    magicCoolTime: 5
+    magicCoolTime: 4.25
     penetration: 0
     knockBackValue: 550
+    damageIncreaseValue: 0.75
+    coolTimeDecreaseValue: 0.25
+    magicRateStep: 0
+    magicSizeStep: 0
   - isMagicActive: 0
     magicNumber: 7
-    magicName: RockThrow
+    magicName: "\uB3CC \uB358\uC9C0\uAE30"
     magicEffect: {fileID: 7026266901212579963, guid: 26d07e0878068d8478511340ea81316a, type: 3}
+    magicCountIncrease: 0
     isFlying: 1
     isNonTarget: 0
-    damagePer: 5
+    damagePer: 7.5
     magicCount: 1
-    magicCoolTime: 5
+    magicCoolTime: 5.5
     penetration: 0
     knockBackValue: 1000
+    damageIncreaseValue: 2.5
+    coolTimeDecreaseValue: 0.5
+    magicRateStep: 0
+    magicSizeStep: 0
   - isMagicActive: 0
     magicNumber: 8
-    magicName: WindCutter
+    magicName: "\uC708\uB4DC\uCEE4\uD130"
     magicEffect: {fileID: 3809043403037830521, guid: 34660ba0bf7f8f84faf26eb9d1182554, type: 3}
+    magicCountIncrease: 1
     isFlying: 1
     isNonTarget: 1
-    damagePer: 2
-    magicCount: 5
-    magicCoolTime: 2
+    damagePer: 2.25
+    magicCount: 3
+    magicCoolTime: 5.5
     penetration: 0
     knockBackValue: 500
+    damageIncreaseValue: 0.25
+    coolTimeDecreaseValue: 0.5
+    magicRateStep: 0
+    magicSizeStep: 0
   - isMagicActive: 0
     magicNumber: 9
-    magicName: Tornado
+    magicName: "\uD1A0\uB124\uC774\uB3C4"
     magicEffect: {fileID: 7269730197916001703, guid: 06d42618e988b3140a7caf36b6b337ea, type: 3}
+    magicCountIncrease: 0
     isFlying: 0
     isNonTarget: 0
-    damagePer: 2
+    damagePer: 2.5
     magicCount: 1
-    magicCoolTime: 5
+    magicCoolTime: 6
     penetration: 0
     knockBackValue: 500
+    damageIncreaseValue: 0.5
+    coolTimeDecreaseValue: 0.5
+    magicRateStep: 0
+    magicSizeStep: 0
   - isMagicActive: 0
     magicNumber: 10
-    magicName: FireExplosion
+    magicName: "\uD654\uC5FC \uD3ED\uBC1C"
     magicEffect: {fileID: 3344825427565340877, guid: 38c608dd3f2d58949a126d5dd4a36011, type: 3}
+    magicCountIncrease: 0
     isFlying: 0
     isNonTarget: 0
     damagePer: 10
     magicCount: 1
-    magicCoolTime: 15
+    magicCoolTime: 12
     penetration: 0
     knockBackValue: 750
+    damageIncreaseValue: 5
+    coolTimeDecreaseValue: 1.5
+    magicRateStep: 0
+    magicSizeStep: 0
   - isMagicActive: 0
     magicNumber: 11
-    magicName: ElectronicShock
+    magicName: "\uC804\uAE30 \uC1FC\uD06C"
     magicEffect: {fileID: 1635677412450062184, guid: f92ce5cc728a332468006ca331c22722, type: 3}
+    magicCountIncrease: 0
     isFlying: 0
     isNonTarget: 0
-    damagePer: 3
+    damagePer: 3.5
     magicCount: 1
-    magicCoolTime: 10
+    magicCoolTime: 8.5
     penetration: 0
     knockBackValue: 0
+    damageIncreaseValue: 0.5
+    coolTimeDecreaseValue: 0.5
+    magicRateStep: 0
+    magicSizeStep: 0
   - isMagicActive: 0
     magicNumber: 12
-    magicName: ChargeExplosion
+    magicName: "\uCDA9\uC804 \uD3ED\uBC1C"
     magicEffect: {fileID: 8605108235234549128, guid: 139f50daa90cfb741970b35be73c7c95, type: 3}
+    magicCountIncrease: 0
     isFlying: 0
     isNonTarget: 1
     damagePer: 3
     magicCount: 1
-    magicCoolTime: 2
+    magicCoolTime: 6
     penetration: 0
     knockBackValue: 1500
+    damageIncreaseValue: 1
+    coolTimeDecreaseValue: 1
+    magicRateStep: 0
+    magicSizeStep: 0
 --- !u!1 &1234221704
 GameObject:
   m_ObjectHideFlags: 0
@@ -7450,36 +7838,22 @@ MonoBehaviour:
     moveSpeed: 0
     itemDesc: "\uC870\uC7A1\uD55C \uC9C0\uD321\uC774\uB2E4."
     bookName: 
-    skillNum: 
-    skillDesc: []
+    skillNum: 0
+    aditionalAbility: 
   - isLoad: 0
     type: 2
-    rank: 1
-    quality: 1
-    itemSprite: {fileID: 21300000, guid: 552525ce089a36749b7cbc7c212d47c9, type: 3}
-    itemAttribute: 5
-    itemName: "\uC870\uC7A1\uD55C \uC9C0\uD321\uC774"
-    attack: 3
-    rate: 0.1
+    rank: 0
+    quality: 3
+    itemSprite: {fileID: 21300000, guid: 9dd87755e3d7d584e9e44ae8bdfa8443, type: 3}
+    itemAttribute: 0
+    itemName: 
+    attack: 0
+    rate: 0
     moveSpeed: 0
-    itemDesc: "\uC870\uC7A1\uD55C \uC9C0\uD321\uC774\uB2E4."
-    bookName: 
-    skillNum: 
-    skillDesc: []
-  - isLoad: 0
-    type: 2
-    rank: 1
-    quality: 1
-    itemSprite: {fileID: 21300000, guid: 552525ce089a36749b7cbc7c212d47c9, type: 3}
-    itemAttribute: 5
-    itemName: "\uC870\uC7A1\uD55C \uC9C0\uD321\uC774"
-    attack: 3
-    rate: 0.1
-    moveSpeed: 0
-    itemDesc: "\uC870\uC7A1\uD55C \uC9C0\uD321\uC774\uB2E4."
-    bookName: 
-    skillNum: 
-    skillDesc: []
+    itemDesc: 0
+    bookName: "\uB9C8\uBC95 \uAD6C"
+    skillNum: 12
+    aditionalAbility: 020000000200000002000000
 --- !u!1 &1234341418
 GameObject:
   m_ObjectHideFlags: 0
@@ -7588,8 +7962,23 @@ MonoBehaviour:
     moveSpeed: 0
     itemDesc: 
     bookName: 
-    skillNum: 
-    skillDesc: []
+    skillNum: 0
+    aditionalAbility: 
+  prevItem:
+    isLoad: 0
+    type: 0
+    rank: 0
+    quality: 0
+    itemSprite: {fileID: 0}
+    itemAttribute: 0
+    itemName: 
+    attack: 0
+    rate: 0
+    moveSpeed: 0
+    itemDesc: 
+    bookName: 
+    skillNum: 0
+    aditionalAbility: 
 --- !u!1 &1244689280
 GameObject:
   m_ObjectHideFlags: 0
@@ -8316,8 +8705,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 115, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 67.798096, y: 0}
+  m_SizeDelta: {x: 65.5963, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1354218206
 MonoBehaviour:
@@ -8346,7 +8735,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 3
     m_MaxSize: 300
-    m_Alignment: 0
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -8566,7 +8955,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 670a4f82474fd5747949b3abc590c64d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 80
+  rotationSpeed: 90
 --- !u!1 &1392758799
 GameObject:
   m_ObjectHideFlags: 0
@@ -8866,8 +9255,23 @@ MonoBehaviour:
     moveSpeed: 0
     itemDesc: 
     bookName: 
-    skillNum: 
-    skillDesc: []
+    skillNum: 0
+    aditionalAbility: 
+  prevItem:
+    isLoad: 0
+    type: 0
+    rank: 0
+    quality: 0
+    itemSprite: {fileID: 0}
+    itemAttribute: 0
+    itemName: 
+    attack: 0
+    rate: 0
+    moveSpeed: 0
+    itemDesc: 
+    bookName: 
+    skillNum: 0
+    aditionalAbility: 
 --- !u!1 &1429317820
 GameObject:
   m_ObjectHideFlags: 0
@@ -9344,8 +9748,23 @@ MonoBehaviour:
     moveSpeed: 0
     itemDesc: 
     bookName: 
-    skillNum: 
-    skillDesc: []
+    skillNum: 0
+    aditionalAbility: 
+  prevItem:
+    isLoad: 0
+    type: 0
+    rank: 0
+    quality: 0
+    itemSprite: {fileID: 0}
+    itemAttribute: 0
+    itemName: 
+    attack: 0
+    rate: 0
+    moveSpeed: 0
+    itemDesc: 
+    bookName: 
+    skillNum: 0
+    aditionalAbility: 
 --- !u!1 &1535498162
 GameObject:
   m_ObjectHideFlags: 0
@@ -10134,7 +10553,7 @@ GameObject:
   - component: {fileID: 1645136119}
   - component: {fileID: 1645136118}
   m_Layer: 2
-  m_Name: ItemStatText
+  m_Name: ItemNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10157,8 +10576,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.099990845, y: -6.3645}
-  m_SizeDelta: {x: 269.7489, y: 171.0009}
+  m_AnchoredPosition: {x: -43.513504, y: 57.7}
+  m_SizeDelta: {x: 182.917, y: 30.2043}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1645136118
 MonoBehaviour:
@@ -10182,7 +10601,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: e715fcabbb6163e48b780b3b92979f8e, type: 3}
-    m_FontSize: 20
+    m_FontSize: 22
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -10193,9 +10612,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.35
-  m_Text: "\uACAC\uC2B5\uC6A9 \uC9C0\uD321\uC774 (\uD558\uAE09)\n\uACF5\uACA9\uB825
-    + 00\n\uACF5\uACA9\uC18D\uB3C4 + 00%\n\n\uAC00\uC7A5 \uAE30\uBCF8\uC801\uC778
-    \uC9C0\uD321\uC774\uB2E4."
+  m_Text: "\uC548\uB155\uD558\uC138\uC694\uC548\uB155\uD558"
 --- !u!222 &1645136119
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10283,6 +10700,86 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1649023443}
+  m_CullTransparentMesh: 1
+--- !u!1 &1649133888
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1649133889}
+  - component: {fileID: 1649133891}
+  - component: {fileID: 1649133890}
+  m_Layer: 2
+  m_Name: ItemStatText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1649133889
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649133888}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 839489301}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.6638031, y: -25.1889}
+  m_SizeDelta: {x: 271.2725, y: 116.9819}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1649133890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649133888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: e715fcabbb6163e48b780b3b92979f8e, type: 3}
+    m_FontSize: 20
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 40
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1.35
+  m_Text: "\uACF5\uACA9\uB825 \n\uACF5\uACA9\uC18D\uB3C4\n"
+--- !u!222 &1649133891
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649133888}
   m_CullTransparentMesh: 1
 --- !u!1 &1656853841
 GameObject:
@@ -10469,8 +10966,23 @@ MonoBehaviour:
     moveSpeed: 0
     itemDesc: 
     bookName: 
-    skillNum: 
-    skillDesc: []
+    skillNum: 0
+    aditionalAbility: 
+  prevItem:
+    isLoad: 0
+    type: 0
+    rank: 0
+    quality: 0
+    itemSprite: {fileID: 0}
+    itemAttribute: 0
+    itemName: 
+    attack: 0
+    rate: 0
+    moveSpeed: 0
+    itemDesc: 
+    bookName: 
+    skillNum: 0
+    aditionalAbility: 
 --- !u!1 &1674779706
 GameObject:
   m_ObjectHideFlags: 0
@@ -11174,8 +11686,23 @@ MonoBehaviour:
     moveSpeed: 0
     itemDesc: 
     bookName: 
-    skillNum: 
-    skillDesc: []
+    skillNum: 0
+    aditionalAbility: 
+  prevItem:
+    isLoad: 0
+    type: 0
+    rank: 0
+    quality: 0
+    itemSprite: {fileID: 0}
+    itemAttribute: 0
+    itemName: 
+    attack: 0
+    rate: 0
+    moveSpeed: 0
+    itemDesc: 
+    bookName: 
+    skillNum: 0
+    aditionalAbility: 
 --- !u!1 &1832470975
 GameObject:
   m_ObjectHideFlags: 0
@@ -11438,7 +11965,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 560}
+  m_AnchoredPosition: {x: 0, y: 518.5}
   m_SizeDelta: {x: 150, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1909274114
@@ -11972,8 +12499,23 @@ MonoBehaviour:
     moveSpeed: 0
     itemDesc: 
     bookName: 
-    skillNum: 
-    skillDesc: []
+    skillNum: 0
+    aditionalAbility: 
+  prevItem:
+    isLoad: 0
+    type: 0
+    rank: 0
+    quality: 0
+    itemSprite: {fileID: 0}
+    itemAttribute: 0
+    itemName: 
+    attack: 0
+    rate: 0
+    moveSpeed: 0
+    itemDesc: 
+    bookName: 
+    skillNum: 0
+    aditionalAbility: 
 --- !u!1 &1957476992
 GameObject:
   m_ObjectHideFlags: 0
@@ -12082,6 +12624,127 @@ Transform:
   m_Father: {fileID: 1934122730}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1999837592
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1999837593}
+  - component: {fileID: 1999837596}
+  - component: {fileID: 1999837595}
+  - component: {fileID: 1999837594}
+  m_Layer: 5
+  m_Name: PauseButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1999837593
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999837592}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 226571704}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -250, y: 536}
+  m_SizeDelta: {x: 55, y: 65}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1999837594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999837592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1999837595}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1999837595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999837592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 33118801df912af46a341b1eb134d43f, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1999837596
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999837592}
+  m_CullTransparentMesh: 1
 --- !u!1 &2027804714
 GameObject:
   m_ObjectHideFlags: 0
@@ -12190,8 +12853,23 @@ MonoBehaviour:
     moveSpeed: 0
     itemDesc: 
     bookName: 
-    skillNum: 
-    skillDesc: []
+    skillNum: 0
+    aditionalAbility: 
+  prevItem:
+    isLoad: 0
+    type: 0
+    rank: 0
+    quality: 0
+    itemSprite: {fileID: 0}
+    itemAttribute: 0
+    itemName: 
+    attack: 0
+    rate: 0
+    moveSpeed: 0
+    itemDesc: 
+    bookName: 
+    skillNum: 0
+    aditionalAbility: 
 --- !u!1 &2051478469
 GameObject:
   m_ObjectHideFlags: 0
@@ -12848,8 +13526,23 @@ MonoBehaviour:
     moveSpeed: 0
     itemDesc: 
     bookName: 
-    skillNum: 
-    skillDesc: []
+    skillNum: 0
+    aditionalAbility: 
+  prevItem:
+    isLoad: 0
+    type: 0
+    rank: 0
+    quality: 0
+    itemSprite: {fileID: 0}
+    itemAttribute: 0
+    itemName: 
+    attack: 0
+    rate: 0
+    moveSpeed: 0
+    itemDesc: 
+    bookName: 
+    skillNum: 0
+    aditionalAbility: 
 --- !u!1 &2136243357
 GameObject:
   m_ObjectHideFlags: 0
