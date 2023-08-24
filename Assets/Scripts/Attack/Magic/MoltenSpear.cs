@@ -18,7 +18,7 @@ public class MoltenSpear : MonoBehaviour
 
     public void EnemyAttack()
     {
-        float damage = GameManager.instance.attack * GameManager.instance.magicManager.magicInfo[magicNumber.magicNumber].damagePer;
+        float damage = GameManager.instance.statManager.attack * GameManager.instance.magicManager.magicInfo[magicNumber.magicNumber].damagePer;
         target.EnemyDamaged(damage, 2);
     }
 

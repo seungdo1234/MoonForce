@@ -74,14 +74,14 @@ public class Player : MonoBehaviour
         }
         isDamaged = true;
 
-        GameManager.instance.curHealth--;
+        GameManager.instance.statManager.curHealth--;
         //   AudioManager.instance.PlayerSfx(AudioManager.Sfx.Hit);
 
-        if (GameManager.instance.curHealth > 0)
+        if (GameManager.instance.statManager.curHealth > 0)
         {
             StartCoroutine(OnDamaged());
         }
-        else if (GameManager.instance.curHealth == 0)
+        else if (GameManager.instance.statManager.curHealth == 0)
         {
             // transform.childCount : 자식 오브젝트 갯수 반환
             for (int i = 2; i < transform.childCount; i++)

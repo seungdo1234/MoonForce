@@ -17,15 +17,8 @@ public class Enemy : MonoBehaviour
 
     [Header("# EnemyStatusEffect")]
     public EnemyStatusEffect statusEffect;
-    public float burningEffectTime;
-    public float wettingEffectTime;
     public bool isWetting; // wet 상태인지 (맞다면 마법 데미지 ++)
-    public float wetDamagePer;
-    public float restraintEffectTime;
     public bool isRestraint;
-    public float speedReducedEffectTime;
-    public float speedReducePer;
-    public float darknessExpTime;
 
     private int burnningDamage;
     private float lerpTime;
@@ -128,14 +121,14 @@ public class Enemy : MonoBehaviour
 
         if (collision.gameObject.layer == 11) // 만약 마력탄이라면
         {
-            knockBackValue = GameManager.instance.knockBackValue;
+            knockBackValue = GameManager.instance.statManager.knockBackValue;
             EnemyDamaged(collision.GetComponent<Bullet>().damage, 1);
             StatusEffect();
         }
         else // 마법이라면 
         {
             int number = collision.GetComponent<MagicNumber>().magicNumber;
-            float damage = GameManager.instance.attack * GameManager.instance.magicManager.magicInfo[number].damagePer;
+            float damage = GameManager.instance.statManager.attack * GameManager.instance.magicManager.magicInfo[number].damagePer;
 
             if (number == 9 || number == 11)
             {
@@ -203,7 +196,7 @@ public class Enemy : MonoBehaviour
         }
         StartCoroutine(IsDamaged());
 
-        float damage = GameManager.instance.attack * GameManager.instance.magicManager.magicInfo[number].damagePer;
+        float damage = GameManager.instance.statManager.attack * GameManager.instance.magicManager.magicInfo[number].damagePer;
 
         EnemyDamaged(damage, 2);
 
@@ -220,8 +213,8 @@ public class Enemy : MonoBehaviour
         switch (GameManager.instance.attribute)
         {
             case ItemAttribute.Fire:
-                lerpTime = burningEffectTime + 1;
-                burnningDamage = (int)burningEffectTime;
+                lerpTime = GameManager.instance.statManager.burningEffectTime + 1;
+                burnningDamage = (int)GameManager.instance.statManager.burningEffectTime;
 
                 if (statusEffect != EnemyStatusEffect.Burn)
                 {
@@ -230,7 +223,7 @@ public class Enemy : MonoBehaviour
                 }
                 break;
             case ItemAttribute.Water:
-                lerpTime = wettingEffectTime;
+                lerpTime = GameManager.instance.statManager.wettingEffectTime;
 
                 if (statusEffect != EnemyStatusEffect.Wet)
                 {
@@ -240,7 +233,7 @@ public class Enemy : MonoBehaviour
 
                 break;
             case ItemAttribute.Grass:
-                lerpTime = restraintEffectTime;
+                lerpTime = GameManager.instance.statManager.restraintTime;
                 if (statusEffect != EnemyStatusEffect.GrassRestraint)
                 {
                     statusEffect = EnemyStatusEffect.GrassRestraint;
@@ -250,7 +243,7 @@ public class Enemy : MonoBehaviour
                 break;
             case ItemAttribute.Eeath:
 
-                lerpTime = speedReducedEffectTime;
+                lerpTime = GameManager.instance.statManager.speedReducedEffectTime;
 
                 if (statusEffect != EnemyStatusEffect.Earth)
                 {
@@ -324,7 +317,7 @@ public class Enemy : MonoBehaviour
             if (lerpTime < burnningDamage)
             {
                 burnningDamage--;
-                EnemyDamaged(Mathf.Floor(GameManager.instance.attack * 0.5f), 2);
+                EnemyDamaged(Mathf.Floor(GameManager.instance.statManager.attack * GameManager.instance.statManager.burningDamagePer), 2);
                 anim.SetTrigger("Hit");
             }
             yield return null;
@@ -366,9 +359,9 @@ public class Enemy : MonoBehaviour
 
         spriteRenderer.color = new Color(1, 0.6f, 0.3f, 1);
 
-        anim.speed = 1 - speedReducePer;
+        anim.speed = 1 - GameManager.instance.statManager.speedReducePer;
 
-        this.speed -= this.speed * speedReducePer;
+        this.speed -= this.speed * GameManager.instance.statManager.speedReducePer;
 
         while (lerpTime > 0)
         {
@@ -425,7 +418,7 @@ public class Enemy : MonoBehaviour
 
         spriteRenderer.color = new Color(1, 0.45f, 1, 1);
 
-        lerpTime = darknessExpTime;
+        lerpTime = GameManager.instance.statManager.darknessExpTime;
 
         while (lerpTime > 0)
         {
@@ -444,11 +437,14 @@ public class Enemy : MonoBehaviour
 
     private void ExplosionSpawn()
     {
+
         Transform exp = GameManager.instance.magicManager.Get(0).transform;
+
+        GameManager.instance.magicManager.magicInfo[0].damagePer = GameManager.instance.statManager.darkExplosionDamagePer;
 
         exp.position = transform.position;
 
-        float expScale = (GameManager.instance.weaponNum - 1) * 0.15f;
+        float expScale = (GameManager.instance.statManager.weaponNum - 1) * 0.15f;
         exp.localScale = new Vector3(1, 1, 1) + new Vector3(expScale, expScale, expScale);
     }
 
@@ -456,7 +452,7 @@ public class Enemy : MonoBehaviour
     {
         if (isWetting && hitType ==2)
         {
-            damage *= wetDamagePer;
+            damage *= GameManager.instance.statManager.wettingDamagePer;
         }
 
         int damageValue = 0;
@@ -465,7 +461,7 @@ public class Enemy : MonoBehaviour
         {
             int random = Random.Range(1, 101);
 
-            if (GameManager.instance.instantKillPer >= random) // 즉사
+            if (GameManager.instance.statManager.instantKillPer >= random) // 즉사
             {
                 damageValue = 999;
             }

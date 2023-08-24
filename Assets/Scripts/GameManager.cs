@@ -12,22 +12,11 @@ public class GameManager : MonoBehaviour
     public Player player;
     public DamageTextPool damageTextPool;
     public MagicManager magicManager;
+    public StatManager statManager;
 
     [Header("# Player Data")]
+    public int availablePoint; // 스테이지가 끝날때마다 스탯 레벨을 올릴 수 있는 포인트
     public ItemAttribute attribute;
-    public float maxHealth;
-    public float curHealth;
-    public int attack;
-    public int baseAttack;
-    public float rate;
-    public float baseRate;
-    public float moveSpeed;
-    public float baseMoveSpeed;
-    public int penetration; // 관통력
-    public int weaponNum; // 총 : 한번에 발사 되는 총탄, 근접 : 삽의 갯수
-    public int instantKillPer; // 즉사 확률
-    public float knockBackValue; // Enemy가 마력탄을 맞았을 때 넉백 수치
-
 
 
     [Header("# Stage Data")]
@@ -56,7 +45,6 @@ public class GameManager : MonoBehaviour
     {
         // 자기 자신으로 초기화
         instance = this;
-        curHealth = maxHealth;
     }
 
     private void Start()
@@ -87,6 +75,7 @@ public class GameManager : MonoBehaviour
         hud.SetActive(false);
         magicManager.StageClear();
         yield return new WaitForSeconds(3f);
+        availablePoint++;
         level++;
         clearReward.SetActive(true);
         player.gameObject.SetActive(false);

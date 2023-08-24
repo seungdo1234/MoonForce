@@ -16,14 +16,14 @@ public class Weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(timer < GameManager.instance.rate)
+        if(timer < GameManager.instance.statManager.rate)
         {
             timer += Time.deltaTime;
         }
 
   
 
-        if (player.scanner.nearestTarget[0] && timer > GameManager.instance.rate)
+        if (player.scanner.nearestTarget[0] && timer > GameManager.instance.statManager.rate)
         {
             timer = 0;
             Fire();
@@ -33,7 +33,7 @@ public class Weapon : MonoBehaviour
     private void Fire() // 가장 가까운 Enemy한테 총알 발사
     {
         // Enemy 위치, 방향 구하기
-        for(int i = 0; i< GameManager.instance.weaponNum; i++)
+        for(int i = 0; i< GameManager.instance.statManager.weaponNum; i++)
         {
             if(player.scanner.nearestTarget[i] == null || (GameManager.instance.attribute == ItemAttribute.Dark && i == 1))
             {
@@ -51,7 +51,7 @@ public class Weapon : MonoBehaviour
             bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir); // Enemy 방향으로 bullet 회전
 
             // 원거리 공격은 Count는 관통력
-            bullet.GetComponent<Bullet>().Init(GameManager.instance.attack, GameManager.instance.penetration - 1, dir);
+            bullet.GetComponent<Bullet>().Init(GameManager.instance.statManager.attack, GameManager.instance.statManager.penetration - 1, dir);
  
         }
     }

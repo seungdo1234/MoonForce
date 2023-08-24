@@ -138,16 +138,16 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler , IPointerE
         if( slotType == SlotType.main)
         {
             GameManager.instance.attribute = item.itemAttribute;
-            GameManager.instance.attack = GameManager.instance.baseAttack + item.attack;
+            GameManager.instance.statManager.attack = GameManager.instance.statManager.baseAttack + item.attack;
             if (GameManager.instance.attribute == ItemAttribute.Dark)
             {
-                GameManager.instance.rate = GameManager.instance.baseRate * 2 - item.rate;
+                GameManager.instance.statManager.rate = GameManager.instance.statManager.baseRate * 2 - item.rate;
             }
             else
             {
-                GameManager.instance.rate = GameManager.instance.baseRate - item.rate;
+                GameManager.instance.statManager.rate = GameManager.instance.statManager.baseRate - item.rate;
             }
-            GameManager.instance.moveSpeed = GameManager.instance.baseMoveSpeed + item.moveSpeed;
+            GameManager.instance.statManager.moveSpeed = GameManager.instance.statManager.baseMoveSpeed + item.moveSpeed;
         }
 
 
@@ -192,13 +192,16 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler , IPointerE
                     }
                 }
 
-                GameManager.instance.weaponNum++;
+                GameManager.instance.statManager.weaponNum++; // 마력탄 갯수 증가
 
                 isEquip = true;
             }
             else if(isEquip && item.itemSprite == null) // 해제
             {
-                GameManager.instance.weaponNum--;
+
+                GameManager.instance.magicManager.magicInfo[prevItem.skillNum].isMagicActive = false;
+
+                GameManager.instance.statManager.weaponNum--; // 마력탄 갯수 감소
 
                 for (int i = 0; i < prevItem.aditionalAbility.Length; i++) // 추가 능력치 해제
                 {
@@ -231,7 +234,6 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler , IPointerE
                     }
                 }
 
-                GameManager.instance.magicManager.magicInfo[prevItem.skillNum].isMagicActive = false;
                 isEquip = false;
             }
         }

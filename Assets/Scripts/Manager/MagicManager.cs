@@ -237,7 +237,6 @@ public class MagicManager : MonoBehaviour
         if (!magic.GetComponent<MagicNumber>().isSizeUp && !magicInfo[magicNumber].magicCountIncrease && magicInfo[magicNumber].magicSizeStep != 0)
         {
             int magicSizeStep = magicInfo[magicNumber].magicSizeStep;
-            Debug.Log(magic.localScale);
             magic.localScale = new Vector3(magic.localScale.x + (magicSizeStep * 0.25f), magic.localScale.y + (magicSizeStep * 0.25f), magic.localScale.z + (magicSizeStep * 0.25f));
             magic.GetComponent<MagicNumber>().isSizeUp = true;
         }

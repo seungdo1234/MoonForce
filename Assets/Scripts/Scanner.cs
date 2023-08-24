@@ -19,10 +19,10 @@ public class Scanner : MonoBehaviour
     // 가장 가까운 Enemy Transform 정보 반환
     private Transform[] GetNearest()
     {
-        Transform[] result = new Transform[GameManager.instance.weaponNum]; // 발사하는 탄환의 갯수 만큼 초기회
+        Transform[] result = new Transform[GameManager.instance.statManager.weaponNum]; // 발사하는 탄환의 갯수 만큼 초기회
         List<Transform> uniqueTargets = new List<Transform>(); // 이미 Target으로 설정된 Enemy 리스트
 
-        for (int i = 0; i < GameManager.instance.weaponNum; i++)
+        for (int i = 0; i < GameManager.instance.statManager.weaponNum; i++)
         {
             float closestDistance = float.MaxValue;
             Transform closestTarget = null;
