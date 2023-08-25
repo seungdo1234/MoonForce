@@ -8,6 +8,8 @@ public class ItemPreview : MonoBehaviour
     string itemNameColor;
     string itemRankColor;
     string itemQuality;
+    string itemAttributeColor;
+    string itemAttribute;
     private void Awake()
     {
         itemInfomation = GetComponentsInChildren<Text>();
@@ -47,10 +49,43 @@ public class ItemPreview : MonoBehaviour
                     break;
             }
 
+            switch (item.itemAttribute)
+            {
+                case ItemAttribute.Non:
+                    itemAttributeColor = "white";
+                    itemAttribute = "무 속성";
+                    break;
+                case ItemAttribute.Fire:
+                    itemAttributeColor = "orange";
+                    itemAttribute = "불 속성";
+                    break;
+                case ItemAttribute.Water:
+                    itemAttributeColor = "blue";
+                    itemAttribute = "수 속성";
+                    break;
+                case ItemAttribute.Eeath:
+                    itemAttributeColor = "brown";
+                    itemAttribute = "땅 속성";
+                    break;
+                case ItemAttribute.Grass:
+                    itemAttributeColor = "green";
+                    itemAttribute = "풀 속성";
+                    break;
+                case ItemAttribute.Dark:
+                    itemAttributeColor = "black";
+                    itemAttribute = "어둠 속성";
+                    break;
+                case ItemAttribute.Holy:
+                    itemAttributeColor = "yellow";
+                    itemAttribute = "빛 속성";
+                    break;
+
+            }
 
             itemInfomation[0].text = string.Format("<color={0}>{1}</color>", itemNameColor, item.itemName);
             itemInfomation[1].text = string.Format("(<color={0}>{1}</color>)", itemRankColor, item.rank);
-            itemInfomation[2].text = string.Format("공격력 + {0}\n공격속도 + {1}%\n\n{2}", item.attack, item.rate * 100, item.itemDesc);
+            itemInfomation[2].text = string.Format("<color={0}>{1}</color>",itemAttributeColor,itemAttribute);
+            itemInfomation[3].text = string.Format("공격력 + {0}\n공격속도 + {1}%\n\n{2}", item.attack, item.rate * 100,item.itemDesc);
 
         }
         else if(item.type == ItemType.Book)
@@ -68,6 +103,7 @@ public class ItemPreview : MonoBehaviour
                     break;
             }
 
+            itemInfomation[3].text = null;
             itemInfomation[2].text = null;
 
             for (int i = 0; i < item.aditionalAbility.Length;i++)
@@ -75,27 +111,27 @@ public class ItemPreview : MonoBehaviour
                 switch (item.aditionalAbility[i])
                 {
                     case 0:
-                        itemInfomation[2].text += "마법 피해량 증가\n";
+                        itemInfomation[3].text += "마법 피해량 증가\n";
                         break;
                     case 1:
 
                         if (GameManager.instance.magicManager.magicInfo[item.skillNum].magicCoolTime == 0)
                         {
-                            itemInfomation[2].text += "마법 공격 속도 증가\n";
+                            itemInfomation[3].text += "마법 공격 속도 증가\n";
                         }
                         else
                         {
-                            itemInfomation[2].text += "마법 쿨타임 감소\n";
+                            itemInfomation[3].text += "마법 쿨타임 감소\n";
                         }
                             break;
                     case 2:
                         if (GameManager.instance.magicManager.magicInfo[item.skillNum].magicCountIncrease)
                         {
-                            itemInfomation[2].text += "마법 출력 갯수 증가\n";
+                            itemInfomation[3].text += "마법 출력 갯수 증가\n";
                         }
                         else
                         {
-                            itemInfomation[2].text += "마법 크기 증가\n";
+                            itemInfomation[3].text += "마법 크기 증가\n";
                         }
                         break;
                 }
