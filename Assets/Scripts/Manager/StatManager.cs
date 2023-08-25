@@ -67,7 +67,7 @@ public class StatManager : MonoBehaviour
                 attack = baseAttack;
                 break;
             case 1:
-                baseRate += statUpValue[statNumber];
+                baseRate -= statUpValue[statNumber];
                 rate = baseRate;
                 break;
             case 2:

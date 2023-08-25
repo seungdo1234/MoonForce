@@ -51,6 +51,14 @@ public class PoolManager : MonoBehaviour
                 // 놀고 있는 게임오브젝트 select 변수에 할당
                 select = item;
                 select.SetActive(true);
+                if(index == 1)
+                {
+                    SpriteRenderer sprite = select.GetComponent<SpriteRenderer>();
+                   if(sprite.sprite != bulletAttributes[(int)attribute - 1])
+                    {
+                        sprite.sprite = bulletAttributes[(int)attribute - 1];
+                    }
+                }
                 break;
             }   
         }

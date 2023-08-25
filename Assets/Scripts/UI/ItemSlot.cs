@@ -200,7 +200,7 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler , IPointerE
             {
 
                 GameManager.instance.magicManager.magicInfo[prevItem.skillNum].isMagicActive = false;
-
+    
                 GameManager.instance.statManager.weaponNum--; // 마력탄 갯수 감소
 
                 for (int i = 0; i < prevItem.aditionalAbility.Length; i++) // 추가 능력치 해제
