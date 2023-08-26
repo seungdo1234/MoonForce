@@ -7,8 +7,6 @@ public class Spawner : MonoBehaviour
     public float levelTime;
 
 
-
-
     // ≈∏¿Ã∏” 
     private float timer;
 
