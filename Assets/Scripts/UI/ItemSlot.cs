@@ -196,7 +196,7 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler , IPointerE
 
                 isEquip = true;
             }
-            else if(isEquip && item.itemSprite == null) // 해제
+            else if(isEquip && (item.itemSprite == null || prevItem.skillNum != item.skillNum)) // 해제
             {
 
                 GameManager.instance.magicManager.magicInfo[prevItem.skillNum].isMagicActive = false;

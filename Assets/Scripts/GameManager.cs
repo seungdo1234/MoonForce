@@ -92,6 +92,7 @@ public class GameManager : MonoBehaviour
         kill = 0;
         clearReward.SetActive(false);
         magicManager.StageStart();
+        spawner.StageStart();
     }
     private void Update()
     {

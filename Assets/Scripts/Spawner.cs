@@ -1,15 +1,20 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class Spawner : MonoBehaviour
 {
     public Transform[] spawnPoint;
     public float levelTime;
 
+
+
     [Header("Enemy Spawn Data")]
     public SpawnData[] spawnData;
+    public int[] enemySpawnNum = new int[5];
 
     [Header("Enemy Spawn Percent")]
-    public float[] enemySpawnPer;
+    public int[] enemySpawnPer;
     // 타이머 
     private float timer;
 
@@ -19,32 +24,77 @@ public class Spawner : MonoBehaviour
         spawnPoint = GetComponentsInChildren<Transform>();
 
     }
-    
+    private void Start()
+    {
+
+    }
     public  void StageStart()
     {
-        for(int i =0; i<GameManager.instance.enemyMaxNum; i++)
-        {
+        EnemyRandomTypeSelect();
 
+        for(int i =0; i < spawnData.Length; i++)
+        {
+            if(enemySpawnNum[i] != 0)
+            {
+                StartCoroutine(EnemySpawn(i));
+            }
+        }
+
+
+    }
+
+    private void EnemyRandomTypeSelect()
+    {
+        const int NumEnemyTypes = 5;
+        const int MinRandomValue = 1;
+        const int MaxRandomValue = 100;
+
+        enemySpawnNum = new int[NumEnemyTypes];
+
+        for (int i = 0; i < GameManager.instance.enemyMaxNum; i++) // 해당 스테이지의 Enemy 소환량 만큼 반복
+        {
+            int percentSum = 0;
+            int random = Random.Range(MinRandomValue, MaxRandomValue + 1); // 확률
+
+            for (int j = 0; j < enemySpawnPer.Length; j++) // 어던 타입의 Enemy가 나오는지 확률이 담긴 배열 만큼 반복 (크기 5)
+            {
+                percentSum += enemySpawnPer[j];
+
+                if (random <= percentSum) // 해당 숫자보다 낮다면 j번 째 Enemy 타입 소환 
+                {
+                    enemySpawnNum[j]++;
+                    break;
+                }
+            }
+        }
+    }
+
+    private IEnumerator EnemySpawn(int enemyType)
+    {
+        float curTime = 0;
+        int curEnemyNum = 0;
+
+        while (curEnemyNum < enemySpawnNum[enemyType])
+        {
+            curTime += Time.deltaTime;
+
+            if(curTime >= spawnData[enemyType].spawnTime)
+            {
+                Debug.Log(enemyType);
+                curEnemyNum++;
+                GameManager.instance.enemyCurNum++;
+                curTime = 0;
+                GameObject enemy = GameManager.instance.pool.Get(0);
+                // *주의 : GetComponentsInChildren은 자기 자신도 포함이므로 0은 Player의 Transform 정보가 들어감 -> 랜덤은 1부터 시작
+                enemy.transform.position = spawnPoint[Random.Range(1, spawnPoint.Length)].position;
+                enemy.GetComponent<Enemy>().Init(spawnData[enemyType]);
+            }
+            yield return null;
         }
     }
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.instance.gameStop)
-        {
-            return;
-        }
-
-        timer += Time.deltaTime;
-        // FloorToInt 소수점 아래는 버리고 Int형으로 바꾸는 함수
-        // CeilToInt 올림 후 Int형으로 바꿈
-
-        if (GameManager.instance.enemyCurNum < GameManager.instance.enemyMaxNum && timer > spawnData[0].spawnTime)
-        {
-            timer = 0;
-            GameManager.instance.enemyCurNum++;
-            EnemySpawn();
-        }
 
     }
     

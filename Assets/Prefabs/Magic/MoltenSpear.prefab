@@ -134,5 +134,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6b6834692a48ad42b8ca71caa34117c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vectorPos: {x: 0, y: 1.51, z: 0}
+  vectorPos: {x: 0, y: 1.2, z: 0}
   target: {fileID: 0}
