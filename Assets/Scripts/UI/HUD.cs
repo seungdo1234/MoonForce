@@ -54,7 +54,7 @@ public class HUD : MonoBehaviour
 
             case InfoType.Kill:
                 int curKill = GameManager.instance.kill;
-                int maxKill = GameManager.instance.enemyMaxNum[GameManager.instance.level];
+                int maxKill = GameManager.instance.enemyMaxNum;
 
                 myText.text = string.Format("{0}", maxKill - curKill);
                 break;

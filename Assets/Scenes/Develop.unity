@@ -4128,7 +4128,7 @@ MonoBehaviour:
   maxGameTime: 300
   curGameTime: 0
   kill: 0
-  enemyMaxNum: 320000001e00000028000000320000003c000000
+  enemyMaxNum: 840
   enemyCurNum: 9999
   level: 0
   clearReward: {fileID: 124120846}
@@ -6122,7 +6122,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 743519845}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.47, z: 0}
+  m_LocalPosition: {x: 0, y: -0.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10594,7 +10594,7 @@ MonoBehaviour:
     rank: 1
     quality: 1
     itemSprite: {fileID: 21300000, guid: 552525ce089a36749b7cbc7c212d47c9, type: 3}
-    itemAttribute: 6
+    itemAttribute: 7
     itemName: "\uC870\uC7A1\uD55C \uC9C0\uD321\uC774"
     attack: 3
     rate: 0.1
@@ -10615,7 +10615,7 @@ MonoBehaviour:
     moveSpeed: 0
     itemDesc: 0
     bookName: "\uB9C8\uBC95 \uAD6C"
-    skillNum: 12
+    skillNum: 6
     aditionalAbility: 020000000200000002000000
 --- !u!1 &1234341418
 GameObject:
@@ -13326,7 +13326,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 743519846}
   - {fileID: 85269485}
@@ -16831,12 +16831,34 @@ MonoBehaviour:
   - {fileID: 1336886575}
   - {fileID: 974173417}
   - {fileID: 43295723}
+  levelTime: 0
   spawnData:
   - spawnTime: 0.5
-    spriteType: 1
+    spriteType: 0
     health: 20
+    speed: 1.5
+  - spawnTime: 0.5
+    spriteType: 0
+    health: 30
+    speed: 1.8
+  - spawnTime: 1
+    spriteType: 2
+    health: 15
+    speed: 2.5
+  - spawnTime: 15
+    spriteType: 3
+    health: 40
     speed: 2
-  levelTime: 0
+  - spawnTime: 10
+    spriteType: 4
+    health: 20
+    speed: 1.8
+  enemySpawnPer:
+  - 1
+  - 0
+  - 0
+  - 0
+  - 0
 --- !u!1 &1935773005
 GameObject:
   m_ObjectHideFlags: 0

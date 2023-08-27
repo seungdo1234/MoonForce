@@ -3,10 +3,13 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public Transform[] spawnPoint;
-    public SpawnData[] spawnData;
     public float levelTime;
 
+    [Header("Enemy Spawn Data")]
+    public SpawnData[] spawnData;
 
+    [Header("Enemy Spawn Percent")]
+    public float[] enemySpawnPer;
     // 타이머 
     private float timer;
 
@@ -17,6 +20,13 @@ public class Spawner : MonoBehaviour
 
     }
     
+    public  void StageStart()
+    {
+        for(int i =0; i<GameManager.instance.enemyMaxNum; i++)
+        {
+
+        }
+    }
     // Update is called once per frame
     void Update()
     {
@@ -29,7 +39,7 @@ public class Spawner : MonoBehaviour
         // FloorToInt 소수점 아래는 버리고 Int형으로 바꾸는 함수
         // CeilToInt 올림 후 Int형으로 바꿈
 
-        if (GameManager.instance.enemyCurNum < GameManager.instance.enemyMaxNum[GameManager.instance.level] && timer > spawnData[0].spawnTime)
+        if (GameManager.instance.enemyCurNum < GameManager.instance.enemyMaxNum && timer > spawnData[0].spawnTime)
         {
             timer = 0;
             GameManager.instance.enemyCurNum++;

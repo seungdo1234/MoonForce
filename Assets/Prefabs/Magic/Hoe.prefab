@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 11
   m_Sprite: {fileID: 762804792, guid: 0d5e657ee5a074e4baa53d5b248a01d2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -101,8 +101,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.45, y: 0.7222222}
+  m_Offset: {x: -0.018381296, y: 0.06841895}
+  m_Size: {x: 0.2661875, y: 0.36889353}
   m_Direction: 0
 --- !u!114 &6213937271121610555
 MonoBehaviour:
@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1412b161c1781c45afcbd6e7c6bf79d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 225
+  rotationSpeed: 300
   lerpTime: 0
   throwSpeed: 10
   maxDistance: 8

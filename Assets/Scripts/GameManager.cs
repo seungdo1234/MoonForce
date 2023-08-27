@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public DamageTextPool damageTextPool;
     public MagicManager magicManager;
     public StatManager statManager;
+    private Spawner spawner;
 
     [Header("# Player Data")]
     public int availablePoint; // 스테이지가 끝날때마다 스탯 레벨을 올릴 수 있는 포인트
@@ -24,7 +25,7 @@ public class GameManager : MonoBehaviour
     public float maxGameTime;
     public float curGameTime;
     public int kill;
-    public int[] enemyMaxNum;
+    public int enemyMaxNum;
     public int enemyCurNum = 9999;
     public int level;
 
@@ -49,7 +50,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-      //  Time.timeScale = 0f;
+        spawner = player.GetComponentInChildren<Spawner>();
     }
     public void GameStart()
     {
@@ -63,7 +64,7 @@ public class GameManager : MonoBehaviour
     }
     private bool isClear()
     {
-        if(kill == enemyMaxNum[level])
+        if(kill == enemyMaxNum)
         {
             return true;
         }

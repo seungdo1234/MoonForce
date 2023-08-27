@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 3344825427565340877}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.26, y: -5.53, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 6
+  m_SortingOrder: 11
   m_Sprite: {fileID: -1796865113, guid: efe141f5e9d58e645baef1c05b861654, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -124,7 +124,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6, y: 6}
+    oldSize: {x: 3.2, y: 3.2}
     newSize: {x: 2.6666667, y: 2.6666667}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -132,17 +132,17 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.4590565, y: 1.5097528}
-      - {x: -0.6557424, y: 1.4703693}
-      - {x: -2.1493814, y: 0.30402565}
-      - {x: -2.5057917, y: -0.25505972}
-      - {x: -2.487165, y: -1.0799603}
-      - {x: -2.220817, y: -1.9756908}
-      - {x: -1.3385462, y: -2.2597523}
-      - {x: 2.2422092, y: -2.1417723}
-      - {x: 2.7871327, y: -0.9306884}
-      - {x: 2.140813, y: 0.3837142}
-      - {x: 1.7116594, y: 1.0463233}
+    - - {x: 0.07997683, y: 0.8953824}
+      - {x: -0.52502525, y: 0.8167835}
+      - {x: -1.0644292, y: 0.34324074}
+      - {x: -1.4208395, y: -0.42499214}
+      - {x: -1.2192088, y: -1.0799603}
+      - {x: -0.7437134, y: -1.1652446}
+      - {x: 0.15162921, y: -1.2270873}
+      - {x: 1.2749022, y: -1.1091071}
+      - {x: 1.5322481, y: -0.4993217}
+      - {x: 1.0035743, y: 0.436001}
+      - {x: 0.6005639, y: 0.7718173}
 --- !u!114 &-3972401538325724840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,5 +156,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   magicNumber: 10
-  resetScale: {x: 1.2, y: 1.2, z: 1.2}
+  resetScale: {x: 1.5, y: 1.5, z: 1.5}
   isSizeUp: 0
