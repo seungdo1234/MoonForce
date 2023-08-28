@@ -80,7 +80,6 @@ public class Spawner : MonoBehaviour
 
             if(curTime >= spawnData[enemyType].spawnTime)
             {
-                Debug.Log(enemyType);
                 curEnemyNum++;
                 GameManager.instance.enemyCurNum++;
                 curTime = 0;
@@ -91,19 +90,6 @@ public class Spawner : MonoBehaviour
             }
             yield return null;
         }
-    }
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-    
-    private void EnemySpawn()
-    {
-        GameObject enemy = GameManager.instance.pool.Get(0);
-        // *주의 : GetComponentsInChildren은 자기 자신도 포함이므로 0은 Player의 Transform 정보가 들어감 -> 랜덤은 1부터 시작
-        enemy.transform.position = spawnPoint[Random.Range(1, spawnPoint.Length)].position;
-        enemy.GetComponent<Enemy>().Init(spawnData[0]);
     }
 }
 

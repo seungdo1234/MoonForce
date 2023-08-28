@@ -34,9 +34,11 @@ public class Enemy : MonoBehaviour
 
     private bool isLive; // Enmey가 살아있는지
 
+    private RushEnemy rush;
     private int hitAnimID;
     private Rigidbody2D rigid;
-    private SpriteRenderer spriteRenderer;
+    [HideInInspector]
+    public SpriteRenderer spriteRenderer;
     private Animator anim;
     private Collider2D col; // 2D는 Collider2D로 모든 콜라이더를 가져올 수 있음
     // 다음 FixedUpdate까지 기다림
@@ -50,12 +52,13 @@ public class Enemy : MonoBehaviour
         anim = GetComponent<Animator>();
         wait = new WaitForFixedUpdate();
         hitAnimID = Animator.StringToHash("Hit");
+        rush = GetComponent<RushEnemy>();
     }
 
 
     private void FixedUpdate() // 물리적인 이동은 FixedUpdate
     {
-        if (!isLive || anim.GetCurrentAnimatorStateInfo(0).IsName("Hit")) // Enemy가 죽었다면 return
+        if (!isLive || anim.GetCurrentAnimatorStateInfo(0).IsName("Hit") || rush.isReady) // Enemy가 죽었다면 return
         {
             return;
         }
@@ -76,7 +79,7 @@ public class Enemy : MonoBehaviour
     private void LateUpdate()
     {
 
-        if (isRestraint || !isLive)
+        if (isRestraint || !isLive || rush.isReady)
         {
             return;
         }
@@ -109,6 +112,15 @@ public class Enemy : MonoBehaviour
         speed = data.speed;
         maxHealth = data.health;
         health = data.health;
+        if(data.spriteType == 3)
+        {
+            rigid.mass = 100;
+            rush.Init();
+        }
+        else
+        {
+            rigid.mass = 1;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -270,15 +282,23 @@ public class Enemy : MonoBehaviour
     }
     private IEnumerator KnockBack()
     {
-        enemyKnockBack = true;
-        yield return wait; // 다음 하나의 물리 프레임을 딜레이
-        rigid.mass = 100;
-        Vector3 playerPos = GameManager.instance.player.transform.position;
-        Vector3 dirVec = transform.position - playerPos;
-        rigid.AddForce(dirVec.normalized * knockBackValue, ForceMode2D.Impulse);
-        yield return wait; // 다음 하나의 물리 프레임을 딜레이
-        rigid.mass = 1;
-        enemyKnockBack = false;
+        if (!rush.isReady)
+        {
+            enemyKnockBack = true;
+            yield return wait; // 다음 하나의 물리 프레임을 딜레이
+            rigid.mass = 100;
+            Vector3 playerPos = GameManager.instance.player.transform.position;
+            Vector3 dirVec = transform.position - playerPos;
+            rigid.AddForce(dirVec.normalized * knockBackValue, ForceMode2D.Impulse);
+            yield return wait; // 다음 하나의 물리 프레임을 딜레이
+            rigid.mass = 1;
+            enemyKnockBack = false;
+        }
+        else
+        {
+            yield return wait; // 다음 하나의 물리 프레임을 딜레이
+        }
+       
 
     }
     private IEnumerator ElectricShock(GameObject elec) // 전기쇼크를 맞았을 때 감전
@@ -394,7 +414,7 @@ public class Enemy : MonoBehaviour
         this.speed = 0f;
         rigid.velocity = Vector2.zero;
 
-        anim.ResetTrigger(hitAnimID);
+        anim.ResetTrigger(hitAnimID); // 애니메이션을 멈춤
         while (lerpTime > 0)
         {
             lerpTime -= Time.deltaTime;

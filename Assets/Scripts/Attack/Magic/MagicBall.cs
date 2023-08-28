@@ -79,7 +79,7 @@ public class MagicBall : MonoBehaviour
                 }
             }
 
-            if (currentTime > lerpTime)
+            if (currentTime > lerpTime) // 무한대 모양을 그림
             {
                 currentTime = 0;
                 start = start == 0 ? 1 : 0;
