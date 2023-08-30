@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3821942766650610650}
   - component: {fileID: 3569385654463400254}
   - component: {fileID: 597582752284441065}
+  - component: {fileID: -8083129796271845971}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Enemy
@@ -103,9 +104,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f5946084e435734fa717988eb36ea04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
   speed: 0
   health: 0
   maxHealth: 50
+  enemyType: 0
   enemyKnockBack: 0
   enemyDamaged: 0
   damagedTime: 1
@@ -120,6 +123,9 @@ MonoBehaviour:
   - {fileID: 22100000, guid: 8d1d920724ffb8a409ce0e458dc4b7a9, type: 2}
   - {fileID: 22100000, guid: 25f7a818644b68042bb0c0c2a28d1550, type: 2}
   target: {fileID: 0}
+  isLive: 0
+  rigid: {fileID: 0}
+  spriteRenderer: {fileID: 0}
 --- !u!50 &3821942766650610652
 Rigidbody2D:
   serializedVersion: 4
@@ -206,8 +212,27 @@ MonoBehaviour:
   castTime: 1
   rushSpeed: 10
   rushDelayTime: 3
+  pushForce: 5
   isReady: 0
   isAttack: 0
+  isRushing: 0
+--- !u!114 &-8083129796271845971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3821942766650610649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3841b79e18354d844a38e3f45cbb658f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0.5
+  coolTime: 3
+  rangeDistance: 5
+  throwSpeed: 7
+  isReady: 1
 --- !u!1 &3821942767093678587
 GameObject:
   m_ObjectHideFlags: 0

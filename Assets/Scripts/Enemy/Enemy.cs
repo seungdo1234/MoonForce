@@ -5,9 +5,11 @@ public enum EnemyStatusEffect { Defalt, Burn, Wet, Earth, GrassRestraint, Darkne
 public class Enemy : MonoBehaviour
 {
     [Header("# EnemyBaseStat")]
+    public int damage;
     public float speed;
     public float health;
     public float maxHealth;
+    public int enemyType;
 
     [Header("# EnemyHit")]
     public bool enemyKnockBack; // 넉백일 때
@@ -32,11 +34,12 @@ public class Enemy : MonoBehaviour
     public Rigidbody2D target; // 타겟
 
 
-    private bool isLive; // Enmey가 살아있는지
+    public bool isLive; // Enmey가 살아있는지
 
     private RushEnemy rush;
+    private RangeAttackEnemy rangeAttackEnemy;
     private int hitAnimID;
-    private Rigidbody2D rigid;
+    public Rigidbody2D rigid;
     [HideInInspector]
     public SpriteRenderer spriteRenderer;
     private Animator anim;
@@ -53,13 +56,18 @@ public class Enemy : MonoBehaviour
         wait = new WaitForFixedUpdate();
         hitAnimID = Animator.StringToHash("Hit");
         rush = GetComponent<RushEnemy>();
+        rangeAttackEnemy = GetComponent<RangeAttackEnemy>();
     }
 
 
     private void FixedUpdate() // 물리적인 이동은 FixedUpdate
     {
-        if (!isLive || anim.GetCurrentAnimatorStateInfo(0).IsName("Hit") || rush.isReady) // Enemy가 죽었다면 return
+        if (!isLive || anim.GetCurrentAnimatorStateInfo(0).IsName("Hit") || rush.isReady || !rangeAttackEnemy.isReady) // Enemy가 죽었다면 return
         {
+            if (!rangeAttackEnemy.isReady)
+            {
+                rigid.velocity = Vector2.zero;
+            }
             return;
         }
 
@@ -79,7 +87,7 @@ public class Enemy : MonoBehaviour
     private void LateUpdate()
     {
 
-        if (isRestraint || !isLive || rush.isReady)
+        if (isRestraint || !isLive || rush.isReady || !rangeAttackEnemy.isReady)
         {
             return;
         }
@@ -112,14 +120,38 @@ public class Enemy : MonoBehaviour
         speed = data.speed;
         maxHealth = data.health;
         health = data.health;
-        if(data.spriteType == 3)
+        enemyType = data.spriteType;
+        damage = data.damage;
+
+        if (enemyType == 3)
         {
             rigid.mass = 100;
+            transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
             rush.Init();
         }
         else
         {
             rigid.mass = 1;
+            rush.isReady = false;
+            rush.isAttack = false;
+            rush.isRushing = false;
+
+            switch (enemyType)
+            {
+                case 0 :
+                    transform.localScale = new Vector3(1f, 1f, 1f);
+                    break;
+                case 1:
+                    transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
+                    break;
+                case 2:
+                    transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+                    break;
+                case 4:
+                    transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
+                    rangeAttackEnemy.Init();
+                    break;
+            }
         }
     }
 

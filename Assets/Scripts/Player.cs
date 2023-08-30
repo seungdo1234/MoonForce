@@ -1,5 +1,5 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
@@ -29,13 +29,23 @@ public class Player : MonoBehaviour
 
     private void OnMove(InputValue value) // Input System으로 자동 호출
     {
-
-        // value는 InputValue 값이므로 Vector2 값으로 변환 시켜야함 -> Get<T>() 으로 value의 형식 변환
-        inputVec = value.Get<Vector2>();
+        if (!GameManager.instance.gameStop)
+        {
+            // value는 InputValue 값이므로 Vector2 값으로 변환 시켜야함 -> Get<T>() 으로 value의 형식 변환
+            inputVec = value.Get<Vector2>();
+        }
+        else
+        {
+            inputVec = Vector2.zero;
+        }
     }
 
     private void FixedUpdate()
     {
+        if (GameManager.instance.gameStop)
+        {
+            return;
+        }
         // normalized는 대각선으로 갈때 상하좌우와 같은 속도를 내기위해 vecter 값을 정규화함
         // fixedDeltaTime은 FixedUpdate에서 사용
         Vector2 nextVec = inputVec * Time.fixedDeltaTime * moveSpeed;
@@ -44,6 +54,12 @@ public class Player : MonoBehaviour
     }
     private void LateUpdate()
     {
+        if (GameManager.instance.gameStop)
+        {
+            anim.SetFloat("Run", 0);
+            return;
+        }
+
         // magnitude : 벡터 값의 순수 길이
         anim.SetFloat("Run", inputVec.magnitude);
         if (inputVec.x != 0)
@@ -72,16 +88,24 @@ public class Player : MonoBehaviour
         {
             return;
         }
+
+        int damage = collision.gameObject.GetComponent<Enemy>().damage;
+        PlayerHit(damage);
+
+    }
+
+    public void PlayerHit(int damage)
+    {
         isDamaged = true;
 
-        GameManager.instance.statManager.curHealth--;
+        GameManager.instance.statManager.curHealth -= damage;
         //   AudioManager.instance.PlayerSfx(AudioManager.Sfx.Hit);
 
         if (GameManager.instance.statManager.curHealth > 0)
         {
             StartCoroutine(OnDamaged());
         }
-        else if (GameManager.instance.statManager.curHealth == 0)
+        else if (GameManager.instance.statManager.curHealth <= 0)
         {
             // transform.childCount : 자식 오브젝트 갯수 반환
             for (int i = 2; i < transform.childCount; i++)
@@ -89,10 +113,9 @@ public class Player : MonoBehaviour
                 // 자식 오브젝트 선택
                 transform.GetChild(i).gameObject.SetActive(false);
             }
-        //    anim.SetTrigger("Dead");
-         //   GameManager.instance.GameOver();
+            //    anim.SetTrigger("Dead");
+            //   GameManager.instance.GameOver();
 
         }
-
     }
 }

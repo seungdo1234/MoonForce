@@ -179,7 +179,7 @@ public class MagicManager : MonoBehaviour
 
             if (magicNumber == 1) // 파이어볼
             {
-                magic.GetComponent<Bullet>().Init(0, magicInfo[magicNumber].penetration, dir);
+                magic.GetComponent<Bullet>().Init(0, magicInfo[magicNumber].penetration, dir, 11.5f);
             }
             else if (magicNumber == 6) // 괭이
             {

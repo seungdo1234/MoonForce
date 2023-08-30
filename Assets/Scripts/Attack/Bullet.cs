@@ -14,7 +14,7 @@ public class Bullet : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
     }
 
-    public void Init(float damage, int per, Vector3 dir)
+    public void Init(float damage, int per, Vector3 dir, float throwSpeed)
     {
         // 무속성일 때 마력탄 데미지 증가
         if(GameManager.instance.attribute == ItemAttribute.Non)
@@ -31,7 +31,7 @@ public class Bullet : MonoBehaviour
         // 방향
         if (per >= 0) // per가 -1이면 근거리 공격
         {
-            rigid.velocity = dir * 10f;
+            rigid.velocity = dir * throwSpeed;
         }
     }
 
@@ -56,7 +56,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Area") || per == -100)
+        if ( !collision.CompareTag("Area") ||  per == -100)
         {
             return;
         }

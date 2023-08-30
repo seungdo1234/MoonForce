@@ -29,11 +29,11 @@ public class PoolManager : MonoBehaviour
     {
 
         // 현재 마력탄의 종류가 장착 무기 속성과 다를 때 스프라이트 변경 
-        if(GameManager.instance.attribute != ItemAttribute.Default && attribute != GameManager.instance.attribute)
+        if (GameManager.instance.attribute != ItemAttribute.Default && attribute != GameManager.instance.attribute)
         {
             attribute = GameManager.instance.attribute;
             prefabs[1].gameObject.GetComponent<SpriteRenderer>().sprite = bulletAttributes[(int)attribute - 1];
-            
+
         }
     }
     // 폴링 함수
@@ -51,16 +51,16 @@ public class PoolManager : MonoBehaviour
                 // 놀고 있는 게임오브젝트 select 변수에 할당
                 select = item;
                 select.SetActive(true);
-                if(index == 1)
+                if (index == 1)
                 {
                     SpriteRenderer sprite = select.GetComponent<SpriteRenderer>();
-                   if(sprite.sprite != bulletAttributes[(int)attribute - 1])
+                    if (sprite.sprite != bulletAttributes[(int)attribute - 1])
                     {
                         sprite.sprite = bulletAttributes[(int)attribute - 1];
                     }
                 }
                 break;
-            }   
+            }
         }
         // 만약 못찾았다면 -> 새롭게 생성하고 select 변수에 할당
         if (!select)
@@ -72,6 +72,19 @@ public class PoolManager : MonoBehaviour
         return select;
     }
 
+    public void StageClear()
+    {
+        // 스테이지를 클리어했기때문에 혹시나 활성화된 마법들을 비활성화 시킴 
+
+        foreach (GameObject item in pools[2])
+        {
+            if (item.activeSelf)
+            {
+                item.SetActive(false);
+            }
+        }
+
+    }
 
 
 }

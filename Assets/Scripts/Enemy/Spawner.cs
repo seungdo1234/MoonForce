@@ -99,6 +99,8 @@ public class SpawnData
 {
     public float spawnTime;
     public int spriteType;
+    public int damage;
     public int health;
     public float speed;
+   
 }

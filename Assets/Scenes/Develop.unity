@@ -4128,7 +4128,7 @@ MonoBehaviour:
   maxGameTime: 300
   curGameTime: 0
   kill: 0
-  enemyMaxNum: 100
+  enemyMaxNum: 200
   enemyCurNum: 9999
   level: 0
   clearReward: {fileID: 124120846}
@@ -16731,6 +16731,7 @@ MonoBehaviour:
   prefabs:
   - {fileID: 3821942766650610649, guid: 9228e7b3f807fa4478a245f3d0298dd0, type: 3}
   - {fileID: 4835697740467263201, guid: 6a57420bc082c4547b1b0d5039400a9b, type: 3}
+  - {fileID: 6183401917183707391, guid: 01a48b5d5e474254a9b68c86b0f26b17, type: 3}
   bulletAttributes:
   - {fileID: -1266594370, guid: 8ce9e88edf8e074498cff6b0d839a75c, type: 3}
   - {fileID: -1469703636, guid: 8ce9e88edf8e074498cff6b0d839a75c, type: 3}
@@ -16863,26 +16864,31 @@ MonoBehaviour:
   spawnData:
   - spawnTime: 0.5
     spriteType: 0
+    damage: 5
     health: 20
     speed: 1.5
   - spawnTime: 0.5
     spriteType: 1
+    damage: 8
     health: 30
     speed: 1.8
   - spawnTime: 1
     spriteType: 2
+    damage: 10
     health: 15
     speed: 2.5
   - spawnTime: 5
     spriteType: 3
+    damage: 15
     health: 40
     speed: 2
   - spawnTime: 5
     spriteType: 4
+    damage: 10
     health: 20
     speed: 1.8
   enemySpawnNum: 0000000000000000000000000000000000000000
-  enemySpawnPer: 3200000028000000000000000a00000000000000
+  enemySpawnPer: 360000001e0000000a0000000300000003000000
 --- !u!1 &1935773005
 GameObject:
   m_ObjectHideFlags: 0

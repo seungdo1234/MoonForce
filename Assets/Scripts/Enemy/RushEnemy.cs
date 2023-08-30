@@ -11,8 +11,10 @@ public class RushEnemy : MonoBehaviour
     public float castTime; // 시전 시간
     public float rushSpeed; // 몇초만에 대쉬 거리를 갈것인지.
     public float rushDelayTime; // 러쉬 쿨타임
+    public float pushForce; // 돌진할 때 다른 Enemy를 밀어내는 힘
     public bool isReady; // 준비가 됐는지 
     public bool isAttack; // 플레이어를 공격 했는지
+    public bool isRushing; // 돌진 중 일 때
 
     private Rigidbody2D rigid;
     private Animator anim;
@@ -69,6 +71,7 @@ public class RushEnemy : MonoBehaviour
                     rigid.velocity = dir * rushSpeed; // 해당 방향으로 돌진
                     anim.speed = 1f;
                     rigid.mass = 1000;
+                    isRushing = true;
                     while (true)
                     {
                         float distance = Vector3.Distance(transform.position, initialPosition); // 처음 위치와 현재 위치가 rushDistance 값만큼 벌어지면 break
@@ -80,7 +83,7 @@ public class RushEnemy : MonoBehaviour
                     }
 
                     yield return null;
-
+                    isRushing = false;
                     rigid.mass = 100;
                     isReady = false;
                     isAttack = false;
@@ -94,14 +97,18 @@ public class RushEnemy : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision) // 플레이어와 충돌했을 때
     {
-        if (!collision.gameObject.CompareTag("Player"))
+
+        if(enemy.enemyType != 3)
         {
             return;
         }
 
-        isAttack = true;
+        if (collision.gameObject.CompareTag("Player")|| (isRushing && collision.gameObject.CompareTag("Enemy") && collision.gameObject.GetComponent<Enemy>().enemyType == 3))
+        {
+            isAttack = true;
+        }
     }
 
 }

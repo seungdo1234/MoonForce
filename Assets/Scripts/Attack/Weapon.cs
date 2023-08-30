@@ -6,6 +6,8 @@ public class Weapon : MonoBehaviour
 {
     private Player player;
 
+
+
     private float timer;
     private void Start()
     {
@@ -51,7 +53,7 @@ public class Weapon : MonoBehaviour
             bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir); // Enemy 방향으로 bullet 회전
 
             // 원거리 공격은 Count는 관통력
-            bullet.GetComponent<Bullet>().Init(GameManager.instance.statManager.attack, GameManager.instance.statManager.penetration - 1, dir);
+            bullet.GetComponent<Bullet>().Init(GameManager.instance.statManager.attack, GameManager.instance.statManager.penetration - 1, dir, 10);
  
         }
     }
