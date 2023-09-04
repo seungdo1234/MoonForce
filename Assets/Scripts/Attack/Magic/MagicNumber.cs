@@ -12,4 +12,9 @@ public class MagicNumber : MonoBehaviour
     {
         gameObject.SetActive(false); 
     }
+
+    public void CamaraShake(float shakeTime)
+    {
+        GameManager.instance.cameraShake.ShakeCamera(shakeTime, 5, 5);
+    }
 }

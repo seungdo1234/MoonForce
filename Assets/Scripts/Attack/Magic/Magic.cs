@@ -16,7 +16,6 @@ public class Magic
     public bool isFlying; // 날아가는지 ex)  화염구
     public bool isNonTarget; // 타겟이 필요하지 않은지 ?
 
-
     [Header("# DetailValue")]
     public float damagePer; // 데미지 ex) 1.5라면 현재 공격력의 1.5배의 데미지가 들어감
     public int magicCount; // 한번에 발사 되는 마법의 갯수

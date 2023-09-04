@@ -8070,7 +8070,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lerpTime: 2
-  alphaValue: 0.35
+  alphaValue: 0.25
 --- !u!114 &930719711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10730,7 +10730,7 @@ MonoBehaviour:
     moveSpeed: 0
     itemDesc: 0
     bookName: "\uD638"
-    skillNum: 11
+    skillNum: 12
     aditionalAbility: 020000000200000002000000
   - isLoad: 0
     type: 2
@@ -10757,8 +10757,8 @@ MonoBehaviour:
     rate: 0
     moveSpeed: 0
     itemDesc: 0
-    bookName: "\uC0BD"
-    skillNum: 4
+    bookName: "\uC2A4\uD30C\uC774\uD06C"
+    skillNum: 2
     aditionalAbility: 010000000000000002000000
 --- !u!1 &1234341418
 GameObject:
@@ -13937,8 +13937,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7e8b88e9b010e94a90f9f67ea0fd862, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultShakeAmplitude: 0
-  defaultShakeFrequency: 0
 --- !u!1 &1612953452
 GameObject:
   m_ObjectHideFlags: 0
