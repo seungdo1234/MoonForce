@@ -292,7 +292,7 @@ public class MagicManager : MonoBehaviour
 
 
             // 플레이어로 부터 일정 거리를 떨어뜨림
-            bullet.Translate(bullet.up * 1.5f, Space.World);
+            bullet.Translate(bullet.up * 1f, Space.World);
 
         }
     }

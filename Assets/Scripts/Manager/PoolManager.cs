@@ -13,6 +13,12 @@ public class PoolManager : MonoBehaviour
     // 풀 담당을 하는 리스트들
     public List<GameObject>[] pools;
 
+
+    [Header("RedMoon")]
+    public int []damageIncrease;
+    public float[] speedIncrease;
+    public float[] healthIncrease;
+
     private void Awake()
     {
         // EnemyPrefabs의 길이 만큼 리스트 크기 초기화
@@ -86,5 +92,18 @@ public class PoolManager : MonoBehaviour
 
     }
 
+    public void redMoon()
+    {
+        foreach (GameObject enemy in pools[0])
+        {
+            if (enemy.activeSelf)
+            {
+                Enemy enemyStat = enemy.GetComponent<Enemy>();
+                enemyStat.damage += enemyStat.damage / 2;
+                enemyStat.speed += enemyStat.speed * 0.5f;
+                enemyStat.health += enemyStat.health * 0.5f;
 
+            }
+        }
+    }
 }

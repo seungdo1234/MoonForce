@@ -219,6 +219,8 @@ public class Enemy : MonoBehaviour
             spriteRenderer.sortingOrder = 1; // 죽은 ENemy가 다른 Enemy를 가리지 않도록 OrderLayer를 1로 내림
             anim.SetBool("Dead", true);
             GameManager.instance.kill++;
+
+            GameManager.instance.gold += enemyType + 1;
             if(statusEffect == EnemyStatusEffect.Darkness)
             {
                 ExplosionSpawn();

@@ -3,7 +3,7 @@ using UnityEngine.UI;
 public class HUD : MonoBehaviour
 {
     // enum : ¿­°ÅÇü
-    public enum InfoType { Goal, Level, Kill, Time, Health }
+    public enum InfoType { Goal, Level, Kill, Time, Health, Gold }
 
     public InfoType type;
 
@@ -72,7 +72,10 @@ public class HUD : MonoBehaviour
 
                 myText.text = string.Format("{0:F0}/{1:F0}", curHealth, maxHealth);
                 mySlider.value = curHealth / maxHealth;
+                break;
+            case InfoType.Gold:
 
+                myText.text = string.Format("{0}", GameManager.instance.gold);
                 break;
 
         }

@@ -18,10 +18,12 @@ public class GameManager : MonoBehaviour
     [Header("# Player Data")]
     public int availablePoint; // 스테이지가 끝날때마다 스탯 레벨을 올릴 수 있는 포인트
     public ItemAttribute attribute;
-
+    public int gold;
 
     [Header("# Stage Data")]
     public bool gameStop; // 게임이 멈췄을 때 true
+    public bool isRedMoon; // 제한 시간안에 Enemy를 잡지 못했을 시 Enemy가 강해지는 붉은 달이 떠오름\
+    public bool redMoonEffect;
     public float maxGameTime;
     public float curGameTime;
     public int kill;
@@ -33,6 +35,7 @@ public class GameManager : MonoBehaviour
     public GameObject clearReward;
     public GameObject startBtn;
     public GameObject hud;
+    public RedMoonEffect redMoon;
 
     [Header("# Reward")]
     public int[] chestPercent;
@@ -72,7 +75,14 @@ public class GameManager : MonoBehaviour
     }
     private IEnumerator StageClear()
     {
+
         gameStop = true;
+        if (isRedMoon)
+        {
+            redMoon.RedMoonEnd();
+            isRedMoon = false;
+        }
+        redMoonEffect = false;
         hud.SetActive(false);
         magicManager.StageClear();
         yield return new WaitForSeconds(3f);
@@ -104,8 +114,26 @@ public class GameManager : MonoBehaviour
         if (isClear())
         {
             StartCoroutine(StageClear());
+            return;
         }
+
+        if (isRedMoon)
+        {
+            return;
+        }
+
         curGameTime -= Time.deltaTime;
+        
+        if(!redMoonEffect && curGameTime <= redMoon.lerpTime)
+        {
+            redMoon.RedMoonStart();
+            redMoonEffect = true;
+        }
+        else if (curGameTime <= 0)
+        {
+            curGameTime = 0;
+            isRedMoon = true;
+        }
         
     }
 

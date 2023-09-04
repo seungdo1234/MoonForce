@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyBullet : MonoBehaviour
 {
     public int damage;
-
+    public float rotationSpeed;
     private Rigidbody2D rigid;
 
     private void Awake()
@@ -44,5 +44,10 @@ public class EnemyBullet : MonoBehaviour
         }
 
         gameObject.SetActive(false);
+    }
+
+    private void Update()
+    {
+        transform.Rotate(Vector3.back * rotationSpeed * Time.deltaTime);
     }
 }
