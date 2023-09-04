@@ -4122,6 +4122,7 @@ MonoBehaviour:
   damageTextPool: {fileID: 2138278807}
   magicManager: {fileID: 1220044319}
   statManager: {fileID: 2118428523}
+  cameraShake: {fileID: 1606866641}
   availablePoint: 15
   attribute: 0
   gold: 0
@@ -8505,6 +8506,7 @@ GameObject:
   - component: {fileID: 966550059}
   - component: {fileID: 966550061}
   - component: {fileID: 966550060}
+  - component: {fileID: 966550062}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -8588,6 +8590,23 @@ MonoBehaviour:
   m_YawDamping: 0
   m_RollDamping: 0
   m_AngularDamping: 0
+--- !u!114 &966550062
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966550057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 0
+  m_FrequencyGain: 0
+  mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &974173416
 GameObject:
   m_ObjectHideFlags: 0
@@ -13844,6 +13863,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1606866640}
   - component: {fileID: 1606866639}
+  - component: {fileID: 1606866641}
   m_Layer: 0
   m_Name: Virtual Camera
   m_TagString: Untagged
@@ -13905,6 +13925,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1606866641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606866638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7e8b88e9b010e94a90f9f67ea0fd862, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultShakeAmplitude: 0
+  defaultShakeFrequency: 0
 --- !u!1 &1612953452
 GameObject:
   m_ObjectHideFlags: 0
@@ -16850,19 +16884,7 @@ MonoBehaviour:
   - {fileID: 799562038, guid: 8ce9e88edf8e074498cff6b0d839a75c, type: 3}
   - {fileID: 1881903024, guid: 8ce9e88edf8e074498cff6b0d839a75c, type: 3}
   - {fileID: 1446366913, guid: 8ce9e88edf8e074498cff6b0d839a75c, type: 3}
-  damageIncrease: 0000000000000000000000000000000000000000
-  speedIncrease:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  healthIncrease:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
+  increaseValue: 0.5
 --- !u!4 &1933487173
 Transform:
   m_ObjectHideFlags: 0
@@ -18393,7 +18415,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2118428522}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 561.8453, y: 622.491, z: -1.0985931}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

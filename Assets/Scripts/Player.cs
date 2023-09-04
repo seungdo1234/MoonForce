@@ -69,14 +69,15 @@ public class Player : MonoBehaviour
         }
     }
 
-    private IEnumerator OnDamaged()
+    private IEnumerator OnDamaged() // 데미지를 받았을 때 2초동안 데미지를 받지않는 상태가 되고 이동속도가 빨라짐
     {
+        GameManager.instance.cameraShake.ShakeCamera(0.5f, 5, 5);
         gameObject.tag = "PlayerDamaged";
         gameObject.layer = 8;
-        moveSpeed *= 2;
+        moveSpeed *= 1.5f;
         spriteRenderer.color = new Color(1, 1, 1, 0.7f);
         yield return new WaitForSeconds(2f);
-        moveSpeed /= 2;
+        moveSpeed /= 1.5f;
         spriteRenderer.color = new Color(1, 1, 1, 1);
         gameObject.tag = "Player";
         gameObject.layer = 7;
@@ -84,19 +85,20 @@ public class Player : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!GameManager.instance.gameStop && !collision.gameObject.CompareTag("Enemy") && !isDamaged)
+        if (GameManager.instance.gameStop || !collision.gameObject.CompareTag("Enemy") || isDamaged)
         {
             return;
         }
+        isDamaged = true; 
 
         int damage = collision.gameObject.GetComponent<Enemy>().damage;
+
         PlayerHit(damage);
 
     }
 
     public void PlayerHit(int damage)
     {
-        isDamaged = true;
 
         GameManager.instance.statManager.curHealth -= damage;
         //   AudioManager.instance.PlayerSfx(AudioManager.Sfx.Hit);

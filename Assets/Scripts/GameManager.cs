@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public DamageTextPool damageTextPool;
     public MagicManager magicManager;
     public StatManager statManager;
+    public CameraShake cameraShake;
     private Spawner spawner;
 
     [Header("# Player Data")]

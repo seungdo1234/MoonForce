@@ -15,9 +15,7 @@ public class PoolManager : MonoBehaviour
 
 
     [Header("RedMoon")]
-    public int []damageIncrease;
-    public float[] speedIncrease;
-    public float[] healthIncrease;
+    public float increaseValue;
 
     private void Awake()
     {
@@ -100,8 +98,8 @@ public class PoolManager : MonoBehaviour
             {
                 Enemy enemyStat = enemy.GetComponent<Enemy>();
                 enemyStat.damage += enemyStat.damage / 2;
-                enemyStat.speed += enemyStat.speed * 0.5f;
-                enemyStat.health += enemyStat.health * 0.5f;
+                enemyStat.speed += enemyStat.speed * increaseValue;
+                enemyStat.health += enemyStat.health * increaseValue;
 
             }
         }
