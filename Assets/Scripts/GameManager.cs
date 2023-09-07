@@ -86,7 +86,11 @@ public class GameManager : MonoBehaviour
         redMoonEffect = false;
         hud.SetActive(false);
         magicManager.StageClear();
-        yield return new WaitForSeconds(3f);
+        pool.StageClear();
+        AudioManager.instance.EndBgm();
+        yield return new WaitForSeconds(1f);
+        AudioManager.instance.PlayBgm(3);
+        yield return new WaitForSeconds(2f);
         availablePoint++;
         level++;
         clearReward.SetActive(true);

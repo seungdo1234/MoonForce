@@ -33,6 +33,7 @@ public class Player : MonoBehaviour
         {
             // value는 InputValue 값이므로 Vector2 값으로 변환 시켜야함 -> Get<T>() 으로 value의 형식 변환
             inputVec = value.Get<Vector2>();
+
         }
         else
         {
@@ -51,6 +52,8 @@ public class Player : MonoBehaviour
         Vector2 nextVec = inputVec * Time.fixedDeltaTime * moveSpeed;
         // 위치 이동
         rigid.MovePosition(rigid.position + nextVec);
+
+   
     }
     private void LateUpdate()
     {
@@ -62,6 +65,12 @@ public class Player : MonoBehaviour
 
         // magnitude : 벡터 값의 순수 길이
         anim.SetFloat("Run", inputVec.magnitude);
+
+        if(inputVec.magnitude != 0)
+        {
+            AudioManager.instance.FootStepSfxPlayer();
+        }
+
         if (inputVec.x != 0)
         {
             // inputVec.x < 0이 참이라면 1, 거짓이라면 -1로 참이면 1이므로 flipX가 true가 됨. 
@@ -105,6 +114,8 @@ public class Player : MonoBehaviour
 
         if (GameManager.instance.statManager.curHealth > 0)
         {
+            AudioManager.instance.PlayerSfx(Sfx.Hurt);
+
             StartCoroutine(OnDamaged());
         }
         else if (GameManager.instance.statManager.curHealth <= 0)
@@ -115,6 +126,8 @@ public class Player : MonoBehaviour
                 // 자식 오브젝트 선택
                 transform.GetChild(i).gameObject.SetActive(false);
             }
+
+            AudioManager.instance.PlayerSfx(Sfx.GameOver);
             //    anim.SetTrigger("Dead");
             //   GameManager.instance.GameOver();
 

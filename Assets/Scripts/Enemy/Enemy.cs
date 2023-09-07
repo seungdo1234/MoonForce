@@ -199,6 +199,7 @@ public class Enemy : MonoBehaviour
 
         if (health > 0)
         {
+            AudioManager.instance.PlayerSfx(Sfx.EnemyHit);
             // Live, Hit Action
             anim.SetTrigger("Hit");
             StartCoroutine(KnockBack());
@@ -206,6 +207,8 @@ public class Enemy : MonoBehaviour
         }
         else
         {
+            AudioManager.instance.PlayerSfx(Sfx.Dead);
+
             StopAllCoroutines();
             if (anim.speed != 1) // 디버프 상태에서 죽는다면
             {

@@ -24,6 +24,8 @@ public class StageClear : MonoBehaviour
     {
         chestAnim.SetTrigger("Open");
 
+        AudioManager.instance.PlayerSfx(Sfx.ChestOpen);
+
         GetReward();
 
         btn[0].interactable = false;

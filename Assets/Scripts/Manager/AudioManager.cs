@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 public enum Bgm { Main, Stage, MaintenanceRoom , Victory = 4 }
-public enum Sfx { Dead, Hurt, FootStep = 4, EnemyHit = 6, GameOver, ChestOpen, Select }
+public enum Sfx { Dead, Hurt,  EnemyHit , GameOver = 4, ChestOpen, Select }
 
 public class AudioManager : MonoBehaviour
 {
@@ -18,6 +18,7 @@ public class AudioManager : MonoBehaviour
 
     [Header("#SFX")]
     public AudioClip[] sfxClips;
+    public AudioClip[] footStepClips; // 발자국 클립
     public float sfxVolume;
     public int channels; // 많은 효과음을 내기 위한 채널 시스템
     private AudioSource[] sfxPlayers; 
@@ -62,16 +63,41 @@ public class AudioManager : MonoBehaviour
     }
     public void PlayBgm(int bgmNumber)
     {
+
         bgmPlayer.clip = bgmClip[bgmNumber];
         bgmPlayer.Play();
+
+        if(bgmNumber == 3)
+        {
+            StartCoroutine(Init_Loop_Bgm(bgmNumber));
+        }
+    }
+    private IEnumerator Init_Loop_Bgm(int bgmNumber)
+    {
+        bgmPlayer.loop = false;
+
+       yield return new WaitForSeconds(bgmPlayer.clip.length);
+
+        bgmPlayer.clip = bgmClip[bgmNumber + 1];
+        bgmPlayer.loop = true;
+        bgmPlayer.Play();
+
+    }
+    public void EndBgm()
+    {
+        bgmPlayer.Stop();
     }
     public void EffectBgm(bool isPlay)
     {
         bgmEffecter.enabled = isPlay;
     }
+    public void SelectSfx()
+    {
+        PlayerSfx(Sfx.Select);
+    }
     public void PlayerSfx(Sfx sfx)
     {
-        for (int i = 0; i < sfxPlayers.Length; i++)
+        for (int i = 1; i < sfxPlayers.Length; i++) // 0번은 발자국 소리 채널이기 떄문에 1 ~ 15의 채널만 순회
         {
             // 예를들어 5번 인덱스를 마지막으로 사용했으면 6 7 8 9 10 1 2 3 4 5 이런식으로 순회하게 하기위한 계산임
             int loopIndex = (i + channelIndex) % sfxPlayers.Length;
@@ -86,10 +112,6 @@ public class AudioManager : MonoBehaviour
             {
                 randomIndex = Random.Range(0, 2);
             }
-            else if (sfx == Sfx.FootStep)
-            {
-                randomIndex = Random.Range(0, 3);
-            }
 
             channelIndex = loopIndex;
             sfxPlayers[loopIndex].clip = sfxClips[(int)sfx + randomIndex];
@@ -98,4 +120,16 @@ public class AudioManager : MonoBehaviour
         }
 
     }
+    public void FootStepSfxPlayer()
+    {
+        if (sfxPlayers[0].isPlaying)
+        {
+            return;
+        }
+
+        int randomIndex = Random.Range(0, 3);
+        sfxPlayers[0].clip = footStepClips[randomIndex];
+        sfxPlayers[0].Play();
+    }
+   
 }
