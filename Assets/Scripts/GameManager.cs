@@ -14,18 +14,20 @@ public class GameManager : MonoBehaviour
     public MagicManager magicManager;
     public StatManager statManager;
     public CameraShake cameraShake;
+    public Pause pause;
     private Spawner spawner;
 
     [Header("# Player Data")]
     public int availablePoint; // 스테이지가 끝날때마다 스탯 레벨을 올릴 수 있는 포인트
-    public ItemAttribute attribute;
-    public int gold;
+    public ItemAttribute attribute; // Player의 무기 속성
+    public int gold; // 골드
 
     [Header("# Stage Data")]
     public bool gameStop; // 게임이 멈췄을 때 true
+    public bool isStage; // 스테이지를 진행 중 일때 True
     public bool isRedMoon; // 제한 시간안에 Enemy를 잡지 못했을 시 Enemy가 강해지는 붉은 달이 떠오름\
-    public bool redMoonEffect;
-    public float maxGameTime;
+    public bool redMoonEffect; // 배경이 빨개질 때
+    public float maxGameTime; 
     public float curGameTime;
     public int kill;
     public int enemyMaxNum;
@@ -74,9 +76,9 @@ public class GameManager : MonoBehaviour
         }
         return false;
     }
-    private IEnumerator StageClear()
+    private IEnumerator StageClear() // 스테이지 클리어
     {
-
+        isStage = false;
         gameStop = true;
         if (isRedMoon)
         {
@@ -87,11 +89,12 @@ public class GameManager : MonoBehaviour
         hud.SetActive(false);
         magicManager.StageClear();
         pool.StageClear();
-        AudioManager.instance.EndBgm();
+        AudioManager.instance.EndBgm(); // Bgm 끄기
         yield return new WaitForSeconds(1f);
-        AudioManager.instance.PlayBgm(3);
+        pause.gameObject.SetActive(false); // 퍼즈 버튼 비활성화
+        AudioManager.instance.PlayBgm(3); // 승리 Bgm 재생
         yield return new WaitForSeconds(2f);
-        availablePoint++;
+        availablePoint++; 
         level++;
         clearReward.SetActive(true);
         player.gameObject.SetActive(false);
@@ -99,7 +102,7 @@ public class GameManager : MonoBehaviour
     }
     public void NextStage()
     {
-        //       Time.timeScale = 1f;
+        isStage = true;
         player.gameObject.SetActive(true);
         gameStop = false;
         curGameTime = maxGameTime;

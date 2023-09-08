@@ -13,7 +13,7 @@ public class AudioManager : MonoBehaviour
     [Header("#BGM")]
     public AudioClip[] bgmClip;
     public float bgmVolume;
-    private AudioSource bgmPlayer;
+    public AudioSource bgmPlayer;
     private AudioHighPassFilter bgmEffecter;
 
     [Header("#SFX")]
@@ -21,7 +21,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip[] footStepClips; // 발자국 클립
     public float sfxVolume;
     public int channels; // 많은 효과음을 내기 위한 채널 시스템
-    private AudioSource[] sfxPlayers; 
+    public AudioSource[] sfxPlayers; 
     private int channelIndex; // 채널 갯수 만큼 순회하도록 맨 마지막에 플레이 했던 SFX의 인덱스번호를 저장하는 변수
 
 
@@ -60,6 +60,8 @@ public class AudioManager : MonoBehaviour
             sfxPlayers[i].bypassListenerEffects = true; // 하이패스에 안 걸리게 함
         }
 
+        sfxPlayers[1].clip = sfxClips[(int)Sfx.Select];
+
     }
     public void PlayBgm(int bgmNumber)
     {
@@ -88,6 +90,7 @@ public class AudioManager : MonoBehaviour
         bgmPlayer.Stop();
     }
     public void EffectBgm(bool isPlay)
+
     {
         bgmEffecter.enabled = isPlay;
     }
