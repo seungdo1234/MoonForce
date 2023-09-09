@@ -788,6 +788,69 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Free Platformer_UI_Buttons_32
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 98
+        width: 64
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 682db0536707fc441aae215875810e7b
+      internalID: -507968910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Free Platformer_UI_Buttons_33
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 66
+        width: 64
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 698e6dfbdc8fcc6438226e391d76d7e3
+      internalID: 1324266869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Free Platformer_UI_Buttons_34
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 34
+        width: 64
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc90f7f5fcade6043a809878d054aea6
+      internalID: -91860663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -817,16 +880,19 @@ TextureImporter:
       Free Platformer_UI_Buttons_28: 1825994065
       Free Platformer_UI_Buttons_18: 1546554187
       Free Platformer_UI_Buttons_29: -367040886
+      Free Platformer_UI_Buttons_33: 1324266869
       Free Platformer_UI_Buttons_1: 772142073
       Free Platformer_UI_Buttons_12: 2024790276
       Free Platformer_UI_Buttons_16: -252415009
       Free Platformer_UI_Buttons_21: 966188343
       Free Platformer_UI_Buttons_24: -504189307
+      Free Platformer_UI_Buttons_34: -91860663
       Free Platformer_UI_Buttons_3: -805234042
       Free Platformer_UI_Buttons_26: 752063476
       Free Platformer_UI_Buttons_7: 649146211
       Free Platformer_UI_Buttons_2: -2125625845
       Free Platformer_UI_Buttons_8: -1805922678
+      Free Platformer_UI_Buttons_32: -507968910
       Free Platformer_UI_Buttons_23: -1187619736
       Free Platformer_UI_Buttons_15: 1739255273
       Free Platformer_UI_Buttons_14: 142192219

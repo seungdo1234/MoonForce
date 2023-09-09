@@ -34,46 +34,40 @@ public class RewardManager : MonoBehaviour
 
     public void ItemCreate(int itemRank) // 랜덤 아이템 생성
     {
-
+       
         type = (ItemType)Random.Range(1, 3);
 
 
         rank = (ItemRank)itemRank + 1;
 
         SetRandomValue(GameManager.instance.itemQualityPercent);
-
+ 
         if (type == ItemType.Staff)
         {
             itemAttribute = (ItemAttribute)Random.Range(1, System.Enum.GetValues(typeof(ItemAttribute)).Length - 1);
+
+            itemName = itemInfo.staffNames[(int)itemAttribute - 1];
+            desc = itemInfo.staffDescs[(int)itemAttribute - 1];
+            moveSpeed = 0;
+
             switch  (rank)
             {
                 case ItemRank.Common:
-                    itemSprite = itemInfo.commonImage[Random.Range(0, itemInfo.commonImage.Length)];
-                    rewardImage.sprite = itemSprite;
-                    rand = Random.Range(0, itemInfo.commonItemName.Length);
-                    itemName = itemInfo.commonItemName[rand];
-                    desc = itemInfo.commonItemDesc[rand];
-                    moveSpeed = 0;
+                    itemSprite = itemInfo.commonStaffImgaes[(int)itemAttribute - 1];
                     break;
                 case ItemRank.Rare:
-                    itemSprite = itemInfo.rareImage[Random.Range(0, itemInfo.rareImage.Length)];
-                    rewardImage.sprite = itemSprite;
-                    rand = Random.Range(0, itemInfo.rareItemName.Length);
-                    itemName = itemInfo.rareItemName[rand];
-                    desc = itemInfo.rareItemDesc[rand];
-                    moveSpeed = 0;
+                    itemSprite = itemInfo.rareStaffImgaes[(int)itemAttribute - 1];
                     break;
                 case ItemRank.Epic:
-                    itemSprite = itemInfo.epicImage[Random.Range(0, itemInfo.epicImage.Length)];
-                    rewardImage.sprite = itemSprite;
-                    rand = Random.Range(0, itemInfo.epicItemName.Length);
-                    itemName = itemInfo.epicItemName[rand];
-                    desc = itemInfo.epicItemDesc[rand];
-                    moveSpeed = 0;
+                    itemSprite = itemInfo.epicStaffImgaes[(int)itemAttribute - 1];
                     break;
                 case ItemRank.Legendary:
+                    itemSprite = itemInfo.legendaryStaffImgaes[(int)itemAttribute - 2];
+                    itemName = itemInfo.legendaryStaffNames[(int)itemAttribute - 2];
+                    desc = itemInfo.legendaryStaffDescs[(int)itemAttribute - 2];
                     break;
             }
+            rewardImage.sprite = itemSprite;
 
             ItemDatabase.instance.GetStaff(type, rank, quality, itemSprite, itemAttribute, itemName, attack, rate, moveSpeed, desc);
         }
@@ -81,6 +75,7 @@ public class RewardManager : MonoBehaviour
         {
             BookCreate();
         }
+       
     }
 
     private void BookCreate() // 마법 책 생성

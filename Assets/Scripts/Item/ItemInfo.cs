@@ -13,21 +13,24 @@ public class ItemInfo : MonoBehaviour
     public ItemType type;
     public ItemRank rank;
     public ItemQuality quality;
-    [Header("# Common Item")]
-    public Sprite[] commonImage;
-    public string[] commonItemName;
-    public string[] commonItemDesc;
 
-    [Header("# Rare Item")]
-    public Sprite[] rareImage;
-    public string[] rareItemName;
-    public string[] rareItemDesc;
+    [Header("Common Staff")]
+    public Sprite[] commonStaffImgaes;
+    [Header("Rare Staff")]
+    public Sprite[] rareStaffImgaes;
+    [Header("Epic Staff")]
+    public Sprite[] epicStaffImgaes;
+    [Header("Legendary Staff")]
+    public Sprite[] legendaryStaffImgaes;
 
-    [Header("# Epic Item")]
-    public Sprite[] epicImage;
-    public string[] epicItemName;
-    public string[] epicItemDesc;
-    public string[] additionalOption;
+    [Header("Staff Desc")]
+    public string[] staffNames; 
+    public string[] staffDescs;
+    public string[] legendaryStaffNames;
+    public string[] legendaryStaffDescs;
+
+
+
 
     [Header("# Item Base Stat")]
     public int[] baseAttack;

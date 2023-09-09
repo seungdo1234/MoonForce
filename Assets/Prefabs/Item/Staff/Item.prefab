@@ -100,81 +100,66 @@ MonoBehaviour:
   type: 0
   rank: 0
   quality: 0
-  commonImage:
+  commonStaffImgaes:
+  - {fileID: -1886100011, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: -1349100755, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: 254493689, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
   - {fileID: 1851899433, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
   - {fileID: 651604591, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
-  - {fileID: -1886100011, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
-  - {fileID: -726814621, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
-  - {fileID: 1011854270, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
-  - {fileID: 254493689, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
-  - {fileID: -1349100755, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
-  - {fileID: 218311661, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
-  - {fileID: 1588209868, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
   - {fileID: 1283028731, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
-  - {fileID: -743774813, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
-  - {fileID: 1316263844, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
-  - {fileID: -1006428272, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
-  - {fileID: -832316534, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
-  - {fileID: 841371860, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
-  - {fileID: 1734833924, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
-  - {fileID: 468554157, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
-  commonItemName:
-  - "\uCD08\uBCF4\uC790\uC6A9 \uC9C0\uD321\uC774"
-  - "\uD070 \uC9C0\uD321\uC774"
-  commonItemDesc:
-  - "\uAD6C\uC0C9\uB9CC \uAC16\uCD98 \uC9C0\uD321\uC774\uC774\uB2E4."
-  - "\uC4F8\uB370\uC5C6\uC774 \uD070 \uC9C0\uD321\uC774\uB2E4"
-  rareImage:
-  - {fileID: -1048086212, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
-  - {fileID: 1114528376, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
-  - {fileID: 1884788725, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
-  - {fileID: -980078868, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
-  - {fileID: -1087489316, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
-  - {fileID: 1706685912, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
-  - {fileID: 1540908555, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
-  - {fileID: 766313320, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
-  - {fileID: 1375803394, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
-  - {fileID: -1804577088, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
-  - {fileID: -1189745449, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
-  - {fileID: 1286252541, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
-  - {fileID: 263672659, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
-  - {fileID: 1655738578, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
-  - {fileID: 1381333903, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
-  - {fileID: 674193288, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  rareStaffImgaes:
   - {fileID: 1591009030, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
-  - {fileID: 571373922, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
-  - {fileID: -1859055486, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
-  rareItemName:
-  - "\uACAC\uC2B5\uC6A9 \uC9C0\uD321\uC774"
-  - "\uC4F8\uB9CC\uD55C \uC9C0\uD321\uC774"
-  rareItemDesc:
-  - "\uAC00\uC7A5 \uAE30\uBCF8\uC801\uC778 \uC9C0\uD321\uC774\uB2E4."
-  - "\uC4F8\uB9CC\uD55C \uC9C0\uD321\uC774\uC774\uB2E4."
-  epicImage:
+  - {fileID: 1788658158, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: 1296766283, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: 1316263844, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: -1439322391, guid: 16873c4e9fe186b428afaacf1621133c, type: 3}
+  - {fileID: -980078868, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  epicStaffImgaes:
+  - {fileID: -160008842, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
   - {fileID: 1361226398, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
-  - {fileID: 2067797771, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
   - {fileID: -2005817633, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
-  - {fileID: -2064882852, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
-  - {fileID: 1383043614, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
-  - {fileID: 2036335627, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
-  - {fileID: 1938317447, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
-  - {fileID: -121707469, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
-  - {fileID: -1338821933, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
-  - {fileID: 1443554711, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
-  - {fileID: -1483061522, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: 1706685912, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
   - {fileID: 656354272, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
-  epicItemName:
-  - "\uC219\uB828\uC790\uC6A9 \uC9C0\uD321\uC774"
-  - "\uACE0\uAE09 \uC9C0\uD321\uC774"
-  epicItemDesc:
-  - "\uC219\uB828\uC790\uAC00 \uC4F0\uAE30 \uC88B\uC740 \uC9C0\uD321\uC774\uB2E4."
-  - "\uB9E4\uC6B0 \uC88B\uC740 \uACE0\uAE09 \uC9C0\uD321\uC774\uB2E4."
-  additionalOption:
-  - 
-  - 
-  - 
-  - 
-  - 
+  - {fileID: -1483061522, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  legendaryStaffImgaes:
+  - {fileID: -1984138514, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: 952857894, guid: 5c9253f807895f447972a3c3b70aaa06, type: 3}
+  - {fileID: 772813248, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: 872695361, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  - {fileID: 278240696, guid: 5c9253f807895f447972a3c3b70aaa06, type: 3}
+  - {fileID: -312330205, guid: 85e4b03c9cc82384e8660e3b4c12431c, type: 3}
+  staffNames:
+  - "\uBB34\uC18D\uC131 \uC9C0\uD321\uC774"
+  - "\uBD88\uC18D\uC131 \uC9C0\uD321\uC774"
+  - "\uBB3C\uC18D\uC131 \uC9C0\uD321\uC774"
+  - "\uB545\uC18D\uC131 \uC9C0\uD321\uC774"
+  - "\uD480\uC18D\uC131 \uC9C0\uD321\uC774"
+  - "\uC5B4\uB460\uC18D\uC131 \uC9C0\uD321\uC774"
+  staffDescs:
+  - "\uB9C8\uB825\uD0C4\uC758 \uB370\uBBF8\uC9C0\uAC00 \uC99D\uAC00\uD55C\uB2E4."
+  - "\uC801\uC5D0\uAC8C \uC9C0\uC18D\uC801\uC73C\uB85C \uD654\uC0C1 \uD53C\uD574\uB97C
+    \uC900\uB2E4."
+  - "\uC801\uC5D0\uAC8C \uCD94\uAC00 \uB9C8\uBC95\uD53C\uD574\uB97C \uC785\uD78C\uB2E4."
+  - "\uC801\uC758 \uC774\uB3D9\uC18D\uB3C4\uB97C \uC77C\uC815 \uC2DC\uAC04\uB3D9\uC548
+    \uAC10\uC18C\uC2DC\uD0A8\uB2E4."
+  - "\uC801\uC744 \uC77C\uC815 \uC2DC\uAC04\uB3D9\uC548 \uC18D\uBC15\uC2DC\uD0A8\uB2E4."
+  - "\uC801\uC744 \uC77C\uC815 \uC2DC\uAC04 \uD6C4\uC5D0 \uD3ED\uBC1C\uC2DC\uD0A8\uB2E4. "
+  legendaryStaffNames:
+  - "\uC778\uD398\uB974\uB178"
+  - "\uD3EC\uC138\uC774\uB3C8"
+  - "\uAC00\uC774\uC544"
+  - "\uB370\uBA54\uD14C\uB974"
+  - "\uD558\uB370\uC2A4"
+  - "\uD788\uD398\uB9AC\uC628"
+  legendaryStaffDescs:
+  - "\uC77C\uC815 \uC2DC\uAC04\uB9C8\uB2E4 \uD50C\uB808\uC774\uC5B4 \uC8FC\uBCC0\uC5D0\uC11C
+    \uD3ED\uBC1C\uC744 \uC77C\uC73C\uD0A8\uB2E4."
+  - '?'
+  - '?'
+  - '?'
+  - '?'
+  - "\uC77C\uC815 \uD655\uB960\uB85C \uD53C\uACA9\uB2F9\uD55C \uC801\uC744 \uC2E0\uC131\uD55C
+    \uBE5B\uC73C\uB85C \uC2EC\uD310\uD55C\uB2E4."
   baseAttack: 03000000050000000a00000014000000
   baseRate:
   - 0.1

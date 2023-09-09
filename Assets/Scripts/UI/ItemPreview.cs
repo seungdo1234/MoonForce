@@ -85,7 +85,7 @@ public class ItemPreview : MonoBehaviour
             itemInfomation[0].text = string.Format("<color={0}>{1}</color>", itemNameColor, item.itemName);
             itemInfomation[1].text = string.Format("(<color={0}>{1}</color>)", itemRankColor, item.rank);
             itemInfomation[2].text = string.Format("<color={0}>{1}</color>",itemAttributeColor,itemAttribute);
-            itemInfomation[3].text = string.Format("공격력 + {0}\n공격속도 + {1}%\n\n{2}", item.attack, item.rate * 100,item.itemDesc);
+            itemInfomation[3].text = string.Format("공격력 + {0}\n공격속도 + {1}%\n{2}", item.attack, item.rate * 100,item.itemDesc);
 
         }
         else if(item.type == ItemType.Book)
