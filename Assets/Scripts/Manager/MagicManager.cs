@@ -37,7 +37,7 @@ public class MagicManager : MonoBehaviour
         {
             if (magicInfo[i].isMagicActive)
             {
-                if(magicInfo[i].magicCoolTime == 0 || i == 12)
+                if(magicInfo[i].magicCoolTime == 0 || i == 13 || i == 1)
                 {
                     StartCoroutine( AlwaysPlayMagic(i));
                 }
@@ -195,6 +195,7 @@ public class MagicManager : MonoBehaviour
 
     private void SpawnMagic(int magicNumber)
     {
+
         int length = 0;
 
         for (int i = 0; i < player.scanner.nearestTarget.Length; i++) // Å¸°Ù Á¤ÇÏ±â
@@ -247,6 +248,9 @@ public class MagicManager : MonoBehaviour
 
         switch (magicNumber)
         {
+            case 1:
+                InfernoSpawn(magicNumber);
+                break;
             case 4:
                 ShovelSpawn(magicNumber);
                 break;
@@ -259,6 +263,12 @@ public class MagicManager : MonoBehaviour
         }
 
 
+    }
+    private void InfernoSpawn(int magicNumber)
+    {
+        GameObject magic = Get(magicNumber);
+
+        magic.GetComponent<Inferno>().Init(magicInfo[magicNumber].magicCoolTime);
     }
     private void ChargeExplosionSpawn(int magicNumber)
     {

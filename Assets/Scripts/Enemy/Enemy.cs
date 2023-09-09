@@ -174,10 +174,10 @@ public class Enemy : MonoBehaviour
             int number = collision.GetComponent<MagicNumber>().magicNumber;
             float damage = GameManager.instance.statManager.attack * GameManager.instance.magicManager.magicInfo[number].damagePer;
 
-            if (number == 9 || number == 11)
+            if (number == 1 || number == 10 || number == 12)
             {
                 StartCoroutine(IsDamaged());
-                if(number == 11)
+                if(number == 12)
                 {
                     GameObject elec = collision.gameObject;
 
@@ -239,7 +239,7 @@ public class Enemy : MonoBehaviour
 
         int number = collision.GetComponent<MagicNumber>().magicNumber;
 
-        if (number != 9 && number != 11) // 지속적인 피해를 주는 마법이 아니라면
+        if (number != 10 && number != 12) // 지속적인 피해를 주는 마법이 아니라면
         {
             return;
         }

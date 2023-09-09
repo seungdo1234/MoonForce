@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3344825427565340877
+--- !u!1 &6793505049635473620
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3344825427565340872}
-  - component: {fileID: 3344825427565340875}
-  - component: {fileID: 3344825427565340874}
-  - component: {fileID: 3344825427565340873}
-  - component: {fileID: -3972401538325724840}
+  - component: {fileID: 6793505049635473623}
+  - component: {fileID: 6793505049635473622}
+  - component: {fileID: 6793505049635473621}
+  - component: {fileID: 6793505049635473616}
+  - component: {fileID: -4816750591000409552}
   m_Layer: 10
-  m_Name: Explosion 3
+  m_Name: Inferno
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3344825427565340872
+--- !u!4 &6793505049635473623
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3344825427565340877}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.26, y: -5.53, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_GameObject: {fileID: 6793505049635473620}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &3344825427565340875
+--- !u!212 &6793505049635473622
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3344825427565340877}
+  m_GameObject: {fileID: 6793505049635473620}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -75,29 +75,29 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 12
-  m_Sprite: {fileID: -1796865113, guid: efe141f5e9d58e645baef1c05b861654, type: 3}
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -1568354496, guid: f54fb7a749c163d40a047f6fedf630b0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.6666667, y: 2.6666667}
+  m_Size: {x: 4.266667, y: 4.266667}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &3344825427565340874
+--- !u!95 &6793505049635473621
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3344825427565340877}
+  m_GameObject: {fileID: 6793505049635473620}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: eef9295628c6d0d44a6a5277afe14e2f, type: 2}
+  m_Controller: {fileID: 9100000, guid: a66a30505427a24408e34d6005237346, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -107,13 +107,13 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!60 &3344825427565340873
+--- !u!60 &6793505049635473616
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3344825427565340877}
+  m_GameObject: {fileID: 6793505049635473620}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -123,38 +123,36 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.2, y: 3.2}
-    newSize: {x: 2.6666667, y: 2.6666667}
+    pivot: {x: 0.5, y: 0.45}
+    oldSize: {x: 4.266667, y: 4.266667}
+    newSize: {x: 4.266667, y: 4.266667}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.07997683, y: 0.8953824}
-      - {x: -0.52502525, y: 0.8167835}
-      - {x: -1.0644292, y: 0.34324074}
-      - {x: -1.4208395, y: -0.42499214}
-      - {x: -1.2192088, y: -1.0799603}
-      - {x: -0.7437134, y: -1.1652446}
-      - {x: 0.15162921, y: -1.2270873}
-      - {x: 1.2749022, y: -1.1091071}
-      - {x: 1.5322481, y: -0.4993217}
-      - {x: 1.0035743, y: 0.436001}
-      - {x: 0.6005639, y: 0.7718173}
---- !u!114 &-3972401538325724840
+    - - {x: 1.0106903, y: 1.1073961}
+      - {x: 0.28256524, y: 1.1213841}
+      - {x: -0.40108085, y: 0.8945365}
+      - {x: -0.9982419, y: 0.4504876}
+      - {x: -0.87602425, y: 0.052695274}
+      - {x: -1.1851689, y: -0.9515557}
+      - {x: -0.058612347, y: -0.8629427}
+      - {x: 0.9622587, y: -0.9582133}
+      - {x: 0.84448767, y: 0.1536479}
+--- !u!114 &-4816750591000409552
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3344825427565340877}
+  m_GameObject: {fileID: 6793505049635473620}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3c1884b606728c45ba64a5674c2a0dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  magicNumber: 10
-  resetScale: {x: 1.5, y: 1.5, z: 1.5}
+  magicNumber: 1
+  resetScale: {x: 1.2, y: 1.2, z: 1.2}
   isSizeUp: 0

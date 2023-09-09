@@ -35,7 +35,8 @@ public class RewardManager : MonoBehaviour
     public void ItemCreate(int itemRank) // 랜덤 아이템 생성
     {
        
-        type = (ItemType)Random.Range(1, 3);
+        //type = (ItemType)Random.Range(1, 3);
+        type = (ItemType)Random.Range(1, 2);
 
 
         rank = (ItemRank)itemRank + 1;
@@ -44,7 +45,15 @@ public class RewardManager : MonoBehaviour
  
         if (type == ItemType.Staff)
         {
-            itemAttribute = (ItemAttribute)Random.Range(1, System.Enum.GetValues(typeof(ItemAttribute)).Length - 1);
+            int skillNum = -1;
+            if(rank != ItemRank.Legendary)
+            {
+                itemAttribute = (ItemAttribute)Random.Range(1, System.Enum.GetValues(typeof(ItemAttribute)).Length - 1);
+            }
+            else
+            {
+                itemAttribute = (ItemAttribute)Random.Range(2, System.Enum.GetValues(typeof(ItemAttribute)).Length - 1);
+            }
 
             itemName = itemInfo.staffNames[(int)itemAttribute - 1];
             desc = itemInfo.staffDescs[(int)itemAttribute - 1];
@@ -65,11 +74,12 @@ public class RewardManager : MonoBehaviour
                     itemSprite = itemInfo.legendaryStaffImgaes[(int)itemAttribute - 2];
                     itemName = itemInfo.legendaryStaffNames[(int)itemAttribute - 2];
                     desc = itemInfo.legendaryStaffDescs[(int)itemAttribute - 2];
+                    skillNum = (int)itemAttribute - 1;
                     break;
             }
             rewardImage.sprite = itemSprite;
 
-            ItemDatabase.instance.GetStaff(type, rank, quality, itemSprite, itemAttribute, itemName, attack, rate, moveSpeed, desc);
+            ItemDatabase.instance.GetStaff(type, rank, quality, itemSprite, itemAttribute, itemName, attack, rate, moveSpeed, desc, skillNum);
         }
         else
         {
@@ -81,7 +91,7 @@ public class RewardManager : MonoBehaviour
     private void BookCreate() // 마법 책 생성
     {
         // 스킬 번호
-        skillNumber = Random.Range(1, GameManager.instance.magicManager.magicInfo.Length);
+        skillNumber = Random.Range(2, GameManager.instance.magicManager.magicInfo.Length);
 
         // 품질 별로 부여되는 마법의 갯수가 다름
         aditionalAbility = new int[(int)quality];

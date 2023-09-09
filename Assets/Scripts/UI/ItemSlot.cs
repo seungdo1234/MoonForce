@@ -1,11 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public enum SlotType { main, sub, space }
-public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler , IPointerEnterHandler, IPointerExitHandler
+public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
 
     public SlotType slotType;
@@ -22,7 +21,7 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler , IPointerE
     public Item item;
     public Item prevItem;
 
-    private Image itemImage ;
+    private Image itemImage;
 
 
     private void Awake()
@@ -59,7 +58,7 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler , IPointerE
                 CloneImage.gameObject.SetActive(true);
                 CloneImage.sprite = itemImage.sprite;
                 CloneImage.rectTransform.position = Input.mousePosition;
-     
+
             }
         }
     }
@@ -88,7 +87,7 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler , IPointerE
         // 드래그한 슬롯의 이미지가 다른 슬롯 위에 있다면 교환
         ItemSlot targetSlot = eventData.pointerCurrentRaycast.gameObject.GetComponent<ItemSlot>();
         // 장비를 바꾸는 과정에서 무기는 스태프, 마법책은 서브 장비칸이 맞나 확인 후 장비 교체
-        if (targetSlot != null && targetSlot != this && ((item.type ==ItemType.Staff && targetSlot.slotType != SlotType.sub) || (item.type == ItemType.Book && targetSlot.slotType != SlotType.main)))
+        if (targetSlot != null && targetSlot != this && ((item.type == ItemType.Staff && targetSlot.slotType != SlotType.sub) || (item.type == ItemType.Book && targetSlot.slotType != SlotType.main)))
         {
 
             Item tempItem = targetSlot.item;
@@ -100,7 +99,7 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler , IPointerE
             targetSlot.ImageLoading();
             ImageLoading();
         }
-        
+
     }
 
     public void OnPointerEnter(PointerEventData eventData) // 아이템 프리뷰 창 띄우기
@@ -110,7 +109,7 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler , IPointerE
 
             preview.gameObject.SetActive(true);
 
-            if(!fixedPreview)
+            if (!fixedPreview)
             {
                 preview.gameObject.transform.position = transform.position + new Vector3(0, 60, 0);
             }
@@ -118,7 +117,7 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler , IPointerE
             {
                 preview.gameObject.transform.position = fixedPreviewTransform.position + new Vector3(0, 60, 0);
             }
-            if(slotType == SlotType.main)
+            if (slotType == SlotType.main)
             {
                 preview.gameObject.transform.position = transform.position + new Vector3(-350, 0, 0);
             }
@@ -129,14 +128,31 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler , IPointerE
     public void OnPointerExit(PointerEventData eventData)
     {
 
-            preview.gameObject.SetActive(false);  
+        preview.gameObject.SetActive(false);
     }
 
     private void Update()
     {
 
-        if( slotType == SlotType.main)
+        if (slotType == SlotType.main) // 무기 장착
         {
+            if (item.rank == ItemRank.Legendary && !isEquip && item.itemSprite != null)
+            {
+                GameManager.instance.magicManager.magicInfo[item.skillNum].isMagicActive = true;
+
+                prevItem = item;
+                isEquip = true;
+
+            }
+            else if (item.rank == ItemRank.Legendary && isEquip && item.itemSprite == null)
+            {
+
+                GameManager.instance.magicManager.magicInfo[prevItem.skillNum].isMagicActive = false;
+
+                prevItem = null;
+                isEquip = false;
+            }
+
             GameManager.instance.attribute = item.itemAttribute;
             GameManager.instance.statManager.attack = GameManager.instance.statManager.baseAttack + item.attack;
             if (GameManager.instance.attribute == ItemAttribute.Dark)
@@ -151,16 +167,16 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler , IPointerE
         }
 
 
-        if(slotType == SlotType.sub) // 마법책을 장착하면 적에게 발사하는 마력탄의 갯수가 늘어남
+        if (slotType == SlotType.sub) // 마법책을 장착하면 적에게 발사하는 마력탄의 갯수가 늘어남
         {
 
-            if(!isEquip && item.itemSprite != null) // 장착
+            if (!isEquip && item.itemSprite != null) // 장착
             {
                 prevItem = item;
 
                 GameManager.instance.magicManager.magicInfo[prevItem.skillNum].isMagicActive = true;
 
-                for(int i = 0; i< prevItem.aditionalAbility.Length; i++) // 추가 능력치 적용
+                for (int i = 0; i < prevItem.aditionalAbility.Length; i++) // 추가 능력치 적용
                 {
 
                     switch (prevItem.aditionalAbility[i])
@@ -196,11 +212,11 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler , IPointerE
 
                 isEquip = true;
             }
-            else if(isEquip && (item.itemSprite == null || prevItem.skillNum != item.skillNum)) // 해제
+            else if (isEquip && (item.itemSprite == null || prevItem.skillNum != item.skillNum)) // 해제
             {
 
                 GameManager.instance.magicManager.magicInfo[prevItem.skillNum].isMagicActive = false;
-    
+
                 GameManager.instance.statManager.weaponNum--; // 마력탄 갯수 감소
 
                 for (int i = 0; i < prevItem.aditionalAbility.Length; i++) // 추가 능력치 해제

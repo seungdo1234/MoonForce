@@ -8,6 +8,9 @@ public class MagicNumber : MonoBehaviour
 
     public Vector3 resetScale;
     public bool isSizeUp;
+    private void Start()
+    {
+    }
     public void AnimationEnd()
     {
         gameObject.SetActive(false); 

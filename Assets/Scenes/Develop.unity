@@ -4506,15 +4506,15 @@ MonoBehaviour:
   maxGameTime: 300
   curGameTime: 0
   kill: 0
-  enemyMaxNum: 5
+  enemyMaxNum: 500
   enemyCurNum: 9999
   level: 0
   clearReward: {fileID: 124120846}
   startBtn: {fileID: 0}
   hud: {fileID: 226571703}
   redMoon: {fileID: 930719710}
-  chestPercent: 64000000190000001900000019000000
-  bronzeChest: 23000000230000001e00000064000000
+  chestPercent: 19000000190000001900000019000000
+  bronzeChest: 41000000230000000000000000000000
   silverChest: 27000000230000001900000001000000
   goldChest: 0000000028000000320000000a000000
   specialChest: 0000000000000000460000001e000000
@@ -4947,7 +4947,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &593974076
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11719,8 +11719,24 @@ MonoBehaviour:
     coolTimeDecreaseValue: 0
     magicRateStep: 0
     magicSizeStep: 0
-  - isMagicActive: 0
+  - isMagicActive: 1
     magicNumber: 1
+    magicName: "\uC778\uD398\uB974\uB178"
+    magicEffect: {fileID: 1089409695428328705, guid: cd8c605d23761324eb93b3eaa023abd9, type: 3}
+    magicCountIncrease: 0
+    isFlying: 0
+    isNonTarget: 1
+    damagePer: 6.5
+    magicCount: 1
+    magicCoolTime: 5
+    penetration: 0
+    knockBackValue: 800
+    damageIncreaseValue: 0
+    coolTimeDecreaseValue: 0
+    magicRateStep: 0
+    magicSizeStep: 0
+  - isMagicActive: 0
+    magicNumber: 2
     magicName: "\uD654\uC5FC \uAD6C"
     magicEffect: {fileID: 926289742191996050, guid: 3442bfd10ca1c894a8c0180e6e401e58, type: 3}
     magicCountIncrease: 0
@@ -11736,7 +11752,7 @@ MonoBehaviour:
     magicRateStep: 0
     magicSizeStep: 0
   - isMagicActive: 0
-    magicNumber: 2
+    magicNumber: 3
     magicName: "\uC2A4\uD30C\uC774\uD06C"
     magicEffect: {fileID: 1108347652370906950, guid: a4870f0ee5ec8b945bf89bc7463f1068, type: 3}
     magicCountIncrease: 0
@@ -11752,7 +11768,7 @@ MonoBehaviour:
     magicRateStep: 0
     magicSizeStep: 0
   - isMagicActive: 0
-    magicNumber: 3
+    magicNumber: 4
     magicName: "\uC9C0\uC625\uC758 \uCC3D"
     magicEffect: {fileID: 4198508131217056016, guid: 344d1c27f2854244597308d42225d454, type: 3}
     magicCountIncrease: 1
@@ -11768,7 +11784,7 @@ MonoBehaviour:
     magicRateStep: 0
     magicSizeStep: 0
   - isMagicActive: 0
-    magicNumber: 4
+    magicNumber: 5
     magicName: "\uC0BD"
     magicEffect: {fileID: 3908359112845046333, guid: 26031a6a67d3a924197f23e346b4f289, type: 3}
     magicCountIncrease: 1
@@ -11784,7 +11800,7 @@ MonoBehaviour:
     magicRateStep: 0
     magicSizeStep: 0
   - isMagicActive: 0
-    magicNumber: 5
+    magicNumber: 6
     magicName: "\uB9C8\uBC95 \uAD6C"
     magicEffect: {fileID: 6607189605220824418, guid: 2991177c87c373b449beae056d9fdc75, type: 3}
     magicCountIncrease: 1
@@ -11800,7 +11816,7 @@ MonoBehaviour:
     magicRateStep: 0
     magicSizeStep: 0
   - isMagicActive: 0
-    magicNumber: 6
+    magicNumber: 7
     magicName: "\uD638\uBBF8"
     magicEffect: {fileID: 4726081471949478498, guid: 54577d8cf300bef49a72debab144688e, type: 3}
     magicCountIncrease: 0
@@ -11816,7 +11832,7 @@ MonoBehaviour:
     magicRateStep: 0
     magicSizeStep: 0
   - isMagicActive: 0
-    magicNumber: 7
+    magicNumber: 8
     magicName: "\uB3CC \uB358\uC9C0\uAE30"
     magicEffect: {fileID: 7026266901212579963, guid: 26d07e0878068d8478511340ea81316a, type: 3}
     magicCountIncrease: 0
@@ -11832,7 +11848,7 @@ MonoBehaviour:
     magicRateStep: 0
     magicSizeStep: 0
   - isMagicActive: 0
-    magicNumber: 8
+    magicNumber: 9
     magicName: "\uC708\uB4DC\uCEE4\uD130"
     magicEffect: {fileID: 3809043403037830521, guid: 34660ba0bf7f8f84faf26eb9d1182554, type: 3}
     magicCountIncrease: 1
@@ -11848,7 +11864,7 @@ MonoBehaviour:
     magicRateStep: 0
     magicSizeStep: 0
   - isMagicActive: 0
-    magicNumber: 9
+    magicNumber: 10
     magicName: "\uD1A0\uB124\uC774\uB3C4"
     magicEffect: {fileID: 7269730197916001703, guid: 06d42618e988b3140a7caf36b6b337ea, type: 3}
     magicCountIncrease: 0
@@ -11870,7 +11886,7 @@ MonoBehaviour:
     magicCountIncrease: 0
     isFlying: 0
     isNonTarget: 0
-    damagePer: 10
+    damagePer: 11
     magicCount: 1
     magicCoolTime: 12
     penetration: 0
@@ -11880,7 +11896,7 @@ MonoBehaviour:
     magicRateStep: 0
     magicSizeStep: 0
   - isMagicActive: 0
-    magicNumber: 11
+    magicNumber: 12
     magicName: "\uC804\uAE30 \uC1FC\uD06C"
     magicEffect: {fileID: 1635677412450062184, guid: f92ce5cc728a332468006ca331c22722, type: 3}
     magicCountIncrease: 0
@@ -11896,7 +11912,7 @@ MonoBehaviour:
     magicRateStep: 0
     magicSizeStep: 0
   - isMagicActive: 0
-    magicNumber: 12
+    magicNumber: 13
     magicName: "\uCDA9\uC804 \uD3ED\uBC1C"
     magicEffect: {fileID: 8605108235234549128, guid: 139f50daa90cfb741970b35be73c7c95, type: 3}
     magicCountIncrease: 0
@@ -14866,7 +14882,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 743519846}
   - {fileID: 85269485}
@@ -20246,7 +20262,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2136243358
 RectTransform:
   m_ObjectHideFlags: 0

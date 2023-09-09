@@ -23,7 +23,7 @@ public class Item
     public int[] aditionalAbility;    
 
 
-    public void Staff(ItemType type, ItemRank rank, ItemQuality quality, Sprite itemSprite, ItemAttribute itemAttribute,string itemName, int attack, float rate, float moveSpeed, string itemDesc)
+    public void Staff(ItemType type, ItemRank rank, ItemQuality quality, Sprite itemSprite, ItemAttribute itemAttribute,string itemName, int attack, float rate, float moveSpeed, string itemDesc, int skillNum)
     {
         this.type = type;
         this.rank = rank;
@@ -35,6 +35,7 @@ public class Item
         this.rate = rate;
         this.moveSpeed = moveSpeed;
         this.itemDesc = itemDesc;
+        this.skillNum = skillNum;
     }
     public void Book(ItemType type, ItemQuality quality , Sprite itemSprite ,string bookName ,int skillNum, int[] aditionalAbility)
     {
