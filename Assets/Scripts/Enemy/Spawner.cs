@@ -96,7 +96,23 @@ public class Spawner : MonoBehaviour
     }
     public void EnemyLevelUp()
     {
-        spawnPerLevelUp++;
+        int level = GameManager.instance.level;
+        int healthIncrese = 1;
+        if (level != 25 && level != 30 && level != 40 && level != 50)
+        {
+            spawnPerLevelUp++;
+        }
+
+        if(level >= 30)
+        {
+            healthIncrese = 2;
+        }
+        for(int i = 0; i<spawnData.Length; i++)
+        {
+            spawnData[i].damage += 2;
+            spawnData[i].speed += 0.1f;
+            spawnData[i].health += 5 * healthIncrese;
+        }
     }
 }
 

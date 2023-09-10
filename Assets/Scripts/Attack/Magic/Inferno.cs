@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inferno : MonoBehaviour
+public class Inferno : MonoBehaviour // 화염속성 레전드리 무기의 스킬
 {
 
-    public GameObject[] infernos;
+    public GameObject[] infernos; // 인페르노 오브젝트
 
 
     public float coolTime;
@@ -18,21 +18,18 @@ public class Inferno : MonoBehaviour
     {
         this.coolTime = coolTime;
 
-        for(int i =0; i < infernos.Length; i++)
+        for(int i =0; i < infernos.Length; i++) // 생성전 초기화
         {
             if (infernos[i].activeSelf)
             {
                 infernos[i].SetActive(false);
             }
-            else
-            {
-                break;
-            }
         }
+
         StartCoroutine(InfernoStart());
     }
 
-    private IEnumerator InfernoStart()
+    private IEnumerator InfernoStart() //시작
     {
         int point = 0;
         float timer = 0;

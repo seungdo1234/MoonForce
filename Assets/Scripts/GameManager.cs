@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         availablePoint++; 
         level++;
-        if(level % 5 == 0 && level !=25 && level != 30 && level != 40 && level != 50)
+        if(level % 5 == 0)
         {
             spawner.EnemyLevelUp();
         }
