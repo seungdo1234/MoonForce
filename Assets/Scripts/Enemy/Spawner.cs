@@ -9,12 +9,16 @@ public class Spawner : MonoBehaviour
 
 
 
+
     [Header("Enemy Spawn Data")]
     public SpawnData[] spawnData;
     public int[] enemySpawnNum = new int[5];
 
+   
     [Header("Enemy Spawn Percent")]
-    public int[] enemySpawnPer;
+
+    public int spawnPerLevelUp = 0;
+    public EnemySpawnPer[] enemySpawnPer;
     // 타이머 
     private float timer;
 
@@ -26,7 +30,7 @@ public class Spawner : MonoBehaviour
     }
     private void Start()
     {
-
+  
     }
     public  void StageStart()
     {
@@ -42,7 +46,6 @@ public class Spawner : MonoBehaviour
 
 
     }
-
     private void EnemyRandomTypeSelect()
     {
         const int NumEnemyTypes = 5;
@@ -56,9 +59,9 @@ public class Spawner : MonoBehaviour
             int percentSum = 0;
             int random = Random.Range(MinRandomValue, MaxRandomValue + 1); // 확률
 
-            for (int j = 0; j < enemySpawnPer.Length; j++) // 어던 타입의 Enemy가 나오는지 확률이 담긴 배열 만큼 반복 (크기 5)
+            for (int j = 0; j < enemySpawnPer[spawnPerLevelUp].spawnPer.Length; j++) // 어던 타입의 Enemy가 나오는지 확률이 담긴 배열 만큼 반복 (크기 5)
             {
-                percentSum += enemySpawnPer[j];
+                percentSum += enemySpawnPer[spawnPerLevelUp].spawnPer[j];
 
                 if (random <= percentSum) // 해당 숫자보다 낮다면 j번 째 Enemy 타입 소환 
                 {
@@ -91,6 +94,10 @@ public class Spawner : MonoBehaviour
             yield return null;
         }
     }
+    public void EnemyLevelUp()
+    {
+        spawnPerLevelUp++;
+    }
 }
 
 // 스폰된 Enemy들의 데이터가 들어있는 클래스 (인스펙터 상에서 나오게 하기위해 직렬화 (Serializable))
@@ -103,4 +110,11 @@ public class SpawnData
     public int health;
     public float speed;
    
+}
+[System.Serializable]
+public class EnemySpawnPer
+{
+    public int[] spawnPer;
+
+
 }

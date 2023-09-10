@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public StatManager statManager;
     public CameraShake cameraShake;
     public Pause pause;
-    private Spawner spawner;
+    public Spawner spawner;
 
     [Header("# Player Data")]
     public int availablePoint; // 스테이지가 끝날때마다 스탯 레벨을 올릴 수 있는 포인트
@@ -36,7 +36,6 @@ public class GameManager : MonoBehaviour
 
     [Header("# UI")]
     public GameObject clearReward;
-    public GameObject startBtn;
     public GameObject hud;
     public RedMoonEffect redMoon;
 
@@ -58,16 +57,6 @@ public class GameManager : MonoBehaviour
     {
         spawner = player.GetComponentInChildren<Spawner>();
     }
-    public void GameStart()
-    {
-        startBtn.SetActive(false);
-        Time.timeScale = 1f;
-        curGameTime = maxGameTime;
-        enemyCurNum = 0;
-        kill = 0;
-        gameStop = false;
-        magicManager.StageStart();
-    }
     private bool isClear()
     {
         if(kill == enemyMaxNum)
@@ -80,7 +69,7 @@ public class GameManager : MonoBehaviour
     {
         isStage = false;
         gameStop = true;
-        if (isRedMoon)
+        if (isRedMoon) // 붉은 달이 떠올랐을 때
         {
             redMoon.RedMoonEnd();
             isRedMoon = false;
@@ -96,6 +85,10 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         availablePoint++; 
         level++;
+        if(level % 5 == 0 && level !=25 && level != 30 && level != 40 && level != 50)
+        {
+            spawner.EnemyLevelUp();
+        }
         clearReward.SetActive(true);
         player.gameObject.SetActive(false);
         //    Time.timeScale = 0f;
@@ -132,12 +125,12 @@ public class GameManager : MonoBehaviour
 
         curGameTime -= Time.deltaTime;
         
-        if(!redMoonEffect && curGameTime <= redMoon.lerpTime)
+        if(!redMoonEffect && curGameTime <= redMoon.lerpTime) // 화면이 빨개지는 중
         {
             redMoon.RedMoonStart();
             redMoonEffect = true;
         }
-        else if (curGameTime <= 0)
+        else if (curGameTime <= 0) // 붉은 달 On
         {
             curGameTime = 0;
             isRedMoon = true;

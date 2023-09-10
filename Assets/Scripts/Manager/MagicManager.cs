@@ -62,7 +62,7 @@ public class MagicManager : MonoBehaviour
                 if (item.activeSelf)
                 {
                     MagicNumber magic = item.GetComponent<MagicNumber>();
-                    if (magic.isSizeUp)
+                    if (i != 1 && magic.isSizeUp)
                     {
                         magic.GetComponent<Transform>().localScale = magic.resetScale;
                         magic.isSizeUp = false;
@@ -177,15 +177,15 @@ public class MagicManager : MonoBehaviour
                                                 // FromToRotation : 지정된 축을 중심으로 목표를 향해 회전하는 함수
             magic.rotation = Quaternion.FromToRotation(Vector3.right, dir); // Enemy 방향으로 bullet 회전
 
-            if (magicNumber == 1) // 파이어볼
+            if (magicNumber == 2) // 파이어볼
             {
                 magic.GetComponent<Bullet>().Init(0, magicInfo[magicNumber].penetration, dir, 11.5f);
             }
-            else if (magicNumber == 6) // 괭이
+            else if (magicNumber == 7) // 괭이
             {
                 magic.GetComponent<Hoe>().Init(dir);
             }
-            else if (magicNumber == 7) // 돌 던지기
+            else if (magicNumber == 8) // 돌 던지기
             {
                 magic.GetComponent<RockThrow>().Init(dir);
             }

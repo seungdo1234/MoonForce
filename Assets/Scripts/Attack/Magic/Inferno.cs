@@ -18,6 +18,17 @@ public class Inferno : MonoBehaviour
     {
         this.coolTime = coolTime;
 
+        for(int i =0; i < infernos.Length; i++)
+        {
+            if (infernos[i].activeSelf)
+            {
+                infernos[i].SetActive(false);
+            }
+            else
+            {
+                break;
+            }
+        }
         StartCoroutine(InfernoStart());
     }
 
