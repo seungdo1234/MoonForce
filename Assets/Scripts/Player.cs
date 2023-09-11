@@ -127,9 +127,8 @@ public class Player : MonoBehaviour
                 transform.GetChild(i).gameObject.SetActive(false);
             }
 
-            AudioManager.instance.PlayerSfx(Sfx.GameOver);
-            //    anim.SetTrigger("Dead");
-            //   GameManager.instance.GameOver();
+            anim.SetTrigger("Dead");
+            GameManager.instance.GameOver();
 
         }
     }

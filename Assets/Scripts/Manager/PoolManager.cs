@@ -80,13 +80,16 @@ public class PoolManager : MonoBehaviour
     {
         // 스테이지를 클리어했기때문에 혹시나 활성화된 마법들을 비활성화 시킴 
 
-        foreach (GameObject item in pools[2])
-        {
-            if (item.activeSelf)
+        for (int i = 0; i < pools.Length; i++){
+            foreach (GameObject item in pools[i])
             {
-                item.SetActive(false);
+                if (item.activeSelf)
+                {
+                    item.SetActive(false);
+                }
             }
         }
+       
 
     }
 

@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
     public GameObject clearReward;
     public GameObject hud;
     public RedMoonEffect redMoon;
+    public GameObject gameOverObject;
 
     [Header("# Reward")]
     public int[] chestPercent;
@@ -81,7 +82,7 @@ public class GameManager : MonoBehaviour
         AudioManager.instance.EndBgm(); // Bgm 끄기
         yield return new WaitForSeconds(1f);
         pause.gameObject.SetActive(false); // 퍼즈 버튼 비활성화
-        AudioManager.instance.PlayBgm(3); // 승리 Bgm 재생
+        AudioManager.instance.PlayBgm((int)Bgm.Victory); // 승리 Bgm 재생
         yield return new WaitForSeconds(2f);
         availablePoint++; 
         level++;
@@ -138,4 +139,13 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public void GameOver()
+    {
+        gameStop = true;
+
+        AudioManager.instance.PlayBgm((int)Bgm.GameOver);
+        hud.SetActive(false);
+        pause.gameObject.SetActive(false);
+        gameOverObject.SetActive(true);
+    }
 }

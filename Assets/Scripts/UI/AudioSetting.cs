@@ -28,7 +28,7 @@ public class AudioSetting : MonoBehaviour
 
         AudioSource[] audios = AudioManager.instance.GetComponentsInChildren<AudioSource>();
 
-        bgmPlayer = audios[0];
+        bgmPlayer = audios[0]; 
 
         sfxPlayers = new AudioSource[audio.channels];
 

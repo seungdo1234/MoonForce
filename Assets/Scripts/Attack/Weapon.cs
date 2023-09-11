@@ -18,6 +18,11 @@ public class Weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.instance.gameStop)
+        {
+            return;
+        }
+
         if(timer < GameManager.instance.statManager.rate)
         {
             timer += Time.deltaTime;
