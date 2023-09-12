@@ -64,10 +64,7 @@ public class Enemy : MonoBehaviour
     {
         if (GameManager.instance.gameStop || !isLive || anim.GetCurrentAnimatorStateInfo(0).IsName("Hit") || rush.isReady || !rangeAttackEnemy.isReady) // Enemy가 죽었다면 return
         {
-            if (!rangeAttackEnemy.isReady) // 원거리 공격 중일때는 밀리지 않도록 속도를 0으로 초기화
-            {
-                rigid.velocity = Vector2.zero;
-            }
+            rigid.velocity = Vector2.zero;
             return;
         }
 

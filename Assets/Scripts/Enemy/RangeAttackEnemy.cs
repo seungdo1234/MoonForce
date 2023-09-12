@@ -30,7 +30,7 @@ public class RangeAttackEnemy : MonoBehaviour
         float curTime = 0;
         Transform target = player.transform;
 
-        while (true)
+        while (!GameManager.instance.gameStop)
         {
 
             if (isReady)

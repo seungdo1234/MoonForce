@@ -35,8 +35,7 @@ public class RewardManager : MonoBehaviour
     public void ItemCreate(int itemRank) // 랜덤 아이템 생성
     {
        
-        //type = (ItemType)Random.Range(1, 3);
-        type = (ItemType)Random.Range(1, 2);
+        type = (ItemType)Random.Range(1, 3);
 
 
         rank = (ItemRank)itemRank + 1;

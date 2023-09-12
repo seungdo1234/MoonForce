@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -15,7 +16,8 @@ public class GameManager : MonoBehaviour
     public StatManager statManager;
     public CameraShake cameraShake;
     public Pause pause;
-    public Spawner spawner;
+    public Inventory inventory;
+    private Spawner spawner;
 
     [Header("# Player Data")]
     public int availablePoint; // 스테이지가 끝날때마다 스탯 레벨을 올릴 수 있는 포인트
@@ -33,12 +35,14 @@ public class GameManager : MonoBehaviour
     public int enemyMaxNum;
     public int enemyCurNum = 9999;
     public int level;
+    public int enemySpawnNumIncrese;
 
     [Header("# UI")]
     public GameObject clearReward;
     public GameObject hud;
     public RedMoonEffect redMoon;
     public GameObject gameOverObject;
+
 
     [Header("# Reward")]
     public int[] chestPercent;
@@ -86,6 +90,8 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         availablePoint++; 
         level++;
+
+        enemyMaxNum += 10;
         if(level % 5 == 0)
         {
             spawner.EnemyLevelUp();
@@ -148,4 +154,5 @@ public class GameManager : MonoBehaviour
         pause.gameObject.SetActive(false);
         gameOverObject.SetActive(true);
     }
+
 }

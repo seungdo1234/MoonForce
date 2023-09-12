@@ -251,13 +251,13 @@ public class MagicManager : MonoBehaviour
             case 1:
                 InfernoSpawn(magicNumber);
                 break;
-            case 4:
+            case 5:
                 ShovelSpawn(magicNumber);
                 break;
-            case 5:
+            case 6:
                 MagicBallSpawn(magicNumber);
                 break;
-            case 12:
+            case 13:
                 ChargeExplosionSpawn(magicNumber);
                 break;
         }

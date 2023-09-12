@@ -39,7 +39,7 @@ public class RushEnemy : MonoBehaviour
         Vector3 dir = Vector3.zero;
         Vector3 initialPosition = Vector3.zero;
 
-        while (true)
+        while (!GameManager.instance.gameStop)
         {
 
             if (!isReady)

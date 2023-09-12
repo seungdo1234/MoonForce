@@ -4,10 +4,12 @@ using System.Collections.Generic;
 
 public class Inventory : MonoBehaviour
 {
+    [Header("# Item Slot")]
     public ItemSlot mainEqquipment;
     public ItemSlot[] subEqquipments;
     public ItemSlot[] waitEqquipments;
 
+    
     private Item item;
 
     private void OnEnable()
@@ -38,7 +40,7 @@ public class Inventory : MonoBehaviour
         // 이미지 로딩을 다음 프레임까지 연기
         yield return null;
 
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < waitEqquipments.Length; i++)
         {
             waitEqquipments[i].ImageLoading();
         }

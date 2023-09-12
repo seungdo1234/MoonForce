@@ -136,34 +136,51 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
 
         if (slotType == SlotType.main) // 무기 장착
         {
-            if (item.rank == ItemRank.Legendary && !isEquip && item.itemSprite != null)
-            {
-                GameManager.instance.magicManager.magicInfo[item.skillNum].isMagicActive = true;
 
-                prevItem = item;
+            if (item.itemSprite != null && (!isEquip &&  prevItem != item) ) // 장비 장착 (장비를 장착하고 있을 때 다른 장비를 장착하는 경우도 포함)
+            {
                 isEquip = true;
 
+                GameManager.instance.attribute = item.itemAttribute;
+                GameManager.instance.statManager.attack = GameManager.instance.statManager.baseAttack + item.attack;
+                if (GameManager.instance.attribute == ItemAttribute.Dark)
+                {
+                    GameManager.instance.statManager.rate = GameManager.instance.statManager.baseRate * 2 - item.rate;
+                }
+                else
+                {
+                    GameManager.instance.statManager.rate = GameManager.instance.statManager.baseRate - item.rate;
+                }
+                GameManager.instance.statManager.moveSpeed = GameManager.instance.statManager.baseMoveSpeed + item.moveSpeed;
+
+                if (item.rank == ItemRank.Legendary)
+                {
+                    if(prevItem.rank == ItemRank.Legendary) // 전에 장착하던 아이템이 레전드리 무기라면 해당 스킬 비활성화
+                    {
+                        GameManager.instance.magicManager.magicInfo[prevItem.skillNum].isMagicActive = false;
+                    }
+
+                    GameManager.instance.magicManager.magicInfo[item.skillNum].isMagicActive = true;
+                    prevItem = item;
+                }
             }
-            else if (item.rank == ItemRank.Legendary && isEquip && item.itemSprite == null)
+           else if (isEquip && item.itemSprite == null ) // 장비 해제
             {
-
-                GameManager.instance.magicManager.magicInfo[prevItem.skillNum].isMagicActive = false;
-
-                prevItem = null;
                 isEquip = false;
-            }
 
-            GameManager.instance.attribute = item.itemAttribute;
-            GameManager.instance.statManager.attack = GameManager.instance.statManager.baseAttack + item.attack;
-            if (GameManager.instance.attribute == ItemAttribute.Dark)
-            {
-                GameManager.instance.statManager.rate = GameManager.instance.statManager.baseRate * 2 - item.rate;
+                GameManager.instance.attribute = ItemAttribute.Default;
+                GameManager.instance.statManager.attack = GameManager.instance.statManager.baseAttack;
+                GameManager.instance.statManager.rate = GameManager.instance.statManager.baseRate;
+                GameManager.instance.statManager.moveSpeed = GameManager.instance.statManager.baseMoveSpeed + item.moveSpeed;
+
+                if (item.rank == ItemRank.Legendary) // 레전드리 아이템을 제거할 때
+                {
+                    GameManager.instance.magicManager.magicInfo[prevItem.skillNum].isMagicActive = false;
+                    prevItem = null;
+                }
             }
-            else
-            {
-                GameManager.instance.statManager.rate = GameManager.instance.statManager.baseRate - item.rate;
-            }
-            GameManager.instance.statManager.moveSpeed = GameManager.instance.statManager.baseMoveSpeed + item.moveSpeed;
+          
+
         }
 
 
