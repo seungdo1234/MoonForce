@@ -18,7 +18,7 @@ public class NextStageBtn : MonoBehaviour // 다음스테이지로 가는 버튼 (무기를 장
 
     private void Update()
     {
-        if(!isActive && inventory.mainEqquipment.isEquip)
+        if(!isActive && inventory.mainEqquipment.item.itemSprite != null)
         {
             for(int i =0; i <inventory.waitEqquipments.Length; i++)
             {
@@ -46,7 +46,7 @@ public class NextStageBtn : MonoBehaviour // 다음스테이지로 가는 버튼 (무기를 장
                     inventoryFull = true;
                 }
             }
-            if (!inventory.mainEqquipment.isEquip || inventoryFull)
+            if (inventory.mainEqquipment.item.itemSprite == null || inventoryFull)
             {
                 isActive = false;
                 btn.interactable = false;

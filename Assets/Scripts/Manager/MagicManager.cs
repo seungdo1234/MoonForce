@@ -49,7 +49,7 @@ public class MagicManager : MonoBehaviour
         }
     }
 
-    public void StageClear()
+    public void PoolingReset()
     {
         StopAllCoroutines();
 

@@ -76,9 +76,9 @@ public class PoolManager : MonoBehaviour
         return select;
     }
 
-    public void StageClear()
+    public void PoolingReset()
     {
-        // 스테이지를 클리어했기때문에 혹시나 활성화된 마법들을 비활성화 시킴 
+        // 스테이지를 클리어했기때문에 모든 풀링 오브젝트들 비활성화 
 
         for (int i = 0; i < pools.Length; i++){
             foreach (GameObject item in pools[i])

@@ -5,9 +5,9 @@ using UnityEngine.UI;
 public class StageClear : MonoBehaviour
 {
     public RuntimeAnimatorController[] animCon;
-    public RewardManager rewardManager;
     public Image reward;
 
+    private RewardManager rewardManager;
     private int chestType;
     private Animator chestAnim;
     private Image chestImage;
@@ -18,6 +18,7 @@ public class StageClear : MonoBehaviour
         chestAnim = GetComponentInChildren<Animator>();
         chestImage = GetComponentInChildren<Image>();
         btn = GetComponentsInChildren<Button>(true);
+        rewardManager = GameManager.instance.rewardManager;
     }
 
     public void ChestOpen()

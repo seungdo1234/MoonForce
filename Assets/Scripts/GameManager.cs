@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public CameraShake cameraShake;
     public Pause pause;
     public Inventory inventory;
+    public RewardManager rewardManager;
     private Spawner spawner;
 
     [Header("# Player Data")]
@@ -70,6 +71,11 @@ public class GameManager : MonoBehaviour
         }
         return false;
     }
+    public void PoolingReset()
+    {
+        magicManager.PoolingReset();
+        pool.PoolingReset();
+    }
     private IEnumerator StageClear() // 스테이지 클리어
     {
         isStage = false;
@@ -81,8 +87,7 @@ public class GameManager : MonoBehaviour
         }
         redMoonEffect = false;
         hud.SetActive(false);
-        magicManager.StageClear();
-        pool.StageClear();
+        PoolingReset();
         AudioManager.instance.EndBgm(); // Bgm 끄기
         yield return new WaitForSeconds(1f);
         pause.gameObject.SetActive(false); // 퍼즈 버튼 비활성화

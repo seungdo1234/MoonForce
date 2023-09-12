@@ -250,27 +250,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 2
-  isEquip: 0
   CloneImage: {fileID: 1280247473}
   preview: {fileID: 839489304}
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 63543068}
   item:
-    isLoad: 0
-    type: 0
-    rank: 0
-    quality: 0
-    itemSprite: {fileID: 0}
-    itemAttribute: 0
-    itemName: 
-    attack: 0
-    rate: 0
-    moveSpeed: 0
-    itemDesc: 
-    bookName: 
-    skillNum: 0
-    aditionalAbility: 
-  prevItem:
     isLoad: 0
     type: 0
     rank: 0
@@ -812,27 +796,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 2
-  isEquip: 0
   CloneImage: {fileID: 1280247473}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
   item:
-    isLoad: 0
-    type: 0
-    rank: 0
-    quality: 0
-    itemSprite: {fileID: 0}
-    itemAttribute: 0
-    itemName: 
-    attack: 0
-    rate: 0
-    moveSpeed: 0
-    itemDesc: 
-    bookName: 
-    skillNum: 0
-    aditionalAbility: 
-  prevItem:
     isLoad: 0
     type: 0
     rank: 0
@@ -937,27 +905,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 2
-  isEquip: 0
   CloneImage: {fileID: 1280247473}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
   item:
-    isLoad: 0
-    type: 0
-    rank: 0
-    quality: 0
-    itemSprite: {fileID: 0}
-    itemAttribute: 0
-    itemName: 
-    attack: 0
-    rate: 0
-    moveSpeed: 0
-    itemDesc: 
-    bookName: 
-    skillNum: 0
-    aditionalAbility: 
-  prevItem:
     isLoad: 0
     type: 0
     rank: 0
@@ -1311,27 +1263,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 2
-  isEquip: 0
   CloneImage: {fileID: 1280247473}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
   item:
-    isLoad: 0
-    type: 0
-    rank: 0
-    quality: 0
-    itemSprite: {fileID: 0}
-    itemAttribute: 0
-    itemName: 
-    attack: 0
-    rate: 0
-    moveSpeed: 0
-    itemDesc: 
-    bookName: 
-    skillNum: 0
-    aditionalAbility: 
-  prevItem:
     isLoad: 0
     type: 0
     rank: 0
@@ -1577,7 +1513,6 @@ MonoBehaviour:
   - {fileID: 22100000, guid: 4080dbfae9085514baadc47025c6a4ba, type: 2}
   - {fileID: 22100000, guid: 17bd18a25f974e14493b5bd600e8c124, type: 2}
   - {fileID: 22100000, guid: 4a7043c7450108543bc0472e910f3c04, type: 2}
-  rewardManager: {fileID: 303485945}
   reward: {fileID: 603702958}
 --- !u!1 &132971308
 GameObject:
@@ -1887,6 +1822,152 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &226760519
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 226760520}
+  - component: {fileID: 226760523}
+  - component: {fileID: 226760522}
+  - component: {fileID: 226760521}
+  m_Layer: 5
+  m_Name: NoButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &226760520
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226760519}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1784130974}
+  m_Father: {fileID: 980055971}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -40, y: 35}
+  m_SizeDelta: {x: 200, y: 100}
+  m_Pivot: {x: 1, y: 0}
+--- !u!114 &226760521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226760519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 226760522}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 240672114}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: SelectSfx
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 980055970}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &226760522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226760519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.7058824, g: 0.3529412, b: 0.3529412, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 1728270585, guid: 73862ae7cc7e2fc4fa98257acc1e7a77, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &226760523
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226760519}
+  m_CullTransparentMesh: 1
 --- !u!1 &240672111
 GameObject:
   m_ObjectHideFlags: 0
@@ -2044,27 +2125,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 2
-  isEquip: 0
   CloneImage: {fileID: 1280247473}
   preview: {fileID: 839489304}
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 1234341419}
   item:
-    isLoad: 0
-    type: 0
-    rank: 0
-    quality: 0
-    itemSprite: {fileID: 0}
-    itemAttribute: 0
-    itemName: 
-    attack: 0
-    rate: 0
-    moveSpeed: 0
-    itemDesc: 
-    bookName: 
-    skillNum: 0
-    aditionalAbility: 
-  prevItem:
     isLoad: 0
     type: 0
     rank: 0
@@ -4226,27 +4291,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 2
-  isEquip: 0
   CloneImage: {fileID: 1280247473}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
   item:
-    isLoad: 0
-    type: 0
-    rank: 0
-    quality: 0
-    itemSprite: {fileID: 0}
-    itemAttribute: 0
-    itemName: 
-    attack: 0
-    rate: 0
-    moveSpeed: 0
-    itemDesc: 
-    bookName: 
-    skillNum: 0
-    aditionalAbility: 
-  prevItem:
     isLoad: 0
     type: 0
     rank: 0
@@ -4589,6 +4638,86 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 460053474}
   m_CullTransparentMesh: 1
+--- !u!1 &478902486
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 478902487}
+  - component: {fileID: 478902489}
+  - component: {fileID: 478902488}
+  m_Layer: 5
+  m_Name: GuideText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &478902487
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478902486}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 980055971}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 76}
+  m_SizeDelta: {x: 0, y: -340.0279}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &478902488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478902486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: e715fcabbb6163e48b780b3b92979f8e, type: 3}
+    m_FontSize: 30
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 3
+    m_MaxSize: 300
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "\uBA54\uC778 \uBA54\uB274\uB85C \uC774\uB3D9\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?\n"
+--- !u!222 &478902489
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478902486}
+  m_CullTransparentMesh: 1
 --- !u!1 &501008653
 GameObject:
   m_ObjectHideFlags: 0
@@ -4679,27 +4808,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 2
-  isEquip: 0
   CloneImage: {fileID: 1280247473}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
   item:
-    isLoad: 0
-    type: 0
-    rank: 0
-    quality: 0
-    itemSprite: {fileID: 0}
-    itemAttribute: 0
-    itemName: 
-    attack: 0
-    rate: 0
-    moveSpeed: 0
-    itemDesc: 
-    bookName: 
-    skillNum: 0
-    aditionalAbility: 
-  prevItem:
     isLoad: 0
     type: 0
     rank: 0
@@ -4881,7 +4994,8 @@ MonoBehaviour:
   cameraShake: {fileID: 1606866641}
   pause: {fileID: 1784448698}
   inventory: {fileID: 1623473219}
-  availablePoint: 40
+  rewardManager: {fileID: 303485945}
+  availablePoint: 0
   attribute: 0
   gold: 0
   gameStop: 1
@@ -5161,6 +5275,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 980055970}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &553131110
 MonoBehaviour:
@@ -5486,6 +5612,7 @@ RectTransform:
   m_Children:
   - {fileID: 780324114}
   - {fileID: 1998457309}
+  - {fileID: 980055971}
   m_Father: {fileID: 1784448697}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5584,27 +5711,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 2
-  isEquip: 0
   CloneImage: {fileID: 1280247473}
   preview: {fileID: 839489304}
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 88059192}
   item:
-    isLoad: 0
-    type: 0
-    rank: 0
-    quality: 0
-    itemSprite: {fileID: 0}
-    itemAttribute: 0
-    itemName: 
-    attack: 0
-    rate: 0
-    moveSpeed: 0
-    itemDesc: 
-    bookName: 
-    skillNum: 0
-    aditionalAbility: 
-  prevItem:
     isLoad: 0
     type: 0
     rank: 0
@@ -6384,27 +6495,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 2
-  isEquip: 0
   CloneImage: {fileID: 1280247473}
   preview: {fileID: 839489304}
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 1526604995}
   item:
-    isLoad: 0
-    type: 0
-    rank: 0
-    quality: 0
-    itemSprite: {fileID: 0}
-    itemAttribute: 0
-    itemName: 
-    attack: 0
-    rate: 0
-    moveSpeed: 0
-    itemDesc: 
-    bookName: 
-    skillNum: 0
-    aditionalAbility: 
-  prevItem:
     isLoad: 0
     type: 0
     rank: 0
@@ -7068,27 +7163,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 2
-  isEquip: 0
   CloneImage: {fileID: 1280247473}
   preview: {fileID: 839489304}
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 63543068}
   item:
-    isLoad: 0
-    type: 0
-    rank: 0
-    quality: 0
-    itemSprite: {fileID: 0}
-    itemAttribute: 0
-    itemName: 
-    attack: 0
-    rate: 0
-    moveSpeed: 0
-    itemDesc: 
-    bookName: 
-    skillNum: 0
-    aditionalAbility: 
-  prevItem:
     isLoad: 0
     type: 0
     rank: 0
@@ -7193,27 +7272,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 0
-  isEquip: 0
   CloneImage: {fileID: 1280247473}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
   item:
-    isLoad: 0
-    type: 0
-    rank: 0
-    quality: 0
-    itemSprite: {fileID: 0}
-    itemAttribute: 0
-    itemName: 
-    attack: 0
-    rate: 0
-    moveSpeed: 0
-    itemDesc: 
-    bookName: 
-    skillNum: 0
-    aditionalAbility: 
-  prevItem:
     isLoad: 0
     type: 0
     rank: 0
@@ -7464,27 +7527,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 1
-  isEquip: 0
   CloneImage: {fileID: 1280247473}
   preview: {fileID: 839489304}
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 1417924892}
   item:
-    isLoad: 0
-    type: 0
-    rank: 0
-    quality: 0
-    itemSprite: {fileID: 0}
-    itemAttribute: 0
-    itemName: 
-    attack: 0
-    rate: 0
-    moveSpeed: 0
-    itemDesc: 
-    bookName: 
-    skillNum: 0
-    aditionalAbility: 
-  prevItem:
     isLoad: 0
     type: 0
     rank: 0
@@ -8155,8 +8202,7 @@ PrefabInstance:
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[0].Array.data[3].Y
       value: -100000000
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7936415488464694551, guid: 7dc290c25d6f3424e8a8e94e66eec4da, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7dc290c25d6f3424e8a8e94e66eec4da, type: 3}
 --- !u!1 &822345284
 GameObject:
@@ -8189,6 +8235,86 @@ Transform:
   m_Father: {fileID: 1934122730}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &823689117
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 823689118}
+  - component: {fileID: 823689120}
+  - component: {fileID: 823689119}
+  m_Layer: 5
+  m_Name: WarningText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &823689118
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823689117}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 980055971}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 7.006531}
+  m_SizeDelta: {x: 0, y: -321.9892}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &823689119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823689117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.7924528, g: 0.09344961, b: 0.09344961, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: e715fcabbb6163e48b780b3b92979f8e, type: 3}
+    m_FontSize: 30
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 3
+    m_MaxSize: 300
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "\uD604\uC7AC \uAC8C\uC784\uC758 \uB370\uC774\uD130\uB294 \n\uC0AC\uB77C\uC9D1\uB2C8\uB2E4."
+--- !u!222 &823689120
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823689117}
+  m_CullTransparentMesh: 1
 --- !u!1 &839489300
 GameObject:
   m_ObjectHideFlags: 0
@@ -8373,27 +8499,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 2
-  isEquip: 0
   CloneImage: {fileID: 1280247473}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
   item:
-    isLoad: 0
-    type: 0
-    rank: 0
-    quality: 0
-    itemSprite: {fileID: 0}
-    itemAttribute: 0
-    itemName: 
-    attack: 0
-    rate: 0
-    moveSpeed: 0
-    itemDesc: 
-    bookName: 
-    skillNum: 0
-    aditionalAbility: 
-  prevItem:
     isLoad: 0
     type: 0
     rank: 0
@@ -8610,27 +8720,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 2
-  isEquip: 0
   CloneImage: {fileID: 1280247473}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
   item:
-    isLoad: 0
-    type: 0
-    rank: 0
-    quality: 0
-    itemSprite: {fileID: 0}
-    itemAttribute: 0
-    itemName: 
-    attack: 0
-    rate: 0
-    moveSpeed: 0
-    itemDesc: 
-    bookName: 
-    skillNum: 0
-    aditionalAbility: 
-  prevItem:
     isLoad: 0
     type: 0
     rank: 0
@@ -9403,6 +9497,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1121587388}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 303485945}
+        m_TargetAssemblyTypeName: RewardManager, Assembly-CSharp
+        m_MethodName: ItemCreate
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: -1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &888342633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10096,27 +10214,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 2
-  isEquip: 0
   CloneImage: {fileID: 1280247473}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
   item:
-    isLoad: 0
-    type: 0
-    rank: 0
-    quality: 0
-    itemSprite: {fileID: 0}
-    itemAttribute: 0
-    itemName: 
-    attack: 0
-    rate: 0
-    moveSpeed: 0
-    itemDesc: 
-    bookName: 
-    skillNum: 0
-    aditionalAbility: 
-  prevItem:
     isLoad: 0
     type: 0
     rank: 0
@@ -10413,6 +10515,86 @@ Transform:
   m_Father: {fileID: 1934122730}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &980055970
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 980055971}
+  - component: {fileID: 980055973}
+  - component: {fileID: 980055972}
+  m_Layer: 5
+  m_Name: WarningWindow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &980055971
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980055970}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 478902487}
+  - {fileID: 823689118}
+  - {fileID: 1727270300}
+  - {fileID: 226760520}
+  m_Father: {fileID: 602079073}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 500, y: 400}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &980055972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980055970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.7254902, g: 0.50980395, b: 0.34117648, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -8390244, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &980055973
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980055970}
+  m_CullTransparentMesh: 1
 --- !u!1 &987284400
 GameObject:
   m_ObjectHideFlags: 0
@@ -11413,27 +11595,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 2
-  isEquip: 0
   CloneImage: {fileID: 1280247473}
   preview: {fileID: 839489304}
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 1234341419}
   item:
-    isLoad: 0
-    type: 0
-    rank: 0
-    quality: 0
-    itemSprite: {fileID: 0}
-    itemAttribute: 0
-    itemName: 
-    attack: 0
-    rate: 0
-    moveSpeed: 0
-    itemDesc: 
-    bookName: 
-    skillNum: 0
-    aditionalAbility: 
-  prevItem:
     isLoad: 0
     type: 0
     rank: 0
@@ -11610,7 +11776,7 @@ MonoBehaviour:
   - {fileID: 2003486033}
   - {fileID: 768434559}
   charactor: {fileID: 1448332632}
-  lerpTime: 7
+  lerpTime: 6
   isRotation: 0
 --- !u!1 &1122634344
 GameObject:
@@ -12721,63 +12887,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd8374ca043b616489a336e3c38d5070, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemDB:
-  - isLoad: 0
-    type: 1
-    rank: 4
-    quality: 1
-    itemSprite: {fileID: 21300000, guid: 552525ce089a36749b7cbc7c212d47c9, type: 3}
-    itemAttribute: 4
-    itemName: "\uC870\uC7A1\uD55C \uC9C0\uD321\uC774"
-    attack: 3
-    rate: 0
-    moveSpeed: 0
-    itemDesc: "\uC870\uC7A1\uD55C \uC9C0\uD321\uC774\uB2E4."
-    bookName: 
-    skillNum: 1
-    aditionalAbility: 
-  - isLoad: 0
-    type: 2
-    rank: 0
-    quality: 3
-    itemSprite: {fileID: 21300000, guid: 9dd87755e3d7d584e9e44ae8bdfa8443, type: 3}
-    itemAttribute: 0
-    itemName: 
-    attack: 0
-    rate: 0
-    moveSpeed: 0
-    itemDesc: 0
-    bookName: "\uD638"
-    skillNum: 7
-    aditionalAbility: 020000000200000002000000
-  - isLoad: 0
-    type: 2
-    rank: 0
-    quality: 3
-    itemSprite: {fileID: 21300000, guid: 9dd87755e3d7d584e9e44ae8bdfa8443, type: 3}
-    itemAttribute: 0
-    itemName: 
-    attack: 0
-    rate: 0
-    moveSpeed: 0
-    itemDesc: 0
-    bookName: "\uD654\uC5FC\uD3ED\uBC1C"
-    skillNum: 10
-    aditionalAbility: 0100000002000000
-  - isLoad: 0
-    type: 1
-    rank: 4
-    quality: 3
-    itemSprite: {fileID: 21300000, guid: ad012bde55a34a842895c6c5a0a1b246, type: 3}
-    itemAttribute: 7
-    itemName: "\uBE5B"
-    attack: 100
-    rate: 0.5
-    moveSpeed: 2
-    itemDesc: "\u313B\u3134\u3147"
-    bookName: 0
-    skillNum: 2
-    aditionalAbility: 
+  itemDB: []
 --- !u!1 &1234341418
 GameObject:
   m_ObjectHideFlags: 0
@@ -12868,27 +12978,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 2
-  isEquip: 0
   CloneImage: {fileID: 1280247473}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
   item:
-    isLoad: 0
-    type: 0
-    rank: 0
-    quality: 0
-    itemSprite: {fileID: 0}
-    itemAttribute: 0
-    itemName: 
-    attack: 0
-    rate: 0
-    moveSpeed: 0
-    itemDesc: 
-    bookName: 
-    skillNum: 0
-    aditionalAbility: 
-  prevItem:
     isLoad: 0
     type: 0
     rank: 0
@@ -13439,6 +13533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e18d69a52e54f034bb3d10c93f47768f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initPos: {x: 0, y: 0, z: 0}
 --- !u!1 &1296937406
 GameObject:
   m_ObjectHideFlags: 0
@@ -13746,6 +13841,23 @@ Transform:
   m_Father: {fileID: 1934122730}
   m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1341078406 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7936415486688412464, guid: 7dc290c25d6f3424e8a8e94e66eec4da, type: 3}
+  m_PrefabInstance: {fileID: 813271971}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1341078409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1341078406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aff91ac0a5a969d40ba1f2e2d447d98c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1348240494
 GameObject:
   m_ObjectHideFlags: 0
@@ -14778,27 +14890,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 1
-  isEquip: 0
   CloneImage: {fileID: 1280247473}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
   item:
-    isLoad: 0
-    type: 0
-    rank: 0
-    quality: 0
-    itemSprite: {fileID: 0}
-    itemAttribute: 0
-    itemName: 
-    attack: 0
-    rate: 0
-    moveSpeed: 0
-    itemDesc: 
-    bookName: 
-    skillNum: 0
-    aditionalAbility: 
-  prevItem:
     isLoad: 0
     type: 0
     rank: 0
@@ -15763,27 +15859,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 2
-  isEquip: 0
   CloneImage: {fileID: 1280247473}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
   item:
-    isLoad: 0
-    type: 0
-    rank: 0
-    quality: 0
-    itemSprite: {fileID: 0}
-    itemAttribute: 0
-    itemName: 
-    attack: 0
-    rate: 0
-    moveSpeed: 0
-    itemDesc: 
-    bookName: 
-    skillNum: 0
-    aditionalAbility: 
-  prevItem:
     isLoad: 0
     type: 0
     rank: 0
@@ -16753,6 +16833,21 @@ MonoBehaviour:
   - {fileID: 1526604998}
   - {fileID: 1821678208}
   - {fileID: 676921726}
+  prevEquipStaff:
+    isLoad: 0
+    type: 0
+    rank: 0
+    quality: 0
+    itemSprite: {fileID: 0}
+    itemAttribute: 0
+    itemName: 
+    attack: 0
+    rate: 0
+    moveSpeed: 0
+    itemDesc: 
+    bookName: 
+    skillNum: 0
+    aditionalAbility: 
 --- !u!1 &1623479082
 GameObject:
   m_ObjectHideFlags: 0
@@ -17777,27 +17872,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 2
-  isEquip: 0
   CloneImage: {fileID: 1280247473}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
   item:
-    isLoad: 0
-    type: 0
-    rank: 0
-    quality: 0
-    itemSprite: {fileID: 0}
-    itemAttribute: 0
-    itemName: 
-    attack: 0
-    rate: 0
-    moveSpeed: 0
-    itemDesc: 
-    bookName: 
-    skillNum: 0
-    aditionalAbility: 
-  prevItem:
     isLoad: 0
     type: 0
     rank: 0
@@ -18242,6 +18321,200 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1699144328}
   m_CullTransparentMesh: 1
+--- !u!1 &1727270299
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1727270300}
+  - component: {fileID: 1727270303}
+  - component: {fileID: 1727270302}
+  - component: {fileID: 1727270301}
+  m_Layer: 5
+  m_Name: YesButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1727270300
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727270299}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2006596527}
+  m_Father: {fileID: 980055971}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 140, y: 85}
+  m_SizeDelta: {x: 200, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1727270301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727270299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1727270302}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 240672114}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: SelectSfx
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 980055970}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1784448698}
+        m_TargetAssemblyTypeName: Pause, Assembly-CSharp
+        m_MethodName: MainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 602079072}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1121587388}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 593974075}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+--- !u!114 &1727270302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727270299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.7058824, g: 0.3529412, b: 0.3529412, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 1728270585, guid: 73862ae7cc7e2fc4fa98257acc1e7a77, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1727270303
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727270299}
+  m_CullTransparentMesh: 1
 --- !u!1 &1727748252
 GameObject:
   m_ObjectHideFlags: 0
@@ -18677,6 +18950,86 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1776137154}
   m_CullTransparentMesh: 1
+--- !u!1 &1784130973
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1784130974}
+  - component: {fileID: 1784130976}
+  - component: {fileID: 1784130975}
+  m_Layer: 5
+  m_Name: Text (Legacy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1784130974
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784130973}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 226760520}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1784130975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784130973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: e715fcabbb6163e48b780b3b92979f8e, type: 3}
+    m_FontSize: 25
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 45
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "\uC544\uB2C8\uC694"
+--- !u!222 &1784130976
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784130973}
+  m_CullTransparentMesh: 1
 --- !u!1 &1784346709
 GameObject:
   m_ObjectHideFlags: 0
@@ -18852,6 +19205,7 @@ MonoBehaviour:
   pauseBtnImage: {fileID: 1999837595}
   pauseBtnOnImage: {fileID: -117486401, guid: 0e01315bf0f42124382f64f82efa7e75, type: 3}
   pauseBtnOffImage: {fileID: 1677700783, guid: 0e01315bf0f42124382f64f82efa7e75, type: 3}
+  map: {fileID: 1341078409}
 --- !u!1 &1808020555
 GameObject:
   m_ObjectHideFlags: 0
@@ -19085,27 +19439,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 2
-  isEquip: 0
   CloneImage: {fileID: 1280247473}
   preview: {fileID: 839489304}
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 1526604995}
   item:
-    isLoad: 0
-    type: 0
-    rank: 0
-    quality: 0
-    itemSprite: {fileID: 0}
-    itemAttribute: 0
-    itemName: 
-    attack: 0
-    rate: 0
-    moveSpeed: 0
-    itemDesc: 
-    bookName: 
-    skillNum: 0
-    aditionalAbility: 
-  prevItem:
     isLoad: 0
     type: 0
     rank: 0
@@ -20397,27 +20735,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 2
-  isEquip: 0
   CloneImage: {fileID: 1280247473}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
   item:
-    isLoad: 0
-    type: 0
-    rank: 0
-    quality: 0
-    itemSprite: {fileID: 0}
-    itemAttribute: 0
-    itemName: 
-    attack: 0
-    rate: 0
-    moveSpeed: 0
-    itemDesc: 
-    bookName: 
-    skillNum: 0
-    aditionalAbility: 
-  prevItem:
     isLoad: 0
     type: 0
     rank: 0
@@ -20930,6 +21252,86 @@ Transform:
   m_Father: {fileID: 781240782}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2006596526
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2006596527}
+  - component: {fileID: 2006596529}
+  - component: {fileID: 2006596528}
+  m_Layer: 5
+  m_Name: Text (Legacy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2006596527
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006596526}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1727270300}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2006596528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006596526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: e715fcabbb6163e48b780b3b92979f8e, type: 3}
+    m_FontSize: 25
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 45
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "\uC608"
+--- !u!222 &2006596529
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006596526}
+  m_CullTransparentMesh: 1
 --- !u!1 &2021638017
 GameObject:
   m_ObjectHideFlags: 0
@@ -21104,27 +21506,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 1
-  isEquip: 0
   CloneImage: {fileID: 1280247473}
   preview: {fileID: 839489304}
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 1417924892}
   item:
-    isLoad: 0
-    type: 0
-    rank: 0
-    quality: 0
-    itemSprite: {fileID: 0}
-    itemAttribute: 0
-    itemName: 
-    attack: 0
-    rate: 0
-    moveSpeed: 0
-    itemDesc: 
-    bookName: 
-    skillNum: 0
-    aditionalAbility: 
-  prevItem:
     isLoad: 0
     type: 0
     rank: 0
@@ -21708,27 +22094,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 2
-  isEquip: 0
   CloneImage: {fileID: 1280247473}
   preview: {fileID: 839489304}
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 88059192}
   item:
-    isLoad: 0
-    type: 0
-    rank: 0
-    quality: 0
-    itemSprite: {fileID: 0}
-    itemAttribute: 0
-    itemName: 
-    attack: 0
-    rate: 0
-    moveSpeed: 0
-    itemDesc: 
-    bookName: 
-    skillNum: 0
-    aditionalAbility: 
-  prevItem:
     isLoad: 0
     type: 0
     rank: 0

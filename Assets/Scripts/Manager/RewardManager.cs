@@ -23,7 +23,6 @@ public class RewardManager : MonoBehaviour
     private int attack;
     private float rate;
     private float moveSpeed;
-    private int rand;
     private int skillNumber ;
     private int[] aditionalAbility  ;
     private void Start()
@@ -34,51 +33,24 @@ public class RewardManager : MonoBehaviour
 
     public void ItemCreate(int itemRank) // 랜덤 아이템 생성
     {
-       
-        type = (ItemType)Random.Range(1, 3);
+       if(itemRank != -1)
+        {
+            type = (ItemType)Random.Range(1, 3);
+            rank = (ItemRank)itemRank + 1;
+            SetRandomValue(GameManager.instance.itemQualityPercent);
+        }
+       else // 처음 게임 시작할 때 무기 추가 
+        {
+            type = ItemType.Staff;
+            rank = ItemRank.Common;
+            quality = ItemQuality.Low;
+            SetStaffStat();
+        }
 
-
-        rank = (ItemRank)itemRank + 1;
-
-        SetRandomValue(GameManager.instance.itemQualityPercent);
  
         if (type == ItemType.Staff)
         {
-            int skillNum = -1;
-            if(rank != ItemRank.Legendary)
-            {
-                itemAttribute = (ItemAttribute)Random.Range(1, System.Enum.GetValues(typeof(ItemAttribute)).Length - 1);
-            }
-            else
-            {
-                itemAttribute = (ItemAttribute)Random.Range(2, System.Enum.GetValues(typeof(ItemAttribute)).Length - 1);
-            }
-
-            itemName = itemInfo.staffNames[(int)itemAttribute - 1];
-            desc = itemInfo.staffDescs[(int)itemAttribute - 1];
-            moveSpeed = 0;
-
-            switch  (rank)
-            {
-                case ItemRank.Common:
-                    itemSprite = itemInfo.commonStaffImgaes[(int)itemAttribute - 1];
-                    break;
-                case ItemRank.Rare:
-                    itemSprite = itemInfo.rareStaffImgaes[(int)itemAttribute - 1];
-                    break;
-                case ItemRank.Epic:
-                    itemSprite = itemInfo.epicStaffImgaes[(int)itemAttribute - 1];
-                    break;
-                case ItemRank.Legendary:
-                    itemSprite = itemInfo.legendaryStaffImgaes[(int)itemAttribute - 2];
-                    itemName = itemInfo.legendaryStaffNames[(int)itemAttribute - 2];
-                    desc = itemInfo.legendaryStaffDescs[(int)itemAttribute - 2];
-                    skillNum = (int)itemAttribute - 1;
-                    break;
-            }
-            rewardImage.sprite = itemSprite;
-
-            ItemDatabase.instance.GetStaff(type, rank, quality, itemSprite, itemAttribute, itemName, attack, rate, moveSpeed, desc, skillNum);
+            StaffCreate();
         }
         else
         {
@@ -86,7 +58,44 @@ public class RewardManager : MonoBehaviour
         }
        
     }
+    public void StaffCreate()
+    {
+        int skillNum = -1;
+        if (rank != ItemRank.Legendary)
+        {
+            itemAttribute = (ItemAttribute)Random.Range(1, System.Enum.GetValues(typeof(ItemAttribute)).Length - 1);
+        }
+        else
+        {
+            itemAttribute = (ItemAttribute)Random.Range(2, System.Enum.GetValues(typeof(ItemAttribute)).Length - 1);
+        }
 
+        itemName = itemInfo.staffNames[(int)itemAttribute - 1];
+        desc = itemInfo.staffDescs[(int)itemAttribute - 1];
+        moveSpeed = 0;
+
+        switch (rank)
+        {
+            case ItemRank.Common:
+                itemSprite = itemInfo.commonStaffImgaes[(int)itemAttribute - 1];
+                break;
+            case ItemRank.Rare:
+                itemSprite = itemInfo.rareStaffImgaes[(int)itemAttribute - 1];
+                break;
+            case ItemRank.Epic:
+                itemSprite = itemInfo.epicStaffImgaes[(int)itemAttribute - 1];
+                break;
+            case ItemRank.Legendary:
+                itemSprite = itemInfo.legendaryStaffImgaes[(int)itemAttribute - 2];
+                itemName = itemInfo.legendaryStaffNames[(int)itemAttribute - 2];
+                desc = itemInfo.legendaryStaffDescs[(int)itemAttribute - 2];
+                skillNum = (int)itemAttribute - 1;
+                break;
+        }
+        rewardImage.sprite = itemSprite;
+
+        ItemDatabase.instance.GetStaff(type, rank, quality, itemSprite, itemAttribute, itemName, attack, rate, moveSpeed, desc, skillNum);
+    }
     private void BookCreate() // 마법 책 생성
     {
         // 스킬 번호

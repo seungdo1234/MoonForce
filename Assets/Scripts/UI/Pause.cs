@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Pause : MonoBehaviour
 {
+    [Header("Pause")]
     public GameObject[] pausePrevObjects;
     public Transform canvas;
     private int canvasChildCoint;
@@ -12,28 +13,57 @@ public class Pause : MonoBehaviour
     public Image pauseBtnImage;
     public Sprite pauseBtnOnImage;
     public Sprite pauseBtnOffImage;
+    [Header("MainMenu")]
+    public Map map;
+
+
     private void Start()
     {
         // Canvas의 자식 오브젝트의 갯수를 구합니다.
        canvasChildCoint = canvas.childCount ;
 
     }
-    public void PauseOn()
+    public void PauseOn() // 퍼즈 온
     {
-        CollectActiveObjects();
-        ActiveDeactivateObjects(false);
-        pauseBtnImage.sprite = pauseBtnOffImage;
-        Time.timeScale = 0;
+        CollectActiveObjects(); // 퍼즈할 때 활성화 돼 있는 UI 오브젝트들을 하나의 배열에 넣음
+        ActiveDeactivateObjects(false); // UI 비활성화
+        pauseBtnImage.sprite = pauseBtnOffImage; // Pause 버튼 아이콘 변경 
+        Time.timeScale = 0; // 멈추기
 
     }
     public void PauseOff()
     {
-        Time.timeScale = 1;
-        ActiveDeactivateObjects(true);
+        Time.timeScale = 1; // 재생
+        ActiveDeactivateObjects(true); // 활성화
         pauseBtnImage.sprite = pauseBtnOnImage;
     }
 
- 
+  public void MainMenu() // 메인 메뉴로 돌아갈 때
+    {
+        Time.timeScale = 1; // 재생
+
+        GameManager.instance.gameStop = true; // 게임 멈춤
+
+        ActiveDeactivateObjects(false); // UI 비활성화
+        pauseBtnImage.sprite = pauseBtnOnImage;
+
+        // 활성화된 풀링 오브젝트들 비활성화
+        GameManager.instance.PoolingReset();
+        // 플레이어와 맵 초기화
+        GameManager.instance.player.transform.position = Vector3.zero;
+        map.MapReset();
+
+        GameManager.instance.player.gameObject.SetActive(false); // 플레이어 비활성화
+
+        // 아이템 데이터 베이스 초기화
+        ItemDatabase.instance.ItemReset();
+
+        AudioManager.instance.PlayBgm((int)Bgm.Main);
+        // 0번과 1번은 비활성화 되면 안되기 때문에 다시 활성화
+        pausePrevObjects[0].SetActive(true);
+        pausePrevObjects[1].SetActive(true);
+
+    }
     private void ActiveDeactivateObjects(bool isActive)
     {
         for(int i =0; i < canvasChildCoint; i++)

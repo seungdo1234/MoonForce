@@ -46,8 +46,9 @@ public class Item
         this.skillNum = skillNum;
         this.aditionalAbility = aditionalAbility;
     }
-    public void reset()
+    public void reset() // 아이템 초기화
     {
+        isLoad = false;
         type = ItemType.Default; // ItemType과 ItemRank는 각자 기본 값을 설정해주어야 합니다.
         rank = ItemRank.Default;
         quality = ItemQuality.Default;

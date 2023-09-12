@@ -7,15 +7,13 @@ public class ItemDatabase : MonoBehaviour
     
     [SerializeField]
     private List<Item> itemDB = new List<Item>();
+
     private void Awake()
     {
         instance = this;
     }
 
-    private void Start()
-    {
 
-    }
     public void GetStaff(ItemType type, ItemRank rank, ItemQuality quality, Sprite itemSprite , ItemAttribute itemAttribute,string itemName, int attack, float rate, float moveSpeed, string itemDesc , int skillNum)
     {
         //Item newItem = new Item(type, rank, quality ,itemSprite, itemName, attack, rate, moveSpeed, itemDesc, skillNum,skillDesc);
@@ -39,4 +37,9 @@ public class ItemDatabase : MonoBehaviour
         return itemDB.Count;
     }
 
+    public void ItemReset()
+    {
+        itemDB.Clear();
+        GameManager.instance.inventory.InventoryReset();
+    }
 }

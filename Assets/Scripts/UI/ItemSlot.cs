@@ -9,8 +9,6 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
 
     public SlotType slotType;
 
-    public bool isEquip;
-
 
     public Image CloneImage; // 클릭했을때 나오는 이미지
     public ItemPreview preview;
@@ -19,7 +17,6 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
 
     [Header("# Item Info")]
     public Item item;
-    public Item prevItem;
 
     private Image itemImage;
 
@@ -98,6 +95,16 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
             // Item 데이터를 옮겻으니 해당 칸 이미지 재로딩
             targetSlot.ImageLoading();
             ImageLoading();
+
+            if (targetSlot.slotType == SlotType.main || slotType == SlotType.main)
+            {
+                GameManager.instance.inventory.EquipStaff();
+            }
+            else if (targetSlot.slotType == SlotType.sub || slotType == SlotType.sub)
+            {
+                GameManager.instance.inventory.EquipBooks();
+            }
+
         }
 
     }
@@ -127,149 +134,9 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
 
     public void OnPointerExit(PointerEventData eventData)
     {
-
         preview.gameObject.SetActive(false);
     }
 
-    private void Update()
-    {
-
-        if (slotType == SlotType.main) // 무기 장착
-        {
-
-            if (item.itemSprite != null && (!isEquip &&  prevItem != item) ) // 장비 장착 (장비를 장착하고 있을 때 다른 장비를 장착하는 경우도 포함)
-            {
-                isEquip = true;
-
-                GameManager.instance.attribute = item.itemAttribute;
-                GameManager.instance.statManager.attack = GameManager.instance.statManager.baseAttack + item.attack;
-                if (GameManager.instance.attribute == ItemAttribute.Dark)
-                {
-                    GameManager.instance.statManager.rate = GameManager.instance.statManager.baseRate * 2 - item.rate;
-                }
-                else
-                {
-                    GameManager.instance.statManager.rate = GameManager.instance.statManager.baseRate - item.rate;
-                }
-                GameManager.instance.statManager.moveSpeed = GameManager.instance.statManager.baseMoveSpeed + item.moveSpeed;
-
-                if (item.rank == ItemRank.Legendary)
-                {
-                    if(prevItem.rank == ItemRank.Legendary) // 전에 장착하던 아이템이 레전드리 무기라면 해당 스킬 비활성화
-                    {
-                        GameManager.instance.magicManager.magicInfo[prevItem.skillNum].isMagicActive = false;
-                    }
-
-                    GameManager.instance.magicManager.magicInfo[item.skillNum].isMagicActive = true;
-                    prevItem = item;
-                }
-            }
-           else if (isEquip && item.itemSprite == null ) // 장비 해제
-            {
-                isEquip = false;
-
-                GameManager.instance.attribute = ItemAttribute.Default;
-                GameManager.instance.statManager.attack = GameManager.instance.statManager.baseAttack;
-                GameManager.instance.statManager.rate = GameManager.instance.statManager.baseRate;
-                GameManager.instance.statManager.moveSpeed = GameManager.instance.statManager.baseMoveSpeed + item.moveSpeed;
-
-                if (item.rank == ItemRank.Legendary) // 레전드리 아이템을 제거할 때
-                {
-                    GameManager.instance.magicManager.magicInfo[prevItem.skillNum].isMagicActive = false;
-                    prevItem = null;
-                }
-            }
-          
-
-        }
 
 
-        if (slotType == SlotType.sub) // 마법책을 장착하면 적에게 발사하는 마력탄의 갯수가 늘어남
-        {
-
-            if (!isEquip && item.itemSprite != null) // 장착
-            {
-                prevItem = item;
-
-                GameManager.instance.magicManager.magicInfo[prevItem.skillNum].isMagicActive = true;
-
-                for (int i = 0; i < prevItem.aditionalAbility.Length; i++) // 추가 능력치 적용
-                {
-
-                    switch (prevItem.aditionalAbility[i])
-                    {
-                        case 0:
-                            GameManager.instance.magicManager.magicInfo[prevItem.skillNum].damagePer += GameManager.instance.magicManager.magicInfo[prevItem.skillNum].damageIncreaseValue;
-                            break;
-                        case 1:
-
-                            if (GameManager.instance.magicManager.magicInfo[prevItem.skillNum].magicCoolTime == 0)
-                            {
-                                GameManager.instance.magicManager.magicInfo[prevItem.skillNum].magicRateStep++;
-                            }
-                            else
-                            {
-                                GameManager.instance.magicManager.magicInfo[prevItem.skillNum].magicCoolTime -= GameManager.instance.magicManager.magicInfo[prevItem.skillNum].coolTimeDecreaseValue;
-                            }
-                            break;
-                        case 2:
-                            if (GameManager.instance.magicManager.magicInfo[prevItem.skillNum].magicCountIncrease)
-                            {
-                                GameManager.instance.magicManager.magicInfo[prevItem.skillNum].magicCount++;
-                            }
-                            else
-                            {
-                                GameManager.instance.magicManager.magicInfo[prevItem.skillNum].magicSizeStep++;
-                            }
-                            break;
-                    }
-                }
-
-                GameManager.instance.statManager.weaponNum++; // 마력탄 갯수 증가
-
-                isEquip = true;
-            }
-            else if (isEquip && (item.itemSprite == null || prevItem.skillNum != item.skillNum)) // 해제
-            {
-
-                GameManager.instance.magicManager.magicInfo[prevItem.skillNum].isMagicActive = false;
-
-                GameManager.instance.statManager.weaponNum--; // 마력탄 갯수 감소
-
-                for (int i = 0; i < prevItem.aditionalAbility.Length; i++) // 추가 능력치 해제
-                {
-                    switch (prevItem.aditionalAbility[i])
-                    {
-                        case 0:
-                            GameManager.instance.magicManager.magicInfo[prevItem.skillNum].damagePer -= GameManager.instance.magicManager.magicInfo[prevItem.skillNum].damageIncreaseValue;
-                            break;
-                        case 1:
-
-                            if (GameManager.instance.magicManager.magicInfo[prevItem.skillNum].magicCoolTime == 0)
-                            {
-                                GameManager.instance.magicManager.magicInfo[prevItem.skillNum].magicRateStep--;
-                            }
-                            else
-                            {
-                                GameManager.instance.magicManager.magicInfo[prevItem.skillNum].magicCoolTime += GameManager.instance.magicManager.magicInfo[prevItem.skillNum].coolTimeDecreaseValue;
-                            }
-                            break;
-                        case 2:
-                            if (GameManager.instance.magicManager.magicInfo[prevItem.skillNum].magicCountIncrease)
-                            {
-                                GameManager.instance.magicManager.magicInfo[prevItem.skillNum].magicCount--;
-                            }
-                            else
-                            {
-                                GameManager.instance.magicManager.magicInfo[prevItem.skillNum].magicSizeStep--;
-                            }
-                            break;
-                    }
-                }
-
-                isEquip = false;
-            }
-        }
-
-    }
 }

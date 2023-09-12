@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Reposition : MonoBehaviour
 {
+    public Vector3 initPos;
 
     // 모든 콜라이더를 아우르는 클래스
     private Collider2D col;
@@ -9,6 +10,8 @@ public class Reposition : MonoBehaviour
     private void Awake()
     {
         col = GetComponent<Collider2D>();
+
+        initPos = transform.position;
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
