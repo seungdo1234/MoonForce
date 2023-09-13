@@ -51,7 +51,7 @@ public class Pause : MonoBehaviour
         GameManager.instance.PoolingReset();
         // 플레이어와 맵 초기화
         GameManager.instance.player.transform.position = Vector3.zero;
-        map.MapReset();
+        map.MapReset();     
 
         GameManager.instance.player.gameObject.SetActive(false); // 플레이어 비활성화
 

@@ -52,19 +52,31 @@ public class Inventory : MonoBehaviour
 
     public void InventoryReset()
     {
-        mainEqquipment.item.reset();
-        mainEqquipment.ImageLoading();
+        if (mainEqquipment.item.itemSprite != null)
+        {
+            mainEqquipment.item.reset();
+            mainEqquipment.ImageLoading();
+            EquipStaff();
+        }
 
         for (int i = 0; i < GameManager.instance.inventory.subEqquipments.Length; i++)
         {
-            subEqquipments[i].item.reset();
-            subEqquipments[i].ImageLoading();
+            if (subEqquipments[i].item.itemSprite != null)
+            {
+                GameManager.instance.magicManager.magicInfo[subEqquipments[i].item.skillNum].isMagicActive = false;
+                subEqquipments[i].item.reset();
+                subEqquipments[i].ImageLoading();
+            }
         }
+
 
         for (int i = 0; i < waitEqquipments.Length; i++)
         {
-            waitEqquipments[i].item.reset();
-            waitEqquipments[i].ImageLoading();
+            if (waitEqquipments[i].item.itemSprite != null)
+            {
+                waitEqquipments[i].item.reset();
+                waitEqquipments[i].ImageLoading();
+            }
         }
     }
 
@@ -73,6 +85,7 @@ public class Inventory : MonoBehaviour
         for(int i =0 ; i< equipBooks.Count; i++) // 전에 장착한 마법 책 스킬 초기화
         {
             GameManager.instance.magicManager.magicInfo[equipBooks[i].skillNum].isMagicActive = false;
+            MagicAdditionalStat(equipBooks[i], -1);
         }
 
         equipBooks.Clear(); // 리스트 초기화
@@ -82,12 +95,49 @@ public class Inventory : MonoBehaviour
             if(subEqquipments[i].item.itemSprite != null) // 장착한 마법 책 마법 활성화
             {
                 GameManager.instance.magicManager.magicInfo[subEqquipments[i].item.skillNum].isMagicActive = true;
+                MagicAdditionalStat(subEqquipments[i].item, 1);
                 equipBooks.Add(subEqquipments[i].item);
             }
 
         }
     }
 
+    private void MagicAdditionalStat(Item item , int operation) // 마법책 추가 능력 적용
+    {
+
+        for (int i = 0; i < item.aditionalAbility.Length; i++) 
+        {
+
+            switch (item.aditionalAbility[i])
+            {
+                case 0:
+                    GameManager.instance.magicManager.magicInfo[item.skillNum].damagePer += GameManager.instance.magicManager.magicInfo[item.skillNum].damageIncreaseValue * operation;
+                    break;
+                case 1:
+
+                    if (GameManager.instance.magicManager.magicInfo[item.skillNum].magicCoolTime == 0)
+                    {
+                        GameManager.instance.magicManager.magicInfo[item.skillNum].magicRateStep+= operation;
+                    }
+                    else
+                    {
+                        GameManager.instance.magicManager.magicInfo[item.skillNum].magicCoolTime -= GameManager.instance.magicManager.magicInfo[item.skillNum].coolTimeDecreaseValue * operation;
+                    }
+                    break;
+                case 2:
+                    if (GameManager.instance.magicManager.magicInfo[item.skillNum].magicCountIncrease)
+                    {
+                        GameManager.instance.magicManager.magicInfo[item.skillNum].magicCount+= operation;
+                    }
+                    else
+                    {
+                        GameManager.instance.magicManager.magicInfo[item.skillNum].magicSizeStep+= operation;
+                    }
+                    break;
+            }
+        }
+        GameManager.instance.statManager.weaponNum+= operation ;
+    }
     public void EquipStaff()
     {
         // 능력치 적용

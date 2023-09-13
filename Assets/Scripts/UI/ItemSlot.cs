@@ -3,8 +3,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public enum SlotType { main, sub, space }
-public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
+public enum SlotType { Main, Sub, WaitSpace , EnchantItemSpace, EnchantWaitSpace }
+public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
 
     public SlotType slotType;
@@ -15,10 +15,13 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
     public bool fixedPreview;
     public Transform fixedPreviewTransform;
 
+    [Header("# Enchant")]
+    public Enchant enchant;
+
     [Header("# Item Info")]
     public Item item;
 
-    private Image itemImage;
+    public Image itemImage;
 
 
     private void Awake()
@@ -33,7 +36,7 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
 
     public void ImageLoading()
     {
-        if (item.itemSprite != null)
+        if (item != null && item.itemSprite != null)
         {
             itemImage.sprite = item.itemSprite;
             itemImage.color = new Color(1, 1, 1, 1);
@@ -46,31 +49,37 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
 
     public void OnDrag(PointerEventData eventData)
     {
-        // eventData.button : 플레이어가 누른 키
-        if (eventData.button == PointerEventData.InputButton.Left)
+        if (slotType != SlotType.EnchantItemSpace && slotType != SlotType.EnchantWaitSpace)
         {
-            if (item.itemSprite != null)
+            // eventData.button : 플레이어가 누른 키
+            if (eventData.button == PointerEventData.InputButton.Left)
             {
-                itemImage.color = new Color(1, 1, 1, 0);
-                CloneImage.gameObject.SetActive(true);
-                CloneImage.sprite = itemImage.sprite;
-                CloneImage.rectTransform.position = Input.mousePosition;
+                if (item.itemSprite != null)
+                {
+                    itemImage.color = new Color(1, 1, 1, 0);
+                    CloneImage.gameObject.SetActive(true);
+                    CloneImage.sprite = itemImage.sprite;
+                    CloneImage.rectTransform.position = Input.mousePosition;
 
+                }
             }
         }
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (eventData.button == PointerEventData.InputButton.Left)
+        if (slotType != SlotType.EnchantItemSpace && slotType != SlotType.EnchantWaitSpace)
         {
-            if (item.itemSprite != null)
+            if (eventData.button == PointerEventData.InputButton.Left)
             {
-                // 드래그한 슬롯의 이미지를 원래 슬롯의 위치로 돌려놓음
-                CloneImage.sprite = null;
-                CloneImage.gameObject.SetActive(false);
+                if (item.itemSprite != null)
+                {
+                    // 드래그한 슬롯의 이미지를 원래 슬롯의 위치로 돌려놓음
+                    CloneImage.sprite = null;
+                    CloneImage.gameObject.SetActive(false);
 
-                StartCoroutine(SelectSlot(eventData));
+                    StartCoroutine(SelectSlot(eventData));
+                }
             }
         }
     }
@@ -84,7 +93,7 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
         // 드래그한 슬롯의 이미지가 다른 슬롯 위에 있다면 교환
         ItemSlot targetSlot = eventData.pointerCurrentRaycast.gameObject.GetComponent<ItemSlot>();
         // 장비를 바꾸는 과정에서 무기는 스태프, 마법책은 서브 장비칸이 맞나 확인 후 장비 교체
-        if (targetSlot != null && targetSlot != this && ((item.type == ItemType.Staff && targetSlot.slotType != SlotType.sub) || (item.type == ItemType.Book && targetSlot.slotType != SlotType.main)))
+        if (targetSlot != null && targetSlot != this && ((item.type == ItemType.Staff && targetSlot.slotType != SlotType.Sub) || (item.type == ItemType.Book && targetSlot.slotType != SlotType.Main)))
         {
 
             Item tempItem = targetSlot.item;
@@ -96,11 +105,11 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
             targetSlot.ImageLoading();
             ImageLoading();
 
-            if (targetSlot.slotType == SlotType.main || slotType == SlotType.main)
+            if (targetSlot.slotType == SlotType.Main || slotType == SlotType.Main)
             {
                 GameManager.instance.inventory.EquipStaff();
             }
-            else if (targetSlot.slotType == SlotType.sub || slotType == SlotType.sub)
+            else if (targetSlot.slotType == SlotType.Sub || slotType == SlotType.Sub)
             {
                 GameManager.instance.inventory.EquipBooks();
             }
@@ -111,7 +120,7 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
 
     public void OnPointerEnter(PointerEventData eventData) // 아이템 프리뷰 창 띄우기
     {
-        if (item.itemSprite != null)
+        if (item != null && item.itemSprite != null)
         {
 
             preview.gameObject.SetActive(true);
@@ -124,7 +133,7 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
             {
                 preview.gameObject.transform.position = fixedPreviewTransform.position + new Vector3(0, 60, 0);
             }
-            if (slotType == SlotType.main)
+            if (slotType == SlotType.Main)
             {
                 preview.gameObject.transform.position = transform.position + new Vector3(-350, 0, 0);
             }
@@ -137,6 +146,26 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
         preview.gameObject.SetActive(false);
     }
 
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (slotType == SlotType.EnchantItemSpace || slotType == SlotType.EnchantWaitSpace)
+        {
+            if (eventData.button == PointerEventData.InputButton.Left)
+            {
+                if(item.itemSprite != null)
+                {
+                    switch (slotType)
+                    {
+                        case SlotType.EnchantItemSpace:
+                            enchant.EnchantItemoff();
+                            break;
+                        case SlotType.EnchantWaitSpace:
+                            enchant.EnchantItemOn(this);
+                            break;
+                    }
 
-
+                }
+            }
+        }
+    }
 }
