@@ -37,7 +37,15 @@ public class RewardManager : MonoBehaviour
         {
             type = (ItemType)Random.Range(1, 3);
             rank = (ItemRank)itemRank + 1;
-            SetRandomValue(GameManager.instance.itemQualityPercent);
+            if(rank == ItemRank.Legendary) // 레전드리는 무조건 품질 상
+            {
+                quality = ItemQuality.High;
+                SetStaffStat();
+            }
+            else
+            {
+                SetRandomValue(GameManager.instance.itemQualityPercent);
+            }
         }
        else // 처음 게임 시작할 때 무기 추가 
         {

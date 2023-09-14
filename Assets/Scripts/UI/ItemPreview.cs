@@ -1,8 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum ItemPreviewType { Inventory , EnchantCheck}
 public class ItemPreview : MonoBehaviour
 {
+    public ItemPreviewType type;
     public Text[] itemInfomation;
 
     string itemNameColor;
@@ -81,11 +83,17 @@ public class ItemPreview : MonoBehaviour
                     break;
 
             }
-
             itemInfomation[0].text = string.Format("<color={0}>{1}</color>", itemNameColor, item.itemName);
             itemInfomation[1].text = string.Format("(<color={0}>{1}</color>)", itemRankColor, item.rank);
             itemInfomation[2].text = string.Format("<color={0}>{1}</color>",itemAttributeColor,itemAttribute);
-            itemInfomation[3].text = string.Format("공격력 + {0}\n공격속도 + {1}%\n{2}", item.attack, Mathf.Floor(item.rate * 100),item.itemDesc);
+            if(type == ItemPreviewType.Inventory)
+            {
+                itemInfomation[3].text = string.Format("공격력 + {0}\n공격속도 + {1}%\n{2}", item.attack, Mathf.Floor(item.rate * 100), item.itemDesc);
+            }
+            else
+            {
+                itemInfomation[3].text = string.Format("공격력 + {0}\n공격속도 + {1}%", item.attack, Mathf.Floor(item.rate * 100));
+            }
 
         }
         else if(item.type == ItemType.Book)
@@ -108,30 +116,34 @@ public class ItemPreview : MonoBehaviour
 
             for (int i = 0; i < item.aditionalAbility.Length;i++)
             {
+                if (i > 0)
+                {
+                    itemInfomation[3].text +="\n";
+                }
                 switch (item.aditionalAbility[i])
                 {
                     case 0:
-                        itemInfomation[3].text += "마법 피해량 증가\n";
+                        itemInfomation[3].text += "마법 피해량 증가";
                         break;
                     case 1:
 
                         if (GameManager.instance.magicManager.magicInfo[item.skillNum].magicCoolTime == 0)
                         {
-                            itemInfomation[3].text += "마법 공격 속도 증가\n";
+                            itemInfomation[3].text += "마법 공격 속도 증가";
                         }
                         else
                         {
-                            itemInfomation[3].text += "마법 쿨타임 감소\n";
+                            itemInfomation[3].text += "마법 쿨타임 감소";
                         }
                             break;
                     case 2:
                         if (GameManager.instance.magicManager.magicInfo[item.skillNum].magicCountIncrease)
                         {
-                            itemInfomation[3].text += "마법 출력 갯수 증가\n";
+                            itemInfomation[3].text += "마법 출력 갯수 증가";
                         }
                         else
                         {
-                            itemInfomation[3].text += "마법 크기 증가\n";
+                            itemInfomation[3].text += "마법 크기 증가";
                         }
                         break;
                 }
@@ -140,16 +152,6 @@ public class ItemPreview : MonoBehaviour
 
             itemInfomation[0].text = string.Format("<color=black>{0}</color>", item.bookName);
             itemInfomation[1].text = itemQuality;
-
-
-
-            /*
-                        for(int i = 0; i < item..Length; i++)
-                        {
-                            itemInfomation.text += string.Format("{0}\n" , item.skillDesc[i]);
-
-                        }
-            */
 
         }
     }

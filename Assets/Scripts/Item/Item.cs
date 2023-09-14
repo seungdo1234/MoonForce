@@ -17,6 +17,7 @@ public class Item
     public float rate;
     public float moveSpeed;
     public string itemDesc;
+    public int enchantStep;
     [Header("Book")]
     public string bookName;
     public int skillNum;

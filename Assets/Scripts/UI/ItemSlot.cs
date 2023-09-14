@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public enum SlotType { Main, Sub, WaitSpace , EnchantItemSpace, EnchantWaitSpace }
+public enum SlotType { Main, Sub, WaitSpace , EnchantItemSpace, EnchantWaitSpace , EnchantCheck }
 public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
 
@@ -120,7 +120,7 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
 
     public void OnPointerEnter(PointerEventData eventData) // 아이템 프리뷰 창 띄우기
     {
-        if (item != null && item.itemSprite != null)
+        if (slotType != SlotType.EnchantCheck && item != null && item.itemSprite != null)
         {
 
             preview.gameObject.SetActive(true);
@@ -146,24 +146,33 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
         preview.gameObject.SetActive(false);
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public void OnPointerClick(PointerEventData eventData) // 인첸트 창에서 클릭이벤트
     {
         if (slotType == SlotType.EnchantItemSpace || slotType == SlotType.EnchantWaitSpace)
         {
-            if (eventData.button == PointerEventData.InputButton.Left)
+            if (eventData.button == PointerEventData.InputButton.Left) // 좌클릭 시
             {
-                if(item.itemSprite != null)
+                if(item != null) // 해당 슬롯에 아이템이 있을 경우
                 {
-                    switch (slotType)
+                    switch (slotType) // 슬롯의 형태에 따라 다른 이벤트
                     {
-                        case SlotType.EnchantItemSpace:
-                            enchant.EnchantItemoff();
+                        case SlotType.EnchantItemSpace: // 인첸트 슬롯을 눌렀을 때
+                            enchant.EnchantItemoff(); // 인첸트 슬롯에 있는 아이템을 해제함
                             break;
-                        case SlotType.EnchantWaitSpace:
-                            enchant.EnchantItemOn(this);
+                        case SlotType.EnchantWaitSpace: // 대기 슬롯을 눌렀을 때
+                            if (enchant.itemSelect) // 인첸트 슬롯에 아이템이 있을 때
+                            {
+                                enchant.EnchantMaterialSelect(this);
+                            }
+                            else // 인첸트 슬롯에 아이템이 없을 때
+                            {
+                                if (enchant.EnchantItemOn(this)) // 아이템을 인첸스 슬롯에 넣음 (가능하면 true, 불가능 하면 false)
+                                {
+                                    preview.gameObject.SetActive(false);
+                                }
+                            }
                             break;
                     }
-
                 }
             }
         }

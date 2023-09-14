@@ -36,7 +36,10 @@ public class ItemDatabase : MonoBehaviour
     {
         return itemDB.Count;
     }
-
+    public void ItemRemove(int itemNum)
+    {
+        itemDB.RemoveAt(itemNum);
+    }
     public void ItemReset()
     {
         itemDB.Clear();

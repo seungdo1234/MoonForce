@@ -160,7 +160,7 @@ MonoBehaviour:
   - '?'
   - "\uC77C\uC815 \uD655\uB960\uB85C \uD53C\uACA9\uB2F9\uD55C \uC801\uC744 \uC2E0\uC131\uD55C
     \uBE5B\uC73C\uB85C \uC2EC\uD310\uD55C\uB2E4."
-  baseAttack: 03000000050000000a00000014000000
+  baseAttack: 03000000050000000a00000028000000
   baseRate:
   - 0.1
   - 0.15
@@ -171,7 +171,7 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  increaseAttack: 02000000030000000400000005000000
+  increaseAttack: 01000000030000000500000000000000
   increaseRate:
   - 0.05
   - 0.05
