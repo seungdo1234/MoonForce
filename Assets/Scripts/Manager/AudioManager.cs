@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 public enum Bgm { Main, Stage, MaintenanceRoom , Victory = 4 , GameOver }
-public enum Sfx { Dead, Hurt,  EnemyHit , ChestOpen = 4, Select }
+public enum Sfx { Dead, Hurt,  EnemyHit , ChestOpen = 4, Select , EnchantSuccess , EnchantFail}
 
 public class AudioManager : MonoBehaviour
 {

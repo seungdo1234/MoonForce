@@ -154,6 +154,7 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
             {
                 if(item != null) // 해당 슬롯에 아이템이 있을 경우
                 {
+                    AudioManager.instance.SelectSfx();
                     switch (slotType) // 슬롯의 형태에 따라 다른 이벤트
                     {
                         case SlotType.EnchantItemSpace: // 인첸트 슬롯을 눌렀을 때

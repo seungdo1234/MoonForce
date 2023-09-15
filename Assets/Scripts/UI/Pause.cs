@@ -59,9 +59,10 @@ public class Pause : MonoBehaviour
         ItemDatabase.instance.ItemReset();
 
         AudioManager.instance.PlayBgm((int)Bgm.Main);
-        // 0번과 1번은 비활성화 되면 안되기 때문에 다시 활성화
+        // 0번과 1번, 2번은 비활성화 되면 안되기 때문에 다시 활성화
         pausePrevObjects[0].SetActive(true);
         pausePrevObjects[1].SetActive(true);
+        pausePrevObjects[2].SetActive(true);
 
     }
     private void ActiveDeactivateObjects(bool isActive)
