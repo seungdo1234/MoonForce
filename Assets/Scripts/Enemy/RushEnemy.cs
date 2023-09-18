@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class RushEnemy : MonoBehaviour
 {
-
-
     public float rushDistance; // 대쉬 거리
     public float targetDetationDistance; // Player 탐지 거리
     public float castTime; // 시전 시간
@@ -72,10 +70,12 @@ public class RushEnemy : MonoBehaviour
                     anim.speed = 1f;
                     rigid.mass = 1000;
                     isRushing = true;
+                    float timer = 0;
                     while (true)
                     {
+                        timer += Time.deltaTime;
                         float distance = Vector3.Distance(transform.position, initialPosition); // 처음 위치와 현재 위치가 rushDistance 값만큼 벌어지면 break
-                        if (distance> rushDistance || isAttack || enemy.isRestraint) // 혹은 Player을 공격했거나 (isAttacking), enemy의 상태가 움직일 수 없는 상태라면 (isRestraint) 그 즉시 돌진을 끝냄
+                        if (distance> rushDistance || isAttack || enemy.isRestraint || timer > 5) // 혹은 Player을 공격했거나 (isAttacking), enemy의 상태가 움직일 수 없는 상태라면 (isRestraint) 그 즉시 돌진을 끝냄
                         {
                             break;
                         }
@@ -83,9 +83,9 @@ public class RushEnemy : MonoBehaviour
                     }
 
                     yield return null;
+                    isReady = false;
                     isRushing = false;
                     rigid.mass = 100;
-                    isReady = false;
                     isAttack = false;
                     curTime = 0f;
 

@@ -21,7 +21,8 @@ public class Item
     [Header("Book")]
     public string bookName;
     public int skillNum;
-    public int[] aditionalAbility;    
+    public int[] aditionalAbility;
+
 
 
     public void Staff(ItemType type, ItemRank rank, ItemQuality quality, Sprite itemSprite, ItemAttribute itemAttribute,string itemName, int attack, float rate, float moveSpeed, string itemDesc, int skillNum)

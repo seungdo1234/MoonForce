@@ -28,8 +28,17 @@ public class EnchantCheckUI : MonoBehaviour
     }
     private void SkillBookEnchantInit()
     {
-        selectEnchantAditionalNum = -1;
-        selectMaterialAditionalNum = -1;
+        if(selectEnchantAditionalNum != -1)
+        {
+            aditionalSelectBtn[0].InitButtonImage(selectEnchantAditionalNum);
+            selectEnchantAditionalNum = -1;
+        }
+        if(selectMaterialAditionalNum != -1)
+        {
+            aditionalSelectBtn[1].InitButtonImage(selectMaterialAditionalNum);
+            selectMaterialAditionalNum = -1;
+        }
+
     }
     public void UIOn(Item enchant_Item , Item material_Item)
     {
@@ -163,7 +172,7 @@ public class EnchantCheckUI : MonoBehaviour
     {
         while(enchantStartBtn.interactable != true)
         {
-            if (selectMaterialAditionalNum > -1 && selectMaterialAditionalNum > -1)
+            if (selectMaterialAditionalNum != -1 && selectEnchantAditionalNum != -1)
             {
                 enchantStartBtn.interactable = true;
             }

@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public enum SlotType { Main, Sub, WaitSpace , EnchantItemSpace, EnchantWaitSpace , EnchantCheck }
+public enum SlotType { Main, Sub, WaitSpace , EnchantItemSpace, EnchantWaitSpace , EnchantCheck , ShopSpace}
 public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
 
@@ -40,7 +40,7 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
         {
             itemImage.sprite = item.itemSprite;
             itemImage.color = new Color(1, 1, 1, 1);
-        }
+        }   
         else
         {
             itemImage.color = new Color(1, 1, 1, 0);
@@ -177,5 +177,9 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
                 }
             }
         }
+    }
+    private IEnumerator OneFrameNext()
+    {
+        yield return null;
     }
 }

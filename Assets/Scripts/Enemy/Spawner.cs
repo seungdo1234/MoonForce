@@ -77,7 +77,7 @@ public class Spawner : MonoBehaviour
         float curTime = 0;
         int curEnemyNum = 0;
 
-        while (curEnemyNum < enemySpawnNum[enemyType])
+        while ( curEnemyNum < enemySpawnNum[enemyType])
         {
             curTime += Time.deltaTime;
 
@@ -90,6 +90,11 @@ public class Spawner : MonoBehaviour
                 // *주의 : GetComponentsInChildren은 자기 자신도 포함이므로 0은 Player의 Transform 정보가 들어감 -> 랜덤은 1부터 시작
                 enemy.transform.position = spawnPoint[Random.Range(1, spawnPoint.Length)].position;
                 enemy.GetComponent<Enemy>().Init(spawnData[enemyType]);
+            }
+
+            if (GameManager.instance.gameStop)
+            {
+                break;
             }
             yield return null;
         }

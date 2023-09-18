@@ -49,7 +49,7 @@ public class StatManager : MonoBehaviour
 
 
 
-    private void Awake()
+    public void GameStart()
     {
         curHealth = maxHealth;
         attack = baseAttack;

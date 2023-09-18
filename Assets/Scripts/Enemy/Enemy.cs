@@ -64,7 +64,7 @@ public class Enemy : MonoBehaviour
     {
         if (GameManager.instance.gameStop || !isLive || anim.GetCurrentAnimatorStateInfo(0).IsName("Hit") || rush.isReady || !rangeAttackEnemy.isReady) // Enemy°¡ Á×¾ú´Ù¸é return
         {
-            rigid.velocity = Vector2.zero;
+          //  rigid.velocity = Vector2.zero;
             return;
         }
 

@@ -13,8 +13,6 @@ public class Pause : MonoBehaviour
     public Image pauseBtnImage;
     public Sprite pauseBtnOnImage;
     public Sprite pauseBtnOffImage;
-    [Header("MainMenu")]
-    public Map map;
 
 
     private void Start()
@@ -48,15 +46,8 @@ public class Pause : MonoBehaviour
         pauseBtnImage.sprite = pauseBtnOnImage;
 
         // 활성화된 풀링 오브젝트들 비활성화
-        GameManager.instance.PoolingReset();
-        // 플레이어와 맵 초기화
-        GameManager.instance.player.transform.position = Vector3.zero;
-        map.MapReset();     
+        GameManager.instance.GameLobby();    
 
-        GameManager.instance.player.gameObject.SetActive(false); // 플레이어 비활성화
-
-        // 아이템 데이터 베이스 초기화
-        ItemDatabase.instance.ItemReset();
 
         AudioManager.instance.PlayBgm((int)Bgm.Main);
         // 0번과 1번, 2번은 비활성화 되면 안되기 때문에 다시 활성화

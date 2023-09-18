@@ -25,15 +25,19 @@ public class RewardManager : MonoBehaviour
     private float moveSpeed;
     private int skillNumber ;
     private int[] aditionalAbility  ;
+    private int createType;
     private void Start()
     {
 
     }
 
 
-    public void ItemCreate(int itemRank) // 랜덤 아이템 생성
+    // createType은 아이템을 생성하는 형태 (0번은 스테이지 클리어 보상, 1번은 상점 아이템 랜덤 생성)
+    public void ItemCreate(int itemRank , int createType) // 랜덤 아이템 생성
     {
-       if(itemRank != -1)
+        this.createType = createType;
+
+       if(itemRank > -1)
         {
             type = (ItemType)Random.Range(1, 3);
             rank = (ItemRank)itemRank + 1;
@@ -102,7 +106,16 @@ public class RewardManager : MonoBehaviour
         }
         rewardImage.sprite = itemSprite;
 
-        ItemDatabase.instance.GetStaff(type, rank, quality, itemSprite, itemAttribute, itemName, attack, rate, moveSpeed, desc, skillNum);
+        if(createType == 0)
+        {
+            ItemDatabase.instance.GetStaff(type, rank, quality, itemSprite, itemAttribute, itemName, attack, rate, moveSpeed, desc, skillNum);
+        }
+        else
+        {
+            Item item = new Item();
+            item.Staff(type, rank, quality, itemSprite, itemAttribute, itemName, attack, rate, moveSpeed, desc, skillNum);
+            GameManager.instance.shop.StaffCreate(item);
+        }
     }
     private void BookCreate() // 마법 책 생성
     {
@@ -125,8 +138,16 @@ public class RewardManager : MonoBehaviour
 
       
         rewardImage.sprite = itemSprite; // 보상 창에 이미지 띄움
-
-        ItemDatabase.instance.GetBook(type, quality, itemSprite, itemName, skillNumber, aditionalAbility);
+        if (createType == 0)
+        {
+            ItemDatabase.instance.GetBook(type, quality, itemSprite, itemName, skillNumber, aditionalAbility);
+        }
+        else
+        {
+            Item item = new Item();
+            item.Book(type, quality, itemSprite, itemName, skillNumber, aditionalAbility);
+            GameManager.instance.shop.SkillBookCreate(item);
+        }
     }
     private void SetRandomValue(int[] percent) // 랜덤 값
     {

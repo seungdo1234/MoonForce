@@ -104,7 +104,7 @@ public class StageClear : MonoBehaviour
                 }
                 else
                 {
-                    rewardManager.ItemCreate(i);
+                  rewardManager.ItemCreate(i, 0 );
                 }
                 break;
             }

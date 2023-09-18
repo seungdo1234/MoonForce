@@ -11,7 +11,6 @@ public class AditionalSelectBtn : MonoBehaviour
     private VerticalLayoutGroup layoutGroup;
     private void Awake()
     {
-        AditionalSelectBtns = GetComponentsInChildren<Image>();
         layoutGroup = GetComponent<VerticalLayoutGroup>();
     }
 
@@ -19,9 +18,9 @@ public class AditionalSelectBtn : MonoBehaviour
     {
         gameObject.SetActive(true);
 
-        for (int i = AditionalSelectBtns.Length - 1; i >= 0; i--)
+        for (int i = 0; i < AditionalSelectBtns.Length; i++)
         {
-            if(i <= num - 1)
+            if(i < num )
             {
                 AditionalSelectBtns[i].gameObject.SetActive(true);
             }
@@ -29,7 +28,6 @@ public class AditionalSelectBtn : MonoBehaviour
             {
                 AditionalSelectBtns[i].gameObject.SetActive(false);
             }
-            AditionalSelectBtns[num].sprite = initSprite;
         }
 
         layoutGroup.spacing = num != 2 ? 0 : -30;

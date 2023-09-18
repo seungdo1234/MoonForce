@@ -83,7 +83,7 @@ public class ItemPreview : MonoBehaviour
                     break;
 
             }
-            itemInfomation[0].text = string.Format("<color={0}>{1}</color>", itemNameColor, item.itemName);
+            itemInfomation[0].text = string.Format("<color={0}>{1}</color> ", itemNameColor, item.itemName);
             itemInfomation[1].text = string.Format("(<color={0}>{1}</color>)", itemRankColor, item.rank);
             itemInfomation[2].text = string.Format("<color={0}>{1}</color>",itemAttributeColor,itemAttribute);
             if(type == ItemPreviewType.Inventory)
@@ -94,6 +94,7 @@ public class ItemPreview : MonoBehaviour
             {
                 itemInfomation[3].text = string.Format("공격력 + {0}\n공격속도 + {1}%", item.attack, Mathf.Floor(item.rate * 100));
             }
+            itemInfomation[4].text = string.Format("<color=black>강화 단계 :</color> <color=red>{0}</color>", item.enchantStep+1);
 
         }
         else if(item.type == ItemType.Book)
@@ -111,8 +112,9 @@ public class ItemPreview : MonoBehaviour
                     break;
             }
 
-            itemInfomation[3].text = null;
             itemInfomation[2].text = null;
+            itemInfomation[3].text = null;
+            itemInfomation[4].text = null;
 
             for (int i = 0; i < item.aditionalAbility.Length;i++)
             {
