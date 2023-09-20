@@ -16,6 +16,7 @@ public class ShopManager : MonoBehaviour
 
     [Header("# HealingPosion")]
     public HealingPosion[] healingPosions; // 체력 포션
+    public int[] healingPosionPercent;
 
 }
 [System.Serializable]
@@ -31,6 +32,7 @@ public class Essence
 public class HealingPosion
 {
     public Sprite healingPosionSprite; // 체력 포션
+    public string healingPosionName; // 체력 포션
     public int healingPosionPrice;
     public int healingPosionRecoveryHealth;
 }

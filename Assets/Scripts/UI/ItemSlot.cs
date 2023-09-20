@@ -18,12 +18,16 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
     [Header("# Enchant")]
     public Enchant enchant;
 
+    [Header("# Shop")]
+    public Text priceText;
+    private int itemPrice;
+
     [Header("# Item Info")]
     public Item item;
 
     public Image itemImage;
 
-
+    
     private void Awake()
     {
         //Image[] images = GetComponentsInChildren<Image>();
@@ -49,7 +53,7 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (slotType != SlotType.EnchantItemSpace && slotType != SlotType.EnchantWaitSpace)
+        if (slotType != SlotType.EnchantItemSpace && slotType != SlotType.EnchantWaitSpace && slotType != SlotType.ShopSpace)
         {
             // eventData.button : 플레이어가 누른 키
             if (eventData.button == PointerEventData.InputButton.Left)
@@ -68,7 +72,7 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (slotType != SlotType.EnchantItemSpace && slotType != SlotType.EnchantWaitSpace)
+        if (slotType != SlotType.EnchantItemSpace && slotType != SlotType.EnchantWaitSpace && slotType != SlotType.ShopSpace)
         {
             if (eventData.button == PointerEventData.InputButton.Left)
             {
@@ -177,9 +181,82 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
                 }
             }
         }
+        else if(slotType == SlotType.ShopSpace)
+        {
+            if (eventData.button == PointerEventData.InputButton.Left) // 좌클릭 시
+            {
+                if (item != null) // 상점 슬롯에 아이템이 있을 경우
+                {
+                    if (GameManager.instance.gold >= itemPrice )
+                    {
+                        if(item.type == ItemType.Book || item.type == ItemType.Staff)
+                        {
+                            int waitItemNum = 0;
+                            for(int i =0; i < ItemDatabase.instance.itemCount(); i++)
+                            {
+                                if (!ItemDatabase.instance.Set(i).isEquip)
+                                {
+                                    waitItemNum++;
+                                }
+                            }
+
+                            if(waitItemNum >= GameManager.instance.inventory.waitEqquipments.Length)
+                            {
+                                AudioManager.instance.PlayerSfx(Sfx.BuySellFail);
+                                return;
+                            }
+                        }                 
+                        AudioManager.instance.PlayerSfx(Sfx.BuySell);
+                        GameManager.instance.gold -= itemPrice;
+                        switch (item.type)
+                        {
+                            case ItemType.Staff:
+                                ItemDatabase.instance.GetStaff(item.type, item.rank, item.quality, item.itemSprite, item.itemAttribute, item.itemName, item.attack, item.rate, item.moveSpeed, item.itemDesc, item.skillNum);
+                            break;
+                            case ItemType.Book:
+                                ItemDatabase.instance.GetBook(item.type, item.quality, item.itemSprite, item.bookName, item.skillNum, item.aditionalAbility);
+                                break;
+                            case ItemType.Posion:
+                                GameManager.instance.statManager.curHealth = Mathf.Min(GameManager.instance.statManager.curHealth + item.attack, GameManager.instance.statManager.maxHealth);
+                                break;
+                            case ItemType.Esscence:
+                                priceText.text = string.Format("{0}", item.attack);
+                                break;
+                        }
+                        item = null;
+                        ImageLoading();
+                    }
+                    else
+                    {
+                        AudioManager.instance.PlayerSfx(Sfx.BuySellFail);
+                    }
+              
+                }
+
+            }
+        }
     }
-    private IEnumerator OneFrameNext()
+   public void ItemPriceLoad()
     {
-        yield return null;
+
+      
+        switch (item.type)
+        {
+            case ItemType.Staff:
+                itemPrice = GameManager.instance.shopManager.staffRankPrices[(int)item.rank - 1];
+                break;
+            case ItemType.Book:
+                itemPrice = GameManager.instance.shopManager.bookQualityPrices[(int)item.quality - 1];
+                break;
+            case ItemType.Posion:
+                itemPrice = GameManager.instance.shopManager.healingPosions[(int)item.quality - 1].healingPosionPrice;
+               break;
+            case ItemType.Esscence:
+                itemPrice = item.attack;
+                break;
+        }
+        priceText.text = string.Format("{0}", itemPrice);
     }
+
+
 }

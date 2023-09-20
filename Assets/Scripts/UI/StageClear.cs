@@ -7,7 +7,6 @@ public class StageClear : MonoBehaviour
     public RuntimeAnimatorController[] animCon;
     public Image reward;
 
-    private RewardManager rewardManager;
     private int chestType;
     private Animator chestAnim;
     private Image chestImage;
@@ -18,7 +17,6 @@ public class StageClear : MonoBehaviour
         chestAnim = GetComponentInChildren<Animator>();
         chestImage = GetComponentInChildren<Image>();
         btn = GetComponentsInChildren<Button>(true);
-        rewardManager = GameManager.instance.rewardManager;
     }
 
     public void ChestOpen()
@@ -56,7 +54,7 @@ public class StageClear : MonoBehaviour
         }
 
         // 상자 당 ItemRank의 확률을 구함
-        RandomValue(chestReward, 1);
+        RandomValue(chestReward, 1, 0);
 
     }
     public void NextStage()
@@ -81,11 +79,11 @@ public class StageClear : MonoBehaviour
         chestImage.color = new Color(1, 1, 1, 1);
 
         // 랜덤 값을 구해 정해져있는 확률대로 상자 등장
-        RandomValue(GameManager.instance.chestPercent, 0);
+        RandomValue(GameManager.instance.chestPercent, 0 ,0);
 
     }
 
-    private void RandomValue(int[] percent, int randomType)
+    public void RandomValue(int[] percent, int randomType , int rewardType)
     {
         // 랜덤 값을 구해 정해져있는 확률대로 상자 등장
         int random = Random.Range(1, 101);
@@ -94,7 +92,6 @@ public class StageClear : MonoBehaviour
         for (int i = 0; i < percent.Length; i++)
         {
             percentSum += percent[i];
-
             if (random <= percentSum)
             {
                 if (randomType == 0)
@@ -102,9 +99,13 @@ public class StageClear : MonoBehaviour
                     chestType = i;
                     chestAnim.runtimeAnimatorController = animCon[i];
                 }
-                else
+                else if (randomType == 1)
                 {
-                  rewardManager.ItemCreate(i, 0 );
+                    GameManager.instance.rewardManager.ItemCreate(i, rewardType);
+                }
+                else if (randomType == 2)
+                {
+                    GameManager.instance.shop.PosionCreate(i);
                 }
                 break;
             }

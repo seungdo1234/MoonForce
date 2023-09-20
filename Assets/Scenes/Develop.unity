@@ -180,8 +180,10 @@ MonoBehaviour:
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
   enchant: {fileID: 1439412078}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -367,8 +369,10 @@ MonoBehaviour:
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 63543068}
   enchant: {fileID: 0}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -686,8 +690,10 @@ MonoBehaviour:
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
   enchant: {fileID: 1439412078}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -978,8 +984,10 @@ MonoBehaviour:
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
   enchant: {fileID: 1439412078}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -1090,8 +1098,10 @@ MonoBehaviour:
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 1879882378}
   enchant: {fileID: 1439412078}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -1296,8 +1306,10 @@ MonoBehaviour:
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
   enchant: {fileID: 0}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -1408,8 +1420,10 @@ MonoBehaviour:
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
   enchant: {fileID: 0}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -1700,8 +1714,10 @@ MonoBehaviour:
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
   enchant: {fileID: 1439412078}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -1881,8 +1897,10 @@ MonoBehaviour:
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
   enchant: {fileID: 0}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -2808,8 +2826,10 @@ MonoBehaviour:
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
   enchant: {fileID: 1439412078}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -3049,8 +3069,10 @@ MonoBehaviour:
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
   enchant: {fileID: 1439412078}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -4298,6 +4320,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4b294d59d2399014daa718b35c9de73b, type: 3}
   - {fileID: 8300000, guid: a9c5c2efa5086f243a0cfda332162357, type: 3}
   - {fileID: 8300000, guid: c5e37925816045a4bb216559c957d845, type: 3}
+  - {fileID: 8300000, guid: 0ddc22de003f7e040993ee8a10b47ac2, type: 3}
+  - {fileID: 8300000, guid: 5a6684aea5bbb1a4cae04c82066c1f2a, type: 3}
   footStepClips:
   - {fileID: 8300000, guid: 531cd58001e103447a8b40b6c481eae3, type: 3}
   - {fileID: 8300000, guid: 14cfd9c6e320adf499a6b1ed11344faa, type: 3}
@@ -4400,8 +4424,10 @@ MonoBehaviour:
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 1234341419}
   enchant: {fileID: 0}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -6674,8 +6700,10 @@ MonoBehaviour:
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
   enchant: {fileID: 1439412078}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -6919,8 +6947,10 @@ MonoBehaviour:
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 1676814406}
   enchant: {fileID: 1439412078}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -7111,8 +7141,10 @@ MonoBehaviour:
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
   enchant: {fileID: 1439412078}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -8030,8 +8062,10 @@ MonoBehaviour:
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
   enchant: {fileID: 0}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -8181,8 +8215,10 @@ MonoBehaviour:
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
   enchant: {fileID: 1439412078}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -8431,7 +8467,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -10, y: -25}
+  m_AnchoredPosition: {x: -5, y: -25}
   m_SizeDelta: {x: 70, y: 30}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &460006563
@@ -8703,8 +8739,10 @@ MonoBehaviour:
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
   enchant: {fileID: 1439412078}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -9244,8 +9282,10 @@ MonoBehaviour:
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
   enchant: {fileID: 0}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -9590,6 +9630,7 @@ MonoBehaviour:
   inventory: {fileID: 1623473219}
   rewardManager: {fileID: 303485945}
   shop: {fileID: 2091292252}
+  shopManager: {fileID: 610748032}
   availablePoint: 0
   attribute: 0
   gold: 0
@@ -10075,8 +10116,10 @@ MonoBehaviour:
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
   enchant: {fileID: 1439412078}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -10788,8 +10831,10 @@ MonoBehaviour:
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 88059192}
   enchant: {fileID: 0}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -10960,14 +11005,18 @@ MonoBehaviour:
     essenceIncreaseStat: 1
   healingPosions:
   - healingPosionSprite: {fileID: 21300000, guid: 4ad3fc0b031c2ac46b1b030b8927d2c7, type: 3}
+    healingPosionName: "\uD558\uAE09 \uCCB4\uB825 \uD3EC\uC158"
     healingPosionPrice: 50
     healingPosionRecoveryHealth: 30
   - healingPosionSprite: {fileID: 21300000, guid: 2b9c8b1e56f257641ad98773958b1c61, type: 3}
+    healingPosionName: "\uC911\uAE09 \uCCB4\uB825 \uD3EC\uC158"
     healingPosionPrice: 70
     healingPosionRecoveryHealth: 50
   - healingPosionSprite: {fileID: 21300000, guid: 779a1cc8b44883e45a5b349cded56390, type: 3}
+    healingPosionName: "\uC0C1\uAE09 \uCC44\uB825 \uD3EC\uC158"
     healingPosionPrice: 100
     healingPosionRecoveryHealth: 80
+  healingPosionPercent: 3c0000001e0000000a000000
 --- !u!1 &618758894
 GameObject:
   m_ObjectHideFlags: 0
@@ -11856,8 +11905,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 768338561}
+  m_Children: []
   m_Father: {fileID: 1768945825}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11884,9 +11932,11 @@ MonoBehaviour:
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
   enchant: {fileID: 1439412078}
+  priceText: {fileID: 768338562}
   item:
     isLoad: 0
-    type: 0
+    isEquip: 0
+    type: 3
     rank: 0
     quality: 0
     itemSprite: {fileID: 0}
@@ -12034,8 +12084,10 @@ MonoBehaviour:
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 1526604995}
   enchant: {fileID: 0}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -12482,8 +12534,10 @@ MonoBehaviour:
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 163732863}
   enchant: {fileID: 1439412078}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -12793,8 +12847,10 @@ MonoBehaviour:
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 63543068}
   enchant: {fileID: 0}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -12867,8 +12923,10 @@ MonoBehaviour:
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 1672982646}
   enchant: {fileID: 1439412078}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -13096,8 +13154,10 @@ MonoBehaviour:
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
   enchant: {fileID: 0}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -13339,12 +13399,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2132486866}
-  m_Father: {fileID: 668016549}
-  m_RootOrder: 0
+  m_Father: {fileID: 1768945825}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -10, y: -45}
+  m_AnchoredPosition: {x: -5, y: -25}
   m_SizeDelta: {x: 70, y: 30}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &768338562
@@ -13571,8 +13631,10 @@ MonoBehaviour:
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 1417924892}
   enchant: {fileID: 0}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -13645,8 +13707,10 @@ MonoBehaviour:
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 1185992424}
   enchant: {fileID: 1439412078}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -14931,8 +14995,10 @@ MonoBehaviour:
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
   enchant: {fileID: 0}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -15155,8 +15221,10 @@ MonoBehaviour:
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
   enchant: {fileID: 0}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -15617,8 +15685,10 @@ MonoBehaviour:
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
   enchant: {fileID: 1439412078}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -17046,8 +17116,10 @@ MonoBehaviour:
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
   enchant: {fileID: 0}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -18181,8 +18253,10 @@ MonoBehaviour:
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 163732863}
   enchant: {fileID: 1439412078}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -19149,8 +19223,10 @@ MonoBehaviour:
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 1185992424}
   enchant: {fileID: 1439412078}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -19376,8 +19452,10 @@ MonoBehaviour:
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 1234341419}
   enchant: {fileID: 0}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -20387,8 +20465,10 @@ MonoBehaviour:
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
   enchant: {fileID: 1439412078}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -21187,8 +21267,10 @@ MonoBehaviour:
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
   enchant: {fileID: 0}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -21546,8 +21628,10 @@ MonoBehaviour:
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
   enchant: {fileID: 1439412078}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -22540,7 +22624,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -10, y: -25}
+  m_AnchoredPosition: {x: -5, y: -25}
   m_SizeDelta: {x: 70, y: 30}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1332587111
@@ -24307,8 +24391,10 @@ MonoBehaviour:
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
   enchant: {fileID: 0}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -24492,8 +24578,10 @@ MonoBehaviour:
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
   enchant: {fileID: 1439412078}
+  priceText: {fileID: 1618840619}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -24770,8 +24858,10 @@ MonoBehaviour:
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 1676814406}
   enchant: {fileID: 1439412078}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -26430,8 +26520,10 @@ MonoBehaviour:
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
   enchant: {fileID: 0}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -26994,8 +27086,10 @@ MonoBehaviour:
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 1672982646}
   enchant: {fileID: 1439412078}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -27768,7 +27862,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -10, y: -25}
+  m_AnchoredPosition: {x: -5, y: -25}
   m_SizeDelta: {x: 70, y: 30}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1618840619
@@ -27895,6 +27989,7 @@ MonoBehaviour:
   - {fileID: 676921726}
   prevEquipStaff:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -28742,8 +28837,10 @@ MonoBehaviour:
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
   enchant: {fileID: 1439412078}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -29192,8 +29289,10 @@ MonoBehaviour:
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
   enchant: {fileID: 0}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -29346,8 +29445,10 @@ MonoBehaviour:
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
   enchant: {fileID: 1439412078}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -29565,8 +29666,10 @@ MonoBehaviour:
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
   enchant: {fileID: 1439412078}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -29996,8 +30099,10 @@ MonoBehaviour:
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 1879882378}
   enchant: {fileID: 1439412078}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -31059,6 +31164,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 668016549}
+  - {fileID: 768338561}
   m_Father: {fileID: 1655649623}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -32090,8 +32196,10 @@ MonoBehaviour:
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 1526604995}
   enchant: {fileID: 0}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -32508,9 +32616,11 @@ MonoBehaviour:
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
   enchant: {fileID: 1439412078}
+  priceText: {fileID: 460006563}
   item:
     isLoad: 0
-    type: 0
+    isEquip: 0
+    type: 4
     rank: 0
     quality: 0
     itemSprite: {fileID: 0}
@@ -32620,8 +32730,10 @@ MonoBehaviour:
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
   enchant: {fileID: 1439412078}
+  priceText: {fileID: 1332587111}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -33212,8 +33324,10 @@ MonoBehaviour:
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
   enchant: {fileID: 1439412078}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -34441,8 +34555,10 @@ MonoBehaviour:
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
   enchant: {fileID: 0}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -35644,8 +35760,10 @@ MonoBehaviour:
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 1417924892}
   enchant: {fileID: 0}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0
@@ -36293,6 +36411,8 @@ MonoBehaviour:
   skillBookSlot: {fileID: 1838304790}
   essenceSlot: {fileID: 1829267890}
   posionSlot: {fileID: 668016550}
+  stageClear: {fileID: 124120851}
+  goldText: {fileID: 619492939}
 --- !u!1 &2118428522
 GameObject:
   m_ObjectHideFlags: 0
@@ -36602,8 +36722,10 @@ MonoBehaviour:
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 88059192}
   enchant: {fileID: 0}
+  priceText: {fileID: 0}
   item:
     isLoad: 0
+    isEquip: 0
     type: 0
     rank: 0
     quality: 0

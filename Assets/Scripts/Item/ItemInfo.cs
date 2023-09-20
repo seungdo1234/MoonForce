@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum ItemType { Default, Staff, Book }
+public enum ItemType { Default, Staff, Book , Posion, Esscence  }
 public enum ItemRank { Default, Common, Rare, Epic, Legendary }
 public enum ItemQuality { Default, Low, Normal, High }
 public enum ItemAttribute {Default, Non, Fire, Water, Eeath , Grass , Dark , Holy }

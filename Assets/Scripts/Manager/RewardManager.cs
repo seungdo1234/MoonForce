@@ -36,11 +36,21 @@ public class RewardManager : MonoBehaviour
     public void ItemCreate(int itemRank , int createType) // 랜덤 아이템 생성
     {
         this.createType = createType;
-
        if(itemRank > -1)
         {
-            type = (ItemType)Random.Range(1, 3);
             rank = (ItemRank)itemRank + 1;
+            switch (createType)
+            {
+                case 0:
+                    type = (ItemType)Random.Range(1, 3);
+                    break;
+                case 1:
+                    type = ItemType.Staff;
+                    break;
+                case 2:
+                    type = ItemType.Book;
+                    break;
+            }
             if(rank == ItemRank.Legendary) // 레전드리는 무조건 품질 상
             {
                 quality = ItemQuality.High;
@@ -60,7 +70,7 @@ public class RewardManager : MonoBehaviour
         }
 
  
-        if (type == ItemType.Staff)
+        if (type == ItemType.Staff )
         {
             StaffCreate();
         }

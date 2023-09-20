@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public Inventory inventory;
     public RewardManager rewardManager;
     public Shop shop;
+    public ShopManager shopManager;
     private Spawner spawner;
 
     [Header("# Player Data")]

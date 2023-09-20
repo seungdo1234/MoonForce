@@ -85,6 +85,7 @@ public class Inventory : MonoBehaviour
         for(int i =0 ; i< equipBooks.Count; i++) // 전에 장착한 마법 책 스킬 초기화
         {
             GameManager.instance.magicManager.magicInfo[equipBooks[i].skillNum].isMagicActive = false;
+            equipBooks[i].isEquip = false;
             MagicAdditionalStat(equipBooks[i], -1);
         }
 
@@ -97,6 +98,7 @@ public class Inventory : MonoBehaviour
                 GameManager.instance.magicManager.magicInfo[subEqquipments[i].item.skillNum].isMagicActive = true;
                 MagicAdditionalStat(subEqquipments[i].item, 1);
                 equipBooks.Add(subEqquipments[i].item);
+                equipBooks[i].isEquip = true;
             }
 
         }
@@ -140,6 +142,8 @@ public class Inventory : MonoBehaviour
     }
     public void EquipStaff()
     {
+        mainEqquipment.item.isEquip = true;
+        prevEquipStaff.isEquip = false;
         // 능력치 적용
         GameManager.instance.attribute = mainEqquipment.item.itemAttribute;
         GameManager.instance.statManager.attack = GameManager.instance.statManager.baseAttack + mainEqquipment.item.attack;

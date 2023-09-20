@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,42 +16,42 @@ public class NextStageBtn : MonoBehaviour // 다음스테이지로 가는 버튼 (무기를 장
 
     private void Update()
     {
-        if(!isActive && inventory.mainEqquipment.item.itemSprite != null)
+        if (!isActive && inventory.mainEqquipment.item.itemSprite != null)
         {
-            for(int i =0; i <inventory.waitEqquipments.Length; i++)
+            int waitItemNum = 0;
+            for (int i = 0; i < ItemDatabase.instance.itemCount(); i++)
             {
-                if(inventory.waitEqquipments[i].item.itemSprite == null)
+                if (!ItemDatabase.instance.Set(i).isEquip)
                 {
-                    isActive = true;
-                    btn.interactable = true;
-                    btnTexts[0].gameObject.SetActive(true);
-                    btnTexts[1].gameObject.SetActive(false);
-                    break;
+                    waitItemNum++;
                 }
+            }
+            if (waitItemNum < GameManager.instance.inventory.waitEqquipments.Length)
+            {
+                isActive = true;
+                btn.interactable = true;
+                btnTexts[0].gameObject.SetActive(true);
+                btnTexts[1].gameObject.SetActive(false);
             }
         }
-        else if(isActive)
+        else if (isActive)
         {
-            bool inventoryFull= false;
-            for (int i = 0; i < inventory.waitEqquipments.Length; i++)
+            int waitItemNum = 0;
+            for (int i = 0; i < ItemDatabase.instance.itemCount(); i++)
             {
-                if (inventory.waitEqquipments[i].item.itemSprite == null)
+                if (!ItemDatabase.instance.Set(i).isEquip)
                 {
-                    break;
-                }
-                else if (i == inventory.waitEqquipments.Length - 1)
-                {
-                    inventoryFull = true;
+                    waitItemNum++;
                 }
             }
-            if (inventory.mainEqquipment.item.itemSprite == null || inventoryFull)
+            if (waitItemNum >= GameManager.instance.inventory.waitEqquipments.Length)
             {
                 isActive = false;
                 btn.interactable = false;
                 btnTexts[0].gameObject.SetActive(false);
                 btnTexts[1].gameObject.SetActive(true);
             }
-         
+
         }
     }
 }

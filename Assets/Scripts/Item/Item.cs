@@ -4,6 +4,7 @@ using UnityEngine;
 public class Item 
 {
     public bool isLoad;
+    public bool isEquip;
 
     [Header("BaseInfo")]
     public ItemType type;
@@ -33,7 +34,7 @@ public class Item
         this.itemSprite = itemSprite;
         this.itemAttribute = itemAttribute;
         this.itemName = itemName;
-        this.attack = attack;
+        this.attack = attack;  
         this.rate = rate;
         this.moveSpeed = moveSpeed;
         this.itemDesc = itemDesc;
