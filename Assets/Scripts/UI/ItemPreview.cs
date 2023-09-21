@@ -7,6 +7,8 @@ public class ItemPreview : MonoBehaviour
     public ItemPreviewType type;
     public Text[] itemInfomation;
 
+    public Image coin;
+    
     string itemNameColor;
     string itemRankColor;
     string itemQuality;
@@ -14,10 +16,19 @@ public class ItemPreview : MonoBehaviour
     string itemAttribute;
     private void Awake()
     {
-        itemInfomation = GetComponentsInChildren<Text>();
-
+        itemInfomation = GetComponentsInChildren<Text>(true);
     }
 
+    public void IsSell(bool active , int price)
+    {
+        if (active)
+        {
+            itemInfomation[5].text = string.Format("{0}", price);
+        }
+
+        itemInfomation[5].gameObject.SetActive(active);
+        coin.gameObject.SetActive(active);
+    }
     private void BookInfoSet(Item item)
     {
         switch (item.quality)
@@ -144,7 +155,7 @@ public class ItemPreview : MonoBehaviour
         {
             itemInfomation[3].text = string.Format("공격력 + {0}\n공격속도 + {1}%\n{2}", item.attack, Mathf.Floor(item.rate * 100), item.itemDesc);
         }
-        else
+        else if(type == ItemPreviewType.EnchantCheck)
         {
             itemInfomation[3].text = string.Format("공격력 + {0}\n공격속도 + {1}%", item.attack, Mathf.Floor(item.rate * 100));
         }

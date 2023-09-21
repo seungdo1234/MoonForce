@@ -7,9 +7,11 @@ public class ShopManager : MonoBehaviour
 
     [Header("# Staff")]
     public int[] staffRankPrices;
+    public int[] staffRankSalePrices;
 
     [Header("# Skill Book")]
     public int[] bookQualityPrices;
+    public int[] bookQualitySalePrices;
 
     [Header("# Essence")]
     public Essence[] essences; // Á¤¼ö

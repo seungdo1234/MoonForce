@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public enum SlotType { Main, Sub, WaitSpace , EnchantItemSpace, EnchantWaitSpace , EnchantCheck , ShopSpace}
+public enum SlotType { Main, Sub, WaitSpace, EnchantItemSpace, EnchantWaitSpace, EnchantCheck, ShopSpace, SellSpace }
 public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
 
@@ -20,6 +20,7 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
 
     [Header("# Shop")]
     public Text priceText;
+    public Shop_Sell sell;
     private int itemPrice;
 
     [Header("# Item Info")]
@@ -27,7 +28,7 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
 
     public Image itemImage;
 
-    
+
     private void Awake()
     {
         //Image[] images = GetComponentsInChildren<Image>();
@@ -44,7 +45,7 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
         {
             itemImage.sprite = item.itemSprite;
             itemImage.color = new Color(1, 1, 1, 1);
-        }   
+        }
         else
         {
             itemImage.color = new Color(1, 1, 1, 0);
@@ -53,7 +54,7 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (slotType != SlotType.EnchantItemSpace && slotType != SlotType.EnchantWaitSpace && slotType != SlotType.ShopSpace)
+        if (slotType != SlotType.EnchantItemSpace && slotType != SlotType.EnchantWaitSpace && slotType != SlotType.ShopSpace && slotType != SlotType.SellSpace)
         {
             // eventData.button : 플레이어가 누른 키
             if (eventData.button == PointerEventData.InputButton.Left)
@@ -72,7 +73,7 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (slotType != SlotType.EnchantItemSpace && slotType != SlotType.EnchantWaitSpace && slotType != SlotType.ShopSpace)
+        if (slotType != SlotType.EnchantItemSpace && slotType != SlotType.EnchantWaitSpace && slotType != SlotType.ShopSpace && slotType != SlotType.SellSpace)
         {
             if (eventData.button == PointerEventData.InputButton.Left)
             {
@@ -141,23 +142,34 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
             {
                 preview.gameObject.transform.position = transform.position + new Vector3(-350, 0, 0);
             }
+
+            if (slotType == SlotType.SellSpace)
+            {
+                preview.IsSell(true, itemPrice);
+            }
             preview.ItemInfoSet(item);
         }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        if (slotType == SlotType.SellSpace)
+        {
+            preview.IsSell(false, itemPrice);
+        }
+
         preview.gameObject.SetActive(false);
     }
 
     public void OnPointerClick(PointerEventData eventData) // 인첸트 창에서 클릭이벤트
     {
-        if (slotType == SlotType.EnchantItemSpace || slotType == SlotType.EnchantWaitSpace)
+        if (item != null && item.itemSprite != null)
         {
-            if (eventData.button == PointerEventData.InputButton.Left) // 좌클릭 시
+            if (slotType == SlotType.EnchantItemSpace || slotType == SlotType.EnchantWaitSpace)
             {
-                if(item != null) // 해당 슬롯에 아이템이 있을 경우
+                if (eventData.button == PointerEventData.InputButton.Left) // 좌클릭 시
                 {
+
                     AudioManager.instance.SelectSfx();
                     switch (slotType) // 슬롯의 형태에 따라 다른 이벤트
                     {
@@ -177,22 +189,21 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
                                 }
                             }
                             break;
+
                     }
                 }
             }
-        }
-        else if(slotType == SlotType.ShopSpace)
-        {
-            if (eventData.button == PointerEventData.InputButton.Left) // 좌클릭 시
+            else if (slotType == SlotType.ShopSpace)
             {
-                if (item != null) // 상점 슬롯에 아이템이 있을 경우
+                if (eventData.button == PointerEventData.InputButton.Left) // 좌클릭 시
                 {
-                    if (GameManager.instance.gold >= itemPrice )
+
+                    if (GameManager.instance.gold >= itemPrice)
                     {
-                        if(item.type == ItemType.Book || item.type == ItemType.Staff)
+                        if (item.type == ItemType.Book || item.type == ItemType.Staff) // 아이템 슬롯에 빈자리게 있는지 확인
                         {
                             int waitItemNum = 0;
-                            for(int i =0; i < ItemDatabase.instance.itemCount(); i++)
+                            for (int i = 0; i < ItemDatabase.instance.itemCount(); i++)
                             {
                                 if (!ItemDatabase.instance.Set(i).isEquip)
                                 {
@@ -200,19 +211,19 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
                                 }
                             }
 
-                            if(waitItemNum >= GameManager.instance.inventory.waitEqquipments.Length)
+                            if (waitItemNum >= GameManager.instance.inventory.waitEqquipments.Length)
                             {
                                 AudioManager.instance.PlayerSfx(Sfx.BuySellFail);
                                 return;
                             }
-                        }                 
+                        }
                         AudioManager.instance.PlayerSfx(Sfx.BuySell);
                         GameManager.instance.gold -= itemPrice;
                         switch (item.type)
                         {
                             case ItemType.Staff:
                                 ItemDatabase.instance.GetStaff(item.type, item.rank, item.quality, item.itemSprite, item.itemAttribute, item.itemName, item.attack, item.rate, item.moveSpeed, item.itemDesc, item.skillNum);
-                            break;
+                                break;
                             case ItemType.Book:
                                 ItemDatabase.instance.GetBook(item.type, item.quality, item.itemSprite, item.bookName, item.skillNum, item.aditionalAbility);
                                 break;
@@ -230,16 +241,33 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
                     {
                         AudioManager.instance.PlayerSfx(Sfx.BuySellFail);
                     }
-              
                 }
+            }
+            else if (slotType == SlotType.SellSpace)
+            {
+                if (eventData.button == PointerEventData.InputButton.Left) // 좌클릭 시
+                {
 
+                    for (int i = 0; i < ItemDatabase.instance.itemCount(); i++)
+                    {
+                        if (ItemDatabase.instance.Set(i) == item)
+                        {
+                            ItemDatabase.instance.ItemRemove(i);
+                            break;
+                        }
+                    }
+                    item = null;
+                    itemImage.sprite = null;
+                    sell.ItemLoad();
+                    GameManager.instance.gold += itemPrice;
+                    AudioManager.instance.PlayerSfx(Sfx.BuySell);
+                }
             }
         }
-    }
-   public void ItemPriceLoad()
-    {
 
-      
+    }
+    public void ItemPriceLoad() // 랜덤 상점 아이템 가격 
+    {
         switch (item.type)
         {
             case ItemType.Staff:
@@ -250,7 +278,7 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
                 break;
             case ItemType.Posion:
                 itemPrice = GameManager.instance.shopManager.healingPosions[(int)item.quality - 1].healingPosionPrice;
-               break;
+                break;
             case ItemType.Esscence:
                 itemPrice = item.attack;
                 break;
@@ -258,5 +286,20 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
         priceText.text = string.Format("{0}", itemPrice);
     }
 
+    public void ItemSalePriceLoad() // 내 아이템 가격
+    {
+        if(item != null)
+        {
+            switch (item.type)
+            {
+                case ItemType.Staff:
+                    itemPrice = GameManager.instance.shopManager.staffRankSalePrices[(int)item.rank - 1];
+                    break;
+                case ItemType.Book:
+                    itemPrice = GameManager.instance.shopManager.bookQualitySalePrices[(int)item.quality - 1];
+                    break;
+            }
 
+        }
+    }
 }
