@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum ShopWarningText { GoldEmpty, InventoryFull, OneStaffHave, Healing, Essence}
 public class Shop : MonoBehaviour
 {
     [SerializeField]
-    public List<Item> itemList;
+    private List<Item> itemList;
 
     public ItemSlot staffSlot;
     public ItemSlot skillBookSlot;
@@ -14,6 +15,11 @@ public class Shop : MonoBehaviour
     public ItemSlot posionSlot;
     public StageClear stageClear;
     public Text goldText;
+
+
+    [Header("# WarningText")]
+    public Text warningTextObject;
+    public string[] warningTexts;
     public void ShopReset()
     {
         int level = GameManager.instance.level / 12;
@@ -36,14 +42,6 @@ public class Shop : MonoBehaviour
         stageClear.RandomValue(GameManager.instance.shopManager.healingPosionPercent, 2, 1);
 
         EssenceCreate();
-
-    }
-    private void OnEnable()
-    {
-        ShopReset();
-    }
-    private void ItemExhibition()
-    {
 
     }
 
@@ -84,7 +82,14 @@ public class Shop : MonoBehaviour
         posionSlot.ImageLoading();
         posionSlot.ItemPriceLoad();
     }
+    public void WarningTextOn(ShopWarningText warning)
+    {
+        warningTextObject.gameObject.SetActive(false);
 
+        warningTextObject.text = warningTexts[(int)warning];
+
+        warningTextObject.gameObject.SetActive(true);
+    }
     private void Update()
     {
         goldText.text = string.Format("{0}", GameManager.instance.gold);

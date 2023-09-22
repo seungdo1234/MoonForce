@@ -19,8 +19,6 @@ public class Spawner : MonoBehaviour
 
     public int spawnPerLevelUp = 0;
     public EnemySpawnPer[] enemySpawnPer;
-    // ≈∏¿Ã∏” 
-    private float timer;
 
     private void Awake()
     {
@@ -28,10 +26,7 @@ public class Spawner : MonoBehaviour
         spawnPoint = GetComponentsInChildren<Transform>();
 
     }
-    private void Start()
-    {
-  
-    }
+
     public  void StageStart()
     {
         EnemyRandomTypeSelect();

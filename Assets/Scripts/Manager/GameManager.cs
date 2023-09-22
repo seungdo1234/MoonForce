@@ -116,6 +116,7 @@ public class GameManager : MonoBehaviour
         }
         clearReward.SetActive(true);
         player.gameObject.SetActive(false);
+        shop.ShopReset();
         //    Time.timeScale = 0f;
     }
     public void NextStage()
@@ -171,6 +172,8 @@ public class GameManager : MonoBehaviour
         hud.SetActive(false);
         pause.gameObject.SetActive(false);
         gameOverObject.SetActive(true);
+        level = 0;
+        spawner.spawnPerLevelUp = 0;
     }
     public void GameStart()
     {
@@ -178,5 +181,6 @@ public class GameManager : MonoBehaviour
         statManager.GameStart();
         AudioManager.instance.PlayBgm((int)Bgm.MaintenanceRoom);
         rewardManager.ItemCreate(-1 , 0);
+        shop.ShopReset();
     }
 }

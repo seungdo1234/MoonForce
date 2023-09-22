@@ -21,6 +21,7 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
     [Header("# Shop")]
     public Text priceText;
     public Shop_Sell sell;
+    public Shop shop;
     private int itemPrice;
 
     [Header("# Item Info")]
@@ -160,108 +161,127 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
 
         preview.gameObject.SetActive(false);
     }
+    private void EnchantItemSelecet()
+    {
+        AudioManager.instance.SelectSfx();
+        switch (slotType) // 슬롯의 형태에 따라 다른 이벤트
+        {
+            case SlotType.EnchantItemSpace: // 인첸트 슬롯을 눌렀을 때
+                enchant.EnchantItemoff(); // 인첸트 슬롯에 있는 아이템을 해제함
+                break;
+            case SlotType.EnchantWaitSpace: // 대기 슬롯을 눌렀을 때
+                if (enchant.itemSelect) // 인첸트 슬롯에 아이템이 있을 때
+                {
+                    enchant.EnchantMaterialSelect(this);
+                }
+                else // 인첸트 슬롯에 아이템이 없을 때
+                {
+                    if (enchant.EnchantItemOn(this)) // 아이템을 인첸스 슬롯에 넣음 (가능하면 true, 불가능 하면 false)
+                    {
+                        preview.gameObject.SetActive(false);
+                    }
+                }
+                break;
+        }
+    }
 
+    private void ItemBuy()
+    {
+        if (GameManager.instance.gold >= itemPrice)
+        {
+            if (item.type == ItemType.Book || item.type == ItemType.Staff) // 아이템 슬롯에 빈자리게 있는지 확인
+            {
+                int waitItemNum = 0;
+                for (int i = 0; i < ItemDatabase.instance.itemCount(); i++)
+                {
+                    if (!ItemDatabase.instance.Set(i).isEquip)
+                    {
+                        waitItemNum++;
+                    }
+                }
+
+                if (waitItemNum >= GameManager.instance.inventory.waitEqquipments.Length)
+                {
+                    shop.WarningTextOn(ShopWarningText.InventoryFull);
+                    AudioManager.instance.PlayerSfx(Sfx.BuySellFail);
+                    return;
+                }
+            }
+            AudioManager.instance.PlayerSfx(Sfx.BuySell);
+            GameManager.instance.gold -= itemPrice;
+            switch (item.type)
+            {
+                case ItemType.Staff:
+                    ItemDatabase.instance.GetStaff(item.type, item.rank, item.quality, item.itemSprite, item.itemAttribute, item.itemName, item.attack, item.rate, item.moveSpeed, item.itemDesc, item.skillNum);
+                    break;
+                case ItemType.Book:
+                    ItemDatabase.instance.GetBook(item.type, item.quality, item.itemSprite, item.bookName, item.skillNum, item.aditionalAbility);
+                    break;
+                case ItemType.Posion:
+                    shop.WarningTextOn(ShopWarningText.Healing);
+                    GameManager.instance.statManager.curHealth = Mathf.Min(GameManager.instance.statManager.curHealth + item.attack, GameManager.instance.statManager.maxHealth);
+                    break;
+                case ItemType.Esscence:
+                    shop.WarningTextOn(ShopWarningText.Essence);
+                    priceText.text = string.Format("{0}", item.attack);
+                    break;
+            }
+            item = null;
+            ImageLoading();
+        }
+        else
+        {
+            shop.WarningTextOn(ShopWarningText.GoldEmpty);
+            AudioManager.instance.PlayerSfx(Sfx.BuySellFail);
+        }
+    }
+    private void ItemSell()
+    {
+        int staffNum = 0;
+        for(int i =0; i<ItemDatabase.instance.itemCount(); i++) // 인벤토리에 스태프가 하나 밖에 없다면 판매 X
+        {
+            if(ItemDatabase.instance.Set(i).type == ItemType.Staff)
+            {
+                staffNum++;
+            }
+        }
+
+        if(staffNum < 2)
+        {
+            shop.WarningTextOn(ShopWarningText.OneStaffHave);
+            AudioManager.instance.PlayerSfx(Sfx.BuySellFail);
+            return;
+        }
+
+        for (int i = 0; i < ItemDatabase.instance.itemCount(); i++)
+        {
+            if (ItemDatabase.instance.Set(i) == item)
+            {
+                ItemDatabase.instance.ItemRemove(i);
+                break;
+            }
+        }
+        item = null;
+        itemImage.sprite = null;
+        sell.ItemLoad();
+        GameManager.instance.gold += itemPrice;
+        AudioManager.instance.PlayerSfx(Sfx.BuySell);
+    }
     public void OnPointerClick(PointerEventData eventData) // 인첸트 창에서 클릭이벤트
     {
-        if (item != null && item.itemSprite != null)
+        if (item != null && item.itemSprite != null && eventData.button == PointerEventData.InputButton.Left)
         {
             if (slotType == SlotType.EnchantItemSpace || slotType == SlotType.EnchantWaitSpace)
             {
-                if (eventData.button == PointerEventData.InputButton.Left) // 좌클릭 시
-                {
-
-                    AudioManager.instance.SelectSfx();
-                    switch (slotType) // 슬롯의 형태에 따라 다른 이벤트
-                    {
-                        case SlotType.EnchantItemSpace: // 인첸트 슬롯을 눌렀을 때
-                            enchant.EnchantItemoff(); // 인첸트 슬롯에 있는 아이템을 해제함
-                            break;
-                        case SlotType.EnchantWaitSpace: // 대기 슬롯을 눌렀을 때
-                            if (enchant.itemSelect) // 인첸트 슬롯에 아이템이 있을 때
-                            {
-                                enchant.EnchantMaterialSelect(this);
-                            }
-                            else // 인첸트 슬롯에 아이템이 없을 때
-                            {
-                                if (enchant.EnchantItemOn(this)) // 아이템을 인첸스 슬롯에 넣음 (가능하면 true, 불가능 하면 false)
-                                {
-                                    preview.gameObject.SetActive(false);
-                                }
-                            }
-                            break;
-
-                    }
-                }
+                EnchantItemSelecet();
             }
             else if (slotType == SlotType.ShopSpace)
             {
-                if (eventData.button == PointerEventData.InputButton.Left) // 좌클릭 시
-                {
-
-                    if (GameManager.instance.gold >= itemPrice)
-                    {
-                        if (item.type == ItemType.Book || item.type == ItemType.Staff) // 아이템 슬롯에 빈자리게 있는지 확인
-                        {
-                            int waitItemNum = 0;
-                            for (int i = 0; i < ItemDatabase.instance.itemCount(); i++)
-                            {
-                                if (!ItemDatabase.instance.Set(i).isEquip)
-                                {
-                                    waitItemNum++;
-                                }
-                            }
-
-                            if (waitItemNum >= GameManager.instance.inventory.waitEqquipments.Length)
-                            {
-                                AudioManager.instance.PlayerSfx(Sfx.BuySellFail);
-                                return;
-                            }
-                        }
-                        AudioManager.instance.PlayerSfx(Sfx.BuySell);
-                        GameManager.instance.gold -= itemPrice;
-                        switch (item.type)
-                        {
-                            case ItemType.Staff:
-                                ItemDatabase.instance.GetStaff(item.type, item.rank, item.quality, item.itemSprite, item.itemAttribute, item.itemName, item.attack, item.rate, item.moveSpeed, item.itemDesc, item.skillNum);
-                                break;
-                            case ItemType.Book:
-                                ItemDatabase.instance.GetBook(item.type, item.quality, item.itemSprite, item.bookName, item.skillNum, item.aditionalAbility);
-                                break;
-                            case ItemType.Posion:
-                                GameManager.instance.statManager.curHealth = Mathf.Min(GameManager.instance.statManager.curHealth + item.attack, GameManager.instance.statManager.maxHealth);
-                                break;
-                            case ItemType.Esscence:
-                                priceText.text = string.Format("{0}", item.attack);
-                                break;
-                        }
-                        item = null;
-                        ImageLoading();
-                    }
-                    else
-                    {
-                        AudioManager.instance.PlayerSfx(Sfx.BuySellFail);
-                    }
-                }
+                ItemBuy();
             }
             else if (slotType == SlotType.SellSpace)
             {
-                if (eventData.button == PointerEventData.InputButton.Left) // 좌클릭 시
-                {
-
-                    for (int i = 0; i < ItemDatabase.instance.itemCount(); i++)
-                    {
-                        if (ItemDatabase.instance.Set(i) == item)
-                        {
-                            ItemDatabase.instance.ItemRemove(i);
-                            break;
-                        }
-                    }
-                    item = null;
-                    itemImage.sprite = null;
-                    sell.ItemLoad();
-                    GameManager.instance.gold += itemPrice;
-                    AudioManager.instance.PlayerSfx(Sfx.BuySell);
-                }
+                ItemSell();
             }
         }
 
@@ -288,7 +308,7 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
 
     public void ItemSalePriceLoad() // 내 아이템 가격
     {
-        if(item != null)
+        if (item != null)
         {
             switch (item.type)
             {
