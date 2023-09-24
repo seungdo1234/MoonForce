@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum Bgm { Main, Stage, MaintenanceRoom , Victory = 4 , GameOver }
-public enum Sfx { Dead, Hurt,  EnemyHit , ChestOpen = 4, Select , EnchantSuccess , EnchantFail , BuySell, BuySellFail }
+public enum Bgm { Main, Stage, MaintenanceRoom , Victory = 4 , GameOver , GameClear = 7 }
+public enum Sfx { Dead, Hurt,  EnemyHit , ChestOpen = 4, Select , EnchantSuccess , EnchantFail , BuySell, BuySellFail, StatUp }
 
 public class AudioManager : MonoBehaviour
 {
@@ -72,7 +72,7 @@ public class AudioManager : MonoBehaviour
         bgmPlayer.clip = bgmClip[bgmNumber];
         bgmPlayer.Play();
 
-        if(bgmNumber == (int)Bgm.Victory)
+        if(bgmNumber == (int)Bgm.Victory - 1 || bgmNumber == (int)Bgm.GameClear - 1)
         {
             StartCoroutine(Init_Loop_Bgm(bgmNumber));
         }

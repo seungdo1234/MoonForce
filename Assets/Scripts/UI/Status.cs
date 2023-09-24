@@ -18,6 +18,7 @@ public class Status : MonoBehaviour
     }
     public void StatUp(int statNumber)
     {
+        AudioManager.instance.PlayerSfx(Sfx.StatUp);
 
         GameManager.instance.statManager.statLevels[statNumber]++;
 

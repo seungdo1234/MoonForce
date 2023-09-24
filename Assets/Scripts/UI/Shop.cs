@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum ShopWarningText { GoldEmpty, InventoryFull, OneStaffHave, Healing, Essence}
+public enum ShopWarningText { GoldEmpty, InventoryFull, OneStaffHave, Healing, Essence , ItemSell}
 public class Shop : MonoBehaviour
 {
     [SerializeField]
@@ -44,7 +44,10 @@ public class Shop : MonoBehaviour
         EssenceCreate();
 
     }
-
+    private void OnEnable()
+    {
+        warningTextObject.gameObject.SetActive(false);
+    }
     public void StaffCreate(Item item)
     {
         staffSlot.item = item;
@@ -61,18 +64,19 @@ public class Shop : MonoBehaviour
     {
         int rand = Random.Range(0, GameManager.instance.shopManager.essences.Length);
 
+        essenceSlot.item = new Item();
         essenceSlot.item.type = ItemType.Esscence;
         essenceSlot.item.skillNum = rand;
         essenceSlot.item.itemName = GameManager.instance.shopManager.essences[rand].essenceName;
         essenceSlot.item.itemSprite = GameManager.instance.shopManager.essences[rand].essenceSprite;
         essenceSlot.item.rate = GameManager.instance.shopManager.essences[rand].essenceIncreaseStat;
         essenceSlot.item.attack = GameManager.instance.shopManager.essences[rand].essencePrice;
-
         essenceSlot.ImageLoading();
         essenceSlot.ItemPriceLoad();
     }
     public void PosionCreate(int posionType)
     {
+        posionSlot.item = new Item();
         posionSlot.item.quality = (ItemQuality)posionType + 1;
         posionSlot.item.type = ItemType.Posion;
         posionSlot.item.itemName = GameManager.instance.shopManager.healingPosions[posionType].healingPosionName;

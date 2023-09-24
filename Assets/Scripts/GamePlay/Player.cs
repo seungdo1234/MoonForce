@@ -122,7 +122,7 @@ public class Player : MonoBehaviour
         {
             isDamaged = false;
             anim.SetTrigger("Dead");
-            GameManager.instance.GameOver();
+            GameManager.instance.GameEnd(1);
 
         }
     }

@@ -23,7 +23,7 @@ public class StatText : MonoBehaviour
         StatManager statManager = GameManager.instance.statManager;
         Item mainEquipment = MainEquipment.item;
 
-        float addMoveSpeed = (int)((mainEquipment.moveSpeed + 1) * 100);
+        float addMoveSpeed = (int)((statManager.moveSpeed - statManager.baseMoveSpeed ) * 100);
         float baseRate;
         float rate;
 
@@ -39,12 +39,20 @@ public class StatText : MonoBehaviour
             rate = baseRate + ((statManager.baseRate - statManager.rate) * 100);
         }
 
-        StatTexts[1].text = string.Format("공격력   : {0:F0}  ({1:F0} + <color=red>{2:F0}</color>)", statManager.attack, statManager.baseAttack, mainEquipment.attack);
-        StatTexts[2].text = string.Format("공격속도 : {0:F0}% ({1:F0}% + <color=red>{2:F0}</color>%)", rate, baseRate, mainEquipment.rate * 100);
-        StatTexts[3].text = string.Format("이동속도 : {0:F0}% ({1:F0}% + <color=red>{2:F0}</color>%)", addMoveSpeed, 100, mainEquipment.moveSpeed * 100);
+        StatTexts[1].text = string.Format("공격력   : {0:F0}  ({1:F0} + <color=red>{2:F0}</color> + <color=blue>{3:F0}</color>)", statManager.attack, statManager.baseAttack, mainEquipment.attack , statManager.essenceStat[0]);
+        StatTexts[2].text = string.Format("공격속도 : {0:F0}% ({1:F0}% + <color=red>{2:F0}</color>% + <color=blue>{3:F0}</color>%)", rate, baseRate, mainEquipment.rate * 100 , statManager.essenceStat[2] * 100);
+        StatTexts[3].text = string.Format("이동속도 : {0:F0}% ({1:F0}% + <color=blue>{2:F0}</color>%)", 100 + addMoveSpeed, 100, addMoveSpeed);
         StatTexts[4].text = string.Format("체력 : <color=red>{0:F0}</color>/{1:F0}", statManager.curHealth, statManager.maxHealth);
-        StatTexts[5].text = string.Format("관통력 : {0:F0}", statManager.penetration);
-    }
+
+        if(GameManager.instance.attribute == ItemAttribute.Dark)
+        {
+            StatTexts[5].text = string.Format("관통력 : {0:F0} ", 1);
+        }
+        else
+        {
+            StatTexts[5].text = string.Format("관통력 : {0:F0} ({1:F0} +  <color=blue>{2:F0}</color>)", statManager.penetration, statManager.penetration, statManager.essenceStat[3]);
+        }
+      }
 
     private void Update()
     {

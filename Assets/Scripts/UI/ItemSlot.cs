@@ -38,8 +38,6 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
         itemImage = GetComponent<Image>();
 
     }
-
-
     public void ImageLoading()
     {
         if (item != null && item.itemSprite != null)
@@ -200,16 +198,16 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
                     }
                 }
 
-                if (waitItemNum >= GameManager.instance.inventory.waitEqquipments.Length)
+                if (waitItemNum >= GameManager.instance.inventory.waitEqquipments.Length) // 빈자리가 없다면 경고 메세지와 함께 구매 X
                 {
                     shop.WarningTextOn(ShopWarningText.InventoryFull);
                     AudioManager.instance.PlayerSfx(Sfx.BuySellFail);
                     return;
                 }
             }
-            AudioManager.instance.PlayerSfx(Sfx.BuySell);
+            AudioManager.instance.PlayerSfx(Sfx.BuySell); // 효과음
             GameManager.instance.gold -= itemPrice;
-            switch (item.type)
+            switch (item.type) // 어떤 아이템을 구매 했는지 ?
             {
                 case ItemType.Staff:
                     ItemDatabase.instance.GetStaff(item.type, item.rank, item.quality, item.itemSprite, item.itemAttribute, item.itemName, item.attack, item.rate, item.moveSpeed, item.itemDesc, item.skillNum);
@@ -223,34 +221,38 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
                     break;
                 case ItemType.Esscence:
                     shop.WarningTextOn(ShopWarningText.Essence);
-                    priceText.text = string.Format("{0}", item.attack);
+                    GameManager.instance.statManager.EssenceOn(item.skillNum, item.rate);
                     break;
             }
-            item = null;
-            ImageLoading();
+            item = null; // 구매 아이템은 null 처리
+            ImageLoading(); // 이미지 로딩
         }
         else
         {
-            shop.WarningTextOn(ShopWarningText.GoldEmpty);
+            shop.WarningTextOn(ShopWarningText.GoldEmpty); // 돈 없음 텍스트
             AudioManager.instance.PlayerSfx(Sfx.BuySellFail);
         }
     }
     private void ItemSell()
     {
-        int staffNum = 0;
-        for(int i =0; i<ItemDatabase.instance.itemCount(); i++) // 인벤토리에 스태프가 하나 밖에 없다면 판매 X
+        
+        if(item.type == ItemType.Staff) // 판매 아이템이 스태프 일 경우
         {
-            if(ItemDatabase.instance.Set(i).type == ItemType.Staff)
+            int staffNum = 0;
+            for (int i = 0; i < ItemDatabase.instance.itemCount(); i++) // 인벤토리에 스태프가 하나 밖에 없다면 판매 X
             {
-                staffNum++;
+                if (ItemDatabase.instance.Set(i).type == ItemType.Staff)
+                {
+                    staffNum++;
+                }
             }
-        }
 
-        if(staffNum < 2)
-        {
-            shop.WarningTextOn(ShopWarningText.OneStaffHave);
-            AudioManager.instance.PlayerSfx(Sfx.BuySellFail);
-            return;
+            if (staffNum < 2) // 갯수가 하나일 때
+            {
+                shop.WarningTextOn(ShopWarningText.OneStaffHave);
+                AudioManager.instance.PlayerSfx(Sfx.BuySellFail);
+                return;
+            }
         }
 
         for (int i = 0; i < ItemDatabase.instance.itemCount(); i++)
@@ -266,6 +268,7 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
         sell.ItemLoad();
         GameManager.instance.gold += itemPrice;
         AudioManager.instance.PlayerSfx(Sfx.BuySell);
+        shop.WarningTextOn(ShopWarningText.ItemSell); // 아이템 판매 텍스트
     }
     public void OnPointerClick(PointerEventData eventData) // 인첸트 창에서 클릭이벤트
     {

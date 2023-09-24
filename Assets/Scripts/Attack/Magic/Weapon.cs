@@ -57,8 +57,14 @@ public class Weapon : MonoBehaviour
                                                   // FromToRotation : 지정된 축을 중심으로 목표를 향해 회전하는 함수
             bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir); // Enemy 방향으로 bullet 회전
 
-            // 원거리 공격은 Count는 관통력
-            bullet.GetComponent<Bullet>().Init(GameManager.instance.statManager.attack, GameManager.instance.statManager.penetration - 1, dir, 10);
+            if(GameManager.instance.attribute == ItemAttribute.Dark) // 어둠속성은 관통력 1 고정
+            {
+                bullet.GetComponent<Bullet>().Init(GameManager.instance.statManager.attack, 0, dir, 10);
+            }
+            else
+            {
+                bullet.GetComponent<Bullet>().Init(GameManager.instance.statManager.attack, GameManager.instance.statManager.penetration - 1, dir, 10);
+            }
  
         }
     }

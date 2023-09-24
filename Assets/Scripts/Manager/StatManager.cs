@@ -17,6 +17,11 @@ public class StatManager : MonoBehaviour
     public int weaponNum; // ÃÑ : ÇÑ¹ø¿¡ ¹ß»ç µÇ´Â ÃÑÅº, ±ÙÁ¢ : »ðÀÇ °¹¼ö
     public float knockBackValue; // Enemy°¡ ¸¶·ÂÅºÀ» ¸Â¾ÒÀ» ¶§ ³Ë¹é ¼öÄ¡
 
+    [Header("# Essence")]
+    public bool essenceOn;
+    public int activeEssenceNum;
+    public float[] essenceStat;
+
     [Header("# Stat Level")]
     public int[] statLevels;
     public int[] statMaxLevels;
@@ -57,7 +62,54 @@ public class StatManager : MonoBehaviour
         moveSpeed = baseMoveSpeed;
     }
 
+    public void EssenceOn(int essenceNum, float stat)
+    {
+        essenceOn = true;
+        activeEssenceNum = essenceNum;
 
+        switch (essenceNum)
+        {
+            case 0:
+                essenceStat[0] = Mathf.Floor(attack * stat);
+                attack += (int)essenceStat[0];
+                break;
+            case 1:
+                essenceStat[1] = stat;
+                moveSpeed += essenceStat[1];
+                break;
+            case 2:
+                essenceStat[2] = stat;
+                rate -= essenceStat[2];
+                break;
+            case 3:
+                essenceStat[3] = stat;
+                penetration += (int)essenceStat[3];
+                break;
+        }
+    }
+    public void EssenceOff()
+    {
+        Debug.Log("ddd");
+        essenceOn = false;
+
+        switch (activeEssenceNum) {
+            case 0:
+                attack -= (int)essenceStat[0];
+                break;
+            case 1:
+                moveSpeed -= essenceStat[1];
+                break;
+            case 2:
+                rate += essenceStat[2];
+                break;
+            case 3:
+                penetration -= (int)essenceStat[3];
+                break;
+        }
+
+        essenceStat[activeEssenceNum] = 0;
+        activeEssenceNum = -1;
+    }
     public void StatValueUp(int statNumber)
     {
         switch (statNumber)

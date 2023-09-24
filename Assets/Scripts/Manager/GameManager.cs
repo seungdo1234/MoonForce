@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public RewardManager rewardManager;
     public Shop shop;
     public ShopManager shopManager;
+    public NextStageBtn nextStageBtn;
     private Spawner spawner;
 
     [Header("# Player Data")]
@@ -45,6 +46,7 @@ public class GameManager : MonoBehaviour
     public GameObject hud;
     public RedMoonEffect redMoon;
     public GameObject gameOverObject;
+    public GameObject gameClearObject;
 
     [Header("MainMenu")]
     public Map map;
@@ -83,6 +85,7 @@ public class GameManager : MonoBehaviour
         PoolingReset();
         player.transform.position = Vector3.zero;
         player.gameObject.SetActive(false);
+        AudioManager.instance.PlayBgm((int)Bgm.Main);
     }
     public void PoolingReset()
     {
@@ -100,23 +103,37 @@ public class GameManager : MonoBehaviour
         }
         redMoonEffect = false;
         hud.SetActive(false);
-        PoolingReset();
+        PoolingReset();  // 모든 폴링 오브젝트 비활성화
+        pause.gameObject.SetActive(false); // 퍼즈 버튼 비활성화
         AudioManager.instance.EndBgm(); // Bgm 끄기
         yield return new WaitForSeconds(1f);
-        pause.gameObject.SetActive(false); // 퍼즈 버튼 비활성화
-        AudioManager.instance.PlayBgm((int)Bgm.Victory); // 승리 Bgm 재생
-        yield return new WaitForSeconds(2f);
-        availablePoint++; 
-        level++;
 
-        enemyMaxNum += 10;
-        if(level % 5 == 0)
+        if(level >= 49) // 마지막 스테이지
         {
-            spawner.EnemyLevelUp();
+            GameEnd(0);
         }
-        clearReward.SetActive(true);
-        player.gameObject.SetActive(false);
-        shop.ShopReset();
+        else
+        {
+            
+            AudioManager.instance.PlayBgm((int)Bgm.Victory - 1); // 승리 Bgm 재생
+            yield return new WaitForSeconds(2f);
+            availablePoint++;
+            level++;
+            nextStageBtn.LevelText(level); // 다음 스테이지 버튼 텍스트 변경
+            enemyMaxNum += 10;
+            if (level % 5 == 0) // 적 레벨 업
+            {
+                spawner.EnemyLevelUp();
+            }
+            clearReward.SetActive(true); // 클리어 보상 On
+            player.gameObject.SetActive(false); // 플레이어 비활성화
+            shop.ShopReset(); // 상점 초기화
+            if (statManager.essenceOn) // 이번 스테이지에 정수가 활성화 됐다면
+            {
+                statManager.EssenceOff();
+            }
+        }
+
         //    Time.timeScale = 0f;
     }
     public void NextStage()
@@ -130,6 +147,7 @@ public class GameManager : MonoBehaviour
         clearReward.SetActive(false);
         magicManager.StageStart();
         spawner.StageStart();
+
     }
     private void Update()
     {
@@ -164,17 +182,27 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void GameOver()
+    public void GameEnd(int endType)
     {
-        gameStop = true;
+        if (endType == 0)
+        {
+            AudioManager.instance.PlayBgm((int)Bgm.GameClear - 1);
+            gameClearObject.SetActive(true);
+        }
+        else
+        {
+            gameStop = true;
+            hud.SetActive(false);
+            pause.gameObject.SetActive(false);
+            AudioManager.instance.PlayBgm((int)Bgm.GameOver);
+            gameOverObject.SetActive(true);
+        }
 
-        AudioManager.instance.PlayBgm((int)Bgm.GameOver);
-        hud.SetActive(false);
-        pause.gameObject.SetActive(false);
-        gameOverObject.SetActive(true);
         level = 0;
         spawner.spawnPerLevelUp = 0;
     }
+
+
     public void GameStart()
     {
         AudioManager.instance.SelectSfx();

@@ -151,7 +151,7 @@ public class MagicManager : MonoBehaviour
             magic.position = player.transform.position; // Magict의 위치
 
 
-            if (magicNumber == 8) // 윈드 컷터
+            if (magicNumber == 9) // 윈드 컷터
             {
                 //  초기화
                 magic.localRotation = Quaternion.identity;
@@ -225,7 +225,7 @@ public class MagicManager : MonoBehaviour
             Transform magic = Get(magicNumber).transform;
             magic.position = player.scanner.nearestTarget[selectedIndex].transform.position;
             MagicSizeUp(magic, magicNumber);
-            if (magicNumber == 3)
+            if (magicNumber == 4)
             {
                 Enemy enemy = player.scanner.nearestTarget[selectedIndex].GetComponent<Enemy>();
                 magic.GetComponent<MoltenSpear>().Init(enemy);
