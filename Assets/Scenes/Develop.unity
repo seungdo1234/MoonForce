@@ -11853,7 +11853,7 @@ MonoBehaviour:
   shop: {fileID: 2091292252}
   shopManager: {fileID: 610748032}
   nextStageBtn: {fileID: 582740696}
-  availablePoint: 0
+  availablePoint: 100
   attribute: 0
   gold: 0
   gameStop: 1
@@ -11863,7 +11863,7 @@ MonoBehaviour:
   maxGameTime: 300
   curGameTime: 0
   kill: 0
-  enemyMaxNum: 5
+  enemyMaxNum: 10
   enemyCurNum: 9999
   level: 0
   enemySpawnNumIncrese: 1
@@ -40713,17 +40713,17 @@ MonoBehaviour:
     damage: 8
     health: 30
     speed: 1.8
-  - spawnTime: 1
+  - spawnTime: 0.8
     spriteType: 2
     damage: 10
     health: 15
     speed: 2.5
-  - spawnTime: 5
+  - spawnTime: 3
     spriteType: 3
     damage: 15
     health: 40
     speed: 2
-  - spawnTime: 5
+  - spawnTime: 3
     spriteType: 4
     damage: 10
     health: 20
@@ -43899,9 +43899,9 @@ MonoBehaviour:
   burningEffectTime: 3
   wettingDamagePer: 1.2
   wettingEffectTime: 3
-  bulletDamagePer: 1.2
-  restraintTime: 1
-  speedReducedEffectTime: 2
+  bulletDamagePer: 1.3
+  restraintTime: 0.5
+  speedReducedEffectTime: 1.5
   speedReducePer: 0.2
   darkExplosionDamagePer: 3
   darknessExpTime: 1

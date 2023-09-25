@@ -24,15 +24,18 @@ public class MagicBall : MonoBehaviour
     public Vector3 cloneP3;
     public Vector3 cloneP4;
 
+    private SpriteRenderer sprite;
 
     private void OnEnable()
     {
+
         StartCoroutine(ThrowStart(0, 1));
     }
 
 
     private void Start()
     {
+        sprite = GetComponent<SpriteRenderer>();
     }
     public Vector3 BezierCurve(Vector3 p_1, Vector3 p_2, Vector3 p_3, Vector3 p_4, float value)
     {
@@ -60,6 +63,8 @@ public class MagicBall : MonoBehaviour
         yield return new WaitForSeconds(1f);
         int rand = Random.Range(0, GameManager.instance.pool.pools[0].Count);
         target = GameManager.instance.pool.pools[0][rand].transform;
+
+        sprite.color = new Color(1, 1, 1, 1);
 
         while (true)
         {

@@ -19,7 +19,7 @@ public class Bullet : MonoBehaviour
         // 무속성일 때 마력탄 데미지 증가
         if(GameManager.instance.attribute == ItemAttribute.Non)
         {
-            this.damage = damage + (damage * 0.4f);
+            this.damage = damage + (damage * GameManager.instance.statManager.bulletDamagePer);
         }
         else
         {

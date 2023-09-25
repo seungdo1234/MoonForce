@@ -119,6 +119,8 @@ public class Enemy : MonoBehaviour
         health = data.health;
         enemyType = data.spriteType;
         damage = data.damage;
+        rush.isReady = false;
+        rangeAttackEnemy.isReady = true;
 
         if (enemyType == 3)
         {
@@ -464,7 +466,8 @@ public class Enemy : MonoBehaviour
         spriteRenderer.color = new Color(1, 1, 1, 1);
 
     }
-    private IEnumerator DarknessExplosion() // 땅 속성 공격을 받은 상태라면 이동속도 --
+    private IEnumerator DarknessExplosion() 
+        // 어둠 속성 공격을 맞았을 시 일정 시간 뒤 폭발
     {
 
         spriteRenderer.color = new Color(1, 0.45f, 1, 1);

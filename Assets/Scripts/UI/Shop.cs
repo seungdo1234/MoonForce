@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum ShopWarningText { GoldEmpty, InventoryFull, OneStaffHave, Healing, Essence , ItemSell}
+public enum ShopWarningText { GoldEmpty, InventoryFull, OneStaffHave, Healing, Essence , ItemSell } // 알림 종류
 public class Shop : MonoBehaviour
 {
 
-    public ItemSlot staffSlot;
-    public ItemSlot skillBookSlot;
-    public ItemSlot essenceSlot;
-    public ItemSlot posionSlot;
-    public StageClear stageClear;
-    public Text goldText;
+    public ItemSlot staffSlot; // 스태프 슬롯
+    public ItemSlot skillBookSlot; // 마법책 슬롯
+    public ItemSlot essenceSlot; // 정수 슬롯;
+    public ItemSlot posionSlot; // 힐링 포션 슬롯
+    public StageClear stageClear; // 아이템 생성 컴포넌트
+    public Text goldText; // 현재 골드 텍스트
 
 
     [Header("# WarningText")]

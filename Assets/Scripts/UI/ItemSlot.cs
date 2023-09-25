@@ -232,8 +232,7 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
         }
     }
     private void ItemSell()
-    {
-        
+    { 
         if(item.type == ItemType.Staff) // 판매 아이템이 스태프 일 경우
         {
             int staffNum = 0;
@@ -261,7 +260,7 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
                 break;
             }
         }
-        item = null;
+        item.reset();
         itemImage.sprite = null;
         sell.ItemLoad();
         GameManager.instance.gold += itemPrice;

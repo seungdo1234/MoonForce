@@ -316,9 +316,8 @@ public class MagicManager : MonoBehaviour
             // bullet의 부모를 MagicManager에서  Player의 RotationBody로 바꾸기 위해 Transform으로 저장
 
             Transform bullet = Get(magicNumber).transform;
-            bullet.position = GameManager.instance.player.transform.position;
 
-
+            bullet.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
 
         }
     }

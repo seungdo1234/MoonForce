@@ -80,29 +80,36 @@ public class Inventory : MonoBehaviour
             }
         }
     }
-
-    public void EquipBooks() // 장착 마법책 적용
+    public void SkillBookInit()
     {
-        for(int i =0 ; i< equipBooks.Count; i++) // 전에 장착한 마법 책 스킬 초기화
+        for (int i = 0; i < equipBooks.Count; i++) // 전에 장착한 마법 책 스킬 초기화
         {
             GameManager.instance.magicManager.magicInfo[equipBooks[i].skillNum].isMagicActive = false;
             equipBooks[i].isEquip = false;
             MagicAdditionalStat(equipBooks[i], -1);
         }
+    }
+    public void SkillBookActive()
+    {
 
         equipBooks.Clear(); // 리스트 초기화
 
-        for(int i = 0; i<subEqquipments.Length; i++)
+        for (int i = 0; i < subEqquipments.Length; i++)
         {
-            if(subEqquipments[i].item.itemSprite != null) // 장착한 마법 책 마법 활성화
+            if (subEqquipments[i].item.itemSprite != null) // 장착한 마법 책 마법 활성화
             {
                 GameManager.instance.magicManager.magicInfo[subEqquipments[i].item.skillNum].isMagicActive = true;
                 MagicAdditionalStat(subEqquipments[i].item, 1);
                 equipBooks.Add(subEqquipments[i].item);
-                equipBooks[i].isEquip = true;
+                subEqquipments[i].item.isEquip = true;
             }
-
         }
+    }
+    public void EquipBooks() // 장착 마법책 적용
+    {
+        SkillBookInit();
+
+        SkillBookActive();
     }
 
     private void MagicAdditionalStat(Item item , int operation) // 마법책 추가 능력 적용
