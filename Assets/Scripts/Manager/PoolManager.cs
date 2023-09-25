@@ -40,7 +40,7 @@ public class PoolManager : MonoBehaviour
 
         }
     }
-    // 폴링 함수
+    // 풀링 함수
     public GameObject Get(int index)
     {
         GameObject select = null;

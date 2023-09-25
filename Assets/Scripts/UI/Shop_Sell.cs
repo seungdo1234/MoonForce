@@ -37,7 +37,6 @@ public class Shop_Sell : MonoBehaviour
             waitSpaces[i].ItemSalePriceLoad();
         }
     }
-
     private void WaitSpaceReset() // 대기 슬롯 이미지 로딩
     {
         for (int i = 0; i < waitSpaces.Length; i++)

@@ -63,16 +63,17 @@ public class AudioManager : MonoBehaviour
         sfxPlayers[1].clip = sfxClips[(int)Sfx.Select];
 
     }
-    public void PlayBgm(int bgmNumber)
+    public void PlayBgm(int bgmNumber) // BGM 플레이 함수
     {
-        if (!bgmPlayer.loop)
+        if (!bgmPlayer.loop) // BgmPlayer의 반복이 켜져있다면 false
         {
             bgmPlayer.loop = true;
         }
         bgmPlayer.clip = bgmClip[bgmNumber];
-        bgmPlayer.Play();
+        bgmPlayer.Play(); // Bgm 플레이
 
-        if(bgmNumber == (int)Bgm.Victory - 1 || bgmNumber == (int)Bgm.GameClear - 1)
+        // 해당 조건 Bgm은 오디오 소스가 두개 이므로 따로 조건을 두어 처리함
+        if(bgmNumber == (int)Bgm.Victory - 1 || bgmNumber == (int)Bgm.GameClear - 1) 
         {
             StartCoroutine(Init_Loop_Bgm(bgmNumber));
         }
@@ -81,12 +82,14 @@ public class AudioManager : MonoBehaviour
             bgmPlayer.loop = false;
         }
     }
-    private IEnumerator Init_Loop_Bgm(int bgmNumber)
+    private IEnumerator Init_Loop_Bgm(int bgmNumber) 
     {
         bgmPlayer.loop = false;
 
-       yield return new WaitForSeconds(bgmPlayer.clip.length);
+        // Bgm의 초반부가 끝난다면 
+       yield return new WaitForSeconds(bgmPlayer.clip.length); 
 
+        // Loop
         bgmPlayer.clip = bgmClip[bgmNumber + 1];
         bgmPlayer.loop = true;
         bgmPlayer.Play();

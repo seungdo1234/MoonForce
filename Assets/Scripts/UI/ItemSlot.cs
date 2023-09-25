@@ -51,7 +51,7 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
         }
     }
 
-    public void OnDrag(PointerEventData eventData)
+    public void OnDrag(PointerEventData eventData) // 드래그
     {
         if (slotType != SlotType.EnchantItemSpace && slotType != SlotType.EnchantWaitSpace && slotType != SlotType.ShopSpace && slotType != SlotType.SellSpace)
         {
@@ -69,8 +69,7 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
             }
         }
     }
-
-    public void OnEndDrag(PointerEventData eventData)
+    public void OnEndDrag(PointerEventData eventData) // 드래그가 끝날 때
     {
         if (slotType != SlotType.EnchantItemSpace && slotType != SlotType.EnchantWaitSpace && slotType != SlotType.ShopSpace && slotType != SlotType.SellSpace)
         {
@@ -87,8 +86,8 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
             }
         }
     }
-
-    private IEnumerator SelectSlot(PointerEventData eventData)
+    
+    private IEnumerator SelectSlot(PointerEventData eventData) // 드래그가 끝날 때 해당 위치에 아이템 슬롯이 있다면 실행 
     {
         yield return null;
 
@@ -121,7 +120,6 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
         }
 
     }
-
     public void OnPointerEnter(PointerEventData eventData) // 아이템 프리뷰 창 띄우기
     {
         if (slotType != SlotType.EnchantCheck && item != null && item.itemSprite != null)
@@ -131,12 +129,13 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
 
             if (!fixedPreview)
             {
-                preview.gameObject.transform.position = transform.position + new Vector3(0, 60, 0);
+                preview.gameObject.transform.position = transform.position + new Vector3(-20, 60, 0);
             }
             else
             {
                 preview.gameObject.transform.position = fixedPreviewTransform.position + new Vector3(0, 60, 0);
             }
+
             if (slotType == SlotType.Main)
             {
                 preview.gameObject.transform.position = transform.position + new Vector3(-350, 0, 0);
@@ -149,8 +148,7 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
             preview.ItemInfoSet(item);
         }
     }
-
-    public void OnPointerExit(PointerEventData eventData)
+    public void OnPointerExit(PointerEventData eventData) // 아이템 프리뷰 창 끄기
     {
         if (slotType == SlotType.SellSpace)
         {

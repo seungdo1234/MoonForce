@@ -6,8 +6,6 @@ using UnityEngine.UI;
 public enum ShopWarningText { GoldEmpty, InventoryFull, OneStaffHave, Healing, Essence , ItemSell}
 public class Shop : MonoBehaviour
 {
-    [SerializeField]
-    private List<Item> itemList;
 
     public ItemSlot staffSlot;
     public ItemSlot skillBookSlot;
@@ -20,26 +18,28 @@ public class Shop : MonoBehaviour
     [Header("# WarningText")]
     public Text warningTextObject;
     public string[] warningTexts;
-    public void ShopReset()
+    public void ShopReset() // 상점 초기화 (매 스테이지 클리어 시 실행)
     {
         int level = GameManager.instance.level / 12;
 
+        // 레벨 별 스태프 생성
         if(level == 0)
         {
-            stageClear.RandomValue(GameManager.instance.bronzeChest, 1, 1);
+            stageClear.ShopItemCreate(GameManager.instance.bronzeChest, 1, 2);
         }
         else if(level == 1)
         {
-            stageClear.RandomValue(GameManager.instance.silverChest, 1, 1);
+            stageClear.ShopItemCreate(GameManager.instance.silverChest, 1, 2);
         }
         else if (level >= 2)
         {
-            stageClear.RandomValue(GameManager.instance.goldChest, 1, 1);
+            stageClear.ShopItemCreate(GameManager.instance.goldChest, 1, 2);
         }
 
-        GameManager.instance.rewardManager.ItemCreate(0, 2);
+        // 마법책 생성
+        stageClear.ShopItemCreate(GameManager.instance.itemQualityPercent, 1 ,3);
 
-        stageClear.RandomValue(GameManager.instance.shopManager.healingPosionPercent, 2, 1);
+        stageClear.ShopItemCreate(GameManager.instance.shopManager.healingPosionPercent, 2, -1);
 
         EssenceCreate();
 
@@ -48,19 +48,19 @@ public class Shop : MonoBehaviour
     {
         warningTextObject.gameObject.SetActive(false);
     }
-    public void StaffCreate(Item item)
+    public void StaffCreate(Item item) // 스태프 생성
     {
         staffSlot.item = item;
         staffSlot.ImageLoading();
         staffSlot.ItemPriceLoad();
     }
-    public void SkillBookCreate(Item item)
+    public void SkillBookCreate(Item item) // 마법책 생성
     {
         skillBookSlot.item = item;
         skillBookSlot.ImageLoading();
         skillBookSlot.ItemPriceLoad();
     }
-    private void EssenceCreate()
+    private void EssenceCreate() // 정수 생성
     {
         int rand = Random.Range(0, GameManager.instance.shopManager.essences.Length);
 
@@ -74,7 +74,7 @@ public class Shop : MonoBehaviour
         essenceSlot.ImageLoading();
         essenceSlot.ItemPriceLoad();
     }
-    public void PosionCreate(int posionType)
+    public void PosionCreate(int posionType) // 힐링 포션 생성
     {
         posionSlot.item = new Item();
         posionSlot.item.quality = (ItemQuality)posionType + 1;
@@ -86,7 +86,7 @@ public class Shop : MonoBehaviour
         posionSlot.ImageLoading();
         posionSlot.ItemPriceLoad();
     }
-    public void WarningTextOn(ShopWarningText warning)
+    public void WarningTextOn(ShopWarningText warning) // 알림문 텍스트 생성
     {
         warningTextObject.gameObject.SetActive(false);
 
@@ -96,6 +96,7 @@ public class Shop : MonoBehaviour
     }
     private void Update()
     {
+        // 현재 골드
         goldText.text = string.Format("{0}", GameManager.instance.gold);
     }
 }

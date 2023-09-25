@@ -54,7 +54,7 @@ public class Spawner : MonoBehaviour
             int percentSum = 0;
             int random = Random.Range(MinRandomValue, MaxRandomValue + 1); // 확률
 
-            for (int j = 0; j < enemySpawnPer[spawnPerLevelUp].spawnPer.Length; j++) // 어던 타입의 Enemy가 나오는지 확률이 담긴 배열 만큼 반복 (크기 5)
+            for (int j = 0; j < enemySpawnPer[spawnPerLevelUp].spawnPer.Length; j++) // 어떤 타입의 Enemy가 나오는지 확률이 담긴 배열 만큼 반복 (크기 5)
             {
                 percentSum += enemySpawnPer[spawnPerLevelUp].spawnPer[j];
 

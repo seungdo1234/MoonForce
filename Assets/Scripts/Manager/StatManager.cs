@@ -89,7 +89,6 @@ public class StatManager : MonoBehaviour
     }
     public void EssenceOff()
     {
-        Debug.Log("ddd");
         essenceOn = false;
 
         switch (activeEssenceNum) {

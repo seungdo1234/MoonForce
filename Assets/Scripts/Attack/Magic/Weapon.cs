@@ -28,9 +28,8 @@ public class Weapon : MonoBehaviour
             timer += Time.deltaTime;
         }
 
-  
 
-        if (player.scanner.nearestTarget[0] && timer > GameManager.instance.statManager.rate)
+        if (player.scanner.nearestTarget[0] && timer > GameManager.instance.statManager.rate) 
         {
             timer = 0;
             Fire();
@@ -50,7 +49,6 @@ public class Weapon : MonoBehaviour
             Vector3 dir = targetPos - transform.position;
             dir = dir.normalized; // 정규화
 
-
             // bullet 생성
             Transform bullet = GameManager.instance.pool.Get(1).transform;
             bullet.position = transform.position; // bullet의 위치
@@ -65,7 +63,6 @@ public class Weapon : MonoBehaviour
             {
                 bullet.GetComponent<Bullet>().Init(GameManager.instance.statManager.attack, GameManager.instance.statManager.penetration - 1, dir, 10);
             }
- 
         }
     }
 

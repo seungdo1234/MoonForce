@@ -26,7 +26,7 @@ public class EnchantCheckUI : MonoBehaviour
         enchantResultNoticeText = enchantResultNotice.GetComponentInChildren<Text>(true);
         itemSlots = GetComponentsInChildren<ItemSlot>();
     }
-    private void SkillBookEnchantInit()
+    private void SkillBookEnchantInit() // 마법 책 강화 초기화
     {
         if(selectEnchantAditionalNum != -1)
         {
@@ -40,7 +40,7 @@ public class EnchantCheckUI : MonoBehaviour
         }
 
     }
-    public void UIOn(Item enchant_Item , Item material_Item)
+    public void UIOn(Item enchant_Item , Item material_Item) // 강화 창 On
     {
         gameObject.SetActive(true);
 
@@ -75,7 +75,7 @@ public class EnchantCheckUI : MonoBehaviour
         enchantPercentText.text = string.Format("<color=black>강화 성공 확률:</color> <color=red>{0}%</color>", enchantPercent);
     }
    
-    public void EnchantStart()
+    public void EnchantStart() // 강화 시작
     {
         bool enchantResult;
         int random = Random.Range(1, 101);

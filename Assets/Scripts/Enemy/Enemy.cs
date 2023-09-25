@@ -258,7 +258,7 @@ public class Enemy : MonoBehaviour
     {
         switch (GameManager.instance.attribute)
         {
-            case ItemAttribute.Fire:
+            case ItemAttribute.Fire: // 불속성 피격
                 lerpTime = GameManager.instance.statManager.burningEffectTime + 1;
                 burnningDamage = (int)GameManager.instance.statManager.burningEffectTime;
 
@@ -268,7 +268,7 @@ public class Enemy : MonoBehaviour
                     StartCoroutine(Burning());
                 }
                 break;
-            case ItemAttribute.Water:
+            case ItemAttribute.Water: // 물속성 피격
                 lerpTime = GameManager.instance.statManager.wettingEffectTime;
 
                 if (statusEffect != EnemyStatusEffect.Wet)
@@ -278,7 +278,7 @@ public class Enemy : MonoBehaviour
                 }
 
                 break;
-            case ItemAttribute.Grass:
+            case ItemAttribute.Grass: // 풀속성 피격
                 lerpTime = GameManager.instance.statManager.restraintTime;
                 if (statusEffect != EnemyStatusEffect.GrassRestraint)
                 {
@@ -287,7 +287,7 @@ public class Enemy : MonoBehaviour
                 }
 
                 break;
-            case ItemAttribute.Eeath:
+            case ItemAttribute.Eeath: // 땅속성 피격
 
                 lerpTime = GameManager.instance.statManager.speedReducedEffectTime;
 
@@ -298,16 +298,13 @@ public class Enemy : MonoBehaviour
                 }
 
                 break;
-            case ItemAttribute.Dark:
+            case ItemAttribute.Dark: // 어둠속성 피격
 
                 if (statusEffect != EnemyStatusEffect.Darkness)
                 {
                     statusEffect = EnemyStatusEffect.Darkness;
                     StartCoroutine(DarknessExplosion());
                 }
-                break;
-            case ItemAttribute.Holy:
-
                 break;
             default:
                 return;

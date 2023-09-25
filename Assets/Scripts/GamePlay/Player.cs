@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     public Vector2 inputVec;
-    public float moveSpeed;
 
     public HUD healthUI;
 
@@ -49,7 +48,7 @@ public class Player : MonoBehaviour
         }
         // normalized는 대각선으로 갈때 상하좌우와 같은 속도를 내기위해 vecter 값을 정규화함
         // fixedDeltaTime은 FixedUpdate에서 사용
-        Vector2 nextVec = inputVec * Time.fixedDeltaTime * moveSpeed;
+        Vector2 nextVec = inputVec * Time.fixedDeltaTime * GameManager.instance.statManager.moveSpeed;
         // 위치 이동
         rigid.MovePosition(rigid.position + nextVec);
 
@@ -83,10 +82,10 @@ public class Player : MonoBehaviour
         GameManager.instance.cameraShake.ShakeCamera(0.5f, 5, 5);
         gameObject.tag = "PlayerDamaged";
         gameObject.layer = 8;
-        moveSpeed *= 1.5f;
+        GameManager.instance.statManager.moveSpeed *= 1.2f;
         spriteRenderer.color = new Color(1, 1, 1, 0.7f);
         yield return new WaitForSeconds(2f);
-        moveSpeed /= 1.5f;
+        GameManager.instance.statManager.moveSpeed /= 1.2f;
         spriteRenderer.color = new Color(1, 1, 1, 1);
         gameObject.tag = "Player";
         gameObject.layer = 7;

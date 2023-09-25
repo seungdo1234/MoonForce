@@ -11,6 +11,7 @@ public class Inventory : MonoBehaviour
 
     [Header("# Skill Books")]
     public Item prevEquipStaff ; // 전에 착용한 스태프
+    [SerializeField]
     private List<Item> equipBooks = new List<Item>(); // 전에 착용한 마법책이 들어가있는 리스트
     private Item item;
 

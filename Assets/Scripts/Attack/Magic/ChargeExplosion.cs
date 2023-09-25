@@ -16,11 +16,12 @@ public class ChargeExplosion : MonoBehaviour
         col = GetComponent<CircleCollider2D>();
     }
 
-    public void Init(float coolTime , int magicSizeStep)
+    public void Init(float coolTime , int magicSizeStep) // 충전 폭발 초기화
     {
         lerpTime = coolTime;
-        
-        if(magicSizeStep != 0)
+        transform.localScale = Vector3.one;
+
+        if (magicSizeStep != 0)
         {
             magicScale = new Vector3(magicScale.x + (0.25f * magicSizeStep), magicScale.y + (0.25f * magicSizeStep), magicScale.z + (0.25f * magicSizeStep));
         }

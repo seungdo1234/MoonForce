@@ -32,33 +32,35 @@ public class RewardManager : MonoBehaviour
     }
 
 
-    // createType은 아이템을 생성하는 형태 (0번은 스테이지 클리어 보상, 1번은 상점 아이템 랜덤 생성)
+    // createType은 아이템을 생성하는 형태 (0번 스태프, 1번 마법책)
     public void ItemCreate(int itemRank , int createType) // 랜덤 아이템 생성
     {
         this.createType = createType;
        if(itemRank > -1)
         {
-            rank = (ItemRank)itemRank + 1;
-            switch (createType)
+            switch (createType) 
             {
+                // 스태프
                 case 0:
-                    type = (ItemType)Random.Range(1, 3);
-                    break;
-                case 1:
-                    type = ItemType.Staff;
-                    break;
                 case 2:
+                    rank = (ItemRank)itemRank + 1;
+                    type = ItemType.Staff;
+                    if (rank == ItemRank.Legendary) // 레전드리는 무조건 품질 상
+                    {
+                        quality = ItemQuality.High;
+                        SetStaffStat();
+                    }
+                    else
+                    {
+                        SetRandomValue(GameManager.instance.itemQualityPercent);
+                    }
+                    break;
+                // 마법책
+                case 1:
+                case 3:
+                    quality = (ItemQuality)itemRank + 1;
                     type = ItemType.Book;
                     break;
-            }
-            if(rank == ItemRank.Legendary) // 레전드리는 무조건 품질 상
-            {
-                quality = ItemQuality.High;
-                SetStaffStat();
-            }
-            else
-            {
-                SetRandomValue(GameManager.instance.itemQualityPercent);
             }
         }
        else // 처음 게임 시작할 때 무기 추가 
@@ -70,11 +72,11 @@ public class RewardManager : MonoBehaviour
         }
 
  
-        if (type == ItemType.Staff )
+        if (type == ItemType.Staff ) // 스태프 생성
         {
             StaffCreate();
         }
-        else
+        else // 마법책 생성
         {
             BookCreate();
         }
@@ -148,7 +150,7 @@ public class RewardManager : MonoBehaviour
 
       
         rewardImage.sprite = itemSprite; // 보상 창에 이미지 띄움
-        if (createType == 0)
+        if (createType == 1)
         {
             ItemDatabase.instance.GetBook(type, quality, itemSprite, itemName, skillNumber, aditionalAbility);
         }
