@@ -43,11 +43,17 @@ public class Inventory : MonoBehaviour
         // 이미지 로딩을 다음 프레임까지 연기
         yield return null;
 
+        mainEqquipment.ImageLoading();
+
+        for (int i = 0; i < subEqquipments.Length; i++)
+        {
+            subEqquipments[i].ImageLoading();
+        }
+
         for (int i = 0; i < waitEqquipments.Length; i++)
         {
             waitEqquipments[i].ImageLoading();
         }
-
 
     }
 
@@ -96,6 +102,7 @@ public class Inventory : MonoBehaviour
 
         for (int i = 0; i < subEqquipments.Length; i++)
         {
+            Debug.Log(subEqquipments[i].item.itemSprite);
             if (subEqquipments[i].item.itemSprite != null) // 장착한 마법 책 마법 활성화
             {
                 GameManager.instance.magicManager.magicInfo[subEqquipments[i].item.skillNum].isMagicActive = true;
@@ -177,4 +184,6 @@ public class Inventory : MonoBehaviour
 
         prevEquipStaff = mainEqquipment.item;    // 장착한 스태프 데이터를 저장
     }
+
+
 }

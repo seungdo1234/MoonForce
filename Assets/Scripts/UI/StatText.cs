@@ -26,7 +26,7 @@ public class StatText : MonoBehaviour
       
         float addMoveSpeed = (int)((statManager.moveSpeed - statManager.baseMoveSpeed ) * 100);
         float baseMoveSpeed = (Mathf.RoundToInt(statManager.baseMoveSpeed * 100)) - 200;
-        Debug.Log((Mathf.RoundToInt(statManager.baseMoveSpeed * 100)));
+
         float baseRate;
         float rate;
 

@@ -88,13 +88,19 @@ public class EnchantCheckUI : MonoBehaviour
                 case ItemType.Staff:
                     enchantItem.attack += EnchantManager.instance.staffAttackIncrease[(int)enchantItem.rank - 1];
                     enchantItem.enchantStep++;
-                    GameManager.instance.inventory.EquipStaff();
+                    if (enchantItem.isEquip)
+                    {
+                        GameManager.instance.inventory.EquipStaff();
+                    }
                     break;
                 case ItemType.Book:
-                    GameManager.instance.inventory.SkillBookInit();
                     Item materialItem = itemSlots[1].item;
+
                     enchantItem.aditionalAbility[selectEnchantAditionalNum] = materialItem.aditionalAbility[selectMaterialAditionalNum];
-                    GameManager.instance.inventory.SkillBookActive();
+                    if (enchantItem.isEquip)
+                    {
+                        GameManager.instance.inventory.EquipBooks();
+                    }                     
                     break;
             }
 
@@ -108,8 +114,24 @@ public class EnchantCheckUI : MonoBehaviour
         // 재료 아이템 삭제
         for (int i = 0; i < ItemDatabase.instance.itemCount(); i++)
         {
-            if (ItemDatabase.instance.Set(i) == itemSlots[1].item)
+            Item item = ItemDatabase.instance.Set(i);
+            if (item == itemSlots[1].item)
             {
+                if (item.isEquip) // 장착중인 아이템이라면 
+                {
+                    if (item.type == ItemType.Book) // 마법책
+                    {
+                        itemSlots[1].item.reset(); 
+                        GameManager.instance.inventory.SkillBookActive();
+                    }
+                    else // 스태프
+                    {
+                        itemSlots[1].item.reset();
+                        GameManager.instance.inventory.EquipStaff();
+                    }
+                    ItemDatabase.instance.ItemRemove(i);
+                    break;
+                }
                 itemSlots[1].item.reset();
                 ItemDatabase.instance.ItemRemove(i);
                 break;
