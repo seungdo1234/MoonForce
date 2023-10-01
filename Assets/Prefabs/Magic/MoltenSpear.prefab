@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3c1884b606728c45ba64a5674c2a0dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  magicNumber: 4
+  magicNumber: 9
   resetScale: {x: 1, y: 1, z: 1}
   isSizeUp: 0
 --- !u!114 &-1586579442433449068

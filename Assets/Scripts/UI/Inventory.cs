@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -9,6 +10,11 @@ public class Inventory : MonoBehaviour
     public ItemSlot[] subEqquipments;
     public ItemSlot[] waitEqquipments;
 
+    public HorizontalLayoutGroup subEquipmentsLayout;
+    public GameObject uranusSlot;
+    public bool uranusEqiup;
+
+
     [Header("# Skill Books")]
     public Item prevEquipStaff ; // 전에 착용한 스태프
     [SerializeField]
@@ -17,15 +23,20 @@ public class Inventory : MonoBehaviour
 
     private void OnEnable()
     {
+        GetItems();
+    }
+
+    private void GetItems() // 데이터 베이스에서 아이템을 가져옴
+    {
         for (int i = 0; i < ItemDatabase.instance.itemCount(); i++)
         {
             item = ItemDatabase.instance.Set(i);
-            if(!item.isLoad) // 이미 인벤토리에 로드된 아이템이라면 로드가 안되게 함
+            if (!item.isLoad) // 이미 인벤토리에 로드된 아이템이라면 로드가 안되게 함
             {
                 item.isLoad = true;
-                for(int j = 0; j <waitEqquipments.Length; j++) // 아이템을 빈 아이템 슬롯을 찾아 넣음 
+                for (int j = 0; j < waitEqquipments.Length; j++) // 아이템을 빈 아이템 슬롯을 찾아 넣음 
                 {
-                    if(waitEqquipments[j].item.itemSprite == null)
+                    if ( waitEqquipments[j].item.itemSprite == null)
                     {
                         waitEqquipments[j].item = item;
                         break;
@@ -37,7 +48,43 @@ public class Inventory : MonoBehaviour
         StartCoroutine(LoadImages());
     }
 
+    public void UranusOn()
+    {
+        subEquipmentsLayout.spacing = 0;
 
+        uranusSlot.SetActive(true);
+
+        uranusEqiup = true;
+    }
+
+    public void UranusOff()
+    {
+        uranusEqiup = false;
+        uranusSlot.SetActive(false);
+        subEquipmentsLayout.spacing = -100;
+
+        if (subEqquipments[3].item != null && subEqquipments[3].item.itemSprite != null)
+        {
+            UnranusBookUnEquip();
+        }
+        GetItems();
+    }
+    private void UnranusBookUnEquip()
+    {
+        for (int i = 0; i < waitEqquipments.Length; i++) // 아이템을 빈 아이템 슬롯을 찾아 넣음 
+        {
+            if (waitEqquipments[i].item.itemSprite == null)
+            {
+                Item item = subEqquipments[3].item;
+                subEqquipments[3].item = waitEqquipments[i].item;
+                waitEqquipments[i].item = item;
+                break;
+            }
+        }
+        subEqquipments[3].ImageLoading();
+
+        EquipBooks();
+    }
     private IEnumerator LoadImages()
     {
         // 이미지 로딩을 다음 프레임까지 연기
@@ -45,8 +92,12 @@ public class Inventory : MonoBehaviour
 
         mainEqquipment.ImageLoading();
 
-        for (int i = 0; i < subEqquipments.Length; i++)
+        for (int i = 0; i < subEqquipments.Length ; i++)
         {
+            if (i == subEqquipments.Length - 1 && !uranusEqiup)
+            {
+                break;
+            }
             subEqquipments[i].ImageLoading();
         }
 
@@ -102,8 +153,12 @@ public class Inventory : MonoBehaviour
 
         for (int i = 0; i < subEqquipments.Length; i++)
         {
-            Debug.Log(subEqquipments[i].item.itemSprite);
-            if (subEqquipments[i].item.itemSprite != null) // 장착한 마법 책 마법 활성화
+            if (i == subEqquipments.Length - 1 && !uranusEqiup)
+            {
+                break;
+            }
+
+            if (subEqquipments[i].item != null && subEqquipments[i].item.itemSprite != null) // 장착한 마법 책 마법 활성화
             {
                 GameManager.instance.magicManager.magicInfo[subEqquipments[i].item.skillNum].isMagicActive = true;
                 MagicAdditionalStat(subEqquipments[i].item, 1);
@@ -157,8 +212,8 @@ public class Inventory : MonoBehaviour
     }
     public void EquipStaff()
     {
-        mainEqquipment.item.isEquip = true;
         prevEquipStaff.isEquip = false;
+        mainEqquipment.item.isEquip = true;
         // 능력치 적용
         GameManager.instance.attribute = mainEqquipment.item.itemAttribute;
         GameManager.instance.statManager.attack = GameManager.instance.statManager.baseAttack + mainEqquipment.item.attack;
@@ -174,12 +229,27 @@ public class Inventory : MonoBehaviour
 
         if (mainEqquipment.item.rank == ItemRank.Legendary) // 장착한 아이템이 레전드리 아이템이라면 스킬 On
         {
-            GameManager.instance.magicManager.magicInfo[mainEqquipment.item.skillNum].isMagicActive = true;
+            if(mainEqquipment.item.skillNum != 0)
+            {
+                GameManager.instance.magicManager.magicInfo[mainEqquipment.item.skillNum].isMagicActive = true;
+            }
+            else
+            {
+                UranusOn();
+            }
         }
 
         if (prevEquipStaff.rank == ItemRank.Legendary) // 장착해제한 아이템이 레전드 아이템 이라면 해당 스킬 Off
         {
-            GameManager.instance.magicManager.magicInfo[prevEquipStaff.skillNum].isMagicActive = false;
+
+            if (prevEquipStaff.skillNum != 0)
+            {
+                GameManager.instance.magicManager.magicInfo[prevEquipStaff.skillNum].isMagicActive = false;
+            }
+            else
+            {
+                UranusOff();
+            }
         }
 
         prevEquipStaff = mainEqquipment.item;    // 장착한 스태프 데이터를 저장

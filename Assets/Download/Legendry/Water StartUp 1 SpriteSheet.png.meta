@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -42,12 +42,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 18
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -115,7 +115,238 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Water StartUp 1 SpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 162
+        width: 64
+        height: 9
+      alignment: 9
+      pivot: {x: 0.521, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2264771c6c1e7e347b0ca54bfa207ebc
+      internalID: -1014488432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Water StartUp 1 SpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 114
+        width: 64
+        height: 9
+      alignment: 9
+      pivot: {x: 0.521, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d2a85d6307071344a295807e969fdc6
+      internalID: -1870293823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Water StartUp 1 SpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 98
+        width: 63
+        height: 9
+      alignment: 9
+      pivot: {x: 0.521, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84136815c01a40645b2eab60a1a3a2e0
+      internalID: -1253758985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Water StartUp 1 SpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 82
+        width: 64
+        height: 9
+      alignment: 9
+      pivot: {x: 0.521, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc78c512f17ffdc4895566e6031ccb51
+      internalID: -753910700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Water StartUp 1 SpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 66
+        width: 64
+        height: 9
+      alignment: 9
+      pivot: {x: 0.521, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0f132fc212a4ef4691c453d0e326b75
+      internalID: -2005923645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Water StartUp 1 SpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 50
+        width: 64
+        height: 9
+      alignment: 9
+      pivot: {x: 0.521, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c27ed4bc61a28d3499dadb35b01bc73d
+      internalID: 569370100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Water StartUp 1 SpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 34
+        width: 64
+        height: 9
+      alignment: 9
+      pivot: {x: 0.521, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 317fcf75a99f4674ab5108dabe53c3b1
+      internalID: -146169348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Water StartUp 1 SpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 18
+        width: 64
+        height: 9
+      alignment: 9
+      pivot: {x: 0.521, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 729a034ab5257574e90c86a0bce2c56f
+      internalID: 1098299117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Water StartUp 1 SpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2
+        width: 64
+        height: 9
+      alignment: 9
+      pivot: {x: 0.521, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebc4ffc4606e40748b8630b5fa1d6bec
+      internalID: 999796247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Water StartUp 1 SpriteSheet_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 130
+        width: 64
+        height: 9
+      alignment: 9
+      pivot: {x: 0.521, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 799800e47ae7f2a4394dcbbc14852a84
+      internalID: -931471486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Water StartUp 1 SpriteSheet_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 146
+        width: 64
+        height: 9
+      alignment: 9
+      pivot: {x: 0.521, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67efef4936eed5e4a93af24558c8e678
+      internalID: 409889410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -126,7 +357,19 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Water StartUp 1 SpriteSheet_0: -1014488432
+      Water StartUp 1 SpriteSheet_4: -2005923645
+      Water StartUp 1 SpriteSheet_5: 569370100
+      Water StartUp 1 SpriteSheet_8: 999796247
+      Water StartUp 1 SpriteSheet_9: -931471486
+      Water StartUp 1 SpriteSheet_1: -1870293823
+      Water StartUp 1 SpriteSheet_3: -753910700
+      Water StartUp 1 SpriteSheet_7: 1098299117
+      Water StartUp 1 SpriteSheet_11: 1924775815
+      Water StartUp 1 SpriteSheet_6: -146169348
+      Water StartUp 1 SpriteSheet_2: -1253758985
+      Water StartUp 1 SpriteSheet_10: 409889410
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

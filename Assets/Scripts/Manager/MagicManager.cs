@@ -37,7 +37,7 @@ public class MagicManager : MonoBehaviour
         {
             if (magicInfo[i].isMagicActive)
             {
-                if(magicInfo[i].magicCoolTime == 0 || i == 13 || i == 1)
+                if(magicInfo[i].magicCoolTime == 0 || i == 18 || i <=  6)
                 {
                     StartCoroutine( AlwaysPlayMagic(i));
                 }
@@ -54,18 +54,21 @@ public class MagicManager : MonoBehaviour
         StopAllCoroutines();
 
 
-        // 스테이지를 클리어했기때문에 혹시나 활성화된 마법들을 비활성화 시킴 
+        // 스테이지를 클리어했기때문에 활성화된 마법들을 비활성화 시킴 
         for(int i = 0; i<magicInfo.Length; i++)
         {
             foreach (GameObject item in pools[i])
             {
                 if (item.activeSelf)
                 {
-                    MagicNumber magic = item.GetComponent<MagicNumber>();
-                    if (i != 1 && magic.isSizeUp)
+                    if(i > 6) // 6이하 마법들은 레전드리 마법이기때문에 사이즈 업 X
                     {
-                        magic.GetComponent<Transform>().localScale = magic.resetScale;
-                        magic.isSizeUp = false;
+                        MagicNumber magic = item.GetComponent<MagicNumber>();
+                        if (magic.isSizeUp)
+                        {
+                            magic.GetComponent<Transform>().localScale = magic.resetScale;
+                            magic.isSizeUp = false;
+                        }
                     }
                     item.SetActive(false);
                 }
@@ -151,7 +154,7 @@ public class MagicManager : MonoBehaviour
             magic.position = player.transform.position; // Magict의 위치
 
 
-            if (magicNumber == 9) // 윈드 컷터
+            if (magicNumber == 14) // 윈드 컷터
             {
                 //  초기화
                 magic.localRotation = Quaternion.identity;
@@ -177,15 +180,15 @@ public class MagicManager : MonoBehaviour
                                                 // FromToRotation : 지정된 축을 중심으로 목표를 향해 회전하는 함수
             magic.rotation = Quaternion.FromToRotation(Vector3.right, dir); // Enemy 방향으로 bullet 회전
 
-            if (magicNumber == 2) // 파이어볼
+            if (magicNumber == 7) // 파이어볼
             {
                 magic.GetComponent<Bullet>().Init(0, magicInfo[magicNumber].penetration, dir, 11.5f);
             }
-            else if (magicNumber == 7) // 괭이
+            else if (magicNumber == 12) // 괭이
             {
                 magic.GetComponent<Hoe>().Init(dir);
             }
-            else if (magicNumber == 8) // 돌 던지기
+            else if (magicNumber == 13) // 돌 던지기
             {
                 magic.GetComponent<RockThrow>().Init(dir);
             }
@@ -225,7 +228,7 @@ public class MagicManager : MonoBehaviour
             Transform magic = Get(magicNumber).transform;
             magic.position = player.scanner.nearestTarget[selectedIndex].transform.position;
             MagicSizeUp(magic, magicNumber);
-            if (magicNumber == 4)
+            if (magicNumber == 9) // 지옥의 창
             {
                 Enemy enemy = player.scanner.nearestTarget[selectedIndex].GetComponent<Enemy>();
                 magic.GetComponent<MoltenSpear>().Init(enemy);
@@ -251,18 +254,36 @@ public class MagicManager : MonoBehaviour
             case 1:
                 InfernoSpawn(magicNumber);
                 break;
-            case 5:
+            case 2:
+                PoseidonSpawn(magicNumber);
+                break;
+            case 3:
+                GaiaSpawn(magicNumber);
+                break;
+            case 10:
                 ShovelSpawn(magicNumber);
                 break;
-            case 6:
+            case 11:
                 MagicBallSpawn(magicNumber);
                 break;
-            case 13:
+            case 18:
                 ChargeExplosionSpawn(magicNumber);
                 break;
         }
 
 
+    }
+    private void GaiaSpawn(int magicNumber)
+    {
+        GameObject magic = Get(magicNumber);
+
+        magic.GetComponent<RockMeteor>().Init(magicInfo[magicNumber].magicCoolTime);
+    }
+    private void PoseidonSpawn(int magicNumber)
+    {
+        GameObject magic = Get(magicNumber);
+
+        magic.GetComponent<Poseidon>().Init(magicInfo[magicNumber].magicCoolTime);
     }
     private void InfernoSpawn(int magicNumber)
     {
