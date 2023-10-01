@@ -25418,7 +25418,7 @@ MonoBehaviour:
     magicCountIncrease: 0
     isFlying: 0
     isNonTarget: 1
-    damagePer: 6.5
+    damagePer: 2
     magicCount: 1
     magicCoolTime: 10
     penetration: 0
@@ -25434,7 +25434,7 @@ MonoBehaviour:
     magicCountIncrease: 0
     isFlying: 0
     isNonTarget: 1
-    damagePer: 5
+    damagePer: 2.5
     magicCount: 1
     magicCoolTime: 7.2
     penetration: 0
@@ -25450,9 +25450,9 @@ MonoBehaviour:
     magicCountIncrease: 0
     isFlying: 0
     isNonTarget: 1
-    damagePer: 2
+    damagePer: 1.5
     magicCount: 1
-    magicCoolTime: 5
+    magicCoolTime: 12
     penetration: 0
     knockBackValue: 500
     damageIncreaseValue: 0
@@ -25530,7 +25530,7 @@ MonoBehaviour:
     magicCountIncrease: 0
     isFlying: 0
     isNonTarget: 0
-    damagePer: 3.5
+    damagePer: 1.8
     magicCount: 1
     magicCoolTime: 5.5
     penetration: 0
@@ -25546,7 +25546,7 @@ MonoBehaviour:
     magicCountIncrease: 1
     isFlying: 0
     isNonTarget: 0
-    damagePer: 7
+    damagePer: 5
     magicCount: 1
     magicCoolTime: 4.5
     penetration: 0
@@ -25562,7 +25562,7 @@ MonoBehaviour:
     magicCountIncrease: 1
     isFlying: 0
     isNonTarget: 0
-    damagePer: 1.5
+    damagePer: 1.3
     magicCount: 2
     magicCoolTime: 0
     penetration: 0
@@ -25594,7 +25594,7 @@ MonoBehaviour:
     magicCountIncrease: 0
     isFlying: 1
     isNonTarget: 0
-    damagePer: 1
+    damagePer: 1.1
     magicCount: 1
     magicCoolTime: 4.25
     penetration: 0
@@ -25610,7 +25610,7 @@ MonoBehaviour:
     magicCountIncrease: 0
     isFlying: 1
     isNonTarget: 0
-    damagePer: 7.5
+    damagePer: 5.5
     magicCount: 1
     magicCoolTime: 5.5
     penetration: 0
@@ -25626,7 +25626,7 @@ MonoBehaviour:
     magicCountIncrease: 1
     isFlying: 1
     isNonTarget: 1
-    damagePer: 2.25
+    damagePer: 1.75
     magicCount: 3
     magicCoolTime: 5.5
     penetration: 0
@@ -25642,7 +25642,7 @@ MonoBehaviour:
     magicCountIncrease: 0
     isFlying: 0
     isNonTarget: 0
-    damagePer: 2.5
+    damagePer: 2.3
     magicCount: 1
     magicCoolTime: 6
     penetration: 0
@@ -25658,7 +25658,7 @@ MonoBehaviour:
     magicCountIncrease: 0
     isFlying: 0
     isNonTarget: 0
-    damagePer: 10
+    damagePer: 4.5
     magicCount: 1
     magicCoolTime: 12
     penetration: 0
@@ -25674,7 +25674,7 @@ MonoBehaviour:
     magicCountIncrease: 0
     isFlying: 0
     isNonTarget: 0
-    damagePer: 3.5
+    damagePer: 2.25
     magicCount: 1
     magicCoolTime: 8.5
     penetration: 0
@@ -25690,7 +25690,7 @@ MonoBehaviour:
     magicCountIncrease: 0
     isFlying: 0
     isNonTarget: 1
-    damagePer: 3
+    damagePer: 2
     magicCount: 1
     magicCoolTime: 6
     penetration: 0

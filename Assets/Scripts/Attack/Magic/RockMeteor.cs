@@ -1,10 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RockMeteor : MonoBehaviour
 {
     public Transform[] wayPoints;
+    public Vector3[] rockLocalPos;
 
     public float delayTime;
     public float coolTime;
@@ -13,13 +13,21 @@ public class RockMeteor : MonoBehaviour
     private void Start()
     {
         player = GameManager.instance.player;
+
+        rockLocalPos = new Vector3[wayPoints.Length]; 
+
+        for (int i = 0; i < wayPoints.Length; i++) // 돌들의 초기 로컬 포지션 값을 저장함
+        {
+            rockLocalPos[i] = wayPoints[i].localPosition;
+        }
+
     }
-   
+
     public void Init(float coolTime)
     {
         this.coolTime = coolTime;
 
-        for(int i= 0; i<wayPoints.Length; i++)
+        for (int i = 0; i < wayPoints.Length; i++) // 활성화된 돌이 있을 경우 비활성화
         {
             if (wayPoints[i].gameObject.activeSelf)
             {
@@ -35,15 +43,15 @@ public class RockMeteor : MonoBehaviour
         int point = 0;
         float curTime = 0;
         bool ready = false;
-        while (true)
+
+        while (!GameManager.instance.gameStop)
         {
             if (!ready)
             {
                 curTime += Time.deltaTime;
-                if(curTime >= coolTime)
+                if (curTime >= coolTime)
                 {
-                    gameObject.transform.position = player.transform.position;
-                    wayPoints = ArrayShuffle(wayPoints);
+                    wayPoints = ArrayShuffle(wayPoints); // 셔플
                     ready = true;
                 }
                 yield return null;
@@ -51,23 +59,28 @@ public class RockMeteor : MonoBehaviour
             }
             else
             {
+                // 플레이어의 이동 좌표에 맞게 돌을 떨어뜨림
+                wayPoints[point].localPosition = new Vector3(rockLocalPos[point].x + player.transform.position.x, rockLocalPos[point].y + player.transform.position.y, 0);
+            
                 wayPoints[point].gameObject.SetActive(true);
                 point++;
                 yield return new WaitForSeconds(delayTime);
+
                 if (point == wayPoints.Length)
                 {
                     ready = false;
                     curTime = 0;
                     point = 0;
                 }
+
             }
 
 
-            
+
         }
     }
 
-  private T[] ArrayShuffle<T> (T[] array)
+    private T[] ArrayShuffle<T>(T[] array) // 셔플
     {
         T temp;
         int random1, random2;
