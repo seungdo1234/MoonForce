@@ -517,6 +517,9 @@ public class Enemy : MonoBehaviour
 
             if (GameManager.instance.statManager.instantKillPer >= random) // ม๏ป็
             {
+                Transform instantMotion = GameManager.instance.magicManager.Get(6).transform;
+                instantMotion.position = transform.position;
+
                 damageValue = 999;
             }
         }

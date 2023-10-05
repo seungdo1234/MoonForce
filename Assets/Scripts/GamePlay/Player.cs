@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
     public Vector2 inputVec;
 
-    public HUD healthUI;
+    public GameObject resurrection;
 
     [Header("Body of Rotation")]
     public Transform rotationBody;
@@ -104,7 +104,14 @@ public class Player : MonoBehaviour
         PlayerHit(damage);
 
     }
+    private IEnumerator Resurrection()
+    {
+        resurrection.SetActive(true);
 
+        yield return new WaitForSeconds(1.4f);
+
+        resurrection.SetActive(false);
+    }
     public void PlayerHit(int damage)
     {
 
@@ -119,6 +126,14 @@ public class Player : MonoBehaviour
         }
         else if (GameManager.instance.statManager.curHealth <= 0)
         {
+            if(GameManager.instance.attribute == ItemAttribute.Holy && !GameManager.instance.isResurrection)
+            {
+                GameManager.instance.isResurrection = true;
+                StartCoroutine(OnDamaged());
+                GameManager.instance.statManager.curHealth = 10;
+                StartCoroutine(Resurrection());
+                return;
+            }
             isDamaged = false;
             anim.SetTrigger("Dead");
             GameManager.instance.GameEnd(1);

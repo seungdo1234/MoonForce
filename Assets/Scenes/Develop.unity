@@ -4030,7 +4030,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -4961,7 +4961,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -12017,6 +12017,7 @@ MonoBehaviour:
   enemyCurNum: 9999
   level: 0
   enemySpawnNumIncrese: 1
+  isResurrection: 0
   clearReward: {fileID: 124120846}
   hud: {fileID: 226571703}
   redMoon: {fileID: 930719710}
@@ -12024,7 +12025,7 @@ MonoBehaviour:
   gameClearObject: {fileID: 620187602}
   map: {fileID: 1341078409}
   chestPercent: 640000001e0000000a00000005000000
-  bronzeChest: 50000000140000000000000000000000
+  bronzeChest: 00000000000000000000000064000000
   silverChest: 32000000280000000900000001000000
   goldChest: 1e0000002d0000001400000005000000
   specialChest: 000000001e0000003200000014000000
@@ -18965,7 +18966,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &854884541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25714,17 +25715,17 @@ MonoBehaviour:
   - isMagicActive: 0
     magicNumber: 6
     magicName: "\uD788\uD398\uB9AC\uC628"
-    magicEffect: {fileID: 0}
+    magicEffect: {fileID: 957186389087026678, guid: 3f1e68caea16d174483b1bee514eea10, type: 3}
     magicCountIncrease: 0
     isFlying: 0
-    isNonTarget: 1
-    damagePer: 3
-    magicCount: 1
-    magicCoolTime: 6
+    isNonTarget: 0
+    damagePer: 0
+    magicCount: 0
+    magicCoolTime: 0
     penetration: 0
-    knockBackValue: 1500
-    damageIncreaseValue: 1
-    coolTimeDecreaseValue: 1
+    knockBackValue: 0
+    damageIncreaseValue: 0
+    coolTimeDecreaseValue: 0
     magicRateStep: 0
     magicSizeStep: 0
   - isMagicActive: 0
@@ -29488,7 +29489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -32658,7 +32659,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!70 &1535498163
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -32784,6 +32785,7 @@ Transform:
   - {fileID: 85269485}
   - {fileID: 1934122730}
   - {fileID: 1391490686}
+  - {fileID: 2099534305}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -32800,7 +32802,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputVec: {x: 0, y: 0}
-  healthUI: {fileID: 0}
+  resurrection: {fileID: 2099534306}
   rotationBody: {fileID: 1391490686}
   scanner: {fileID: 0}
 --- !u!114 &1535498169
@@ -41264,7 +41266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -44918,6 +44920,77 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2092841036}
   m_CullTransparentMesh: 1
+--- !u!1001 &2099534304
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1535498167}
+    m_Modifications:
+    - target: {fileID: 5099836309460692854, guid: 8286de2e2c2e0474c89216b0fff79cec, type: 3}
+      propertyPath: m_Name
+      value: Resurrection
+      objectReference: {fileID: 0}
+    - target: {fileID: 5099836309460692854, guid: 8286de2e2c2e0474c89216b0fff79cec, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5099836309460692855, guid: 8286de2e2c2e0474c89216b0fff79cec, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5099836309460692855, guid: 8286de2e2c2e0474c89216b0fff79cec, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5099836309460692855, guid: 8286de2e2c2e0474c89216b0fff79cec, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5099836309460692855, guid: 8286de2e2c2e0474c89216b0fff79cec, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5099836309460692855, guid: 8286de2e2c2e0474c89216b0fff79cec, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5099836309460692855, guid: 8286de2e2c2e0474c89216b0fff79cec, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5099836309460692855, guid: 8286de2e2c2e0474c89216b0fff79cec, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5099836309460692855, guid: 8286de2e2c2e0474c89216b0fff79cec, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5099836309460692855, guid: 8286de2e2c2e0474c89216b0fff79cec, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5099836309460692855, guid: 8286de2e2c2e0474c89216b0fff79cec, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5099836309460692855, guid: 8286de2e2c2e0474c89216b0fff79cec, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8286de2e2c2e0474c89216b0fff79cec, type: 3}
+--- !u!4 &2099534305 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5099836309460692855, guid: 8286de2e2c2e0474c89216b0fff79cec, type: 3}
+  m_PrefabInstance: {fileID: 2099534304}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2099534306 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5099836309460692854, guid: 8286de2e2c2e0474c89216b0fff79cec, type: 3}
+  m_PrefabInstance: {fileID: 2099534304}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2118428522
 GameObject:
   m_ObjectHideFlags: 0
@@ -44983,7 +45056,7 @@ MonoBehaviour:
   - 0.1
   - 0.05
   - 0.2
-  - 1.5
+  - 3
   burningDamagePer: 0.5
   baseBurningDamagePer: 0.5
   burningEffectTime: 3
@@ -45000,8 +45073,8 @@ MonoBehaviour:
   darkExplosionDamagePer: 3
   baseDarkExplosionDamagePer: 3
   darknessExpTime: 1
-  instantKillPer: 10
-  baseInstantKillPer: 10
+  instantKillPer: 20
+  baseInstantKillPer: 20
 --- !u!4 &2118428524
 Transform:
   m_ObjectHideFlags: 0

@@ -70,7 +70,7 @@ public class StatManager : MonoBehaviour
 
     public void GameStart()
     {
-        penetration = 0;
+        penetration = 1;
         weaponNum = 1;
         curHealth = initHealth;
         attack = initAttack;

@@ -32,6 +32,7 @@ public class RewardManager : MonoBehaviour
     public void ItemCreate(int itemRank , int createType) // 랜덤 아이템 생성
     {
         this.createType = createType;
+
        if(itemRank > -1)
         {
             switch (createType) 
@@ -85,11 +86,22 @@ public class RewardManager : MonoBehaviour
         int rankNum = this.rank == ItemRank.Legendary ? 0 : -1;
 
        // itemAttribute = (ItemAttribute)Random.Range(1, System.Enum.GetValues(typeof(ItemAttribute)).Length + rankNum);
-        itemAttribute = (ItemAttribute)4;
- 
-        itemName = itemInfo.staffNames[(int)itemAttribute - 1];
-        desc = itemInfo.staffDescs[(int)itemAttribute - 1];
-        moveSpeed = 0;
+       if(rank == ItemRank.Legendary)
+        {
+            itemAttribute = (ItemAttribute)7;
+        }
+        else
+        {
+            itemAttribute = (ItemAttribute)Random.Range(1, System.Enum.GetValues(typeof(ItemAttribute)).Length + rankNum);
+        }
+
+  
+        if(rank != ItemRank.Legendary)
+        {
+            itemName = itemInfo.staffNames[(int)itemAttribute - 1];
+            desc = itemInfo.staffDescs[(int)itemAttribute - 1];
+            moveSpeed = 0;
+        }
 
         switch (rank)
         {

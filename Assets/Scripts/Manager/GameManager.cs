@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     public int enemyCurNum = 9999;
     public int level;
     public int enemySpawnNumIncrese;
+    public bool isResurrection;
 
     [Header("# UI")]
     public GameObject clearReward;
@@ -104,6 +105,7 @@ public class GameManager : MonoBehaviour
         redMoonEffect = false;
         hud.SetActive(false);
         PoolingReset();  // 모든 폴링 오브젝트 비활성화
+        isResurrection = false;
         pause.gameObject.SetActive(false); // 퍼즈 버튼 비활성화
         AudioManager.instance.EndBgm(); // Bgm 끄기
         yield return new WaitForSeconds(1f);
@@ -205,6 +207,8 @@ public class GameManager : MonoBehaviour
 
     public void GameStart()
     {
+        isResurrection = false;
+        gold = 0;
         enemyMaxNum = 5;
         spawner.spawnPerLevelUp = 0;
         AudioManager.instance.SelectSfx();
