@@ -59,7 +59,6 @@ public class Enchant : MonoBehaviour
         }
         else  // 인벤토리에 해당 아이템의 강화 재료가 없다면 false
         {
-            EnchantSelectTextOn(2);
             return false;
         }
   
@@ -104,6 +103,12 @@ public class Enchant : MonoBehaviour
     }
     private bool EnchantMaterial(Item enchantItem) // 강화 재료를 리스트에 넣기 (강화 재료가 없을시 false)
     {
+        if(enchantItem.enchantStep >= EnchantManager.instance.maxEnchantStep) // 강화 단계가 8이상이면 강화 X
+        {
+            EnchantSelectTextOn(3);
+            return false;
+        }
+
         itemList.Clear();
         for (int i = 0; i < ItemDatabase.instance.itemCount(); i++)
         {
@@ -119,6 +124,7 @@ public class Enchant : MonoBehaviour
         }
         else
         {
+            EnchantSelectTextOn(2);
             return false;
         }
     }

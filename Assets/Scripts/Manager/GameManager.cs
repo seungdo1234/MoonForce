@@ -205,6 +205,8 @@ public class GameManager : MonoBehaviour
 
     public void GameStart()
     {
+        enemyMaxNum = 5;
+        spawner.spawnPerLevelUp = 0;
         AudioManager.instance.SelectSfx();
         statManager.GameStart();
         AudioManager.instance.PlayBgm((int)Bgm.MaintenanceRoom);

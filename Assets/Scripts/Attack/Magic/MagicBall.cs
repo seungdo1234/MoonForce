@@ -122,32 +122,3 @@ public class MagicBall : MonoBehaviour
     }
 }
 
-[CanEditMultipleObjects]
-[CustomEditor(typeof(MagicBall))]
-public class Rake_Editor : Editor
-{
-    private void OnSceneGUI()
-    {
-        MagicBall rake = (MagicBall)target;
-
-        rake.p1 = Handles.PositionHandle(rake.p1, Quaternion.identity);
-        rake.p2 = Handles.PositionHandle(rake.p2, Quaternion.identity);
-        rake.p3 = Handles.PositionHandle(rake.p3, Quaternion.identity);
-        rake.p4 = Handles.PositionHandle(rake.p4, Quaternion.identity);
-
-        Handles.DrawLine(rake.p1, rake.p2);
-        Handles.DrawLine(rake.p3, rake.p4);
-
-        int count = 50;
-        for (float i = 0; i < count; i++)
-        {
-            float value_Before = i / count;
-            Vector3 before = rake.BezierCurve(rake.cloneP1, rake.cloneP2, rake.cloneP3, rake.cloneP4, value_Before);
-
-            float value_After = (i + 1) / count;
-            Vector3 after = rake.BezierCurve(rake.cloneP1, rake.cloneP2, rake.cloneP3, rake.cloneP4, value_After);
-
-            Handles.DrawLine(before, after);
-        }
-    }
-}
