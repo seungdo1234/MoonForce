@@ -267,6 +267,9 @@ public class MagicManager : MonoBehaviour
             case 3:
                 GaiaSpawn(magicNumber);
                 break;
+            case 4:
+                LeafSpawn(magicNumber);
+                break;
             case 5:
                 JackSpawn(magicNumber);
                 break;
@@ -282,6 +285,12 @@ public class MagicManager : MonoBehaviour
         }
 
 
+    }
+    private void LeafSpawn(int magicNumber)
+    {
+        GameObject magic = Get(magicNumber);
+
+        magic.GetComponent<Leaf>().Init(magicInfo[magicNumber].magicCoolTime);
     }
     private void JackSpawn(int magicNumber)
     {

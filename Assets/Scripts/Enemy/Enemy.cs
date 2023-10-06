@@ -62,7 +62,7 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate() // 물리적인 이동은 FixedUpdate
     {
-        if (GameManager.instance.gameStop || !isLive || anim.GetCurrentAnimatorStateInfo(0).IsName("Hit") || rush.isReady || !rangeAttackEnemy.isReady) // Enemy가 죽었다면 return
+        if (GameManager.instance.gameStop || !isLive || anim.GetCurrentAnimatorStateInfo(0).IsName("Hit") || rush.isReady || !rangeAttackEnemy.isReady || GameManager.instance.demeterOn) // Enemy가 죽었다면 return
         {
           //  rigid.velocity = Vector2.zero;
             return;
@@ -84,7 +84,7 @@ public class Enemy : MonoBehaviour
     private void LateUpdate()
     {
 
-        if ( GameManager.instance.gameStop || isRestraint || !isLive || rush.isReady || !rangeAttackEnemy.isReady)
+        if ( GameManager.instance.gameStop || isRestraint || !isLive || rush.isReady || !rangeAttackEnemy.isReady || GameManager.instance.demeterOn)
         {
             return;
         }

@@ -12018,6 +12018,7 @@ MonoBehaviour:
   level: 0
   enemySpawnNumIncrese: 1
   isResurrection: 0
+  demeterOn: 0
   clearReward: {fileID: 124120846}
   hud: {fileID: 226571703}
   redMoon: {fileID: 930719710}
@@ -25684,17 +25685,17 @@ MonoBehaviour:
   - isMagicActive: 0
     magicNumber: 4
     magicName: "\uB370\uBA54\uD14C\uB974"
-    magicEffect: {fileID: 0}
+    magicEffect: {fileID: 1450163878514646849, guid: 6d80a175a4f8c744883abb02980944fd, type: 3}
     magicCountIncrease: 0
     isFlying: 0
-    isNonTarget: 1
-    damagePer: 3
-    magicCount: 1
-    magicCoolTime: 6
+    isNonTarget: 0
+    damagePer: 0
+    magicCount: 0
+    magicCoolTime: 20
     penetration: 0
-    knockBackValue: 1500
-    damageIncreaseValue: 1
-    coolTimeDecreaseValue: 1
+    knockBackValue: 0
+    damageIncreaseValue: 0
+    coolTimeDecreaseValue: 0
     magicRateStep: 0
     magicSizeStep: 0
   - isMagicActive: 0

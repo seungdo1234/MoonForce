@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
     public int level;
     public int enemySpawnNumIncrese;
     public bool isResurrection;
+    public bool demeterOn;
 
     [Header("# UI")]
     public GameObject clearReward;
@@ -112,6 +113,7 @@ public class GameManager : MonoBehaviour
         PoolingReset();  // 모든 폴링 오브젝트 비활성화
         pause.gameObject.SetActive(false); // 퍼즈 버튼 비활성화
         AudioManager.instance.EndBgm(); // Bgm 끄기
+        GameManager.instance.demeterOn = false;
         yield return new WaitForSeconds(1f);
 
         if(level >= 49) // 마지막 스테이지
@@ -220,5 +222,6 @@ public class GameManager : MonoBehaviour
         AudioManager.instance.PlayBgm((int)Bgm.MaintenanceRoom);
         rewardManager.ItemCreate(-1 , 0);
         shop.ShopReset();
+        GameManager.instance.demeterOn = false;
     }
 }
