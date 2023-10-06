@@ -12023,6 +12023,7 @@ MonoBehaviour:
   redMoon: {fileID: 930719710}
   gameOverObject: {fileID: 61008394}
   gameClearObject: {fileID: 620187602}
+  background: {fileID: 1355474932}
   map: {fileID: 1341078409}
   chestPercent: 640000001e0000000a00000005000000
   bronzeChest: 00000000000000000000000064000000
@@ -18966,7 +18967,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &854884541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25698,18 +25699,18 @@ MonoBehaviour:
     magicSizeStep: 0
   - isMagicActive: 0
     magicNumber: 5
-    magicName: "\uD558\uB370\uC2A4"
-    magicEffect: {fileID: 0}
+    magicName: "\uC7AD\uC624\uB79C\uD134"
+    magicEffect: {fileID: 7059123934165452069, guid: 0b09405e4d94b994094e7b7aaa8bf442, type: 3}
     magicCountIncrease: 0
     isFlying: 0
     isNonTarget: 1
-    damagePer: 3
+    damagePer: 4
     magicCount: 1
-    magicCoolTime: 6
+    magicCoolTime: 15
     penetration: 0
-    knockBackValue: 1500
-    damageIncreaseValue: 1
-    coolTimeDecreaseValue: 1
+    knockBackValue: 500
+    damageIncreaseValue: 0
+    coolTimeDecreaseValue: 0
     magicRateStep: 0
     magicSizeStep: 0
   - isMagicActive: 0
@@ -28336,7 +28337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.12156863}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.15686275}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -32659,7 +32660,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!70 &1535498163
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

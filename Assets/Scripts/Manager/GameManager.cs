@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
     public RedMoonEffect redMoon;
     public GameObject gameOverObject;
     public GameObject gameClearObject;
+    public GameObject background;
 
     [Header("MainMenu")]
     public Map map;
@@ -80,10 +81,13 @@ public class GameManager : MonoBehaviour
     }
     public void GameLobby() // 로비로 갈 때 (죽거나, 설정 창에서 가거나)
     {
+        background.SetActive(true);
+        hud.SetActive(false);
         // 아이템 데이터 베이스 초기화
         ItemDatabase.instance.ItemReset();
         map.MapReset();
         PoolingReset();
+        magicManager.MagicActiveCancel();
         player.transform.position = Vector3.zero;
         player.gameObject.SetActive(false);
         AudioManager.instance.PlayBgm((int)Bgm.Main);
@@ -95,6 +99,7 @@ public class GameManager : MonoBehaviour
     }
     private IEnumerator StageClear() // 스테이지 클리어
     {
+        background.SetActive(true);
         isStage = false;
         gameStop = true;
         if (isRedMoon) // 붉은 달이 떠올랐을 때
@@ -105,7 +110,6 @@ public class GameManager : MonoBehaviour
         redMoonEffect = false;
         hud.SetActive(false);
         PoolingReset();  // 모든 폴링 오브젝트 비활성화
-        isResurrection = false;
         pause.gameObject.SetActive(false); // 퍼즈 버튼 비활성화
         AudioManager.instance.EndBgm(); // Bgm 끄기
         yield return new WaitForSeconds(1f);

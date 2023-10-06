@@ -88,7 +88,7 @@ public class RewardManager : MonoBehaviour
        // itemAttribute = (ItemAttribute)Random.Range(1, System.Enum.GetValues(typeof(ItemAttribute)).Length + rankNum);
        if(rank == ItemRank.Legendary)
         {
-            itemAttribute = (ItemAttribute)7;
+            itemAttribute = (ItemAttribute)6;
         }
         else
         {

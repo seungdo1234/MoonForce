@@ -130,7 +130,7 @@ public class Player : MonoBehaviour
             {
                 GameManager.instance.isResurrection = true;
                 StartCoroutine(OnDamaged());
-                GameManager.instance.statManager.curHealth = 10;
+                GameManager.instance.statManager.curHealth = GameManager.instance.statManager.maxHealth / 2;
                 StartCoroutine(Resurrection());
                 return;
             }

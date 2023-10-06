@@ -49,6 +49,13 @@ public class MagicManager : MonoBehaviour
         }
     }
 
+    public void MagicActiveCancel()
+    {
+        for (int i = 0; i < magicInfo.Length; i++)
+        {
+            magicInfo[i].isMagicActive = false;
+        }
+    }
     public void PoolingReset()
     {
         StopAllCoroutines();
@@ -260,6 +267,9 @@ public class MagicManager : MonoBehaviour
             case 3:
                 GaiaSpawn(magicNumber);
                 break;
+            case 5:
+                JackSpawn(magicNumber);
+                break;
             case 10:
                 ShovelSpawn(magicNumber);
                 break;
@@ -272,6 +282,12 @@ public class MagicManager : MonoBehaviour
         }
 
 
+    }
+    private void JackSpawn(int magicNumber)
+    {
+        GameObject magic = Get(magicNumber);
+
+        magic.GetComponent<Jack>().Init(magicInfo[magicNumber].magicCoolTime);
     }
     private void GaiaSpawn(int magicNumber)
     {
