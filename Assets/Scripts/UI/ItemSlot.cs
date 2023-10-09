@@ -249,6 +249,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         {
             GameManager.instance.inventory.Equipment(this);
             preview.gameObject.SetActive(false);
+            AudioManager.instance.SelectSfx(); // 효과음
         }
         else if (item.itemSprite != null)
         {
@@ -260,6 +261,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
             {
                 GameManager.instance.inventory.UnEquipReady(this);
             }
+            AudioManager.instance.SelectSfx(); // 효과음
         }
         else // 다른 비어있는 슬롯을 눌렀을 때
         {
@@ -268,7 +270,9 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
             {
                 GameManager.instance.inventory.EquipReadyCancel();
             }
+            AudioManager.instance.SelectSfx(); // 효과음
         }
+
     }
     public void OnPointerClick(PointerEventData eventData) // 터치 이벤트
     {

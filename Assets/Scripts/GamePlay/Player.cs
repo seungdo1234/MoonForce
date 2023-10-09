@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    public FloatingJoystick joy;
     public Vector2 inputVec;
 
     public GameObject resurrection;
@@ -26,33 +27,21 @@ public class Player : MonoBehaviour
         scanner = GetComponent<Scanner>();
     }
 
-    private void OnMove(InputValue value) // Input System으로 자동 호출
-    {
-        if (!GameManager.instance.gameStop)
-        {
-            // value는 InputValue 값이므로 Vector2 값으로 변환 시켜야함 -> Get<T>() 으로 value의 형식 변환
-            inputVec = value.Get<Vector2>();
-
-        }
-        else
-        {
-            inputVec = Vector2.zero;
-        }
-    }
-
     private void FixedUpdate()
     {
         if (GameManager.instance.gameStop)
         {
             return;
         }
-        // normalized는 대각선으로 갈때 상하좌우와 같은 속도를 내기위해 vecter 값을 정규화함
-        // fixedDeltaTime은 FixedUpdate에서 사용
-        Vector2 nextVec = inputVec * Time.fixedDeltaTime * GameManager.instance.statManager.moveSpeed;
+
+        inputVec = new Vector2(joy.Horizontal, joy.Vertical);
+
+        // 정규화된 벡터를 생성
+        Vector2 nextVec = inputVec.normalized * Time.fixedDeltaTime * GameManager.instance.statManager.moveSpeed;
+
         // 위치 이동
         rigid.MovePosition(rigid.position + nextVec);
 
-   
     }
     private void LateUpdate()
     {

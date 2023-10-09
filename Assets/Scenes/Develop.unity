@@ -175,7 +175,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 4
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
@@ -366,7 +365,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 2
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 63543068}
@@ -846,7 +844,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 5
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
@@ -1061,7 +1058,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 3
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
@@ -1177,7 +1173,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 4
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 1879882378}
@@ -1464,7 +1459,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 2
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
@@ -1580,7 +1574,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 2
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
@@ -1876,7 +1869,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 4
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
@@ -2061,7 +2053,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 2
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
@@ -2216,7 +2207,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 1771666497}
@@ -2872,7 +2862,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 1350367050}
@@ -3530,7 +3519,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
@@ -3646,7 +3634,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 4
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
@@ -3968,7 +3955,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 4
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
@@ -4635,7 +4621,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 339032941}
@@ -4809,6 +4794,7 @@ RectTransform:
   - {fileID: 2059204953}
   - {fileID: 1769790986}
   - {fileID: 1263720611}
+  - {fileID: 480547455}
   m_Father: {fileID: 854884544}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5467,7 +5453,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
@@ -5772,7 +5757,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 2
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 1234341419}
@@ -7349,7 +7333,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
@@ -8472,7 +8455,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 4
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
@@ -8721,7 +8703,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 4
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 1676814406}
@@ -8917,7 +8898,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 4
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
@@ -9135,7 +9115,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
@@ -10058,7 +10037,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 2
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
@@ -10213,7 +10191,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 5
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
@@ -10815,7 +10792,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 4
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
@@ -11036,6 +11012,167 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 478902486}
   m_CullTransparentMesh: 1
+--- !u!1001 &480547453
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 226571704}
+    m_Modifications:
+    - target: {fileID: 8170153791668043265, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+      propertyPath: handleRange
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 720
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1280
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170153791668043269, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+      propertyPath: m_Name
+      value: Floating Joystick
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170153791961219456, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 266.66666
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170153791961219456, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 266.66666
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170153791961219459, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1798395208, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}
+    - target: {fileID: 8170153791961219459, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+      propertyPath: m_Color.a
+      value: 0.9019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170153792821263252, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1328899968, guid: d71a3dc7aa20fad4f9a99fc76a9254ba, type: 3}
+    - target: {fileID: 8170153792821263252, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+      propertyPath: m_Color.a
+      value: 0.50980395
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170153792821263252, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+      propertyPath: m_Color.b
+      value: 0.2392157
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170153792821263252, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+      propertyPath: m_Color.g
+      value: 0.2392157
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170153792821263252, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+      propertyPath: m_Color.r
+      value: 0.2627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170153792821263258, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 266.66666
+      objectReference: {fileID: 0}
+    - target: {fileID: 8170153792821263258, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 266.66666
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+--- !u!114 &480547454 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8170153791668043265, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+  m_PrefabInstance: {fileID: 480547453}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a47f546fc70ec8428172694e78e4288, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!224 &480547455 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+  m_PrefabInstance: {fileID: 480547453}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &484759279
 GameObject:
   m_ObjectHideFlags: 0
@@ -11438,7 +11575,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 2
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
@@ -12437,7 +12573,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 4
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
@@ -13154,7 +13289,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
@@ -13347,7 +13481,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 2
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 88059192}
@@ -13789,7 +13922,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 1015246213}
@@ -14357,7 +14489,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
@@ -14879,7 +15010,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 6
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
@@ -14995,7 +15125,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 1736901041}
@@ -15149,7 +15278,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 2
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 1526604995}
@@ -15678,7 +15806,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 4
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 163732863}
@@ -16092,7 +16219,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 2
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 63543068}
@@ -16170,7 +16296,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 4
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 1672982646}
@@ -16419,7 +16544,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 0
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
@@ -16979,7 +17103,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 1
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 1417924892}
@@ -17095,7 +17218,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 4
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 1185992424}
@@ -18545,7 +18667,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 2
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
@@ -18773,7 +18894,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 2
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
@@ -19240,7 +19360,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 4
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
@@ -20754,7 +20873,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
@@ -20908,7 +21026,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 2
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
@@ -21501,7 +21618,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 1015246213}
@@ -22090,7 +22206,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
@@ -22510,7 +22625,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 4
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 163732863}
@@ -23511,7 +23625,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 4
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 1185992424}
@@ -23742,7 +23855,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 2
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 1234341419}
@@ -23851,7 +23963,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 339032941}
@@ -24986,7 +25097,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 4
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
@@ -25372,7 +25482,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 1350367050}
@@ -25488,7 +25597,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
@@ -26183,71 +26291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd8374ca043b616489a336e3c38d5070, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemDB:
-  - isLoad: 0
-    isEquip: 0
-    type: 1
-    rank: 2
-    quality: 1
-    itemSprite: {fileID: 21300000, guid: 5d6ec2b4ad329574d96227b678a5c02f, type: 3}
-    itemAttribute: 2
-    itemName: daddd
-    attack: 1
-    rate: 0.1
-    moveSpeed: 0
-    itemDesc: 678
-    enchantStep: 0
-    bookName: 
-    skillNum: 0
-    aditionalAbility: 
-  - isLoad: 0
-    isEquip: 0
-    type: 1
-    rank: 3
-    quality: 2
-    itemSprite: {fileID: 21300000, guid: f9ad5c47d78ad0d4082defd7680ce51e, type: 3}
-    itemAttribute: 7
-    itemName: daddd
-    attack: 62
-    rate: 0.5
-    moveSpeed: 0
-    itemDesc: 678
-    enchantStep: 0
-    bookName: 
-    skillNum: 0
-    aditionalAbility: 
-  - isLoad: 0
-    isEquip: 0
-    type: 2
-    rank: 0
-    quality: 2
-    itemSprite: {fileID: 21300000, guid: 010fdcad84b34224ab8fb17463532777, type: 3}
-    itemAttribute: 0
-    itemName: 0
-    attack: 0
-    rate: 0
-    moveSpeed: 0
-    itemDesc: 0
-    enchantStep: 0
-    bookName: 373753
-    skillNum: 1
-    aditionalAbility: 0100000000000000
-  - isLoad: 0
-    isEquip: 0
-    type: 2
-    rank: 0
-    quality: 2
-    itemSprite: {fileID: 21300000, guid: 88cef627667a5ef46a48b83e17c7fffa, type: 3}
-    itemAttribute: 0
-    itemName: 0
-    attack: 0
-    rate: 0
-    moveSpeed: 0
-    itemDesc: 0
-    enchantStep: 0
-    bookName: 5
-    skillNum: 13
-    aditionalAbility: 0200000002000000
+  itemDB: []
 --- !u!1 &1234341418
 GameObject:
   m_ObjectHideFlags: 0
@@ -26338,7 +26382,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 2
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
@@ -26701,7 +26744,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 4
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
@@ -27930,7 +27972,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
@@ -29661,7 +29702,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 1
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
@@ -29739,7 +29779,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
@@ -29966,7 +30005,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 6
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
@@ -30253,7 +30291,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 4
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 1676814406}
@@ -32115,7 +32152,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 2
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
@@ -32443,7 +32479,6 @@ GameObject:
   - component: {fileID: 1535498164}
   - component: {fileID: 1535498163}
   - component: {fileID: 1535498168}
-  - component: {fileID: 1535498169}
   - component: {fileID: 1535498170}
   - component: {fileID: 1535498171}
   m_Layer: 0
@@ -32594,40 +32629,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a99fb4f3cd4a8b469b49a6cf64d6d9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  joy: {fileID: 480547454}
   inputVec: {x: 0, y: 0}
   resurrection: {fileID: 2099534306}
   rotationBody: {fileID: 1391490686}
   scanner: {fileID: 0}
---- !u!114 &1535498169
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1535498162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: acbe30eb58d95644a9a32dc543785b0d, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!114 &1535498170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32853,7 +32859,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 4
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 1672982646}
@@ -33111,7 +33116,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
@@ -35175,7 +35179,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 4
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
@@ -35706,7 +35709,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 2
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
@@ -35998,7 +36000,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 4
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
@@ -36221,7 +36222,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 4
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
@@ -36337,7 +36337,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 1736901041}
@@ -36849,7 +36848,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 4
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 1879882378}
@@ -37549,7 +37547,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
@@ -38328,7 +38325,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
@@ -38524,7 +38520,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 1771666497}
@@ -39450,7 +39445,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 2
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 1526604995}
@@ -39872,7 +39866,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 6
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
@@ -40065,7 +40058,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 6
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
@@ -40181,7 +40173,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 1
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 1417924892}
@@ -40777,7 +40768,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 4
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
@@ -42107,7 +42097,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 2
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 0}
@@ -43592,7 +43581,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 1
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 1417924892}
@@ -44752,7 +44740,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 7
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 0
   fixedPreviewTransform: {fileID: 1439412077}
@@ -45209,7 +45196,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotType: 2
-  CloneImage: {fileID: 0}
   preview: {fileID: 839489304}
   fixedPreview: 1
   fixedPreviewTransform: {fileID: 88059192}
