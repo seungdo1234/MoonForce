@@ -4,13 +4,13 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public enum SlotType { Main, Sub, WaitSpace, EnchantItemSpace, EnchantWaitSpace, EnchantCheck, ShopSpace, SellSpace }
-public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class ItemSlot : MonoBehaviour, IPointerClickHandler
 {
 
     public SlotType slotType;
 
 
-    public Image CloneImage; // 클릭했을때 나오는 이미지
+    [Header("# Inventory")]
     public ItemPreview preview;
     public bool fixedPreview;
     public Transform fixedPreviewTransform;
@@ -32,9 +32,6 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
 
     private void Awake()
     {
-        //Image[] images = GetComponentsInChildren<Image>();
-        // itemImage = images[1];
-
         itemImage = GetComponent<Image>();
 
     }
@@ -50,137 +47,57 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
             itemImage.color = new Color(1, 1, 1, 0);
         }
     }
-
-    public void OnDrag(PointerEventData eventData) // 드래그
-    {
-        if (slotType != SlotType.EnchantItemSpace && slotType != SlotType.EnchantWaitSpace && slotType != SlotType.ShopSpace && slotType != SlotType.SellSpace)
-        {
-            // eventData.button : 플레이어가 누른 키
-            if (eventData.button == PointerEventData.InputButton.Left)
-            {
-                if (item.itemSprite != null)
-                {
-                    itemImage.color = new Color(1, 1, 1, 0);
-                    CloneImage.gameObject.SetActive(true);
-                    CloneImage.sprite = itemImage.sprite;
-                    CloneImage.rectTransform.position = Input.mousePosition;
-
-                }
-            }
-        }
-    }
-    public void OnEndDrag(PointerEventData eventData) // 드래그가 끝날 때
-    {
-        if (slotType != SlotType.EnchantItemSpace && slotType != SlotType.EnchantWaitSpace && slotType != SlotType.ShopSpace && slotType != SlotType.SellSpace)
-        {
-            if (eventData.button == PointerEventData.InputButton.Left)
-            {
-                if (item.itemSprite != null)
-                {
-                    // 드래그한 슬롯의 이미지를 원래 슬롯의 위치로 돌려놓음
-                    CloneImage.sprite = null;
-                    CloneImage.gameObject.SetActive(false);
-
-                    StartCoroutine(SelectSlot(eventData));
-                }
-            }
-        }
-    }
-    
-    private IEnumerator SelectSlot(PointerEventData eventData) // 드래그가 끝날 때 해당 위치에 아이템 슬롯이 있다면 실행 
-    {
-        yield return null;
-
-        itemImage.color = new Color(1, 1, 1, 1);
-
-        // 드래그한 슬롯의 이미지가 다른 슬롯 위에 있다면 교환
-        ItemSlot targetSlot = eventData.pointerCurrentRaycast.gameObject.GetComponent<ItemSlot>();
-        // 장비를 바꾸는 과정에서 무기는 스태프, 마법책은 서브 장비칸이 맞나 확인 후 장비 교체
-        if (targetSlot != null && targetSlot != this && ((item.type == ItemType.Staff && targetSlot.slotType != SlotType.Sub) || (item.type == ItemType.Book && targetSlot.slotType != SlotType.Main)))
-        {
-
-            Item tempItem = targetSlot.item;
-            targetSlot.item = item;
-            item = tempItem;
-
-
-            // Item 데이터를 옮겻으니 해당 칸 이미지 재로딩
-            targetSlot.ImageLoading();
-            ImageLoading();
-
-            if (targetSlot.slotType == SlotType.Main || slotType == SlotType.Main)
-            {
-                GameManager.instance.inventory.EquipStaff();
-            }
-            else if (targetSlot.slotType == SlotType.Sub || slotType == SlotType.Sub)
-            {
-                GameManager.instance.inventory.EquipBooks();
-            }
-
-        }
-
-    }
-    public void OnPointerEnter(PointerEventData eventData) // 아이템 프리뷰 창 띄우기
-    {
-        if (slotType != SlotType.EnchantCheck && item != null && item.itemSprite != null)
-        {
-
-            preview.gameObject.SetActive(true);
-
-            if (!fixedPreview)
-            {
-                preview.gameObject.transform.position = transform.position + new Vector3(-20, 60, 0);
-            }
-            else
-            {
-                preview.gameObject.transform.position = fixedPreviewTransform.position + new Vector3(0, 60, 0);
-            }
-
-            if (slotType == SlotType.Main)
-            {
-                preview.gameObject.transform.position = transform.position + new Vector3(-350, 0, 0);
-            }
-
-            if (slotType == SlotType.SellSpace)
-            {
-                preview.IsSell(true, itemPrice);
-            }
-            preview.ItemInfoSet(item);
-        }
-    }
-    public void OnPointerExit(PointerEventData eventData) // 아이템 프리뷰 창 끄기
-    {
-        if (slotType == SlotType.SellSpace)
-        {
-            preview.IsSell(false, itemPrice);
-        }
-
-        preview.gameObject.SetActive(false);
-    }
     private void EnchantItemSelecet()
     {
-        AudioManager.instance.SelectSfx();
+       
         switch (slotType) // 슬롯의 형태에 따라 다른 이벤트
         {
             case SlotType.EnchantItemSpace: // 인첸트 슬롯을 눌렀을 때
+                AudioManager.instance.SelectSfx();
                 enchant.EnchantItemoff(); // 인첸트 슬롯에 있는 아이템을 해제함
                 break;
             case SlotType.EnchantWaitSpace: // 대기 슬롯을 눌렀을 때
                 if (enchant.itemSelect) // 인첸트 슬롯에 아이템이 있을 때
                 {
+                    AudioManager.instance.SelectSfx();
                     enchant.EnchantMaterialSelect(this);
                 }
                 else // 인첸트 슬롯에 아이템이 없을 때
                 {
                     if (enchant.EnchantItemOn(this)) // 아이템을 인첸스 슬롯에 넣음 (가능하면 true, 불가능 하면 false)
                     {
+                        AudioManager.instance.SelectSfx();
                         preview.gameObject.SetActive(false);
+                    }
+                    else
+                    {
+                        AudioManager.instance.PlayerSfx(Sfx.BuySellFail);
                     }
                 }
                 break;
         }
     }
-
+    private void EnchantTouchEvents()
+    {
+        if(item.itemSprite != null)
+        {
+            if (enchant.EnchantReady(this))
+            {
+                preview.gameObject.SetActive(false);
+                EnchantItemSelecet();
+            }
+            else
+            {
+                AudioManager.instance.SelectSfx();
+            }
+        }
+        else
+        {
+            preview.gameObject.SetActive(false);
+            AudioManager.instance.SelectSfx();
+            enchant.EnchantReadyCancel();
+        }
+    }
     private void ItemBuy()
     {
         if (GameManager.instance.gold >= itemPrice)
@@ -222,6 +139,7 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
                     GameManager.instance.statManager.EssenceOn(item.skillNum, item.rate);
                     break;
             }
+            shop.soldOutTexts[(int)item.type - 1].SetActive(true); // 팔림 표시
             item = null; // 구매 아이템은 null 처리
             ImageLoading(); // 이미지 로딩
         }
@@ -232,8 +150,8 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
         }
     }
     private void ItemSell()
-    { 
-        if(item.type == ItemType.Staff) // 판매 아이템이 스태프 일 경우
+    {
+        if (item.type == ItemType.Staff) // 판매 아이템이 스태프 일 경우
         {
             int staffNum = 0;
             for (int i = 0; i < ItemDatabase.instance.itemCount(); i++) // 인벤토리에 스태프가 하나 밖에 없다면 판매 X
@@ -267,24 +185,114 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEn
         AudioManager.instance.PlayerSfx(Sfx.BuySell);
         shop.WarningTextOn(ShopWarningText.ItemSell); // 아이템 판매 텍스트
     }
-    public void OnPointerClick(PointerEventData eventData) // 인첸트 창에서 클릭이벤트
+    private void ShopTouchEvents()
     {
-        if (item != null && item.itemSprite != null && eventData.button == PointerEventData.InputButton.Left)
+        if (item.itemSprite != null)
         {
-            if (slotType == SlotType.EnchantItemSpace || slotType == SlotType.EnchantWaitSpace)
+            if (shop.ShopReady(this))
             {
-                EnchantItemSelecet();
+                if (slotType == SlotType.ShopSpace)
+                {
+                    ItemBuy();
+                }
+                else
+                {
+                    ItemSell();
+                }
+                preview.gameObject.SetActive(false);
             }
-            else if (slotType == SlotType.ShopSpace)
+            else
             {
-                ItemBuy();
-            }
-            else if (slotType == SlotType.SellSpace)
-            {
-                ItemSell();
+                AudioManager.instance.SelectSfx();
             }
         }
+        else
+        {
+            preview.gameObject.SetActive(false);
+            shop.ShopReadyCancel();
+            AudioManager.instance.SelectSfx();
+        }
+    }
+    private void PreviewItemOn()
+    {
+        if (item.itemSprite != null)
+        {
+            preview.gameObject.SetActive(true);
 
+
+            if (slotType == SlotType.Main)
+            {
+                preview.gameObject.transform.position = transform.position + new Vector3(-350, -120, 0);
+            }
+            else if (!fixedPreview)
+            {
+                preview.gameObject.transform.position = transform.position + new Vector3(-20, 60, 0);
+            }
+            else if (fixedPreview)
+            {
+                preview.gameObject.transform.position = fixedPreviewTransform.position + new Vector3(0, 60, 0);
+            }
+
+            if (slotType == SlotType.SellSpace)
+            {
+                preview.IsSell(true, itemPrice);
+            }
+
+            preview.ItemInfoSet(item);
+        }
+
+    }
+    
+    private void InventoryTouchEvents()
+    {
+        if (GameManager.instance.inventory.equipReady && (slotType == SlotType.Main || slotType == SlotType.Sub)) // 장비 장착
+        {
+            GameManager.instance.inventory.Equipment(this);
+            preview.gameObject.SetActive(false);
+        }
+        else if (item.itemSprite != null)
+        {
+            if (slotType == SlotType.WaitSpace) // 장착할 아이템 선택 
+            {
+                GameManager.instance.inventory.EquipReady(this);
+            }
+            else // 장비 해제
+            {
+                GameManager.instance.inventory.UnEquipReady(this);
+            }
+        }
+        else // 다른 비어있는 슬롯을 눌렀을 때
+        {
+            preview.gameObject.SetActive(false);
+            if (GameManager.instance.inventory.equipReady)
+            {
+                GameManager.instance.inventory.EquipReadyCancel();
+            }
+        }
+    }
+    public void OnPointerClick(PointerEventData eventData) // 터치 이벤트
+    {
+        if (item != null && eventData.button == PointerEventData.InputButton.Left)
+        {
+            PreviewItemOn();
+
+            switch (slotType)
+            {
+                case SlotType.Main:
+                case SlotType.Sub:
+                case SlotType.WaitSpace: // 인벤토리 터치 이벤트
+                    InventoryTouchEvents();
+                    break;
+                case SlotType.EnchantItemSpace: // 인첸트 창 터치 이벤트
+                case SlotType.EnchantWaitSpace:
+                    EnchantTouchEvents();
+                    break;
+                case SlotType.ShopSpace: // 상점 터치 이벤트
+                case SlotType.SellSpace:
+                    ShopTouchEvents();
+                    break;
+            }
+        }
     }
     public void ItemPriceLoad() // 랜덤 상점 아이템 가격 
     {

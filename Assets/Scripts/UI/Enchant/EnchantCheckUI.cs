@@ -192,6 +192,7 @@ public class EnchantCheckUI : MonoBehaviour
         aditionalSelectBtn[0].gameObject.SetActive(false);
         aditionalSelectBtn[1].gameObject.SetActive(false);
 
+        enchant.enchantNoticeText.gameObject.SetActive(true);
         enchant.EnchantItemoff();
     }
     private IEnumerator EnchantStartBtnOn() // 마법책 인첸트 시 스킬 두개를 선택해야만 강화할 수 있게 하는 코루틴 

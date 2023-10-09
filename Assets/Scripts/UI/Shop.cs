@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum ShopWarningText { GoldEmpty, InventoryFull, OneStaffHave, Healing, Essence , ItemSell } // 알림 종류
+public enum ShopWarningText { GoldEmpty, InventoryFull, OneStaffHave, Healing, Essence , ItemSell, Ready } // 알림 종류
 public class Shop : MonoBehaviour
 {
+    private ItemSlot shopWaitSlot;
 
+    [Header("# Buy")]
     public ItemSlot staffSlot; // 스태프 슬롯
     public ItemSlot skillBookSlot; // 마법책 슬롯
     public ItemSlot essenceSlot; // 정수 슬롯;
     public ItemSlot posionSlot; // 힐링 포션 슬롯
     public StageClear stageClear; // 아이템 생성 컴포넌트
     public Text goldText; // 현재 골드 텍스트
+    public GameObject[] soldOutTexts; // 팔림 표시
 
 
     [Header("# WarningText")]
@@ -43,10 +46,16 @@ public class Shop : MonoBehaviour
 
         EssenceCreate();
 
+        for(int i=0; i < soldOutTexts.Length; i++)
+        {
+            soldOutTexts[i].SetActive(false);
+        }
+
     }
     private void OnEnable()
     {
         warningTextObject.gameObject.SetActive(false);
+        ShopReset();
     }
     public void StaffCreate(Item item) // 스태프 생성
     {
@@ -93,6 +102,24 @@ public class Shop : MonoBehaviour
         warningTextObject.text = warningTexts[(int)warning];
 
         warningTextObject.gameObject.SetActive(true);
+    }
+    public bool ShopReady(ItemSlot shopSlot) //  인첸트 아이템 선택 대기 상태
+    {
+        if (shopWaitSlot != null && shopWaitSlot == shopSlot)
+        {
+            shopWaitSlot = null;
+            return true;
+        }
+        else
+        {
+            WarningTextOn(ShopWarningText.Ready);
+            shopWaitSlot = shopSlot;
+            return false;
+        }
+    }
+    public void ShopReadyCancel()
+    {
+        shopWaitSlot = null;
     }
     private void Update()
     {

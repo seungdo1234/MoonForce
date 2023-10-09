@@ -5,9 +5,12 @@ using UnityEngine;
 public class EnchantText : MonoBehaviour
 {
     public Enchant enchant;
+    private void Awake()
+    {
+    }
     public void NegativeText()
     {
-        gameObject.SetActive(false);
-        enchant.EnchantSelectTextOn(0);
+        enchant.EnchantSelectTextOn(EnchantNoticeType.EncahntItemSelect);
+        enchant.NoiticeTextAnimatorOff();
     }
 }

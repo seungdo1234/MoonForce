@@ -3,6 +3,8 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
+
+public enum InventoryTextType { ItemEquip, ItemUnEquip}
 public class Inventory : MonoBehaviour
 {
     [Header("# Item Slot")]
@@ -10,6 +12,14 @@ public class Inventory : MonoBehaviour
     public ItemSlot[] subEqquipments;
     public ItemSlot[] waitEqquipments;
 
+    [Header("# Equipment")]
+    public ItemSlot equipWaitItemSlot;
+    public bool equipReady;
+    public RectTransform[] selectAnimations;
+    public Text noticeText;
+    public string[] noticeTextType;
+
+    [Header("# Uranus Skill")]
     public HorizontalLayoutGroup subEquipmentsLayout;
     public GameObject uranusSlot;
     public bool uranusEqiup;
@@ -107,8 +117,19 @@ public class Inventory : MonoBehaviour
         }
 
     }
-
-    public void InventoryReset()
+    private void Notice(bool isActive , InventoryTextType type)
+    {
+        if (isActive)
+        {
+            noticeText.gameObject.SetActive(true);
+            noticeText.text = noticeTextType[(int)type];
+        }
+        else
+        {
+            noticeText.gameObject.SetActive(false);
+        }
+    }
+    public void InventoryReset() // 게임 클리어, 게임 오버, 메인메뉴로 갈 때 인벤토리 초기화
     {
         if (mainEqquipment.item.itemSprite != null)
         {
@@ -137,6 +158,126 @@ public class Inventory : MonoBehaviour
             }
         }
     }
+    public void EquipReady(ItemSlot itemSlot)
+    {
+        Notice(true, InventoryTextType.ItemEquip);
+
+         equipReady = true;
+        equipWaitItemSlot = itemSlot;
+
+        EquipmentAnimationInit();
+
+        if (equipWaitItemSlot.item.type == ItemType.Staff)
+        {
+            StaffEquipmentAnimation();
+        }
+        else
+        {
+            BookEquipmentAnimation();
+        }
+    }
+    public void EquipReadyCancel()
+    {
+        equipReady = false;
+        equipWaitItemSlot = null;
+
+        Notice(false, InventoryTextType.ItemEquip);
+
+        EquipmentAnimationInit();
+    }
+    public void Equipment(ItemSlot equipSlot)
+    {
+
+        if ((equipSlot.slotType == SlotType.Main && equipWaitItemSlot.item.type == ItemType.Staff) ||(equipSlot.slotType == SlotType.Sub && equipWaitItemSlot.item.type == ItemType.Book))
+        {
+            Item temp = equipWaitItemSlot.item;
+            equipWaitItemSlot.item = equipSlot.item;
+            equipSlot.item = temp;
+
+            equipWaitItemSlot.ImageLoading();
+            equipSlot.ImageLoading();
+
+            if(equipSlot.item.type == ItemType.Staff)
+            {
+                EquipStaff();
+            }
+            else
+            {
+                EquipBooks();
+            }
+        }
+
+        EquipReadyCancel();
+    }
+    public void UnEquipReady(ItemSlot unEquipSlot)
+    {
+        if(equipWaitItemSlot != null  && equipWaitItemSlot == unEquipSlot)
+        {
+            for(int i =0; i<waitEqquipments.Length; i++)
+            {
+                if(waitEqquipments[i].item.itemSprite == null)
+                {
+
+                    Item temp = waitEqquipments[i].item;
+                    waitEqquipments[i].item = equipWaitItemSlot.item;
+                    equipWaitItemSlot.item = temp;
+
+                    waitEqquipments[i].ImageLoading();
+                    equipWaitItemSlot.ImageLoading();
+
+                    if (equipWaitItemSlot.slotType == SlotType.Main)
+                    {
+                        EquipStaff();
+                    }
+                    else
+                    {
+                        EquipBooks();
+                    }
+
+                    equipWaitItemSlot.preview.gameObject.SetActive(false);
+                    Notice(false, InventoryTextType.ItemEquip);
+
+                    equipWaitItemSlot = null;
+                    return;
+                }
+            }
+        }
+        else
+        {
+            Notice(true, InventoryTextType.ItemUnEquip);
+            equipWaitItemSlot = unEquipSlot;
+        }
+
+    }
+    private void StaffEquipmentAnimation() // 스태프 선택 시 장착 관련 애니메이션
+    {
+
+        selectAnimations[0].gameObject.SetActive(true);
+
+        selectAnimations[0].transform.position = mainEqquipment.transform.position + new Vector3(0, 80, 0);
+    }
+    private void BookEquipmentAnimation() // 마법책 선택 시 장착 관련 애니메이션
+    {
+
+        for (int i =0; i < subEqquipments.Length; i++)
+        {
+            if(i == subEqquipments.Length -1 && !uranusSlot.activeSelf)
+            {
+                break;
+            }
+
+            selectAnimations[i].gameObject.SetActive(true);
+            selectAnimations[i].transform.position = subEqquipments[i].transform.position + new Vector3(0, 80, 0);
+        }
+    }
+    public void EquipmentAnimationInit() // 애니메이션 오브젝트들 초기화
+    {
+        for(int i =0; i <selectAnimations.Length; i++)
+        {
+            selectAnimations[i].gameObject.SetActive(false);
+        }
+    }
+
     public void SkillBookInit()
     {
         for (int i = 0; i < equipBooks.Count; i++) // 전에 장착한 마법 책 스킬 초기화

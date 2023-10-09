@@ -4,13 +4,24 @@ using UnityEngine;
 
 using UnityEngine.UI;
 
+
+public enum EnchantNoticeType { EncahntItemSelect, MaterialSelect,MaterialEmpty, EnchantMaxStep , EnchantReady}
 public class Enchant : MonoBehaviour
 {
     [SerializeField]
     private List<Item> itemList = new List<Item>();
     public EnchantCheckUI EnchantCheckUI;
 
-    public GameObject[] enchantSelecetTexts;
+
+    private ItemSlot enchantWaitSlot;
+
+    [Header("NoticeText")]
+    public Text enchantNoticeText;
+    public string[] noticeType;
+    public Animator textAnim;
+    public RuntimeAnimatorController textAnimCon;
+
+    [Header("Items")]
     public ItemSlot enchantSpace = null;
     public ItemSlot[] waitSpaces = null;
 
@@ -18,6 +29,7 @@ public class Enchant : MonoBehaviour
  
     private void OnEnable()
     {
+        enchantNoticeText.text = noticeType[(int)EnchantNoticeType.EncahntItemSelect];
         itemSelect = false;
         ItemLoad();
         StartCoroutine(LoadImages());
@@ -45,7 +57,7 @@ public class Enchant : MonoBehaviour
     {
         if (EnchantMaterial(slot.item)) // 인벤토리에 해당 아이템의 강화 재료가 있다면 true
         {
-            EnchantSelectTextOn(1);
+            EnchantSelectTextOn(EnchantNoticeType.MaterialSelect);
             itemSelect = true;
             enchantSpace.item = slot.item;
             enchantSpace.ImageLoading();
@@ -63,9 +75,30 @@ public class Enchant : MonoBehaviour
         }
   
     }
+
+    public bool EnchantReady(ItemSlot waitSlot) //  인첸트 아이템 선택 대기 상태
+    {
+        if (enchantWaitSlot != null && enchantWaitSlot == waitSlot)
+        {
+            enchantWaitSlot = null;
+
+            return true;
+        }
+        else
+        {
+            EnchantSelectTextOn(EnchantNoticeType.EnchantReady);
+            enchantWaitSlot = waitSlot;
+            return false;
+        }
+    }
+    public void EnchantReadyCancel()
+    {
+        enchantWaitSlot = null;
+        EnchantSelectTextOn(EnchantNoticeType.EncahntItemSelect);
+    }
     public void EnchantItemoff() // 인첸트 슬롯에 있는 아이템을 해제함
     {
-        EnchantSelectTextOn(0);
+        EnchantSelectTextOn(EnchantNoticeType.EncahntItemSelect);
         itemSelect = false;
         ItemReset();
         ItemLoad();
@@ -105,7 +138,7 @@ public class Enchant : MonoBehaviour
     {
         if(enchantItem.enchantStep >= EnchantManager.instance.maxEnchantStep) // 강화 단계가 8이상이면 강화 X
         {
-            EnchantSelectTextOn(3);
+            EnchantSelectTextOn(EnchantNoticeType.MaterialSelect);
             return false;
         }
 
@@ -124,7 +157,7 @@ public class Enchant : MonoBehaviour
         }
         else
         {
-            EnchantSelectTextOn(2);
+            EnchantSelectTextOn(EnchantNoticeType.MaterialEmpty);
             return false;
         }
     }
@@ -140,15 +173,23 @@ public class Enchant : MonoBehaviour
     }
     public void EnchantMaterialSelect(ItemSlot slot) // 인첸트 창 On
     {
+        enchantNoticeText.gameObject.SetActive(false);
+
         EnchantCheckUI.UIOn(enchantSpace.item , slot.item);
 
     }
-    public void EnchantSelectTextOn(int num) // 인첸트할 아이템을 누를 때 나오는 텍스트 On/Off
+    public void EnchantSelectTextOn(EnchantNoticeType type) // 인첸트할 아이템을 누를 때 나오는 텍스트 On/Off
     {
-        for(int i =0; i < enchantSelecetTexts.Length; i++)
+        enchantNoticeText.gameObject.SetActive(true);
+        enchantNoticeText.text = noticeType[(int)type];
+
+        if(type == EnchantNoticeType.MaterialEmpty || type == EnchantNoticeType.EnchantMaxStep)
         {
-            bool active = i == num ? true : false;
-            enchantSelecetTexts[i].SetActive(active);
-        }
+            textAnim.runtimeAnimatorController = textAnimCon;
+         }
+    }
+    public void NoiticeTextAnimatorOff()
+    {
+        textAnim.runtimeAnimatorController = null;
     }
 }

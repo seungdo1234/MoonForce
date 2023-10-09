@@ -7,6 +7,7 @@ public class InventoryLoadExit : MonoBehaviour
     public GameObject inventoryStructure;
     public GameObject inventoryGameObject;
     public GameObject exitBtn;
+    public ItemPreview preview;
 
     public void Load()
     {
@@ -19,6 +20,14 @@ public class InventoryLoadExit : MonoBehaviour
         inventoryStructure.SetActive(false);
         exitBtn.SetActive(false);
         inventoryGameObject.SetActive(false);
-
+        preview.gameObject.SetActive(false);
+        GameManager.instance.inventory.EquipReadyCancel();
+    }
+    public void StatWindowOn()
+    {
+        inventoryStructure.SetActive(false);
+        preview.gameObject.SetActive(false);
+        GameManager.instance.inventory.EquipReadyCancel();
+        AudioManager.instance.SelectSfx();
     }
 }

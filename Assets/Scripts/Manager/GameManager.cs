@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public Shop shop;
     public ShopManager shopManager;
     public NextStageBtn nextStageBtn;
+    public Enchant enchant;
     private Spawner spawner;
 
     [Header("# Player Data")]
