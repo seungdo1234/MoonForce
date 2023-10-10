@@ -19,18 +19,18 @@ public class AudioSetting : MonoBehaviour
     public Sprite sfxOffSprite;
 
 
-    private AudioManager audio;
+    private AudioManager audioManager;
     private AudioSource bgmPlayer;
     private AudioSource[] sfxPlayers;
     private void Start()
     {
-        audio = AudioManager.instance;
+        audioManager = AudioManager.instance;
 
         AudioSource[] audios = AudioManager.instance.GetComponentsInChildren<AudioSource>();
 
         bgmPlayer = audios[0]; 
 
-        sfxPlayers = new AudioSource[audio.channels];
+        sfxPlayers = new AudioSource[audioManager.channels];
 
         for (int i = 1; i < audios.Length; i++)
         {
@@ -40,7 +40,7 @@ public class AudioSetting : MonoBehaviour
 
     public void BgmSetting() // 배경음 On/Off
     {
-        audio.SelectSfx();
+        audioManager.SelectSfx();
         if (isPlayingBgm)
         {
             bgmPlayer.volume = 0;
@@ -49,14 +49,14 @@ public class AudioSetting : MonoBehaviour
         }
         else
         {
-            bgmPlayer.volume = audio.bgmVolume;
+            bgmPlayer.volume = audioManager.bgmVolume;
             isPlayingBgm = true;
             bgmBtnImage.sprite = bgmOnSprite;
         }
     }
     public void SfxSetting() // 효과음 On/Off
     {
-        audio.SelectSfx();
+        audioManager.SelectSfx();
         if (isPlayingSfx)
         {
             for(int i = 0; i< sfxPlayers.Length; i++)
@@ -70,7 +70,7 @@ public class AudioSetting : MonoBehaviour
         {
             for (int i = 0; i < sfxPlayers.Length; i++)
             {
-               sfxPlayers[i].volume = audio.sfxVolume;
+               sfxPlayers[i].volume = audioManager.sfxVolume;
             }
             isPlayingSfx = true;
             sfxBtnImage.sprite = sfxOnSprite;

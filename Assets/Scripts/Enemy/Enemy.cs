@@ -165,8 +165,8 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.layer == 11) // 만약 마력탄이라면
         {
             knockBackValue = GameManager.instance.statManager.knockBackValue;
-            EnemyDamaged(collision.GetComponent<Bullet>().damage, 1);
             StatusEffect();
+            EnemyDamaged(collision.GetComponent<Bullet>().damage, 1);
         }
         else // 마법이라면 
         {
@@ -190,7 +190,6 @@ public class Enemy : MonoBehaviour
 
 
         }
-        EnemyHit();
     }
 
     private void EnemyHit()
@@ -437,7 +436,6 @@ public class Enemy : MonoBehaviour
     {
         float speed = this.speed;
 
-
         spriteRenderer.color = new Color(0, 1, 0, 1);
 
         isRestraint = true;
@@ -534,6 +532,8 @@ public class Enemy : MonoBehaviour
         Vector3 textPos = transform.position + new Vector3(0, 0.5f, 0);
 
         GameManager.instance.damageTextPool.Get(damageValue, textPos);
+
+        EnemyHit();
     }
     private void Dead()
     {

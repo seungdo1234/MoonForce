@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public enum SlotType { Main, Sub, WaitSpace, EnchantItemSpace, EnchantWaitSpace, EnchantCheck, ShopSpace, SellSpace }
+public enum SlotType { Main, Sub, WaitSpace, EnchantItemSpace, EnchantWaitSpace, EnchantCheck, ShopSpace, SellSpace , RewardSpace }
 public class ItemSlot : MonoBehaviour, IPointerClickHandler
 {
 

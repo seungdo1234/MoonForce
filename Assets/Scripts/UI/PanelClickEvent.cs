@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public enum PanelType { Inventory, Enchant, Shop}
+public enum PanelType { Inventory, Enchant, Shop , Reward}
 public class PanelClickEvent : MonoBehaviour , IPointerClickHandler
 {
     public PanelType panelType;

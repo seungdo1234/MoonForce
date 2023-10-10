@@ -7,7 +7,7 @@ public class RewardManager : MonoBehaviour
 {
     public ItemInfo itemInfo;
 
-    public Image rewardImage;
+    public ItemSlot rewardSlot;
 
     private ItemType type;
     private ItemRank rank;
@@ -22,6 +22,7 @@ public class RewardManager : MonoBehaviour
     private int skillNumber ;
     private int[] aditionalAbility  ;
     private int createType;
+    private int itemRank;
     private void Start()
     {
 
@@ -32,8 +33,9 @@ public class RewardManager : MonoBehaviour
     public void ItemCreate(int itemRank , int createType) // 랜덤 아이템 생성
     {
         this.createType = createType;
+        this.itemRank = itemRank;
 
-       if(itemRank > -1)
+       if (itemRank > -1)
         {
             switch (createType) 
             {
@@ -85,15 +87,8 @@ public class RewardManager : MonoBehaviour
 
         int rankNum = this.rank == ItemRank.Legendary ? 0 : -1;
 
-       // itemAttribute = (ItemAttribute)Random.Range(1, System.Enum.GetValues(typeof(ItemAttribute)).Length + rankNum);
-       if(rank == ItemRank.Legendary)
-        {
-            itemAttribute = (ItemAttribute)5;
-        }
-        else
-        {
-            itemAttribute = (ItemAttribute)Random.Range(1, System.Enum.GetValues(typeof(ItemAttribute)).Length + rankNum);
-        }
+        itemAttribute = (ItemAttribute)Random.Range(1, System.Enum.GetValues(typeof(ItemAttribute)).Length + rankNum);
+
 
   
         if(rank != ItemRank.Legendary)
@@ -121,13 +116,18 @@ public class RewardManager : MonoBehaviour
                 skillNum = (int)itemAttribute - 1;
                 break;
         }
-        rewardImage.sprite = itemSprite;
 
-        if(createType == 0)
+        if(createType == 0) // 0일때 (보상)
         {
             ItemDatabase.instance.GetStaff(type, rank, quality, itemSprite, itemAttribute, itemName, attack, rate, moveSpeed, desc, skillNum);
+            if(itemRank != -1)
+            {
+                rewardSlot.item = ItemDatabase.instance.Set(ItemDatabase.instance.itemCount() - 1);
+                rewardSlot.itemImage.sprite = rewardSlot.item.itemSprite;
+            }
+
         }
-        else
+        else // 2일 때  (상점)
         {
             Item item = new Item();
             item.Staff(type, rank, quality, itemSprite, itemAttribute, itemName, attack, rate, moveSpeed, desc, skillNum);
@@ -153,11 +153,11 @@ public class RewardManager : MonoBehaviour
         itemName = GameManager.instance.magicManager.magicInfo[skillNumber].magicName;
         itemSprite = itemInfo.magicBookSprite;
 
-      
-        rewardImage.sprite = itemSprite; // 보상 창에 이미지 띄움
-        if (createType == 1)
+       if (createType == 1)
         {
             ItemDatabase.instance.GetBook(type, quality, itemSprite, itemName, skillNumber, aditionalAbility);
+            rewardSlot.item = ItemDatabase.instance.Set(ItemDatabase.instance.itemCount() - 1);
+            rewardSlot.itemImage.sprite = rewardSlot.item.itemSprite;
         }
         else
         {

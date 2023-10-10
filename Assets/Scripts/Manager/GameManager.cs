@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
     public ShopManager shopManager;
     public NextStageBtn nextStageBtn;
     public Enchant enchant;
+    public CinemachineVirtualCamera virtualCamera;
     private Spawner spawner;
 
     [Header("# Player Data")]
@@ -51,6 +53,7 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverObject;
     public GameObject gameClearObject;
     public GameObject background;
+    public FloatingJoystick joy;
 
     [Header("MainMenu")]
     public Map map;
@@ -67,6 +70,7 @@ public class GameManager : MonoBehaviour
     {
         // 자기 자신으로 초기화
         instance = this;
+    
     }
 
     private void Start()
@@ -91,6 +95,8 @@ public class GameManager : MonoBehaviour
         PoolingReset();
         magicManager.MagicActiveCancel();
         player.transform.position = Vector3.zero;
+        virtualCamera.Follow = null;
+        virtualCamera.transform.position = new Vector3 (0,0,-10);
         player.gameObject.SetActive(false);
         AudioManager.instance.PlayBgm((int)Bgm.Main);
     }
@@ -110,6 +116,7 @@ public class GameManager : MonoBehaviour
             isRedMoon = false;
         }
         redMoonEffect = false;
+        joy.StageClear();
         hud.SetActive(false);
         PoolingReset();  // 모든 폴링 오브젝트 비활성화
         pause.gameObject.SetActive(false); // 퍼즈 버튼 비활성화
@@ -214,6 +221,7 @@ public class GameManager : MonoBehaviour
 
     public void GameStart()
     {
+        virtualCamera.Follow = player.transform;
         isResurrection = false;
         gold = 0;
         enemyMaxNum = 5;
@@ -224,5 +232,10 @@ public class GameManager : MonoBehaviour
         rewardManager.ItemCreate(-1 , 0);
         shop.ShopReset();
         GameManager.instance.demeterOn = false;
+    }
+    public void GameQuit()
+    {
+        AudioManager.instance.SelectSfx();
+        Application.Quit();
     }
 }

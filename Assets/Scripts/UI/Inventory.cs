@@ -18,6 +18,7 @@ public class Inventory : MonoBehaviour
     public RectTransform[] selectAnimations;
     public Text noticeText;
     public string[] noticeTextType;
+    public Vector3 selecetAnimationPos;
 
     [Header("# Uranus Skill")]
     public HorizontalLayoutGroup subEquipmentsLayout;
@@ -254,7 +255,7 @@ public class Inventory : MonoBehaviour
 
         selectAnimations[0].gameObject.SetActive(true);
 
-        selectAnimations[0].transform.position = mainEqquipment.transform.position + new Vector3(0, 80, 0);
+        selectAnimations[0].transform.position = mainEqquipment.transform.position + selecetAnimationPos;
     }
     private void BookEquipmentAnimation() // 마법책 선택 시 장착 관련 애니메이션
     {
@@ -267,7 +268,7 @@ public class Inventory : MonoBehaviour
             }
 
             selectAnimations[i].gameObject.SetActive(true);
-            selectAnimations[i].transform.position = subEqquipments[i].transform.position + new Vector3(0, 80, 0);
+            selectAnimations[i].transform.position = subEqquipments[i].transform.position + selecetAnimationPos;
         }
     }
     public void EquipmentAnimationInit() // 애니메이션 오브젝트들 초기화

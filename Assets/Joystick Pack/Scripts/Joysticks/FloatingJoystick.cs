@@ -23,4 +23,10 @@ public class FloatingJoystick : Joystick
         background.gameObject.SetActive(false);
         base.OnPointerUp(eventData);
     }
+
+    public override void StageClear()
+    {
+        background.gameObject.SetActive(false);
+        base.StageClear();
+    }
 }
