@@ -9,11 +9,11 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
 
     public SlotType slotType;
 
-
     [Header("# Inventory")]
     public ItemPreview preview;
     public bool fixedPreview;
     public Transform fixedPreviewTransform;
+    public Vector3 staffPreiviewPos;
 
     [Header("# Enchant")]
     public Enchant enchant;
@@ -174,13 +174,32 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         {
             if (ItemDatabase.instance.Set(i) == item)
             {
+                if (item.isEquip) // 장착중인 아이템이라면 
+                {
+                    if (item.type == ItemType.Book) // 마법책
+                    {
+                        GameManager.instance.inventory.SkillBookInit();
+                        item.reset();
+                        GameManager.instance.inventory.SkillBookActive();
+                    }
+                    else // 스태프
+                    {
+                       item.reset();
+                        GameManager.instance.inventory.EquipStaff();
+                    }
+                    ItemDatabase.instance.ItemRemove(i);
+                    break;
+                }
+                item.reset();
                 ItemDatabase.instance.ItemRemove(i);
                 break;
             }
         }
-        item.reset();
+
+
         itemImage.sprite = null;
         sell.ItemLoad();
+
         GameManager.instance.gold += itemPrice;
         AudioManager.instance.PlayerSfx(Sfx.BuySell);
         shop.WarningTextOn(ShopWarningText.ItemSell); // 아이템 판매 텍스트
@@ -222,7 +241,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
 
             if (slotType == SlotType.Main)
             {
-                preview.gameObject.transform.position = transform.position + new Vector3(-350, -120, 0);
+                preview.gameObject.transform.position = transform.position + staffPreiviewPos;
             }
             else if (!fixedPreview)
             {

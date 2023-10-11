@@ -7,7 +7,7 @@ public class NextStageBtn : MonoBehaviour // 다음스테이지로 가는 버튼 (무기를 장
     private Button btn;
     private Inventory inventory;
     public Text[] btnTexts;
-    private void Start()
+    private void Awake()
     {
         btn = GetComponent<Button>();
         inventory = GameManager.instance.inventory;

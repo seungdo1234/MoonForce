@@ -77,6 +77,8 @@ public class EnchantCheckUI : MonoBehaviour
    
     public void EnchantStart() // 강화 시작
     {
+        enchantStartBtn.interactable = false;
+
         bool enchantResult;
         int random = Random.Range(1, 101);
 
@@ -96,11 +98,16 @@ public class EnchantCheckUI : MonoBehaviour
                 case ItemType.Book:
                     Item materialItem = itemSlots[1].item;
 
-                    enchantItem.aditionalAbility[selectEnchantAditionalNum] = materialItem.aditionalAbility[selectMaterialAditionalNum];
                     if (enchantItem.isEquip)
                     {
-                        GameManager.instance.inventory.EquipBooks();
-                    }                     
+                        GameManager.instance.inventory.SkillBookInit();
+                        enchantItem.aditionalAbility[selectEnchantAditionalNum] = materialItem.aditionalAbility[selectMaterialAditionalNum];
+                        GameManager.instance.inventory.SkillBookActive();
+                    }
+                    else
+                    {
+                        enchantItem.aditionalAbility[selectEnchantAditionalNum] = materialItem.aditionalAbility[selectMaterialAditionalNum];
+                    }
                     break;
             }
 
@@ -121,11 +128,23 @@ public class EnchantCheckUI : MonoBehaviour
                 {
                     if (item.type == ItemType.Book) // 마법책
                     {
-                        itemSlots[1].item.reset(); 
+                        GameManager.instance.inventory.SkillBookInit();
+                        itemSlots[1].item.reset();
                         GameManager.instance.inventory.SkillBookActive();
                     }
                     else // 스태프
                     {
+                        if (itemSlots[i].item.rank == ItemRank.Legendary)
+                        {
+                            if (itemSlots[i].item.skillNum != 0)
+                            {
+                                GameManager.instance.magicManager.magicInfo[itemSlots[i].item.skillNum].isMagicActive = false;
+                            }
+                            else
+                            {
+                                GameManager.instance.inventory.UranusOff();
+                            }
+                        }
                         itemSlots[1].item.reset();
                         GameManager.instance.inventory.EquipStaff();
                     }

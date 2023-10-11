@@ -208,6 +208,7 @@ public class GameManager : MonoBehaviour
         else
         {
             gameStop = true;
+            joy.StageClear();
             hud.SetActive(false);
             pause.gameObject.SetActive(false);
             AudioManager.instance.PlayBgm((int)Bgm.GameOver);
@@ -216,6 +217,7 @@ public class GameManager : MonoBehaviour
 
         level = 0;
         spawner.spawnPerLevelUp = 0;
+        
     }
 
 
@@ -223,6 +225,7 @@ public class GameManager : MonoBehaviour
     {
         virtualCamera.Follow = player.transform;
         isResurrection = false;
+        level = 0;
         gold = 0;
         enemyMaxNum = 5;
         spawner.spawnPerLevelUp = 0;
@@ -232,6 +235,7 @@ public class GameManager : MonoBehaviour
         rewardManager.ItemCreate(-1 , 0);
         shop.ShopReset();
         GameManager.instance.demeterOn = false;
+        nextStageBtn.LevelText(level);
     }
     public void GameQuit()
     {

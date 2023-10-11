@@ -64,7 +64,11 @@ public class Enemy : MonoBehaviour
     {
         if (GameManager.instance.gameStop || !isLive || anim.GetCurrentAnimatorStateInfo(0).IsName("Hit") || rush.isReady || !rangeAttackEnemy.isReady || GameManager.instance.demeterOn) // Enemy가 죽었다면 return
         {
-          //  rigid.velocity = Vector2.zero;
+
+            if (GameManager.instance.demeterOn)
+            {
+                rigid.velocity = Vector2.zero;
+            }
             return;
         }
 
@@ -205,26 +209,29 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            AudioManager.instance.PlayerSfx(Sfx.Dead);
-
-            StopAllCoroutines();
-            if (anim.speed != 1) // 디버프 상태에서 죽는다면
+            if (isLive) // 중복 킬 오류 해결
             {
-                anim.speed = 1f;
-            }
-            isRestraint = false;
-            spriteRenderer.color = new Color(1, 1, 1, 1); // 색깔 되 돌리기
-            isLive = false; // 죽었다 체크
-            col.enabled = false; // 콜라이더 비활성화
-            rigid.simulated = false; // rigidbody2D 정지
-            spriteRenderer.sortingOrder = 1; // 죽은 ENemy가 다른 Enemy를 가리지 않도록 OrderLayer를 1로 내림
-            anim.SetBool("Dead", true);
-            GameManager.instance.kill++;
+                AudioManager.instance.PlayerSfx(Sfx.Dead);
 
-            GameManager.instance.gold += enemyType + 1;
-            if(statusEffect == EnemyStatusEffect.Darkness)
-            {
-                ExplosionSpawn();
+                StopAllCoroutines();
+                if (anim.speed != 1) // 디버프 상태에서 죽는다면
+                {
+                    anim.speed = 1f;
+                }
+                isRestraint = false;
+                spriteRenderer.color = new Color(1, 1, 1, 1); // 색깔 되 돌리기
+                isLive = false; // 죽었다 체크
+                col.enabled = false; // 콜라이더 비활성화
+                rigid.simulated = false; // rigidbody2D 정지
+                spriteRenderer.sortingOrder = 1; // 죽은 ENemy가 다른 Enemy를 가리지 않도록 OrderLayer를 1로 내림
+                anim.SetBool("Dead", true);
+                GameManager.instance.kill++;
+
+                GameManager.instance.gold += enemyType + 1;
+                if (statusEffect == EnemyStatusEffect.Darkness)
+                {
+                    ExplosionSpawn();
+                }
             }
         }
     }

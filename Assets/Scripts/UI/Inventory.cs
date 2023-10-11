@@ -311,6 +311,7 @@ public class Inventory : MonoBehaviour
     }
     public void EquipBooks() // 장착 마법책 적용
     {
+
         SkillBookInit();
 
         SkillBookActive();
@@ -354,6 +355,7 @@ public class Inventory : MonoBehaviour
     }
     public void EquipStaff()
     {
+
         prevEquipStaff.isEquip = false;
         mainEqquipment.item.isEquip = true;
         // 능력치 적용
