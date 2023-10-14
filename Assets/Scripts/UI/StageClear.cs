@@ -48,6 +48,8 @@ public class StageClear : MonoBehaviour
 
         AudioManager.instance.PlayerSfx(Sfx.ChestOpen);
 
+        reward.gameObject.SetActive(true);
+
         GetReward();
 
         chestOpenBtn.interactable = false;
@@ -95,6 +97,7 @@ public class StageClear : MonoBehaviour
         rewardTypeSelecet.SetActive(true);
         chestOpenBtn.interactable = true;
         nextBtn.gameObject.SetActive(false);
+        reward.gameObject.SetActive(false);
     }
 
     private IEnumerator Delay(float delayTime)

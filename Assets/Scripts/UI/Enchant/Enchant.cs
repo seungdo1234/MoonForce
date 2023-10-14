@@ -29,6 +29,7 @@ public class Enchant : MonoBehaviour
  
     private void OnEnable()
     {
+        enchantWaitSlot = null;
         enchantNoticeText.text = noticeType[(int)EnchantNoticeType.EncahntItemSelect];
         itemSelect = false;
         ItemLoad();

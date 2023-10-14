@@ -54,6 +54,7 @@ public class Shop : MonoBehaviour
     }
     private void OnEnable()
     {
+        shopWaitSlot = null;
         warningTextObject.gameObject.SetActive(false);
     }
     public void StaffCreate(Item item) // 스태프 생성

@@ -169,7 +169,7 @@ public class ItemPreview : MonoBehaviour
         itemInfomation[4].text = null;
 
         itemInfomation[0].text = string.Format("<color=black>{0}</color> ", item.itemName);
-        itemInfomation[3].text = string.Format("<color=red>{0}</color>의 체력을 회복합니다.", item.attack);
+        itemInfomation[3].text = string.Format("최대체력의 <color=red>{0}%</color>의 체력을 회복합니다.", item.attack);
 
     }
     private void EssenceInfoSet(Item item)

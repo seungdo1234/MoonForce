@@ -126,17 +126,21 @@ public class EnchantCheckUI : MonoBehaviour
             {
                 if (item.isEquip) // 장착중인 아이템이라면 
                 {
+                    Debug.Log("장착 확인");
                     if (item.type == ItemType.Book) // 마법책
                     {
+                        Debug.Log("마법책 확인");
                         GameManager.instance.inventory.SkillBookInit();
                         itemSlots[1].item.reset();
                         GameManager.instance.inventory.SkillBookActive();
+                        Debug.Log("마법책 초기화");
                     }
                     else // 스태프
                     {
-                        if (itemSlots[i].item.rank == ItemRank.Legendary)
+                        if (itemSlots[1].item.rank == ItemRank.Legendary)
                         {
-                            if (itemSlots[i].item.skillNum != 0)
+                            Debug.Log("스태프 레전드리 확인");
+                            if (itemSlots[1].item.skillNum != 0)
                             {
                                 GameManager.instance.magicManager.magicInfo[itemSlots[i].item.skillNum].isMagicActive = false;
                             }
@@ -145,10 +149,13 @@ public class EnchantCheckUI : MonoBehaviour
                                 GameManager.instance.inventory.UranusOff();
                             }
                         }
+                        Debug.Log("스태프 확인");
                         itemSlots[1].item.reset();
                         GameManager.instance.inventory.EquipStaff();
+                        Debug.Log("스태프 초기화");
                     }
                     ItemDatabase.instance.ItemRemove(i);
+                    Debug.Log("아이템 초기화");
                     break;
                 }
                 itemSlots[1].item.reset();

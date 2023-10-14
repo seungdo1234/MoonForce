@@ -34,6 +34,7 @@ public class Inventory : MonoBehaviour
 
     private void OnEnable()
     {
+        equipWaitItemSlot = null;
         GetItems();
     }
 

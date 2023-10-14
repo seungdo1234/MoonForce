@@ -132,7 +132,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
                     break;
                 case ItemType.Posion:
                     shop.WarningTextOn(ShopWarningText.Healing);
-                    GameManager.instance.statManager.curHealth = Mathf.Min(GameManager.instance.statManager.curHealth + item.attack, GameManager.instance.statManager.maxHealth);
+                    GameManager.instance.statManager.curHealth = Mathf.Min((GameManager.instance.statManager.maxHealth * ((float)item.attack * 0.01f)) + GameManager.instance.statManager.curHealth, GameManager.instance.statManager.maxHealth);
                     break;
                 case ItemType.Esscence:
                     shop.WarningTextOn(ShopWarningText.Essence);
@@ -255,6 +255,10 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
             if (slotType == SlotType.SellSpace)
             {
                 preview.IsSell(true, itemPrice);
+            }
+            else
+            {
+                preview.IsSell(false, itemPrice);
             }
 
             preview.ItemInfoSet(item);
