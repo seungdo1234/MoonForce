@@ -4,14 +4,20 @@ public class Reposition : MonoBehaviour
 {
     public Vector3 initPos;
 
+    public float distanceRange;
     // 모든 콜라이더를 아우르는 클래스
     private Collider2D col;
-
+    private Enemy enemy;
     private void Awake()
     {
         col = GetComponent<Collider2D>();
 
         initPos = transform.position;
+
+        if (transform.CompareTag("Enemy"))
+        {
+            enemy = GetComponent<Enemy>();
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -53,8 +59,7 @@ public class Reposition : MonoBehaviour
                 break;
             case "Enemy":
                 if (col.enabled) // 만약 콜라이더가 살아있다면
-                {
-                    Enemy enemy = col.GetComponent<Enemy>();
+                {                
 
                     if (enemy.isRestraint)
                     {
@@ -63,7 +68,7 @@ public class Reposition : MonoBehaviour
                     }
 
                     Vector3 dist = playerPos - myPos;
-                    Vector3 rand = new Vector3(Random.Range(-3, 4), Random.Range(-3, 4), 0); // 랜덤
+                    Vector3 rand = new Vector3(Random.Range(-3, 3), Random.Range(-3, 3), 0); // 랜덤
 
                     transform.Translate(rand + dist * 2);
                 }
@@ -71,4 +76,6 @@ public class Reposition : MonoBehaviour
         }
 
     }
+
+
 }

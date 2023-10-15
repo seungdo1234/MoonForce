@@ -46,7 +46,6 @@ public class ItemPreview : MonoBehaviour
 
         itemInfomation[2].text = null;
         itemInfomation[3].text = null;
-        itemInfomation[4].text = null;
 
         for (int i = 0; i < item.aditionalAbility.Length; i++)
         {
@@ -84,6 +83,7 @@ public class ItemPreview : MonoBehaviour
         }
         itemInfomation[0].text = string.Format("<color=black>{0}</color>", item.bookName);
         itemInfomation[1].text = itemQuality;
+        itemInfomation[4].text = "¸¶·ÂÅº °¹¼ö + 1";
     }
     private void StaffInfoSet(Item item)
     {
