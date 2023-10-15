@@ -17,20 +17,27 @@ public class Shop : MonoBehaviour
     public Text goldText; // 현재 골드 텍스트
     public GameObject[] soldOutTexts; // 팔림 표시
 
+    [Header("# ReRoll")]
+    public Button reRollBtn;
+    public int reRollNum;
+    public int[] reRollPrices;
+    public Text reRollPriceText;
+    public Sprite[] reRollBtnSprites; 
 
     [Header("# WarningText")]
     public Text warningTextObject;
     public string[] warningTexts;
-    public void ShopReset() // 상점 초기화 (매 스테이지 클리어 시 실행)
+
+    public void Staff_Book_Create()
     {
         int level = GameManager.instance.level / 12;
 
         // 레벨 별 스태프 생성
-        if(level == 0)
+        if (level == 0)
         {
             stageClear.ShopItemCreate(GameManager.instance.bronzeChest, 1, 2);
         }
-        else if(level == 1)
+        else if (level == 1)
         {
             stageClear.ShopItemCreate(GameManager.instance.silverChest, 1, 2);
         }
@@ -40,17 +47,46 @@ public class Shop : MonoBehaviour
         }
 
         // 마법책 생성
-        stageClear.ShopItemCreate(GameManager.instance.itemQualityPercent, 1 ,3);
+        stageClear.ShopItemCreate(GameManager.instance.itemQualityPercent, 1, 3);
 
-        stageClear.ShopItemCreate(GameManager.instance.shopManager.healingPosionPercent, 2, -1);
+    }
+    public void ShopReset() // 상점 초기화 (매 스테이지 클리어 시 실행)
+    {
+        // 리롤 초기화
+        reRollNum = 0;
+        reRollPriceText.text = string.Format("{0}", reRollPrices[reRollNum]);
+
+        Staff_Book_Create();
+
+        stageClear.ShopItemCreate(GameManager.instance.shopManager.healingPosionPercent, 2, -1); // 힐링 포션
 
         EssenceCreate();
 
-        for(int i=0; i < soldOutTexts.Length; i++)
+        SoldOutTextOff();
+    }
+    public void SoldOutTextOff() // 판매완료 텍스트 비활성화
+    {
+        for (int i = 0; i < soldOutTexts.Length; i++)
         {
             soldOutTexts[i].SetActive(false);
         }
+    }
+    public void ReRoll() // 리롤
+    {
 
+        GameManager.instance.gold -= reRollPrices[reRollNum];
+        if(reRollNum != reRollPrices.Length - 1)
+        {
+            reRollNum++;
+            reRollPriceText.text = string.Format("{0}", reRollPrices[reRollNum]);
+        }
+
+        shopWaitSlot = null;
+
+        Staff_Book_Create();
+        SoldOutTextOff();
+
+        AudioManager.instance.SelectSfx();
     }
     private void OnEnable()
     {
@@ -123,7 +159,21 @@ public class Shop : MonoBehaviour
     }
     private void Update()
     {
+        // 리롤 버튼 활성화 비활성화
+        if(reRollPrices[reRollNum] <= GameManager.instance.gold && !reRollBtn.interactable)
+        {
+            reRollBtn.interactable = true;
+            reRollBtn.image.sprite = reRollBtnSprites[0];
+        }
+        else if(reRollPrices[reRollNum] > GameManager.instance.gold && reRollBtn.interactable)
+        {
+            reRollBtn.interactable = false;
+            reRollBtn.image.sprite = reRollBtnSprites[1];
+        }
+
         // 현재 골드
         goldText.text = string.Format("{0}", GameManager.instance.gold);
     }
+
+    
 }

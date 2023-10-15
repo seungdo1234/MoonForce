@@ -19,7 +19,6 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     public Enchant enchant;
 
     [Header("# Shop")]
-    public Text priceText;
     public Shop_Sell sell;
     public Shop shop;
     private int itemPrice;
@@ -249,10 +248,17 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
             }
             else if (fixedPreview)
             {
-                preview.gameObject.transform.position = fixedPreviewTransform.position + new Vector3(0, 60, 0);
+                if(slotType == SlotType.ShopSpace)
+                {
+                    preview.gameObject.transform.position = transform.position + new Vector3(-50, 60, 0);
+                }
+                else
+                {
+                    preview.gameObject.transform.position = fixedPreviewTransform.position + new Vector3(0, 60, 0);
+                }
             }
 
-            if (slotType == SlotType.SellSpace)
+            if (slotType == SlotType.SellSpace || slotType == SlotType.ShopSpace)
             {
                 preview.IsSell(true, itemPrice);
             }
@@ -321,15 +327,34 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
             }
         }
     }
-    public void ItemPriceLoad() // 랜덤 상점 아이템 가격 
+    public void ItemPriceLoad() // 아이템 가격 
     {
+        if(item == null)
+        {
+            return;
+        }
+
         switch (item.type)
         {
             case ItemType.Staff:
-                itemPrice = GameManager.instance.shopManager.staffRankPrices[(int)item.rank - 1];
+                if(slotType == SlotType.ShopSpace)
+                {
+                    itemPrice = GameManager.instance.shopManager.staffRankPrices[(int)item.rank - 1];
+                }
+                else
+                {
+                    itemPrice = GameManager.instance.shopManager.staffRankSalePrices[(int)item.rank - 1];
+                }
                 break;
             case ItemType.Book:
-                itemPrice = GameManager.instance.shopManager.bookQualityPrices[(int)item.quality - 1];
+                if (slotType == SlotType.ShopSpace)
+                {
+                    itemPrice = GameManager.instance.shopManager.bookQualityPrices[(int)item.quality - 1];
+                }
+                else
+                {
+                    itemPrice = GameManager.instance.shopManager.bookQualitySalePrices[(int)item.quality - 1];
+                }
                 break;
             case ItemType.Posion:
                 itemPrice = GameManager.instance.shopManager.healingPosions[(int)item.quality - 1].healingPosionPrice;
@@ -338,23 +363,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
                 itemPrice = item.attack;
                 break;
         }
-        priceText.text = string.Format("{0}", itemPrice);
     }
 
-    public void ItemSalePriceLoad() // 내 아이템 가격
-    {
-        if (item != null)
-        {
-            switch (item.type)
-            {
-                case ItemType.Staff:
-                    itemPrice = GameManager.instance.shopManager.staffRankSalePrices[(int)item.rank - 1];
-                    break;
-                case ItemType.Book:
-                    itemPrice = GameManager.instance.shopManager.bookQualitySalePrices[(int)item.quality - 1];
-                    break;
-            }
-
-        }
-    }
+    
 }
