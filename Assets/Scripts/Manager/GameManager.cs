@@ -76,6 +76,9 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         spawner = player.GetComponentInChildren<Spawner>();
+
+
+        
     }
     private bool isClear()
     {

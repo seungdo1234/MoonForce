@@ -253,25 +253,32 @@ public class Inventory : MonoBehaviour
     }
     private void StaffEquipmentAnimation() // 스태프 선택 시 장착 관련 애니메이션
     {
-
+        // Staff 슬롯의 애니메이션만 활성화
         selectAnimations[0].gameObject.SetActive(true);
 
-        selectAnimations[0].transform.position = mainEqquipment.transform.position + selecetAnimationPos;
+        // Staff 슬롯에 애니메이션 적용
+        selectAnimations[0].SetParent(mainEqquipment.transform, false);
+        selectAnimations[0].transform.localPosition = selecetAnimationPos;
     }
+
     private void BookEquipmentAnimation() // 마법책 선택 시 장착 관련 애니메이션
     {
-
-        for (int i =0; i < subEqquipments.Length; i++)
+        for (int i = 0; i < subEqquipments.Length; i++)
         {
-            if(i == subEqquipments.Length -1 && !uranusSlot.activeSelf)
+            if (i == subEqquipments.Length - 1 && !uranusSlot.activeSelf)
             {
                 break;
             }
 
+            // 각 서브 슬롯에 대한 애니메이션 활성화
             selectAnimations[i].gameObject.SetActive(true);
-            selectAnimations[i].transform.position = subEqquipments[i].transform.position + selecetAnimationPos;
+
+            // 해당 서브 슬롯에 애니메이션 적용
+            selectAnimations[i].SetParent(subEqquipments[i].transform, false);
+            selectAnimations[i].transform.localPosition = selecetAnimationPos;
         }
     }
+
     public void EquipmentAnimationInit() // 애니메이션 오브젝트들 초기화
     {
         for(int i =0; i <selectAnimations.Length; i++)

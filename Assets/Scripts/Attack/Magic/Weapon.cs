@@ -41,7 +41,7 @@ public class Weapon : MonoBehaviour
         // Enemy 위치, 방향 구하기
         for(int i = 0; i< GameManager.instance.statManager.weaponNum; i++)
         {
-            if(player.scanner.nearestTarget[i] == null || (GameManager.instance.attribute == ItemAttribute.Dark && i == 1))
+            if(player.scanner.nearestTarget[i] == null)
             {
                 break;
             }

@@ -84,7 +84,9 @@ public class Shop : MonoBehaviour
         shopWaitSlot = null;
 
         Staff_Book_Create();
-        SoldOutTextOff();
+
+        soldOutTexts[0].SetActive(false);
+        soldOutTexts[1].SetActive(false);
 
         AudioManager.instance.SelectSfx();
     }

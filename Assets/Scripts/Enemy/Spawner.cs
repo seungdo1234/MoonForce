@@ -109,7 +109,7 @@ public class Spawner : MonoBehaviour
         }
         for(int i = 0; i<spawnData.Length; i++)
         {
-            spawnData[i].damage += 2;
+            spawnData[i].damage += 1;
             spawnData[i].speed += 0.1f;
             spawnData[i].health += 5 * healthIncrese;
         }

@@ -144,12 +144,14 @@ public class StatManager : MonoBehaviour
         switch (statNumber)
         {
             case 0:
+                attack -= baseAttack;
                 baseAttack += (int)statUpValue[statNumber];
-                attack = baseAttack;
+                attack += baseAttack;
                 break;
             case 1:
+                rate -= baseRate;
                 baseRate -= statUpValue[statNumber];
-                rate = baseRate;
+                rate += baseRate;
                 break;
             case 2:
                 baseMoveSpeed += statUpValue[statNumber];

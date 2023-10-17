@@ -503,7 +503,7 @@ public class Enemy : MonoBehaviour
 
         exp.position = transform.position;
 
-        float expScale = (GameManager.instance.statManager.weaponNum - 1) * 0.15f;
+        float expScale = (GameManager.instance.statManager.penetration - 1) * 0.15f;
         exp.localScale = new Vector3(1, 1, 1) + new Vector3(expScale, expScale, expScale);
     }
 

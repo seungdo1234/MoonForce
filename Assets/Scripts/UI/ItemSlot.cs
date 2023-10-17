@@ -13,7 +13,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     public ItemPreview preview;
     public bool fixedPreview;
     public Transform fixedPreviewTransform;
-    public Vector3 staffPreiviewPos;
+    public Vector3 preiviewPos = new Vector3(0,60,0);
 
     [Header("# Enchant")]
     public Enchant enchant;
@@ -237,27 +237,38 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         {
             preview.gameObject.SetActive(true);
 
+            if(fixedPreview && slotType != SlotType.ShopSpace)
+            {
+                preview.transform.SetParent(fixedPreviewTransform , false) ;
+            }
+            else {
+                preview.transform.SetParent(transform, false);
+            }
 
+
+            preview.transform.localPosition = preiviewPos;
+
+            /*
             if (slotType == SlotType.Main)
             {
-                preview.gameObject.transform.position = transform.position + staffPreiviewPos;
+                preview.gameObject.transform.localPosition = preiviewPos;
             }
             else if (!fixedPreview)
             {
-                preview.gameObject.transform.position = transform.position + new Vector3(-20, 60, 0);
+                preview.gameObject.transform.localPosition = new Vector3(-20, 60, 0);
             }
             else if (fixedPreview)
             {
                 if(slotType == SlotType.ShopSpace)
                 {
-                    preview.gameObject.transform.position = transform.position + new Vector3(-50, 60, 0);
+                    preview.gameObject.transform.localPosition =  new Vector3(-70, 60, 0);
                 }
                 else
                 {
-                    preview.gameObject.transform.position = fixedPreviewTransform.position + new Vector3(0, 60, 0);
+                    preview.gameObject.transform.localPosition = new Vector3(0, 60, 0);
                 }
             }
-
+            */
             if (slotType == SlotType.SellSpace || slotType == SlotType.ShopSpace)
             {
                 preview.IsSell(true, itemPrice);
