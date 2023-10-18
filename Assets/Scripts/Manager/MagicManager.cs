@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MagicManager : MonoBehaviour
 {
-
+    public SkillCoolTimeUI coolTimeUI;
     public Magic[] magicInfo;
 
 
@@ -33,18 +33,24 @@ public class MagicManager : MonoBehaviour
 
     public void StageStart()
     {
+        coolTimeUI.StageStart();
+
+        int slotNum = 0;
+
         for (int i = 0; i < magicInfo.Length; i++)
         {
             if (magicInfo[i].isMagicActive)
             {
-                if(magicInfo[i].magicCoolTime == 0 || i == 18 || i <=  6)
+                GameManager.instance.magicManager.coolTimeUI.CoolTimeStart(slotNum);
+                if (magicInfo[i].magicCoolTime == 0 || i == 18 || i <=  6)
                 {
-                    StartCoroutine( AlwaysPlayMagic(i));
+                    StartCoroutine( AlwaysPlayMagic(i, slotNum));
                 }
                 else
                 {
-                    StartCoroutine(StartCoolTimeMagic(i));
+                    StartCoroutine(StartCoolTimeMagic(i , slotNum));
                 }
+                slotNum++;
             }
         }
     }
@@ -113,7 +119,7 @@ public class MagicManager : MonoBehaviour
     }
 
 
-    private IEnumerator StartCoolTimeMagic(int magicNumber)
+    private IEnumerator StartCoolTimeMagic(int magicNumber, int slotNum)
     {
 
         float timer = 0;
@@ -141,6 +147,8 @@ public class MagicManager : MonoBehaviour
                 {
                     SpawnMagic(magicNumber);
                 }
+
+                coolTimeUI.CoolTimeStart(slotNum);
             }
             yield return null; // นÝบน 
         }
@@ -252,26 +260,26 @@ public class MagicManager : MonoBehaviour
             magic.GetComponent<MagicNumber>().isSizeUp = true;
         }
     }
-    private IEnumerator AlwaysPlayMagic(int magicNumber)
+    private IEnumerator AlwaysPlayMagic(int magicNumber, int slotNum)
     {
         yield return null;
 
         switch (magicNumber)
         {
             case 1:
-                InfernoSpawn(magicNumber);
+                InfernoSpawn(magicNumber , slotNum);
                 break;
             case 2:
-                PoseidonSpawn(magicNumber);
+                PoseidonSpawn(magicNumber , slotNum);
                 break;
             case 3:
-                GaiaSpawn(magicNumber);
+                GaiaSpawn(magicNumber , slotNum);
                 break;
             case 4:
-                LeafSpawn(magicNumber);
+                LeafSpawn(magicNumber, slotNum);
                 break;
             case 5:
-                JackSpawn(magicNumber);
+                JackSpawn(magicNumber , slotNum);
                 break;
             case 10:
                 ShovelSpawn(magicNumber);
@@ -280,47 +288,47 @@ public class MagicManager : MonoBehaviour
                 MagicBallSpawn(magicNumber);
                 break;
             case 18:
-                ChargeExplosionSpawn(magicNumber);
+                ChargeExplosionSpawn(magicNumber , slotNum);
                 break;
         }
 
 
     }
-    private void LeafSpawn(int magicNumber)
+    private void LeafSpawn(int magicNumber, int slotNum)
     {
         GameObject magic = Get(magicNumber);
 
-        magic.GetComponent<Leaf>().Init(magicInfo[magicNumber].magicCoolTime);
+        magic.GetComponent<Leaf>().Init(magicInfo[magicNumber].magicCoolTime , slotNum);
     }
-    private void JackSpawn(int magicNumber)
+    private void JackSpawn(int magicNumber, int slotNum)
     {
         GameObject magic = Get(magicNumber);
 
-        magic.GetComponent<Jack>().Init(magicInfo[magicNumber].magicCoolTime);
+        magic.GetComponent<Jack>().Init(magicInfo[magicNumber].magicCoolTime , slotNum);
     }
-    private void GaiaSpawn(int magicNumber)
+    private void GaiaSpawn(int magicNumber, int slotNum)
     {
         GameObject magic = Get(magicNumber);
 
-        magic.GetComponent<RockMeteor>().Init(magicInfo[magicNumber].magicCoolTime);
+        magic.GetComponent<RockMeteor>().Init(magicInfo[magicNumber].magicCoolTime, slotNum);
     }
-    private void PoseidonSpawn(int magicNumber)
+    private void PoseidonSpawn(int magicNumber, int slotNum)
     {
         GameObject magic = Get(magicNumber);
 
-        magic.GetComponent<Poseidon>().Init(magicInfo[magicNumber].magicCoolTime);
+        magic.GetComponent<Poseidon>().Init(magicInfo[magicNumber].magicCoolTime, slotNum);
     }
-    private void InfernoSpawn(int magicNumber)
+    private void InfernoSpawn(int magicNumber, int slotNum)
     {
         GameObject magic = Get(magicNumber);
 
-        magic.GetComponent<Inferno>().Init(magicInfo[magicNumber].magicCoolTime);
+        magic.GetComponent<Inferno>().Init(magicInfo[magicNumber].magicCoolTime , slotNum);
     }
-    private void ChargeExplosionSpawn(int magicNumber)
+    private void ChargeExplosionSpawn(int magicNumber, int slotNum)
     {
         GameObject magic = Get(magicNumber);
 
-        magic.GetComponent<ChargeExplosion>().Init(magicInfo[magicNumber].magicCoolTime, magicInfo[magicNumber].magicSizeStep);
+        magic.GetComponent<ChargeExplosion>().Init(magicInfo[magicNumber].magicCoolTime, magicInfo[magicNumber].magicSizeStep , slotNum);
     }
     private void ShovelSpawn(int magicNumber)
     {

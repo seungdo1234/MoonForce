@@ -8,6 +8,7 @@ public class Jack : MonoBehaviour
 
     public float coolTime;
     public float lerpTime;
+    private int slotNum;
     private Player player;
     private SpriteRenderer sprite;
     private void Awake()
@@ -16,10 +17,10 @@ public class Jack : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         mainBackgroud = GameManager.instance.background;
     }
-    public void Init(float coolTime)
+    public void Init(float coolTime , int slotNum)
     {
         this.coolTime = coolTime;
-
+        this.slotNum = slotNum;
 
         sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0);
 
@@ -35,6 +36,7 @@ public class Jack : MonoBehaviour
 
             StartCoroutine(BG_Alpha());
             jack.SetActive(true);
+            GameManager.instance.magicManager.coolTimeUI.CoolTimeStart(slotNum);
         }
     }
 

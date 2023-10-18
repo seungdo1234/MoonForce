@@ -6,9 +6,11 @@ public class Poseidon : MonoBehaviour
 {
     public GameObject[] posedions;
     public float coolTime;
-    public void Init(float coolTime)
+    private int slotNum;
+    public void Init(float coolTime, int slotNum)
     {
         this.coolTime = coolTime;
+        this.slotNum = slotNum;
 
         for (int i = 0; i < posedions.Length; i++) // 생성전 초기화
         {
@@ -33,6 +35,8 @@ public class Poseidon : MonoBehaviour
             {
                 posedions[i].SetActive(true);
             }
+
+            GameManager.instance.magicManager.coolTimeUI.CoolTimeStart(slotNum);
         }
     }
 }

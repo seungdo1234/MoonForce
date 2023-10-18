@@ -133,6 +133,8 @@ public class Inventory : MonoBehaviour
     }
     public void InventoryReset() // 게임 클리어, 게임 오버, 메인메뉴로 갈 때 인벤토리 초기화
     {
+        SkillBookInit();
+
         if (mainEqquipment.item.itemSprite != null)
         {
             mainEqquipment.item.reset();
@@ -286,7 +288,6 @@ public class Inventory : MonoBehaviour
             selectAnimations[i].gameObject.SetActive(false);
         }
     }
-
     public void SkillBookInit()
     {
         for (int i = 0; i < equipBooks.Count; i++) // 전에 장착한 마법 책 스킬 초기화
@@ -344,7 +345,7 @@ public class Inventory : MonoBehaviour
                     }
                     else
                     {
-                        GameManager.instance.magicManager.magicInfo[item.skillNum].magicCoolTime -= GameManager.instance.magicManager.magicInfo[item.skillNum].coolTimeDecreaseValue * operation;
+                        GameManager.instance.magicManager.magicInfo[item.skillNum].magicCoolTime -= Mathf.Max(GameManager.instance.magicManager.magicInfo[item.skillNum].coolTimeDecreaseValue * operation, 0);
                     }
                     break;
                 case 2:

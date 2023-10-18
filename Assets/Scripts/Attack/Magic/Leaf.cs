@@ -8,15 +8,15 @@ public class Leaf : MonoBehaviour
     public float coolTime;
 
     private ParticleSystem leaf;
-
+    private int slotNum;
     private void Awake()
     {
         leaf = GetComponent<ParticleSystem>();
     }
-    public void Init(float coolTime)
+    public void Init(float coolTime , int slotNim)
     {
         this.coolTime = coolTime;
-
+        this.slotNum = slotNum;
 
         StartCoroutine(LeafStart());
     }
@@ -29,6 +29,7 @@ public class Leaf : MonoBehaviour
 
             leaf.Play();
             StartCoroutine(Demeter());
+            GameManager.instance.magicManager.coolTimeUI.CoolTimeStart(slotNum);
         }
     }
 

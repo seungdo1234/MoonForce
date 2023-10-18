@@ -9,14 +9,16 @@ public class Inferno : MonoBehaviour // 화염속성 레전드리 무기의 스킬
 
 
     public float coolTime;
+    private int slotNum;
     private Player player;
     private void Start()
     {
         player = GameManager.instance.player;
     }
-    public void Init(float coolTime)
+    public void Init(float coolTime , int slotNum)
     {
         this.coolTime = coolTime;
+        this.slotNum = slotNum;
 
         for(int i =0; i < infernos.Length; i++) // 생성전 초기화
         {
@@ -53,6 +55,7 @@ public class Inferno : MonoBehaviour // 화염속성 레전드리 무기의 스킬
                 point++;
                 if(point == infernos.Length)
                 {
+                    GameManager.instance.magicManager.coolTimeUI.CoolTimeStart(slotNum);
                     point = 0;
                     skillOn = false;
                 }

@@ -42,7 +42,7 @@ public class ItemDatabase : MonoBehaviour
     }
     public void ItemReset()
     {
-        itemDB.Clear();
         GameManager.instance.inventory.InventoryReset();
+        itemDB.Clear();
     }
 }

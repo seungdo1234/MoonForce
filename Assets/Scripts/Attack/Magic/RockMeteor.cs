@@ -8,7 +8,7 @@ public class RockMeteor : MonoBehaviour
 
     public float delayTime;
     public float coolTime;
-
+    private int slotNum;
     private Player player;
     private void Start()
     {
@@ -23,9 +23,10 @@ public class RockMeteor : MonoBehaviour
 
     }
 
-    public void Init(float coolTime)
+    public void Init(float coolTime, int slotNum)
     {
         this.coolTime = coolTime;
+        this.slotNum = slotNum;
 
         for (int i = 0; i < wayPoints.Length; i++) // 활성화된 돌이 있을 경우 비활성화
         {
@@ -71,6 +72,7 @@ public class RockMeteor : MonoBehaviour
                     ready = false;
                     curTime = 0;
                     point = 0;
+                    GameManager.instance.magicManager.coolTimeUI.CoolTimeStart(slotNum);
                 }
 
             }

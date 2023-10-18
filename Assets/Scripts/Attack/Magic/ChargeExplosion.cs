@@ -9,14 +9,14 @@ public class ChargeExplosion : MonoBehaviour
 
     private Animator anim;
     private CircleCollider2D col;
-
+    private int slotNum;
     private void Awake()
     {
         anim = GetComponent<Animator>();
         col = GetComponent<CircleCollider2D>();
     }
 
-    public void Init(float coolTime , int magicSizeStep) // 충전 폭발 초기화
+    public void Init(float coolTime , int magicSizeStep , int slotNum) // 충전 폭발 초기화
     {
         lerpTime = coolTime;
         transform.localScale = Vector3.one;
@@ -43,6 +43,7 @@ public class ChargeExplosion : MonoBehaviour
                 curTime = 0;
                 anim.SetTrigger("Explosion");
                 transform.localScale = magicScale;
+                GameManager.instance.magicManager.coolTimeUI.CoolTimeStart(slotNum);
             }
 
             yield return null;
