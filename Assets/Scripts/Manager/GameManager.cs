@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     public ShopManager shopManager;
     public NextStageBtn nextStageBtn;
     public Enchant enchant;
-    public CinemachineVirtualCamera virtualCamera;
+    public SkillCoolTimeUI coolTime;
     private Spawner spawner;
 
     [Header("# Player Data")]
@@ -47,6 +47,8 @@ public class GameManager : MonoBehaviour
     public bool demeterOn;
 
     [Header("# UI")]
+    public GameObject lobby;
+    public GameObject lobbyAnim;
     public GameObject clearReward;
     public GameObject hud;
     public RedMoonEffect redMoon;
@@ -54,6 +56,8 @@ public class GameManager : MonoBehaviour
     public GameObject gameClearObject;
     public GameObject background;
     public FloatingJoystick joy;
+    public LoadingImage loadingImage;
+    public float lobbyDelayTime;
 
     [Header("MainMenu")]
     public Map map;
@@ -90,6 +94,26 @@ public class GameManager : MonoBehaviour
     }
     public void GameLobby() // 로비로 갈 때 (죽거나, 설정 창에서 가거나)
     {
+        gameStop = true;
+        loadingImage.Loading(0, 1);
+        AudioManager.instance.EndBgm();
+        StartCoroutine(LoadingTime());
+    }
+    private IEnumerator LoadingTime()
+    {
+        yield return new WaitForSeconds(loadingImage.lerpTime);
+
+        LobbyGo();
+        yield return new WaitForSeconds(lobbyDelayTime);
+        loadingImage.Loading(1, 0);
+
+        yield return new WaitForSeconds(loadingImage.lerpTime);
+    }
+    public void LobbyGo()
+    {
+        lobby.SetActive(true);
+        lobbyAnim.SetActive(true);
+        player.transform.position = Vector3.zero;
         background.SetActive(true);
         hud.SetActive(false);
         // 아이템 데이터 베이스 초기화
@@ -97,9 +121,6 @@ public class GameManager : MonoBehaviour
         map.MapReset();
         PoolingReset();
         magicManager.MagicActiveCancel();
-        player.transform.position = Vector3.zero;
-        virtualCamera.Follow = null;
-        virtualCamera.transform.position = new Vector3 (0,0,-10);
         player.gameObject.SetActive(false);
         AudioManager.instance.PlayBgm((int)Bgm.Main);
     }
@@ -226,7 +247,6 @@ public class GameManager : MonoBehaviour
 
     public void GameStart()
     {
-        virtualCamera.Follow = player.transform;
         isResurrection = false;
         level = 0;
         gold = 0;

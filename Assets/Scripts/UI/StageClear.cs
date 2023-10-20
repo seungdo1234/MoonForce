@@ -6,6 +6,7 @@ public class StageClear : MonoBehaviour
 {
     public RuntimeAnimatorController[] animCon;
     public Image reward;
+    public ItemSlot rewardSlot;
 
     private int rewardType;
     private int chestType;
@@ -19,7 +20,7 @@ public class StageClear : MonoBehaviour
     {
         chestAnim = GetComponentInChildren<Animator>(true);
         chestImage = GetComponentInChildren<Image>(true);
-
+        rewardSlot = reward.GetComponent<ItemSlot>();
     }
 
     public void RewardSelect(int rewardType)
@@ -98,6 +99,8 @@ public class StageClear : MonoBehaviour
         chestOpenBtn.interactable = true;
         nextBtn.gameObject.SetActive(false);
         reward.gameObject.SetActive(false);
+        rewardSlot.SkillSpriteReset();
+
     }
 
     private IEnumerator Delay(float delayTime)

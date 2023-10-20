@@ -16,6 +16,7 @@ public class SkillCoolTimeUI : MonoBehaviour
 
     }
 
+    // 스킬 쿨타임 표시 활성화
     public void StageStart()
     {
         int acitiveMagic = 0;
@@ -42,6 +43,7 @@ public class SkillCoolTimeUI : MonoBehaviour
 
     }
 
+    // 쿨타임 시작
     public void CoolTimeStart(int slotNum)
     {
         slots[slotNum].CoolTime();

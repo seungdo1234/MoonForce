@@ -41,13 +41,13 @@ public class MagicManager : MonoBehaviour
         {
             if (magicInfo[i].isMagicActive)
             {
-                GameManager.instance.magicManager.coolTimeUI.CoolTimeStart(slotNum);
                 if (magicInfo[i].magicCoolTime == 0 || i == 18 || i <=  6)
                 {
                     StartCoroutine( AlwaysPlayMagic(i, slotNum));
                 }
                 else
                 {
+                    GameManager.instance.magicManager.coolTimeUI.CoolTimeStart(slotNum);
                     StartCoroutine(StartCoolTimeMagic(i , slotNum));
                 }
                 slotNum++;

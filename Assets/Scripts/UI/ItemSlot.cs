@@ -29,10 +29,13 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     public Image itemImage;
 
 
+    public Image skillBookImage;
     private void Awake()
     {
         itemImage = GetComponent<Image>();
 
+        Image[] image = GetComponentsInChildren<Image>();
+        skillBookImage = image[1];
     }
     public void ImageLoading()
     {
@@ -40,11 +43,50 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         {
             itemImage.sprite = item.itemSprite;
             itemImage.color = new Color(1, 1, 1, 1);
+
+            SkillBookImageLoading();
         }
         else
         {
             itemImage.color = new Color(1, 1, 1, 0);
+            if (skillBookImage.sprite != null)
+            {
+                SkillSpriteReset();
+            }
         }
+    }
+    // 스킬 이미지 로드
+    public void SkillBookImageLoading()
+    {
+
+        switch (item.type)
+        {
+            case ItemType.Staff:
+                if (skillBookImage.sprite != null)
+                {
+                    SkillSpriteReset();
+                }
+                break;
+            case ItemType.Book:
+                if (skillBookImage.sprite == null || skillBookImage.sprite != GameManager.instance.coolTime.skillSprites[item.skillNum - 1])
+                {
+                    SkillSpriteInit();
+                }
+                break;
+        }
+    }
+    // 스킬 이미지 초기화
+    public void SkillSpriteReset()
+    {
+        skillBookImage.sprite = null;
+        skillBookImage.color = new Color(1, 1, 1, 0);
+    }
+    // 스킬 이미지 설정
+    public void SkillSpriteInit()
+    {
+        skillBookImage.sprite = GameManager.instance.coolTime.skillSprites[item.skillNum - 1];
+        skillBookImage.color = new Color(1, 1, 1, 1);
+        skillBookImage.SetNativeSize();
     }
     private void EnchantItemSelecet()
     {
@@ -376,5 +418,10 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         }
     }
 
-    
+
+    private void Update()
+    {
+
+
+    }
 }

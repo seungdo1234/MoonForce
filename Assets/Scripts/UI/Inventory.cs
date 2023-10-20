@@ -345,7 +345,10 @@ public class Inventory : MonoBehaviour
                     }
                     else
                     {
-                        GameManager.instance.magicManager.magicInfo[item.skillNum].magicCoolTime -= Mathf.Max(GameManager.instance.magicManager.magicInfo[item.skillNum].coolTimeDecreaseValue * operation, 0);
+                        if(GameManager.instance.magicManager.magicInfo[item.skillNum].magicCoolTime - GameManager.instance.magicManager.magicInfo[item.skillNum].coolTimeDecreaseValue * operation >= 0)
+                        {
+                            GameManager.instance.magicManager.magicInfo[item.skillNum].magicCoolTime -= GameManager.instance.magicManager.magicInfo[item.skillNum].coolTimeDecreaseValue * operation;
+                        }
                     }
                     break;
                 case 2:
@@ -380,17 +383,7 @@ public class Inventory : MonoBehaviour
         }
         GameManager.instance.statManager.moveSpeed = GameManager.instance.statManager.baseMoveSpeed + mainEqquipment.item.moveSpeed;
 
-        if (mainEqquipment.item.rank == ItemRank.Legendary) // 장착한 아이템이 레전드리 아이템이라면 스킬 On
-        {
-            if(mainEqquipment.item.skillNum != 0)
-            {
-                GameManager.instance.magicManager.magicInfo[mainEqquipment.item.skillNum].isMagicActive = true;
-            }
-            else
-            {
-                UranusOn();
-            }
-        }
+
 
         if (prevEquipStaff.rank == ItemRank.Legendary) // 장착해제한 아이템이 레전드 아이템 이라면 해당 스킬 Off
         {
@@ -402,6 +395,18 @@ public class Inventory : MonoBehaviour
             else
             {
                 UranusOff();
+            }
+        }
+
+        if (mainEqquipment.item.rank == ItemRank.Legendary) // 장착한 아이템이 레전드리 아이템이라면 스킬 On
+        {
+            if(mainEqquipment.item.skillNum != 0)
+            {
+                GameManager.instance.magicManager.magicInfo[mainEqquipment.item.skillNum].isMagicActive = true;
+            }
+            else
+            {
+                UranusOn();
             }
         }
 
