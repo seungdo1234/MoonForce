@@ -13,7 +13,7 @@ public class Leaf : MonoBehaviour
     {
         leaf = GetComponent<ParticleSystem>();
     }
-    public void Init(float coolTime , int slotNim)
+    public void Init(float coolTime , int slotNum)
     {
         this.coolTime = coolTime;
         this.slotNum = slotNum;

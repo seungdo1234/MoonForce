@@ -64,7 +64,6 @@ public class StatManager : MonoBehaviour
 
     [Header("# Holy Attribute Stat")]
     public float instantKillPer; // Áï»ç È®·ü
-    public float baseInstantKillPer; // Áï»ç È®·ü
 
 
 
@@ -82,7 +81,6 @@ public class StatManager : MonoBehaviour
         restraintTime = baseRestraintTime;
         speedReducePer = baseSpeedReducePer;
         darkExplosionDamagePer = baseDarkExplosionDamagePer;
-        instantKillPer = baseInstantKillPer;
 
         for(int i =0; i<statLevels.Length; i++)
         {
@@ -181,9 +179,6 @@ public class StatManager : MonoBehaviour
                 break;
             case 10:
                 darkExplosionDamagePer += statUpValue[statNumber];
-                break;
-            case 11:
-                instantKillPer += statUpValue[statNumber];
                 break;
         }
     }

@@ -8,7 +8,7 @@ public class Jack : MonoBehaviour
 
     public float coolTime;
     public float lerpTime;
-    private int slotNum;
+    public int slotNum;
     private Player player;
     private SpriteRenderer sprite;
     private void Awake()
@@ -19,6 +19,7 @@ public class Jack : MonoBehaviour
     }
     public void Init(float coolTime , int slotNum)
     {
+        jack.SetActive(false);
         this.coolTime = coolTime;
         this.slotNum = slotNum;
 

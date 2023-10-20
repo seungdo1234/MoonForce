@@ -9,7 +9,7 @@ public class ChargeExplosion : MonoBehaviour
 
     private Animator anim;
     private CircleCollider2D col;
-    private int slotNum;
+    public int slotNum;
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -19,6 +19,7 @@ public class ChargeExplosion : MonoBehaviour
     public void Init(float coolTime , int magicSizeStep , int slotNum) // 충전 폭발 초기화
     {
         lerpTime = coolTime;
+        this.slotNum = slotNum;
         transform.localScale = Vector3.one;
 
         if (magicSizeStep != 0)

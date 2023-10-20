@@ -44,7 +44,7 @@ public class StatText : MonoBehaviour
         }
 
         StatTexts[1].text = string.Format("공격력   : {0:F0}  ({1:F0} + <color=red>{2:F0}</color> + <color=blue>{3:F0}</color>)", statManager.attack, statManager.baseAttack, mainEquipment.attack , statManager.essenceStat[0]);
-        StatTexts[2].text = string.Format("공격속도 : {0:F0}% ({1:F0}% + <color=red>{2:F0}</color>% + <color=blue>{3:F0}</color>%)", rate, baseRate, mainEquipment.rate * 100 , statManager.essenceStat[2] * 100);
+        StatTexts[2].text = string.Format("공격속도 : {0:F0}% ({1:F0}% + <color=red>{2:F0}</color>% + <color=blue>{3:F0}</color>%)", baseRate + mainEquipment.rate * 100, baseRate, mainEquipment.rate * 100 , statManager.essenceStat[2] * 100);
         StatTexts[3].text = string.Format("이동속도 : {0:F0}% ({1:F0}% + <color=blue>{2:F0}</color>%)", baseMoveSpeed + addMoveSpeed, baseMoveSpeed, addMoveSpeed);
         StatTexts[4].text = string.Format("체력 : <color=red>{0:F0}</color>/{1:F0}", statManager.curHealth, statManager.maxHealth);
 
