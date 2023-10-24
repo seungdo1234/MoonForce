@@ -30,8 +30,9 @@ public class Spawner : MonoBehaviour
     public  void StageStart()
     {
         EnemyRandomTypeSelect();
+        EnemySpawnTime();
 
-        for(int i =0; i < spawnData.Length; i++)
+        for (int i =0; i < spawnData.Length; i++)
         {
             if(enemySpawnNum[i] != 0)
             {
@@ -65,8 +66,20 @@ public class Spawner : MonoBehaviour
                 }
             }
         }
+
+
     }
 
+    private void EnemySpawnTime() // 가장 오래걸리는 Enemy스폰 시간을 기준으로 다른 Enemy의 스폰시간을 조정
+    {
+        float max = enemySpawnNum[0] >= enemySpawnNum[1] ? enemySpawnNum[0] : enemySpawnNum[1];
+        float maxTime = max * 0.3f;
+
+        for(int i = 0; i< enemySpawnNum.Length; i++)
+        {
+            spawnData[i].spawnTime = maxTime / enemySpawnNum[i];
+        }
+    }
     private IEnumerator EnemySpawn(int enemyType)
     {
         float curTime = 0;

@@ -252,7 +252,6 @@ public class GameManager : MonoBehaviour
         level = 0;
         gold = 0;
         enemyMaxNum = 5;
-        spawner.spawnPerLevelUp = 0;
         AudioManager.instance.SelectSfx();
         statManager.GameStart();
         AudioManager.instance.PlayBgm((int)Bgm.MaintenanceRoom);

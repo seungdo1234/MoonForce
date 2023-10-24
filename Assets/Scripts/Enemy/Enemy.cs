@@ -115,18 +115,25 @@ public class Enemy : MonoBehaviour
         enemyType = data.enemyType;
 
         // 애니메이션을 해당 스프라이트에 맞게 바꿔줌
-        int random = Random.Range(0, enemyManager.enemyDatas[enemyType].animCon.Length);
-        anim.runtimeAnimatorController = enemyManager.enemyDatas[enemyType].animCon[random];
+        int randomSprite = Random.Range(0, enemyManager.enemyDatas[enemyType].animCon.Length);
+        anim.runtimeAnimatorController = enemyManager.enemyDatas[enemyType].animCon[randomSprite];
 
         // 스탯 적용
-        speed = enemyManager.speed + enemyManager.enemyDatas[enemyType].increasedSpeed;
-        maxHealth = enemyManager.health * enemyManager.enemyDatas[enemyType].healthPer;
-        health = maxHealth;
-        damage = Mathf.FloorToInt((float)enemyManager.damage * enemyManager.enemyDatas[enemyType].damagePer);
-        rigid.mass =  enemyManager.enemyDatas[enemyType].mass;
-        transform.localScale = enemyManager.enemyDatas[enemyType].enemyBaseScale;
+        int quality = enemyManager.EnemyQuality();
+        speed = enemyManager.speed + enemyManager.enemyDatas[enemyType].increasedSpeed + (enemyManager.enemyDatas[enemyType].enemyScaleBySpeed * quality);
 
-        if(enemyType == 3)
+        float addStat = enemyManager.enemyDatas[enemyType].enemyScaleByHealth * quality;
+        maxHealth = Mathf.Floor(enemyManager.health * (enemyManager.enemyDatas[enemyType].healthPer + addStat));
+        health = maxHealth;
+
+        addStat = enemyManager.enemyDatas[enemyType].enemyScaleByDamage * quality;
+        damage = Mathf.FloorToInt((float)enemyManager.damage * (enemyManager.enemyDatas[enemyType].damagePer + addStat));
+
+        addStat = enemyManager.enemyDatas[enemyType].enemyScaleErrorRange * quality;
+        transform.localScale = enemyManager.enemyDatas[enemyType].enemyBaseScale + new Vector3(addStat, addStat, addStat);
+
+        rigid.mass = enemyManager.enemyDatas[enemyType].mass;
+        if (enemyType == 3)
         {
             rush.Init();
         }

@@ -23202,8 +23202,8 @@ MonoBehaviour:
     mass: 1
     enemyBaseScale: {x: 1, y: 1, z: 1}
     enemyScaleErrorRange: 0.1
-    enemyScaleByDamage: 0.2
-    enemyScaleByHealth: 0
+    enemyScaleByDamage: 0.15
+    enemyScaleByHealth: 0.1
     enemyScaleBySpeed: 0.05
     animCon:
     - {fileID: 9100000, guid: a0d9ba9d6c6357044b52dba94e7e0892, type: 2}
@@ -23222,10 +23222,10 @@ MonoBehaviour:
     increasedSpeed: 0.3
     mass: 1
     enemyBaseScale: {x: 1.3, y: 1.3, z: 1.3}
-    enemyScaleErrorRange: 0
-    enemyScaleByDamage: 0
-    enemyScaleByHealth: 0
-    enemyScaleBySpeed: 0
+    enemyScaleErrorRange: 0.15
+    enemyScaleByDamage: 0.2
+    enemyScaleByHealth: 0.25
+    enemyScaleBySpeed: 0.05
     animCon:
     - {fileID: 22100000, guid: 66d976f82e2040a4a8586b13765faba5, type: 2}
     - {fileID: 22100000, guid: 73c3a80e82a3ff24c8549e23f3fbc56c, type: 2}
@@ -23245,10 +23245,10 @@ MonoBehaviour:
     increasedSpeed: 1.3
     mass: 1
     enemyBaseScale: {x: 1.1, y: 1.1, z: 1.1}
-    enemyScaleErrorRange: 1.1
-    enemyScaleByDamage: 0
-    enemyScaleByHealth: 0
-    enemyScaleBySpeed: 0
+    enemyScaleErrorRange: 0.1
+    enemyScaleByDamage: 0.15
+    enemyScaleByHealth: 0.1
+    enemyScaleBySpeed: 0.08
     animCon:
     - {fileID: 22100000, guid: d4400e262ea8f6a4898decf9b9742382, type: 2}
     - {fileID: 22100000, guid: 6480813814be089499032e3ed41f5604, type: 2}
@@ -23261,10 +23261,10 @@ MonoBehaviour:
     increasedSpeed: 0.8
     mass: 100
     enemyBaseScale: {x: 1.5, y: 1.5, z: 1.5}
-    enemyScaleErrorRange: 0
-    enemyScaleByDamage: 0
-    enemyScaleByHealth: 0
-    enemyScaleBySpeed: 0
+    enemyScaleErrorRange: 0.25
+    enemyScaleByDamage: 0.2
+    enemyScaleByHealth: 0.25
+    enemyScaleBySpeed: 0.05
     animCon:
     - {fileID: 22100000, guid: 07086c7929b46094faceefa273e5280d, type: 2}
     - {fileID: 22100000, guid: ce1998b44cc0f6543b2d10fed412f3bb, type: 2}
@@ -23276,10 +23276,10 @@ MonoBehaviour:
     increasedSpeed: 0.3
     mass: 1
     enemyBaseScale: {x: 1.2, y: 1.2, z: 1.2}
-    enemyScaleErrorRange: 0
-    enemyScaleByDamage: 0
-    enemyScaleByHealth: 0
-    enemyScaleBySpeed: 0
+    enemyScaleErrorRange: 0.05
+    enemyScaleByDamage: 0.1
+    enemyScaleByHealth: 0.15
+    enemyScaleBySpeed: 0.05
     animCon:
     - {fileID: 22100000, guid: 4977cde02b2faa14b92f33e62a3979c7, type: 2}
     - {fileID: 22100000, guid: 22698ecafad59f14da53893dbf65af86, type: 2}
@@ -23340,6 +23340,7 @@ MonoBehaviour:
   damage: 0
   health: 0
   speed: 0
+  enemyQualityPer: 3c0000001e0000000a000000
 --- !u!1 &888342630
 GameObject:
   m_ObjectHideFlags: 0

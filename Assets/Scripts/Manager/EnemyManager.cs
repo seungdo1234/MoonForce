@@ -25,11 +25,12 @@ public class EnemyManager : MonoBehaviour
     public float health;
     public float speed;
 
+    [Header("# EnemyQuality")]
+    public int[] enemyQualityPer;
 
     private void Awake()
     {
         instance = this;
-        EnemyReset();
     }
 
     public void EnemyReset()
@@ -37,8 +38,26 @@ public class EnemyManager : MonoBehaviour
         damage = baseDamage;
         health = baseHealth;
         speed = baseSpeed;
+        GameManager.instance.spawner.spawnPerLevelUp = 0;
     }
 
+    // Enemy의 퀄리티 정하기 (퀄리티가 높을수록 스탯 ++)
+    public int EnemyQuality()
+    {
+        int percentSum = 0;
+        int random = Random.Range(1, 101);
+
+        for (int i = 0; i < enemyQualityPer.Length; i++)
+        {
+            percentSum += enemyQualityPer[i];
+            if (random <= percentSum)
+            {
+                return i;
+            }
+        }
+
+        return 0;
+    }
     //enemyLevelUp
     public void EnemyLevelUp()
     {
