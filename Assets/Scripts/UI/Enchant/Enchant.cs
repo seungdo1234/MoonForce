@@ -139,7 +139,7 @@ public class Enchant : MonoBehaviour
     {
         if(enchantItem.enchantStep >= EnchantManager.instance.maxEnchantStep) // 강화 단계가 8이상이면 강화 X
         {
-            EnchantSelectTextOn(EnchantNoticeType.MaterialSelect);
+            EnchantSelectTextOn(EnchantNoticeType.EnchantMaxStep);
             return false;
         }
 
