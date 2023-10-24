@@ -134,6 +134,7 @@ public class Inventory : MonoBehaviour
     public void InventoryReset() // 게임 클리어, 게임 오버, 메인메뉴로 갈 때 인벤토리 초기화
     {
         SkillBookInit();
+        equipBooks.Clear(); // 리스트 초기화
 
         if (mainEqquipment.item.itemSprite != null)
         {

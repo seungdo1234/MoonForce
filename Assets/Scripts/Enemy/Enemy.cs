@@ -25,17 +25,13 @@ public class Enemy : MonoBehaviour
     private int burnningDamage;
     private float lerpTime;
 
-    [Header("# EnemyType")]
-    // 애니메이터의 데이터를 바꾸는 컴포넌트 => RuntimeAnimatorController
-    public RuntimeAnimatorController[] animCon;
-
-
     [Header("# TargetPlayer")]
     public Rigidbody2D target; // 타겟
 
 
     public bool isLive; // Enmey가 살아있는지
 
+    private EnemyManager enemyManager;
     private RushEnemy rush;
     private RangeAttackEnemy rangeAttackEnemy;
     private int hitAnimID;
@@ -49,6 +45,7 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
+        enemyManager = EnemyManager.instance;
         rigid = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -62,15 +59,16 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate() // 물리적인 이동은 FixedUpdate
     {
-        if (GameManager.instance.gameStop || !isLive || anim.GetCurrentAnimatorStateInfo(0).IsName("Hit") || rush.isReady || !rangeAttackEnemy.isReady || GameManager.instance.demeterOn) // Enemy가 죽었다면 return
+        if (GameManager.instance.gameStop || !isLive || anim.GetCurrentAnimatorStateInfo(0).IsName("Hit") || rush.isReady || !rangeAttackEnemy.isReady || GameManager.instance.demeterOn || isRestraint) // Enemy가 죽었다면 return
         {
 
-            if (GameManager.instance.gameStop || GameManager.instance.demeterOn || !isLive || !rangeAttackEnemy.isReady)
+            if (GameManager.instance.gameStop || GameManager.instance.demeterOn || !isLive || !rangeAttackEnemy.isReady || isRestraint)
             {
                 rigid.velocity = Vector2.zero;
             }
             return;
         }
+
 
         // 가야할 방향
         Vector2 dirVec = target.position - rigid.position;
@@ -102,8 +100,6 @@ public class Enemy : MonoBehaviour
         target = GameManager.instance.player.GetComponent<Rigidbody2D>();
         isLive = true; // 생존 여부
         enemyDamaged = false;
-        // Enemy가 죽었을 때 오브젝트 폴링에 의해 다시 생겨날 때 health를 maxHealth로 초기화
-        health = maxHealth;
         col.enabled = true; // 콜라이더 활성화
         rigid.simulated = true; // rigidbody2D 활성화
         spriteRenderer.sortingOrder = 3; // OrderLayer를 3로 내림
@@ -116,46 +112,29 @@ public class Enemy : MonoBehaviour
     // Enemy 생성 전 초기화
     public void Init(SpawnData data)
     {
-        // 애니메이션을 해당 스프라이트에 맞게 바꿔줌
-        anim.runtimeAnimatorController = animCon[data.spriteType];
-        speed = data.speed;
-        maxHealth = data.health;
-        health = data.health;
-        enemyType = data.spriteType;
-        damage = data.damage;
-        rush.isReady = false;
-        rangeAttackEnemy.isReady = true;
+        enemyType = data.enemyType;
 
-        if (enemyType == 3)
+        // 애니메이션을 해당 스프라이트에 맞게 바꿔줌
+        int random = Random.Range(0, enemyManager.enemyDatas[enemyType].animCon.Length);
+        anim.runtimeAnimatorController = enemyManager.enemyDatas[enemyType].animCon[random];
+
+        // 스탯 적용
+        speed = enemyManager.speed + enemyManager.enemyDatas[enemyType].increasedSpeed;
+        maxHealth = enemyManager.health * enemyManager.enemyDatas[enemyType].healthPer;
+        health = maxHealth;
+        damage = Mathf.FloorToInt((float)enemyManager.damage * enemyManager.enemyDatas[enemyType].damagePer);
+        rigid.mass =  enemyManager.enemyDatas[enemyType].mass;
+        transform.localScale = enemyManager.enemyDatas[enemyType].enemyBaseScale;
+
+        if(enemyType == 3)
         {
-            rigid.mass = 100;
-            transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
             rush.Init();
         }
-        else
+        else if(enemyType == 4)
         {
-            rigid.mass = 1;
-            rush.isReady = false;
-            rush.isAttack = false;
-            rush.isRushing = false;
-
-            switch (enemyType)
-            {
-                case 0 :
-                    transform.localScale = new Vector3(1f, 1f, 1f);
-                    break;
-                case 1:
-                    transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
-                    break;
-                case 2:
-                    transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
-                    break;
-                case 4:
-                    transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
-                    rangeAttackEnemy.Init();
-                    break;
-            }
+            rangeAttackEnemy.Init();
         }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -211,28 +190,47 @@ public class Enemy : MonoBehaviour
         {
             if (isLive) // 중복 킬 오류 해결
             {
-                AudioManager.instance.PlayerSfx(Sfx.Dead);
-
-                StopAllCoroutines();
-                if (anim.speed != 1) // 디버프 상태에서 죽는다면
-                {
-                    anim.speed = 1f;
-                }
-                isRestraint = false;
-                spriteRenderer.color = new Color(1, 1, 1, 1); // 색깔 되 돌리기
-                isLive = false; // 죽었다 체크
-                col.enabled = false; // 콜라이더 비활성화
-                rigid.simulated = false; // rigidbody2D 정지
-                spriteRenderer.sortingOrder = 1; // 죽은 ENemy가 다른 Enemy를 가리지 않도록 OrderLayer를 1로 내림
-                anim.SetBool("Dead", true);
-                GameManager.instance.kill++;
-
-                GameManager.instance.gold += enemyType + 1;
-                if (statusEffect == EnemyStatusEffect.Darkness)
-                {
-                    ExplosionSpawn();
-                }
+                Death();
             }
+        }
+    }
+    private void Death()
+    {
+        AudioManager.instance.PlayerSfx(Sfx.Dead);
+
+        StopAllCoroutines();
+
+        // 죽었을 때 코루틴이 돌아가는걸 방지함
+        if(enemyType == 3)
+        {
+            rush.isReady = false;
+            rush.isAttack = false;
+            rush.isRushing = false;
+            rush.StopAllCoroutines();
+        }
+        else if(enemyType == 4)
+        {
+            rangeAttackEnemy.isReady = true;
+            rangeAttackEnemy.StopAllCoroutines();
+        }
+
+        if (anim.speed != 1) // 디버프 상태에서 죽는다면
+        {
+            anim.speed = 1f;
+        }
+        isRestraint = false;
+        spriteRenderer.color = new Color(1, 1, 1, 1); // 색깔 되 돌리기
+        isLive = false; // 죽었다 체크
+        col.enabled = false; // 콜라이더 비활성화
+        rigid.simulated = false; // rigidbody2D 정지
+        spriteRenderer.sortingOrder = 1; // 죽은 ENemy가 다른 Enemy를 가리지 않도록 OrderLayer를 1로 내림
+        anim.SetBool("Dead", true);
+        GameManager.instance.kill++;
+
+        GameManager.instance.gold += enemyType + 1;
+        if (statusEffect == EnemyStatusEffect.Darkness)
+        {
+            ExplosionSpawn();
         }
     }
     private void OnTriggerStay2D(Collider2D collision) // 지속적인 피해를 주는 마법과 충돌 중 일때

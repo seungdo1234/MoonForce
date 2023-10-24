@@ -17,7 +17,7 @@ public class Spawner : MonoBehaviour
    
     [Header("Enemy Spawn Percent")]
 
-    public int spawnPerLevelUp = 0;
+    public int spawnPerLevelUp ;
     public EnemySpawnPer[] enemySpawnPer;
 
     private void Awake()
@@ -94,26 +94,7 @@ public class Spawner : MonoBehaviour
             yield return null;
         }
     }
-    public void EnemyLevelUp()
-    {
-        int level = GameManager.instance.level;
-        int healthIncrese = 1;
-        if (level != 25 && level != 30 && level != 40 && level != 50)
-        {
-            spawnPerLevelUp++;
-        }
 
-        if(level >= 30)
-        {
-            healthIncrese = 2;
-        }
-        for(int i = 0; i<spawnData.Length; i++)
-        {
-            spawnData[i].damage += 1;
-            spawnData[i].speed += 0.1f;
-            spawnData[i].health += 5 * healthIncrese;
-        }
-    }
 }
 
 // 스폰된 Enemy들의 데이터가 들어있는 클래스 (인스펙터 상에서 나오게 하기위해 직렬화 (Serializable))
@@ -121,10 +102,7 @@ public class Spawner : MonoBehaviour
 public class SpawnData
 {
     public float spawnTime;
-    public int spriteType;
-    public int damage;
-    public int health;
-    public float speed;
+    public int enemyType;
    
 }
 [System.Serializable]

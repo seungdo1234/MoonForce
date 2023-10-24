@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     public NextStageBtn nextStageBtn;
     public Enchant enchant;
     public SkillCoolTimeUI coolTime;
-    private Spawner spawner;
+    public Spawner spawner;
 
     [Header("# Player Data")]
     public int availablePoint; // 스테이지가 끝날때마다 스탯 레벨을 올릴 수 있는 포인트
@@ -42,9 +42,12 @@ public class GameManager : MonoBehaviour
     public int enemyMaxNum;
     public int enemyCurNum = 9999;
     public int level;
+    public int maxLevel;
     public int enemySpawnNumIncrese;
     public bool isResurrection;
     public bool demeterOn;
+
+
 
     [Header("# UI")]
     public GameObject lobby;
@@ -148,7 +151,7 @@ public class GameManager : MonoBehaviour
         GameManager.instance.demeterOn = false;
         yield return new WaitForSeconds(1f);
 
-        if(level >= 49) // 마지막 스테이지
+        if(level >= maxLevel) // 마지막 스테이지
         {
             GameEnd(0);
         }
@@ -161,10 +164,7 @@ public class GameManager : MonoBehaviour
             level++;
             nextStageBtn.LevelText(level); // 다음 스테이지 버튼 텍스트 변경
             enemyMaxNum += 10;
-            if (level % 5 == 0) // 적 레벨 업
-            {
-                spawner.EnemyLevelUp();
-            }
+            EnemyManager.instance.EnemyLevelUp();
             clearReward.SetActive(true); // 클리어 보상 On
             player.gameObject.SetActive(false); // 플레이어 비활성화
             shop.ShopReset(); // 상점 초기화
@@ -247,6 +247,7 @@ public class GameManager : MonoBehaviour
 
     public void GameStart()
     {
+        availablePoint = 0;
         isResurrection = false;
         level = 0;
         gold = 0;
@@ -259,6 +260,7 @@ public class GameManager : MonoBehaviour
         shop.ShopReset();
         GameManager.instance.demeterOn = false;
         nextStageBtn.LevelText(level);
+        EnemyManager.instance.EnemyReset();
     }
     public void GameQuit()
     {

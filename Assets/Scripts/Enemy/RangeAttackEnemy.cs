@@ -70,7 +70,6 @@ public class RangeAttackEnemy : MonoBehaviour
                     yield return new WaitForSeconds(coolTime);
 
                 }
-
             }
 
             yield return null;
