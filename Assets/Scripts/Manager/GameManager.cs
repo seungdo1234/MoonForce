@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
     public float maxGameTime; 
     public float curGameTime;
     public int kill;
+    public int baseEnemyNum;
     public int enemyMaxNum;
     public int enemyCurNum = 9999;
     public int level;
@@ -163,7 +164,7 @@ public class GameManager : MonoBehaviour
             availablePoint++;
             level++;
             nextStageBtn.LevelText(level); // 다음 스테이지 버튼 텍스트 변경
-            enemyMaxNum += 10;
+            enemyMaxNum += 50;
             EnemyManager.instance.EnemyLevelUp();
             clearReward.SetActive(true); // 클리어 보상 On
             player.gameObject.SetActive(false); // 플레이어 비활성화
@@ -178,6 +179,7 @@ public class GameManager : MonoBehaviour
     }
     public void NextStage()
     {
+        hud.SetActive(true);
         isStage = true;
         player.gameObject.SetActive(true);
         gameStop = false;
@@ -187,6 +189,7 @@ public class GameManager : MonoBehaviour
         clearReward.SetActive(false);
         magicManager.StageStart();
         spawner.StageStart();
+        AudioManager.instance.PlayBgm((int)Bgm.Stage);
 
     }
     private void Update()
@@ -251,15 +254,15 @@ public class GameManager : MonoBehaviour
         isResurrection = false;
         level = 0;
         gold = 0;
-        enemyMaxNum = 5;
+        enemyMaxNum = baseEnemyNum;
+        GameManager.instance.demeterOn = false;
         AudioManager.instance.SelectSfx();
         statManager.GameStart();
-        AudioManager.instance.PlayBgm((int)Bgm.MaintenanceRoom);
         rewardManager.ItemCreate(-1 , 0);
-        shop.ShopReset();
-        GameManager.instance.demeterOn = false;
-        nextStageBtn.LevelText(level);
+        rewardManager.ItemCreate(-2 , 1);
+//        shop.ShopReset();
         EnemyManager.instance.EnemyReset();
+        NextStage();
     }
     public void GameQuit()
     {

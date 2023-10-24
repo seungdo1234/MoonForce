@@ -29,15 +29,15 @@ public class RewardManager : MonoBehaviour
     }
 
 
-    // createType은 아이템을 생성하는 형태 (0번 스태프, 1번 마법책)
+    // createType은 아이템을 생성하는 형태 (0번 스태프, 1번 마법책 , 2번 상점 스태프, 3번 상점 마법책)
     public void ItemCreate(int itemRank , int createType) // 랜덤 아이템 생성
     {
         this.createType = createType;
         this.itemRank = itemRank;
 
-       if (itemRank > -1)
+        if (itemRank > -1)
         {
-            switch (createType) 
+            switch (createType)
             {
                 // 스태프
                 case 0:
@@ -62,12 +62,19 @@ public class RewardManager : MonoBehaviour
                     break;
             }
         }
-       else // 처음 게임 시작할 때 무기 추가 
+        else // 처음 게임 시작할 때 스태프, 마법 책 장착
         {
-            type = ItemType.Staff;
-            rank = ItemRank.Common;
             quality = ItemQuality.Low;
-            SetStaffStat();
+            if (itemRank == -1)
+            {
+                type = ItemType.Staff;
+                rank = ItemRank.Common;
+                SetStaffStat();
+            }
+            else
+            {
+                type = ItemType.Book;
+            }
         }
 
  
@@ -120,10 +127,16 @@ public class RewardManager : MonoBehaviour
         if(createType == 0) // 0일때 (보상)
         {
             ItemDatabase.instance.GetStaff(type, rank, quality, itemSprite, itemAttribute, itemName, attack, rate, moveSpeed, desc, skillNum);
-            if(itemRank != -1)
+            if(itemRank > -1)
             {
                 rewardSlot.item = ItemDatabase.instance.Set(ItemDatabase.instance.itemCount() - 1);
                 rewardSlot.itemImage.sprite = rewardSlot.item.itemSprite;
+            }
+            else
+            {
+                GameManager.instance.inventory.mainEqquipment.item = ItemDatabase.instance.Set(0);
+                GameManager.instance.inventory.mainEqquipment.item.isLoad = true;
+                GameManager.instance.inventory.EquipStaff();
             }
 
         }
@@ -156,8 +169,17 @@ public class RewardManager : MonoBehaviour
        if (createType == 1)
         {
             ItemDatabase.instance.GetBook(type, quality, itemSprite, itemName, skillNumber, aditionalAbility);
-            rewardSlot.item = ItemDatabase.instance.Set(ItemDatabase.instance.itemCount() - 1);
-            rewardSlot.itemImage.sprite = rewardSlot.item.itemSprite;
+            if (itemRank > - 1)
+            {
+                rewardSlot.item = ItemDatabase.instance.Set(ItemDatabase.instance.itemCount() - 1);
+                rewardSlot.itemImage.sprite = rewardSlot.item.itemSprite;
+            }
+            else
+            {
+                GameManager.instance.inventory.subEqquipments[0].item = ItemDatabase.instance.Set(1);
+                GameManager.instance.inventory.subEqquipments[0].item.isLoad = true;
+                GameManager.instance.inventory.EquipBooks();
+            }
         }
         else
         {
