@@ -257,10 +257,6 @@ public class GameManager : MonoBehaviour
         enemyMaxNum = baseEnemyNum;
         GameManager.instance.demeterOn = false;
         AudioManager.instance.SelectSfx();
-        statManager.GameStart();
-        rewardManager.ItemCreate(-1 , 0);
-        rewardManager.ItemCreate(-2 , 1);
-//        shop.ShopReset();
         EnemyManager.instance.EnemyReset();
         NextStage();
     }

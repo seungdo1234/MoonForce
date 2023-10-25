@@ -11,7 +11,6 @@ public class NextStageBtn : MonoBehaviour // 다음스테이지로 가는 버튼 (무기를 장
     {
         btn = GetComponent<Button>();
         inventory = GameManager.instance.inventory;
-        btnTexts = GetComponentsInChildren<Text>(true);
     }
 
     public void LevelText(int level)

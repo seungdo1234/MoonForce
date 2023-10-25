@@ -65,7 +65,7 @@ public class RewardManager : MonoBehaviour
         else // 처음 게임 시작할 때 스태프, 마법 책 장착
         {
             quality = ItemQuality.Low;
-            if (itemRank == -1)
+            if (itemRank % -2 == -1)
             {
                 type = ItemType.Staff;
                 rank = ItemRank.Common;
@@ -77,7 +77,6 @@ public class RewardManager : MonoBehaviour
             }
         }
 
- 
         if (type == ItemType.Staff ) // 스태프 생성
         {
             StaffCreate();
@@ -94,7 +93,26 @@ public class RewardManager : MonoBehaviour
 
         int rankNum = this.rank == ItemRank.Legendary ? 0 : -1;
 
-        itemAttribute = (ItemAttribute)Random.Range(1, System.Enum.GetValues(typeof(ItemAttribute)).Length + rankNum);
+        if(itemRank > -1)
+        {
+            itemAttribute = (ItemAttribute)Random.Range(1, System.Enum.GetValues(typeof(ItemAttribute)).Length + rankNum);
+        }
+        else // 게임 시작 시 나오는 스태프 속성 
+        {
+            switch (itemRank)
+            {
+                case -1:
+                    itemAttribute = ItemAttribute.Non;
+                    break;
+                case -3:
+                    itemAttribute = ItemAttribute.Fire;
+                    break;
+                case -5:
+                    break;
+                case -7:
+                    break;
+            }
+        }
 
 
   
@@ -150,7 +168,26 @@ public class RewardManager : MonoBehaviour
     private void BookCreate() // 마법 책 생성
     {
         // 스킬 번호
-        skillNumber = Random.Range(7, GameManager.instance.magicManager.magicInfo.Length);
+        if(itemRank > -1)
+        {
+            skillNumber = Random.Range(7, GameManager.instance.magicManager.magicInfo.Length);
+        }
+        else // 게임 시작 시 캐릭터 별 마법
+        {
+            switch (itemRank)
+            {
+                case -2:
+                    skillNumber = 10;
+                    break;
+                case -4:
+                    skillNumber = 7;
+                    break;
+                case -6:
+                    break;
+                case -8:
+                    break;
+            }
+        }
 
         // 품질 별로 부여되는 마법의 갯수가 다름
         aditionalAbility = new int[(int)quality];

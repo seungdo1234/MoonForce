@@ -48,10 +48,13 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         }
         else
         {
-            itemImage.color = new Color(1, 1, 1, 0);
-            if (skillBookImage.sprite != null)
+            if (itemImage != null)
             {
-                SkillSpriteReset();
+                itemImage.color = new Color(1, 1, 1, 0);
+                if (skillBookImage.sprite != null)
+                {
+                    SkillSpriteReset();
+                }
             }
         }
     }
