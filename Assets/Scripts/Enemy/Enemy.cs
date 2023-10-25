@@ -163,10 +163,10 @@ public class Enemy : MonoBehaviour
             int number = collision.GetComponent<MagicNumber>().magicNumber;
             float damage = GameManager.instance.statManager.attack * GameManager.instance.magicManager.magicInfo[number].damagePer;
 
-            if (number == 1 || number == 15 || number == 17)
+            if (number == (int)MagicName.Inferno || number == (int)MagicName.Tornado || number == (int)MagicName.ElectricShock)
             {
                 StartCoroutine(IsDamaged());
-                if(number == 17)
+                if(number == (int)MagicName.ElectricShock)
                 {
                     GameObject elec = collision.gameObject;
 
@@ -182,64 +182,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void EnemyHit()
-    {
-
-        if (health > 0)
-        {
-            AudioManager.instance.PlayerSfx(Sfx.EnemyHit);
-            // Live, Hit Action
-            anim.SetTrigger("Hit");
-            StartCoroutine(KnockBack());
-
-        }
-        else
-        {
-            if (isLive) // 중복 킬 오류 해결
-            {
-                Death();
-            }
-        }
-    }
-    private void Death()
-    {
-        AudioManager.instance.PlayerSfx(Sfx.Dead);
-
-        StopAllCoroutines();
-
-        // 죽었을 때 코루틴이 돌아가는걸 방지함
-        if(enemyType == 3)
-        {
-            rush.isReady = false;
-            rush.isAttack = false;
-            rush.isRushing = false;
-            rush.StopAllCoroutines();
-        }
-        else if(enemyType == 4)
-        {
-            rangeAttackEnemy.isReady = true;
-            rangeAttackEnemy.StopAllCoroutines();
-        }
-
-        if (anim.speed != 1) // 디버프 상태에서 죽는다면
-        {
-            anim.speed = 1f;
-        }
-        isRestraint = false;
-        spriteRenderer.color = new Color(1, 1, 1, 1); // 색깔 되 돌리기
-        isLive = false; // 죽었다 체크
-        col.enabled = false; // 콜라이더 비활성화
-        rigid.simulated = false; // rigidbody2D 정지
-        spriteRenderer.sortingOrder = 1; // 죽은 ENemy가 다른 Enemy를 가리지 않도록 OrderLayer를 1로 내림
-        anim.SetBool("Dead", true);
-        GameManager.instance.kill++;
-
-        GameManager.instance.gold += enemyType + 1;
-        if (statusEffect == EnemyStatusEffect.Darkness)
-        {
-            ExplosionSpawn();
-        }
-    }
     private void OnTriggerStay2D(Collider2D collision) // 지속적인 피해를 주는 마법과 충돌 중 일때
     {
         if (collision.gameObject.layer != 10 || enemyDamaged || !isLive)
@@ -249,7 +191,7 @@ public class Enemy : MonoBehaviour
 
         int number = collision.GetComponent<MagicNumber>().magicNumber;
 
-        if (number != 15 && number != 17) // 지속적인 피해를 주는 마법이 아니라면
+        if (number != (int)MagicName.Tornado && number != (int)MagicName.ElectricShock) // 지속적인 피해를 주는 마법이 아니라면
         {
             return;
         }
@@ -543,9 +485,83 @@ public class Enemy : MonoBehaviour
 
         Vector3 textPos = transform.position + new Vector3(0, 0.5f, 0);
 
-        GameManager.instance.damageTextPool.Get(damageValue, textPos);
+        GameManager.instance.damageTextPool.Get((int)TextType.Damage,damageValue, textPos);
 
         EnemyHit();
+    }
+    private void EnemyHit()
+    {
+
+        if (health > 0)
+        {
+            AudioManager.instance.PlayerSfx(Sfx.EnemyHit);
+            // Live, Hit Action
+            anim.SetTrigger("Hit");
+            StartCoroutine(KnockBack());
+
+        }
+        else
+        {
+            if (isLive) // 중복 킬 오류 해결
+            {
+                Death();
+            }
+        }
+    }
+    private void Death()
+    {
+        AudioManager.instance.PlayerSfx(Sfx.Dead);
+
+        StopAllCoroutines();
+
+        // 죽었을 때 코루틴이 돌아가는걸 방지함
+        if (enemyType == 3)
+        {
+            rush.isReady = false;
+            rush.isAttack = false;
+            rush.isRushing = false;
+            rush.StopAllCoroutines();
+        }
+        else if (enemyType == 4)
+        {
+            rangeAttackEnemy.isReady = true;
+            rangeAttackEnemy.StopAllCoroutines();
+        }
+
+        if (anim.speed != 1) // 디버프 상태에서 죽는다면
+        {
+            anim.speed = 1f;
+        }
+        isRestraint = false;
+        spriteRenderer.color = new Color(1, 1, 1, 1); // 색깔 되 돌리기
+        isLive = false; // 죽었다 체크
+        col.enabled = false; // 콜라이더 비활성화
+        rigid.simulated = false; // rigidbody2D 정지
+        spriteRenderer.sortingOrder = 1; // 죽은 ENemy가 다른 Enemy를 가리지 않도록 OrderLayer를 1로 내림
+        anim.SetBool("Dead", true);
+        GameManager.instance.kill++;
+
+        HealthUpDrop();
+        GameManager.instance.gold += enemyType + 1;
+        if (statusEffect == EnemyStatusEffect.Darkness)
+        {
+            ExplosionSpawn();
+        }
+    }
+
+    private void HealthUpDrop()
+    {
+        int random = Random.Range(1, 101);
+
+
+        if(random <= ChestManager.instance.healthUpDropPer)
+        {
+            random = ChestManager.instance.Percent(ChestManager.instance.healthUpQualityPer);
+
+            Transform heart = GameManager.instance.pool.Get((int)PoolList.Heart).transform;
+            heart.position = transform.position;
+            heart.GetComponent<Heart>().Init(random);
+        }
     }
     private void Dead()
     {

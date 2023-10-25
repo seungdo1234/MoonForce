@@ -47,12 +47,14 @@ public class RewardManager : MonoBehaviour
                     if (rank == ItemRank.Legendary) // 레전드리는 무조건 품질 상
                     {
                         quality = ItemQuality.High;
-                        SetStaffStat();
                     }
                     else
                     {
-                        SetRandomValue(GameManager.instance.itemQualityPercent);
+                        // 스태프 품질 정하기
+                        int value = ChestManager.instance.Percent(ChestManager.instance.qualityPer[GameManager.instance.spawner.spawnPerLevelUp].percent);
+                        quality = (ItemQuality)value + 1;
                     }
+                    SetStaffStat();
                     break;
                 // 마법책
                 case 1:
@@ -224,29 +226,6 @@ public class RewardManager : MonoBehaviour
             item.Book(type, quality, itemSprite, itemName, skillNumber, aditionalAbility);
             GameManager.instance.shop.SkillBookCreate(item);
         }
-    }
-    private void SetRandomValue(int[] percent) // 랜덤 값
-    {
-        // 랜덤 값을 구해 정해져있는 확률대로 상자 등장
-        int random = Random.Range(1, 101);
-        int percentSum = 0;
-
-        for (int i = 0; i < percent.Length; i++)
-        {
-            percentSum += percent[i];
-
-            if (random <= percentSum)
-            {
-                quality = (ItemQuality)i + 1;
-
-                if(type == ItemType.Staff)
-                {
-                    SetStaffStat();
-                }
-                break;
-            }
-        }
-
     }
     private void SetStaffStat() // Quality에 따라 Attack값과 , Rate 값 대입
     {

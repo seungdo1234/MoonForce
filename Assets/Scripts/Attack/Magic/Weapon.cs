@@ -50,7 +50,7 @@ public class Weapon : MonoBehaviour
             dir = dir.normalized; // 정규화
 
             // bullet 생성
-            Transform bullet = GameManager.instance.pool.Get(1).transform;
+            Transform bullet = GameManager.instance.pool.Get((int)PoolList.PlayerBullet).transform;
             bullet.position = transform.position; // bullet의 위치
                                                   // FromToRotation : 지정된 축을 중심으로 목표를 향해 회전하는 함수
             bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir); // Enemy 방향으로 bullet 회전

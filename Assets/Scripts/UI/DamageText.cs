@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class DamageText : MonoBehaviour
 {
+    public TextType type;
     private Text text;
 
 
@@ -24,12 +25,20 @@ public class DamageText : MonoBehaviour
     public void Init(int damage, Vector3 target)
     {
         this.target = target;
-        text.text = string.Format("{0}", damage);
 
-        if(GameManager.instance.attribute == ItemAttribute.Holy && damage == 999)
+        if(type == TextType.Damage)
         {
-            text.color = new Color(1, 1, 0.4f);
+            text.text = string.Format("{0}", damage);
+            if (GameManager.instance.attribute == ItemAttribute.Holy && damage == 999)
+            {
+                text.color = new Color(1, 1, 0.4f);
+            }
         }
+        else
+        {
+            text.text = string.Format("+{0}", damage);
+        }
+
 
         gameObject.SetActive(true);
 
@@ -40,8 +49,14 @@ public class DamageText : MonoBehaviour
         target = Vector3.zero;
 
 
-        text.color = new Color(1, 0.4f, 0.4f);
-
+        if (type == TextType.Damage)
+        {
+            text.color = new Color(1, 0.4f, 0.4f);
+        }
+        else
+        {
+            text.color = new Color(0.78f, 0.15f, 0.15f);
+        }
 
         gameObject.SetActive(false);
     }

@@ -66,13 +66,6 @@ public class GameManager : MonoBehaviour
     [Header("MainMenu")]
     public Map map;
 
-    [Header("# Reward")]
-    public int[] chestPercent;
-    public int[] bronzeChest;
-    public int[] silverChest;
-    public int[] goldChest;
-    public int[] specialChest;
-    public int[] itemQualityPercent;
 
     private void Awake()
     {

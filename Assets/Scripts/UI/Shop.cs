@@ -30,24 +30,24 @@ public class Shop : MonoBehaviour
 
     public void Staff_Book_Create()
     {
-        int level = GameManager.instance.level / 12;
+        int level = GameManager.instance.level / 10;
 
         // 레벨 별 스태프 생성
         if (level == 0)
         {
-            stageClear.ShopItemCreate(GameManager.instance.bronzeChest, 1, 2);
+            stageClear.ShopItemCreate(ChestManager.instance.bronzeChest, 2);
         }
         else if (level == 1)
         {
-            stageClear.ShopItemCreate(GameManager.instance.silverChest, 1, 2);
+            stageClear.ShopItemCreate(ChestManager.instance.silverChest, 2);
         }
         else if (level >= 2)
         {
-            stageClear.ShopItemCreate(GameManager.instance.goldChest, 1, 2);
+            stageClear.ShopItemCreate(ChestManager.instance.goldChest,  2);
         }
 
         // 마법책 생성
-        stageClear.ShopItemCreate(GameManager.instance.itemQualityPercent, 1, 3);
+        stageClear.ShopItemCreate(ChestManager.instance.qualityPer[GameManager.instance.spawner.spawnPerLevelUp].percent, 3);
 
     }
     public void ShopReset() // 상점 초기화 (매 스테이지 클리어 시 실행)
@@ -58,7 +58,7 @@ public class Shop : MonoBehaviour
 
         Staff_Book_Create();
 
-        stageClear.ShopItemCreate(GameManager.instance.shopManager.healingPosionPercent, 2, -1); // 힐링 포션
+        stageClear.ShopItemCreate(GameManager.instance.shopManager.healingPosionPercent,  -1); // 힐링 포션
 
         EssenceCreate();
 

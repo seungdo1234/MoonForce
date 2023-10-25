@@ -55,7 +55,7 @@ public class RangeAttackEnemy : MonoBehaviour
                     Vector3 dir = target.position - transform.position;
                     dir = dir.normalized; // 정규화
 
-                    Transform bullet = GameManager.instance.pool.Get(2).transform;
+                    Transform bullet = GameManager.instance.pool.Get((int)PoolList.EnemyBullet).transform;
 
                     bullet.position = transform.position; // bullet의 위치
                                                           // FromToRotation : 지정된 축을 중심으로 목표를 향해 회전하는 함수

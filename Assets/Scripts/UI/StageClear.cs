@@ -25,6 +25,7 @@ public class StageClear : MonoBehaviour
 
     public void RewardSelect(int rewardType)
     {
+        int value = 0;
         AudioManager.instance.SelectSfx();
         this.rewardType = rewardType;
         rewardTypeSelecet.SetActive(false);
@@ -33,14 +34,17 @@ public class StageClear : MonoBehaviour
 
         chestAnim.gameObject.SetActive(true);
         
-        if(rewardType == 0)
+        if(rewardType == 0) // 스태프
         {
-            RandomValue(GameManager.instance.chestPercent, 0);
+            value = ChestManager.instance.Percent(ChestManager.instance.chestPer[GameManager.instance.spawner.spawnPerLevelUp].percent);
         }
-        else
+        else // 마법 책
         {
-            RandomValue(GameManager.instance.itemQualityPercent, 0);
+            value = ChestManager.instance.Percent(ChestManager.instance.qualityPer[GameManager.instance.spawner.spawnPerLevelUp].percent);
         }
+
+        chestType = value;
+        chestAnim.runtimeAnimatorController = animCon[value];
     }
 
     public void ChestOpen()
@@ -60,28 +64,30 @@ public class StageClear : MonoBehaviour
     }
     private void GetReward()
     {
-        int[] chestReward = new int[4];
 
         if(rewardType == 0)
         {
+            int value = 0;
+
             if (chestType == 0)
             {
-                chestReward = GameManager.instance.bronzeChest;
+                value = ChestManager.instance.Percent(ChestManager.instance.bronzeChest);
             }
             else if (chestType == 1)
-            {
-                chestReward = GameManager.instance.silverChest;
+            { 
+                value = ChestManager.instance.Percent(ChestManager.instance.bronzeChest);
             }
             else if (chestType == 2)
             {
-                chestReward = GameManager.instance.goldChest;
+                value = ChestManager.instance.Percent(ChestManager.instance.bronzeChest);
             }
-            else if (chestType == 3)
+            else
             {
-                chestReward = GameManager.instance.specialChest;
+                value = ChestManager.instance.Percent(ChestManager.instance.bronzeChest);
             }
-            // 상자 당 ItemRank의 확률을 구함
-            RandomValue(chestReward, 1);
+
+            // rewardType: 0,2는 스태프, 1,3은 마법책
+            GameManager.instance.rewardManager.ItemCreate(value, rewardType);
         }
         else
         {
@@ -89,6 +95,8 @@ public class StageClear : MonoBehaviour
         }
 
     }
+
+    // 대기실로 가기
     public void NextStage()
     {
         gameObject.SetActive(false);
@@ -103,6 +111,7 @@ public class StageClear : MonoBehaviour
 
     }
 
+    // 상자를 열고 Next 버튼 띄우기
     private IEnumerator Delay(float delayTime)
     {
         yield return new WaitForSeconds(delayTime);
@@ -112,40 +121,18 @@ public class StageClear : MonoBehaviour
         nextBtn.gameObject.SetActive(true);
     }
 
-    public void ShopItemCreate(int[] percent, int randomType, int rewardType) // 상점 아이템 생성 함수
+    public void ShopItemCreate(int[] percent, int rewardType) // 상점 아이템 생성 함수
     {
-        this.rewardType = rewardType;
+        int value = ChestManager.instance.Percent(percent);
 
-        RandomValue(percent, randomType);
-    }
-    public void RandomValue(int[] percent, int randomType )
-    {
-        // 랜덤 값을 구해 정해져있는 확률대로 상자 등장
-        int random = Random.Range(1, 101);
-        int percentSum = 0;
-
-        for (int i = 0; i < percent.Length; i++)
+        if(rewardType >= 0)
         {
-            percentSum += percent[i];
-            if (random <= percentSum)
-            {
-                if (randomType == 0) // 스테이지 클리어 보상 상자 생성
-                {
-                    chestType = i;
-                    chestAnim.runtimeAnimatorController = animCon[i];
-                }
-                else if (randomType == 1) //아이템(스태프, 마법책) 생성
-                {
-                    // rewardType: 0,2는 스태프, 1,3은 마법책
-                    GameManager.instance.rewardManager.ItemCreate(i, rewardType);
-                }
-                else if (randomType == 2) // 포션 생성
-                {
-                    GameManager.instance.shop.PosionCreate(i);
-                }
-                break;
-            }
+            GameManager.instance.rewardManager.ItemCreate(value, rewardType);
+        }
+        else
+        {
+            GameManager.instance.shop.PosionCreate(value);
         }
     }
-
+   
 }

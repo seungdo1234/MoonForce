@@ -94,7 +94,7 @@ public class Spawner : MonoBehaviour
                 curEnemyNum++;
                 GameManager.instance.enemyCurNum++;
                 curTime = 0;
-                GameObject enemy = GameManager.instance.pool.Get(0);
+                GameObject enemy = GameManager.instance.pool.Get((int)PoolList.Enemy);
                 // *주의 : GetComponentsInChildren은 자기 자신도 포함이므로 0은 Player의 Transform 정보가 들어감 -> 랜덤은 1부터 시작
                 enemy.transform.position = spawnPoint[Random.Range(1, spawnPoint.Length)].position;
                 enemy.GetComponent<Enemy>().Init(spawnData[enemyType]);

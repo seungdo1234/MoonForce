@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public enum MagicName {Explosion , Inferno , WaterBlast , RockMeteor, Leaf, Jack, Instant, FireBall, EarthSpike, HellSpear, Shovel, MagicBall, Hoe, RockThrow, WindCutter, Tornado, FireExplosion, ElectricShock, ChargeExplosion}
 public class MagicManager : MonoBehaviour
 {
     public SkillCoolTimeUI coolTimeUI;
@@ -43,7 +45,7 @@ public class MagicManager : MonoBehaviour
             {
 
                 GameManager.instance.magicManager.coolTimeUI.CoolTimeStart(slotNum);
-                if (magicInfo[i].magicCoolTime == 0 || i == 18 || i <=  6)
+                if (magicInfo[i].magicCoolTime == 0 || i == (int)MagicName.ChargeExplosion || i <= (int)MagicName.Instant)
                 {
                     StartCoroutine( AlwaysPlayMagic(i, slotNum));
                 }
@@ -170,7 +172,7 @@ public class MagicManager : MonoBehaviour
             magic.position = player.transform.position; // Magict의 위치
 
 
-            if (magicNumber == 14) // 윈드 컷터
+            if (magicNumber == (int)MagicName.WindCutter) // 윈드 컷터
             {
                 //  초기화
                 magic.localRotation = Quaternion.identity;
@@ -196,15 +198,15 @@ public class MagicManager : MonoBehaviour
                                                 // FromToRotation : 지정된 축을 중심으로 목표를 향해 회전하는 함수
             magic.rotation = Quaternion.FromToRotation(Vector3.right, dir); // Enemy 방향으로 bullet 회전
 
-            if (magicNumber == 7) // 파이어볼
+            if (magicNumber == (int)MagicName.FireBall) // 파이어볼
             {
                 magic.GetComponent<Bullet>().Init(0, magicInfo[magicNumber].penetration, dir, 11.5f);
             }
-            else if (magicNumber == 12) // 괭이
+            else if (magicNumber == (int)MagicName.Hoe) // 괭이
             {
                 magic.GetComponent<Hoe>().Init(dir);
             }
-            else if (magicNumber == 13) // 돌 던지기
+            else if (magicNumber == (int)MagicName.RockThrow) // 돌 던지기
             {
                 magic.GetComponent<RockThrow>().Init(dir);
             }
@@ -244,7 +246,7 @@ public class MagicManager : MonoBehaviour
             Transform magic = Get(magicNumber).transform;
             magic.position = player.scanner.nearestTarget[selectedIndex].transform.position;
             MagicSizeUp(magic, magicNumber);
-            if (magicNumber == 9) // 지옥의 창
+            if (magicNumber == (int)MagicName.HellSpear) // 지옥의 창
             {
                 Enemy enemy = player.scanner.nearestTarget[selectedIndex].GetComponent<Enemy>();
                 magic.GetComponent<MoltenSpear>().Init(enemy);
@@ -267,28 +269,28 @@ public class MagicManager : MonoBehaviour
 
         switch (magicNumber)
         {
-            case 1:
+            case (int)MagicName.Inferno:
                 InfernoSpawn(magicNumber , slotNum);
                 break;
-            case 2:
+            case (int)MagicName.WaterBlast:
                 PoseidonSpawn(magicNumber , slotNum);
                 break;
-            case 3:
+            case (int)MagicName.RockMeteor:
                 GaiaSpawn(magicNumber , slotNum);
                 break;
-            case 4:
+            case (int)MagicName.Leaf:
                 LeafSpawn(magicNumber, slotNum);
                 break;
-            case 5:
+            case (int)MagicName.Jack:
                 JackSpawn(magicNumber , slotNum);
                 break;
-            case 10:
+            case (int)MagicName.Shovel:
                 ShovelSpawn(magicNumber);
                 break;
-            case 11:
+            case (int)MagicName.MagicBall:
                 MagicBallSpawn(magicNumber);
                 break;
-            case 18:
+            case (int)MagicName.ChargeExplosion:
                 ChargeExplosionSpawn(magicNumber , slotNum);
                 break;
         }

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum PoolList { Enemy,  PlayerBullet, EnemyBullet , Heart}
 public class PoolManager : MonoBehaviour
 {
     // 필요한 것 (변수나 리스트의 갯수는 무조건 동일해야함.)
