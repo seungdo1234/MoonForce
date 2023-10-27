@@ -163,8 +163,9 @@ public class Enemy : MonoBehaviour
             int number = collision.GetComponent<MagicNumber>().magicNumber;
             float damage = GameManager.instance.statManager.attack * GameManager.instance.magicManager.magicInfo[number].damagePer;
 
-            if (number == (int)MagicName.Inferno || number == (int)MagicName.Tornado || number == (int)MagicName.ElectricShock)
+            if (number == (int)MagicName.Inferno || number == (int)MagicName.Tornado || number == (int)MagicName.ElectricShock || number == (int)MagicName.Shovel)
             {
+                damagedTime = number == (int)MagicName.Shovel ? 0.1f : 1f;
                 StartCoroutine(IsDamaged());
                 if(number == (int)MagicName.ElectricShock)
                 {
@@ -195,6 +196,7 @@ public class Enemy : MonoBehaviour
         {
             return;
         }
+
         StartCoroutine(IsDamaged());
 
         float damage = GameManager.instance.statManager.attack * GameManager.instance.magicManager.magicInfo[number].damagePer;

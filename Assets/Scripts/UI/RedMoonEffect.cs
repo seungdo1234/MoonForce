@@ -23,6 +23,11 @@ public class RedMoonEffect : MonoBehaviour
     {
         StartCoroutine(RedMoonAlpha(alphaValue , 0));
     }
+
+   public void Lobby()
+    {
+        image.color = new Color(image.color.r, image.color.g, image.color.b, 0);
+    }
     private IEnumerator RedMoonAlpha(float start, float end)
     {
         float currentTime = 0f;

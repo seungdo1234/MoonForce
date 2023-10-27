@@ -66,7 +66,7 @@ public class MagicBall : MonoBehaviour
 
         sprite.color = new Color(1, 1, 1, 1);
 
-        while (true)
+        while (!GameManager.instance.gameStop)
         {
             currentTime += Time.deltaTime;
 

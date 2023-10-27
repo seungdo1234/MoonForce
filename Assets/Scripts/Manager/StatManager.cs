@@ -90,6 +90,7 @@ public class StatManager : MonoBehaviour
 
     }
 
+
     public void EssenceOn(int essenceNum, float stat)
     {
         essenceOn = true;

@@ -27,6 +27,18 @@ public class Player : MonoBehaviour
         scanner = GetComponent<Scanner>();
     }
 
+    private void OnEnable()
+    {
+        if (isDamaged)
+        {
+            spriteRenderer.color = new Color(1, 1, 1, 1);
+            gameObject.tag = "Player";
+            gameObject.layer = 7;
+            isDamaged = false;
+        }
+
+    }
+
     private void FixedUpdate()
     {
         if (GameManager.instance.gameStop)

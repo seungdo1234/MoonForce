@@ -860,7 +860,7 @@ TextureImporter:
         width: 96
         height: 28
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -881,7 +881,7 @@ TextureImporter:
         width: 97
         height: 28
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -902,7 +902,7 @@ TextureImporter:
         width: 96
         height: 28
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -923,7 +923,7 @@ TextureImporter:
         width: 80
         height: 28
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -944,7 +944,7 @@ TextureImporter:
         width: 80
         height: 28
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -965,7 +965,7 @@ TextureImporter:
         width: 80
         height: 28
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -973,6 +973,27 @@ TextureImporter:
       bones: []
       spriteID: 31f23beaee2f14d4f864985594d065f3
       internalID: 674921227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Free Platformer_UI_Buttons_41
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 41
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b67311215de8020439ea581ca2d3f040
+      internalID: -1498558905
       vertices: []
       indices: 
       edges: []
@@ -1024,6 +1045,7 @@ TextureImporter:
       Free Platformer_UI_Buttons_2: -2125625845
       Free Platformer_UI_Buttons_40: 674921227
       Free Platformer_UI_Buttons_8: -1805922678
+      Free Platformer_UI_Buttons_41: -1498558905
       Free Platformer_UI_Buttons_32: -507968910
       Free Platformer_UI_Buttons_23: -1187619736
       Free Platformer_UI_Buttons_15: 1739255273

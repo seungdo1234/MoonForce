@@ -20,10 +20,6 @@ public class CharactorSelect : MonoBehaviour
     public Sprite[] charactorSprites;
     public Image playerImage; // 인벤토리 이미지
     public Text playerName;
-    private void Awake()
-    {
-        
-    }
 
     public void Charactor(int charactorNum) // 캐릭터 선택
     {
@@ -53,11 +49,24 @@ public class CharactorSelect : MonoBehaviour
 
     public void GameStart() // 게임 시작
     {
+        CharactorApply();
+
+        ItemApply();
+
+        GameManager.instance.GameStart();
+
+        gameObject.SetActive(false);
+    }
+
+    public void CharactorApply()
+    {
         // 애니메이션 적용
         playerAnim.runtimeAnimatorController = charactorAnimCon[charactorNum];
         playerImage.sprite = charactorSprites[charactorNum];
         playerName.text = string.Format("<color={0}>{1}</color>", charactorNameColor[charactorNum], charactorName[charactorNum]);
-
+    }
+    public void ItemApply()
+    {
         // 스탯 초기화
         GameManager.instance.statManager.GameStart();
 
@@ -65,9 +74,5 @@ public class CharactorSelect : MonoBehaviour
         int charactorItem = -(2 * charactorNum);
         GameManager.instance.rewardManager.ItemCreate(charactorItem - 1, 0);
         GameManager.instance.rewardManager.ItemCreate(charactorItem - 2, 1);
-
-        GameManager.instance.GameStart();
-
-        gameObject.SetActive(false);
     }
 }

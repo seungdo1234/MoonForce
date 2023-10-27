@@ -1,9 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Cinemachine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -24,6 +20,7 @@ public class GameManager : MonoBehaviour
     public NextStageBtn nextStageBtn;
     public Enchant enchant;
     public SkillCoolTimeUI coolTime;
+    public Guide guide;
     public Spawner spawner;
 
     [Header("# Player Data")]
@@ -32,11 +29,12 @@ public class GameManager : MonoBehaviour
     public int gold; // 골드
 
     [Header("# Stage Data")]
+    public bool playTutorial; // 튜토리얼 플레이 중일 때
     public bool gameStop; // 게임이 멈췄을 때 true
     public bool isStage; // 스테이지를 진행 중 일때 True
     public bool isRedMoon; // 제한 시간안에 Enemy를 잡지 못했을 시 Enemy가 강해지는 붉은 달이 떠오름\
     public bool redMoonEffect; // 배경이 빨개질 때
-    public float maxGameTime; 
+    public float maxGameTime;
     public float curGameTime;
     public int kill;
     public int baseEnemyNum;
@@ -71,19 +69,17 @@ public class GameManager : MonoBehaviour
     {
         // 자기 자신으로 초기화
         instance = this;
-    
+        Application.targetFrameRate = 60;
     }
 
     private void Start()
     {
         spawner = player.GetComponentInChildren<Spawner>();
 
-
-        
     }
     private bool isClear()
     {
-        if(kill == enemyMaxNum)
+        if (kill == enemyMaxNum)
         {
             return true;
         }
@@ -106,9 +102,11 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(loadingImage.lerpTime);
     }
-    public void LobbyGo()
+    public void LobbyGo() // 로비로 가기
     {
-        lobby.SetActive(true);
+        guide.PageInit(); // 가이드 페이지 초기화
+        level = 0; // 레벨 0
+        lobby.SetActive(true); 
         lobbyAnim.SetActive(true);
         player.transform.position = Vector3.zero;
         background.SetActive(true);
@@ -120,8 +118,15 @@ public class GameManager : MonoBehaviour
         magicManager.MagicActiveCancel();
         player.gameObject.SetActive(false);
         AudioManager.instance.PlayBgm((int)Bgm.Main);
+
+        if (redMoonEffect)
+        {
+            redMoon.Lobby();
+            redMoonEffect = false;
+        }
+
     }
-    public void PoolingReset()
+    public void PoolingReset() // 오브젝트 풀링 리셋
     {
         magicManager.PoolingReset();
         pool.PoolingReset();
@@ -145,13 +150,13 @@ public class GameManager : MonoBehaviour
         GameManager.instance.demeterOn = false;
         yield return new WaitForSeconds(1f);
 
-        if(level >= maxLevel) // 마지막 스테이지
+        if (level >= maxLevel) // 마지막 스테이지
         {
             GameEnd(0);
         }
         else
         {
-            
+
             AudioManager.instance.PlayBgm((int)Bgm.Victory - 1); // 승리 Bgm 재생
             yield return new WaitForSeconds(2f);
             availablePoint++;
@@ -187,7 +192,7 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        if (gameStop)
+        if (gameStop || playTutorial)
         {
             return;
         }
@@ -204,8 +209,8 @@ public class GameManager : MonoBehaviour
         }
 
         curGameTime -= Time.deltaTime;
-        
-        if(!redMoonEffect && curGameTime <= redMoon.lerpTime) // 화면이 빨개지는 중
+
+        if (!redMoonEffect && curGameTime <= redMoon.lerpTime) // 화면이 빨개지는 중
         {
             redMoon.RedMoonStart();
             redMoonEffect = true;
@@ -215,9 +220,11 @@ public class GameManager : MonoBehaviour
             curGameTime = 0;
             isRedMoon = true;
         }
-        
+
     }
 
+
+    // 게임종료 (0. 게임 클리어   1. 게임오버)
     public void GameEnd(int endType)
     {
         if (endType == 0)
@@ -237,10 +244,10 @@ public class GameManager : MonoBehaviour
 
         level = 0;
         spawner.spawnPerLevelUp = 0;
-        
+
     }
 
-
+    // 게임 스타트
     public void GameStart()
     {
         availablePoint = 0;
@@ -253,6 +260,8 @@ public class GameManager : MonoBehaviour
         EnemyManager.instance.EnemyReset();
         NextStage();
     }
+
+    // 게임 나가기
     public void GameQuit()
     {
         AudioManager.instance.SelectSfx();
