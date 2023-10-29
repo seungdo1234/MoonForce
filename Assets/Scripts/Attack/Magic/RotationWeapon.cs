@@ -12,7 +12,7 @@ public class RotationWeapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!GameManager.instance.gameStop)
+        if (true)
         {
             if (transform.childCount > 0 && transform.GetChild(0).gameObject.activeSelf)
             {

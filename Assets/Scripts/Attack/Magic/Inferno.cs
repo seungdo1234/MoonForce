@@ -36,7 +36,7 @@ public class Inferno : MonoBehaviour // 화염속성 레전드리 무기의 스킬
         int point = 0;
         float timer = 0;
         bool skillOn = false;
-        while(!GameManager.instance.gameStop)
+        while(true)
         {
             if(!skillOn)
             {

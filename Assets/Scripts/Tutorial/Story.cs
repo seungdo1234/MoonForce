@@ -61,7 +61,9 @@ public class Story : MonoBehaviour , IPointerUpHandler , IPointerDownHandler
                     yield return new WaitForSeconds(typingSpeed);
                     if (point == typingLength) // 터치 활성화
                     {
+                        text.text = originText;
                         yield return new WaitForSeconds(0.5f);
+                        text.text = originText + cursor_char;
                         storyTextEnd = true;
                         touchText.SetActive(true);
                     }

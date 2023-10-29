@@ -75,15 +75,15 @@ public class StageClear : MonoBehaviour
             }
             else if (chestType == 1)
             { 
-                value = ChestManager.instance.Percent(ChestManager.instance.bronzeChest);
+                value = ChestManager.instance.Percent(ChestManager.instance.silverChest);
             }
             else if (chestType == 2)
             {
-                value = ChestManager.instance.Percent(ChestManager.instance.bronzeChest);
+                value = ChestManager.instance.Percent(ChestManager.instance.goldChest);
             }
             else
             {
-                value = ChestManager.instance.Percent(ChestManager.instance.bronzeChest);
+                value = ChestManager.instance.Percent(ChestManager.instance.specialChest);
             }
 
             // rewardType: 0,2는 스태프, 1,3은 마법책

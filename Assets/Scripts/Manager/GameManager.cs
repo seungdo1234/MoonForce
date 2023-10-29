@@ -144,11 +144,13 @@ public class GameManager : MonoBehaviour
         redMoonEffect = false;
         joy.StageClear();
         hud.SetActive(false);
-        PoolingReset();  // 모든 폴링 오브젝트 비활성화
+        pool.PoolingReset();
         pause.gameObject.SetActive(false); // 퍼즈 버튼 비활성화
         AudioManager.instance.EndBgm(); // Bgm 끄기
         GameManager.instance.demeterOn = false;
         yield return new WaitForSeconds(1f);
+
+        magicManager.PoolingReset();
 
         if (level >= maxLevel) // 마지막 스테이지
         {

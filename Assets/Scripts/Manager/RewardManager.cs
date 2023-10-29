@@ -1,7 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
-using System.Collections;
-using System.Collections.Generic;
 
 public class RewardManager : MonoBehaviour
 {
@@ -19,8 +16,8 @@ public class RewardManager : MonoBehaviour
     private int attack;
     private float rate;
     private float moveSpeed;
-    private int skillNumber ;
-    private int[] aditionalAbility  ;
+    private int skillNumber;
+    private int[] aditionalAbility;
     private int createType;
     private int itemRank;
     private void Start()
@@ -30,7 +27,7 @@ public class RewardManager : MonoBehaviour
 
 
     // createType은 아이템을 생성하는 형태 (0번 스태프, 1번 마법책 , 2번 상점 스태프, 3번 상점 마법책)
-    public void ItemCreate(int itemRank , int createType) // 랜덤 아이템 생성
+    public void ItemCreate(int itemRank, int createType) // 랜덤 아이템 생성
     {
         this.createType = createType;
         this.itemRank = itemRank;
@@ -54,7 +51,6 @@ public class RewardManager : MonoBehaviour
                         int value = ChestManager.instance.Percent(ChestManager.instance.qualityPer[GameManager.instance.spawner.spawnPerLevelUp].percent);
                         quality = (ItemQuality)value + 1;
                     }
-                    SetStaffStat();
                     break;
                 // 마법책
                 case 1:
@@ -79,7 +75,7 @@ public class RewardManager : MonoBehaviour
             }
         }
 
-        if (type == ItemType.Staff ) // 스태프 생성
+        if (type == ItemType.Staff) // 스태프 생성
         {
             StaffCreate();
         }
@@ -87,7 +83,7 @@ public class RewardManager : MonoBehaviour
         {
             BookCreate();
         }
-       
+
     }
     public void StaffCreate()
     {
@@ -95,7 +91,7 @@ public class RewardManager : MonoBehaviour
 
         int rankNum = this.rank == ItemRank.Legendary ? 0 : -1;
 
-        if(itemRank > -1)
+        if (itemRank > -1)
         {
             itemAttribute = (ItemAttribute)Random.Range(1, System.Enum.GetValues(typeof(ItemAttribute)).Length + rankNum);
         }
@@ -116,9 +112,9 @@ public class RewardManager : MonoBehaviour
             }
         }
 
+        SetStaffStat();
 
-  
-        if(rank != ItemRank.Legendary)
+        if (rank != ItemRank.Legendary)
         {
             itemName = itemInfo.staffNames[(int)itemAttribute - 1];
             desc = itemInfo.staffDescs[(int)itemAttribute - 1];
@@ -144,10 +140,10 @@ public class RewardManager : MonoBehaviour
                 break;
         }
 
-        if(createType == 0) // 0일때 (보상)
+        if (createType == 0) // 0일때 (보상)
         {
             ItemDatabase.instance.GetStaff(type, rank, quality, itemSprite, itemAttribute, itemName, attack, rate, moveSpeed, desc, skillNum);
-            if(itemRank > -1)
+            if (itemRank > -1)
             {
                 rewardSlot.item = ItemDatabase.instance.Set(ItemDatabase.instance.itemCount() - 1);
                 rewardSlot.itemImage.sprite = rewardSlot.item.itemSprite;
@@ -170,7 +166,7 @@ public class RewardManager : MonoBehaviour
     private void BookCreate() // 마법 책 생성
     {
         // 스킬 번호
-        if(itemRank > -1)
+        if (itemRank > -1)
         {
             skillNumber = Random.Range(7, GameManager.instance.magicManager.magicInfo.Length);
         }
@@ -179,10 +175,10 @@ public class RewardManager : MonoBehaviour
             switch (itemRank)
             {
                 case -2:
-                    skillNumber = 10;
+                    skillNumber = (int)MagicName.Shovel;
                     break;
                 case -4:
-                    skillNumber = 7;
+                    skillNumber = (int)MagicName.FireBall;
                     break;
                 case -6:
                     break;
@@ -193,22 +189,22 @@ public class RewardManager : MonoBehaviour
 
         // 품질 별로 부여되는 마법의 갯수가 다름
         aditionalAbility = new int[(int)quality];
-        
-        for(int i = 0; i< aditionalAbility.Length; i++)
+
+        for (int i = 0; i < aditionalAbility.Length; i++)
         {
             int rand = Random.Range(0, itemInfo.aditionalAbility.Length);
-            
-            aditionalAbility[i]  = rand;
+
+            aditionalAbility[i] = rand;
         }
 
 
         itemName = GameManager.instance.magicManager.magicInfo[skillNumber].magicName;
         itemSprite = itemInfo.magicBookSprite;
 
-       if (createType == 1)
+        if (createType == 1)
         {
             ItemDatabase.instance.GetBook(type, quality, itemSprite, itemName, skillNumber, aditionalAbility);
-            if (itemRank > - 1)
+            if (itemRank > -1)
             {
                 rewardSlot.item = ItemDatabase.instance.Set(ItemDatabase.instance.itemCount() - 1);
                 rewardSlot.itemImage.sprite = rewardSlot.item.itemSprite;
@@ -232,24 +228,31 @@ public class RewardManager : MonoBehaviour
         if (quality == ItemQuality.Low)
         {
             attack = itemInfo.baseAttack[(int)rank - 1];
-            rate = itemInfo.baseRate[(int)rank - 1];
         }
         else if (quality == ItemQuality.Normal)
         {
             attack = itemInfo.baseAttack[(int)rank - 1] + itemInfo.increaseAttack[(int)rank - 1];
-            rate = itemInfo.baseRate[(int)rank - 1] + itemInfo.increaseRate[(int)rank - 1];
+            //    rate = itemInfo.baseRate[(int)rank - 1] + itemInfo.increaseRate[(int)rank - 1];
         }
         else if (quality == ItemQuality.High)
         {
             attack = itemInfo.baseAttack[(int)rank - 1] + itemInfo.increaseAttack[(int)rank - 1] * 2;
-            rate = itemInfo.baseRate[(int)rank - 1] + itemInfo.increaseRate[(int)rank - 1] * 2;
+            //   rate = itemInfo.baseRate[(int)rank - 1] + itemInfo.increaseRate[(int)rank - 1] * 2;
         }
+
+        rate = itemInfo.baseRate[(int)rank - 1];
+
+
+        if (itemAttribute == ItemAttribute.Dark)
+        {
+            attack += Mathf.FloorToInt((float)attack * 0.5f);
+
+            rate += 0.1f;
+        }
+
+
     }
 
-    private void SetBookStat()
-    {
-
-    }
 }
 
 
