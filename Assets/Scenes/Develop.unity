@@ -25258,7 +25258,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1626213025, guid: a9006d8b165306d4ebcf123dedcafa4c, type: 3}
+  m_Sprite: {fileID: 2144034672, guid: a9006d8b165306d4ebcf123dedcafa4c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -27554,7 +27554,7 @@ MonoBehaviour:
     - {fileID: 22100000, guid: e47233225f35fa8449506139c33492d3, type: 2}
     - {fileID: 22100000, guid: 6111f0d4becb2ba438ddf5fe6eef850d, type: 2}
     - {fileID: 22100000, guid: ccd866dd45a3dee42bb2da9864dae791, type: 2}
-  - damagePer: 1.5
+  - damagePer: 1.3
     healthPer: 1.3
     increasedSpeed: 0.3
     mass: 1
@@ -27577,7 +27577,7 @@ MonoBehaviour:
     - {fileID: 22100000, guid: e14ecb1d10d34764c87656c10d2555cc, type: 2}
     - {fileID: 22100000, guid: 2249dbfac1dfa87458f677a7bb2cc43e, type: 2}
     - {fileID: 22100000, guid: dfc47f8c9c2de97418414e78404634c4, type: 2}
-  - damagePer: 2
+  - damagePer: 1.7
     healthPer: 1.1
     increasedSpeed: 1.3
     mass: 1
@@ -35945,7 +35945,7 @@ MonoBehaviour:
     magicCountIncrease: 0
     isFlying: 0
     isNonTarget: 1
-    damagePer: 3
+    damagePer: 3.25
     magicCount: 1
     magicCoolTime: 13.5
     penetration: 0
@@ -36010,7 +36010,7 @@ MonoBehaviour:
     isFlying: 0
     isNonTarget: 0
     damagePer: 4
-    magicCount: 2
+    magicCount: 3
     magicCoolTime: 4.5
     penetration: 0
     knockBackValue: 500
@@ -36121,7 +36121,7 @@ MonoBehaviour:
     magicCountIncrease: 0
     isFlying: 0
     isNonTarget: 0
-    damagePer: 2.25
+    damagePer: 2.75
     magicCount: 1
     magicCoolTime: 12.1
     penetration: 0
@@ -43490,7 +43490,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -70}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1356258371
 MonoBehaviour:
@@ -43525,7 +43525,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uD654\uC5FC \uB9C8\uBC95\uC0AC"
+  m_Text: "\uC694\uB9AC\uC0AC"
 --- !u!222 &1356258372
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -74464,7 +74464,7 @@ MonoBehaviour:
   playerAnim: {fileID: 1535498165}
   charactorSprites:
   - {fileID: 1903303617, guid: 1ea933cb576e910418dee8d9be28359e, type: 3}
-  - {fileID: 1626213025, guid: a9006d8b165306d4ebcf123dedcafa4c, type: 3}
+  - {fileID: 2144034672, guid: a9006d8b165306d4ebcf123dedcafa4c, type: 3}
   - {fileID: -1047829818, guid: f560f3f8655278b4ba75fb0a34919899, type: 3}
   - {fileID: 1004089409, guid: 8b5f6a221e315d64b9b3949d49794104, type: 3}
   playerImage: {fileID: 1639259912}

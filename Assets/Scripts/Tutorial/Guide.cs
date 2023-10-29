@@ -83,9 +83,9 @@ public class Guide : MonoBehaviour
     {
         rightBtn.interactable = true;
         leftBtn.interactable = false;
-        titleText.text = guideTitles[pageNum];
         guideAreas[pageNum].SetActive(false);
         pageNum = 0;
+        titleText.text = guideTitles[pageNum];
         guideAreas[pageNum].SetActive(true);
         pageText.text = string.Format("{0}/{1}", pageNum + 1, guideTitles.Length);
     }

@@ -7,6 +7,7 @@ public class Heart : MonoBehaviour
     public Sprite[] heartSprite;
     public float[] healthUpValue;
     public float lerpTime;
+    public float baseScanRange;
     public float scanRange;
     public Vector3 textPos;
     private int healthType;
@@ -24,17 +25,27 @@ public class Heart : MonoBehaviour
             sprite = GetComponent<SpriteRenderer>();
         }
 
+        scanRange = baseScanRange;
         anim.speed = 1f;
         sprite.sprite = heartSprite[healthType];
 
         StartCoroutine(PlayerScan());
     }
-
+    public void StageClear() {
+        StartCoroutine(DistanceUp());
+    }
+    private IEnumerator DistanceUp()
+    {
+        scanRange *= 5;
+        anim.speed = 0f;
+        yield return new WaitForSeconds(1f);
+        gameObject.SetActive(false);
+    }
     // ÇÃ·¹ÀÌ¾î ½ºÄµ
     private IEnumerator PlayerScan()
     {
 
-        while (!GameManager.instance.gameStop)
+        while (true)
         {
             float distance = Vector3.Distance(transform.position, player.transform.position);
 
@@ -75,7 +86,7 @@ public class Heart : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision) // Èú
     {
-        if ((!collision.CompareTag("Player") && !collision.CompareTag("PlayerDamaged")) || GameManager.instance.gameStop)
+        if ((!collision.CompareTag("Player") && !collision.CompareTag("PlayerDamaged")))
         {
             return;
         }

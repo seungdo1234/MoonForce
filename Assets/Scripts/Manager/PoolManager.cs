@@ -81,12 +81,19 @@ public class PoolManager : MonoBehaviour
     {
         // 스테이지를 클리어했기때문에 모든 풀링 오브젝트들 비활성화 
 
-        for (int i = 0; i < pools.Length; i++){
+        for (int i = 0; i < pools.Length ; i++){
             foreach (GameObject item in pools[i])
             {
                 if (item.activeSelf)
                 {
-                    item.SetActive(false);
+                    if(i == pools.Length- 1)
+                    {
+                        item.GetComponent<Heart>().StageClear();
+                    }
+                    else
+                    {
+                        item.SetActive(false);
+                    }
                 }
             }
         }

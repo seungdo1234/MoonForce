@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class StatManager : MonoBehaviour
@@ -51,7 +49,7 @@ public class StatManager : MonoBehaviour
     [Header("# Grass Attribute Stat")]
     public float restraintTime; // 속박 시간
     public float baseRestraintTime; // 속박 시간
-     
+
     [Header("# Earth Attribute Stat")]
     public float speedReducedEffectTime; // 이동속도 감소 시간
     public float speedReducePer; // 이동속도 감소량
@@ -82,7 +80,7 @@ public class StatManager : MonoBehaviour
         speedReducePer = baseSpeedReducePer;
         darkExplosionDamagePer = baseDarkExplosionDamagePer;
 
-        for(int i =0; i<statLevels.Length; i++)
+        for (int i = 0; i < statLevels.Length; i++)
         {
 
             statLevels[i] = 0;
@@ -93,13 +91,17 @@ public class StatManager : MonoBehaviour
 
     public void EssenceOn(int essenceNum, float stat)
     {
+
         essenceOn = true;
         activeEssenceNum = essenceNum;
 
         switch (essenceNum)
         {
             case 0:
-                essenceStat[0] = Mathf.Floor(attack * stat);
+                if(stat < 1)
+                {
+                    essenceStat[0] = Mathf.Floor(attack * stat);
+                }
                 attack += (int)essenceStat[0];
                 break;
             case 1:
@@ -115,12 +117,15 @@ public class StatManager : MonoBehaviour
                 penetration += (int)essenceStat[3];
                 break;
         }
+
+
     }
     public void EssenceOff()
     {
         essenceOn = false;
 
-        switch (activeEssenceNum) {
+        switch (activeEssenceNum)
+        {
             case 0:
                 attack -= (int)essenceStat[0];
                 break;
@@ -153,8 +158,9 @@ public class StatManager : MonoBehaviour
                 rate += baseRate;
                 break;
             case 2:
+                float value = moveSpeed - baseMoveSpeed;
                 baseMoveSpeed += statUpValue[statNumber];
-                moveSpeed = baseMoveSpeed;
+                moveSpeed = baseMoveSpeed + value;
                 break;
             case 3:
                 maxHealth += statUpValue[statNumber];

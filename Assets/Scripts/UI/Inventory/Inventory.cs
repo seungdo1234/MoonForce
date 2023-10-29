@@ -366,13 +366,14 @@ public class Inventory : MonoBehaviour
         }
         GameManager.instance.statManager.weaponNum+= operation ;
     }
-    public void EquipStaff()
+    public void EquipStaff() // 스태프 장착
     {
 
         prevEquipStaff.isEquip = false;
         mainEqquipment.item.isEquip = true;
         // 능력치 적용
         GameManager.instance.attribute = mainEqquipment.item.itemAttribute;
+
         GameManager.instance.statManager.attack = GameManager.instance.statManager.baseAttack + mainEqquipment.item.attack;
         if (GameManager.instance.attribute == ItemAttribute.Dark)
         {
@@ -385,8 +386,12 @@ public class Inventory : MonoBehaviour
         GameManager.instance.statManager.moveSpeed = GameManager.instance.statManager.baseMoveSpeed + mainEqquipment.item.moveSpeed;
 
 
+        if (GameManager.instance.statManager.essenceOn) // 에센스가 적용중이라면
+        {
+            GameManager.instance.statManager.EssenceOn(GameManager.instance.statManager.activeEssenceNum, GameManager.instance.statManager.essenceStat[GameManager.instance.statManager.activeEssenceNum]);   
+        }
 
-        if (prevEquipStaff.rank == ItemRank.Legendary) // 장착해제한 아이템이 레전드 아이템 이라면 해당 스킬 Off
+            if (prevEquipStaff.rank == ItemRank.Legendary) // 장착해제한 아이템이 레전드 아이템 이라면 해당 스킬 Off
         {
 
             if (prevEquipStaff.skillNum != 0)

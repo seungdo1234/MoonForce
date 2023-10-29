@@ -18,7 +18,7 @@ public class Weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.instance.gameStop || GameManager.instance.maxGameTime - GameManager.instance.curGameTime < 2)
+        if (GameManager.instance.gameStop || GameManager.instance.maxGameTime - GameManager.instance.curGameTime < 0.5f)
         {
             return;
         }
