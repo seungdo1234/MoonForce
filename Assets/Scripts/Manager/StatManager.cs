@@ -69,10 +69,14 @@ public class StatManager : MonoBehaviour
     {
         penetration = 1;
         weaponNum = 1;
+        maxHealth = initHealth;
         curHealth = initHealth;
         attack = initAttack;
+        baseAttack = initAttack;
         rate = initRate;
+        baseRate = initRate;
         moveSpeed = initMoveSpeed;
+        baseMoveSpeed = initMoveSpeed;
         burningDamagePer = baseBurningDamagePer;
         wettingDamagePer = baseWettingDamagePer;
         bulletDamagePer = baseBulletDamagePer;

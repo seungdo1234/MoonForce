@@ -114,7 +114,7 @@ public class GameManager : MonoBehaviour
         // 아이템 데이터 베이스 초기화
         ItemDatabase.instance.ItemReset();
         map.MapReset();
-        PoolingReset();
+        pool.PoolingReset(); // 풀링 리셋
         magicManager.MagicActiveCancel();
         player.gameObject.SetActive(false);
         AudioManager.instance.PlayBgm((int)Bgm.Main);
@@ -147,7 +147,7 @@ public class GameManager : MonoBehaviour
         pool.PoolingReset();
         pause.gameObject.SetActive(false); // 퍼즈 버튼 비활성화
         AudioManager.instance.EndBgm(); // Bgm 끄기
-        GameManager.instance.demeterOn = false;
+        demeterOn = false;
         yield return new WaitForSeconds(1f);
 
         magicManager.PoolingReset();
@@ -242,6 +242,7 @@ public class GameManager : MonoBehaviour
             pause.gameObject.SetActive(false);
             AudioManager.instance.PlayBgm((int)Bgm.GameOver);
             gameOverObject.SetActive(true);
+            magicManager.PoolingReset();
         }
 
         level = 0;
@@ -257,7 +258,7 @@ public class GameManager : MonoBehaviour
         level = 0;
         gold = 0;
         enemyMaxNum = baseEnemyNum;
-        GameManager.instance.demeterOn = false;
+        demeterOn = false;
         AudioManager.instance.SelectSfx();
         EnemyManager.instance.EnemyReset();
         NextStage();

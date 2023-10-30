@@ -45,6 +45,7 @@ public class Jack : MonoBehaviour
     {
         mainBackgroud.SetActive(false);
         float currentTime = 0f;
+        GameManager.instance.demeterOn = true;
         while (currentTime < lerpTime)
         {
             currentTime += Time.deltaTime;
@@ -54,6 +55,7 @@ public class Jack : MonoBehaviour
         }
 
         currentTime = 0f;
+        GameManager.instance.demeterOn = false;
         while (currentTime < lerpTime)
         {
             currentTime += Time.deltaTime;

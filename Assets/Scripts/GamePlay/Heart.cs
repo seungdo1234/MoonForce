@@ -7,6 +7,7 @@ public class Heart : MonoBehaviour
     public Sprite[] heartSprite;
     public float[] healthUpValue;
     public float lerpTime;
+    public float stageClearRange; // 스테이지 클리어 시 늘어하는 범위 배수
     public float baseScanRange;
     public float scanRange;
     public Vector3 textPos;
@@ -14,6 +15,8 @@ public class Heart : MonoBehaviour
     private SpriteRenderer sprite;
     private Player player;
     private Animator anim;
+
+    // 초기화
     public void Init(int type)
     {
         healthType = type;
@@ -34,9 +37,11 @@ public class Heart : MonoBehaviour
     public void StageClear() {
         StartCoroutine(DistanceUp());
     }
+
+    // 스테이지 클리어 시 주변 하트들을 빨아드림
     private IEnumerator DistanceUp()
     {
-        scanRange *= 5;
+        scanRange *= stageClearRange;
         anim.speed = 0f;
         yield return new WaitForSeconds(1f);
         gameObject.SetActive(false);
@@ -49,7 +54,7 @@ public class Heart : MonoBehaviour
         {
             float distance = Vector3.Distance(transform.position, player.transform.position);
 
-            if(distance <= scanRange)
+            if(GameManager.instance.statManager.curHealth > 0 && distance <= scanRange)
             {
                 ScanOn();
                 break;

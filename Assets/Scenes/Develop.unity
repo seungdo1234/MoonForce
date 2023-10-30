@@ -5256,7 +5256,7 @@ MonoBehaviour:
   maxEnchantStep: 9
   bookenchantPercents: 640000004600000032000000
   staffEnchantPercents: 6400000046000000280000000a000000
-  staffAttackIncrease: 0100000002000000040000000a000000
+  staffAttackIncrease: 02000000030000000500000007000000
 --- !u!1 &163720206
 GameObject:
   m_ObjectHideFlags: 0
@@ -11522,8 +11522,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 68.8318, y: 30}
+  m_AnchoredPosition: {x: 11.5807, y: 0}
+  m_SizeDelta: {x: 80.4125, y: 30}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &395276030
 MonoBehaviour:
@@ -27578,7 +27578,7 @@ MonoBehaviour:
     - {fileID: 22100000, guid: 2249dbfac1dfa87458f677a7bb2cc43e, type: 2}
     - {fileID: 22100000, guid: dfc47f8c9c2de97418414e78404634c4, type: 2}
   - damagePer: 1.7
-    healthPer: 1.1
+    healthPer: 0.8
     increasedSpeed: 1.3
     mass: 1
     enemyBaseScale: {x: 1.1, y: 1.1, z: 1.1}
@@ -35869,7 +35869,7 @@ MonoBehaviour:
     magicCount: 0
     magicCoolTime: 0
     penetration: 0
-    knockBackValue: 700
+    knockBackPer: 1.3
     damageIncreaseValue: 0
     coolTimeDecreaseValue: 0
     magicRateStep: 0
@@ -35881,11 +35881,11 @@ MonoBehaviour:
     magicCountIncrease: 0
     isFlying: 0
     isNonTarget: 1
-    damagePer: 2.25
+    damagePer: 2.5
     magicCount: 1
     magicCoolTime: 9.3
     penetration: 0
-    knockBackValue: 800
+    knockBackPer: 1.5
     damageIncreaseValue: 0
     coolTimeDecreaseValue: 0
     magicRateStep: 0
@@ -35897,11 +35897,11 @@ MonoBehaviour:
     magicCountIncrease: 0
     isFlying: 0
     isNonTarget: 1
-    damagePer: 2.5
+    damagePer: 2.75
     magicCount: 1
     magicCoolTime: 7.2
     penetration: 0
-    knockBackValue: 800
+    knockBackPer: 1.5
     damageIncreaseValue: 0
     coolTimeDecreaseValue: 0
     magicRateStep: 0
@@ -35913,11 +35913,11 @@ MonoBehaviour:
     magicCountIncrease: 0
     isFlying: 0
     isNonTarget: 1
-    damagePer: 1.75
+    damagePer: 2
     magicCount: 1
     magicCoolTime: 12
     penetration: 0
-    knockBackValue: 500
+    knockBackPer: 1.3
     damageIncreaseValue: 0
     coolTimeDecreaseValue: 0
     magicRateStep: 0
@@ -35933,7 +35933,7 @@ MonoBehaviour:
     magicCount: 0
     magicCoolTime: 18
     penetration: 0
-    knockBackValue: 0
+    knockBackPer: 0
     damageIncreaseValue: 0
     coolTimeDecreaseValue: 0
     magicRateStep: 0
@@ -35945,11 +35945,11 @@ MonoBehaviour:
     magicCountIncrease: 0
     isFlying: 0
     isNonTarget: 1
-    damagePer: 3.25
+    damagePer: 4.25
     magicCount: 1
     magicCoolTime: 13.5
     penetration: 0
-    knockBackValue: 500
+    knockBackPer: 1.5
     damageIncreaseValue: 0
     coolTimeDecreaseValue: 0
     magicRateStep: 0
@@ -35965,7 +35965,7 @@ MonoBehaviour:
     magicCount: 0
     magicCoolTime: 0
     penetration: 0
-    knockBackValue: 0
+    knockBackPer: 0
     damageIncreaseValue: 0
     coolTimeDecreaseValue: 0
     magicRateStep: 0
@@ -35981,7 +35981,7 @@ MonoBehaviour:
     magicCount: 1
     magicCoolTime: 2.6
     penetration: 999
-    knockBackValue: 700
+    knockBackPer: 1.2
     damageIncreaseValue: 0.75
     coolTimeDecreaseValue: 0.35
     magicRateStep: 0
@@ -35993,11 +35993,11 @@ MonoBehaviour:
     magicCountIncrease: 0
     isFlying: 0
     isNonTarget: 0
-    damagePer: 1.8
+    damagePer: 2.25
     magicCount: 1
     magicCoolTime: 5.5
     penetration: 0
-    knockBackValue: 800
+    knockBackPer: 1.5
     damageIncreaseValue: 2
     coolTimeDecreaseValue: 0.5
     magicRateStep: 0
@@ -36011,9 +36011,9 @@ MonoBehaviour:
     isNonTarget: 0
     damagePer: 4
     magicCount: 3
-    magicCoolTime: 4.5
+    magicCoolTime: 4.6
     penetration: 0
-    knockBackValue: 500
+    knockBackPer: 1
     damageIncreaseValue: 1
     coolTimeDecreaseValue: 0.5
     magicRateStep: 0
@@ -36029,7 +36029,7 @@ MonoBehaviour:
     magicCount: 3
     magicCoolTime: 0
     penetration: 0
-    knockBackValue: 1200
+    knockBackPer: 1.2
     damageIncreaseValue: 0.25
     coolTimeDecreaseValue: 0
     magicRateStep: 0
@@ -36045,7 +36045,7 @@ MonoBehaviour:
     magicCount: 1
     magicCoolTime: 0
     penetration: 0
-    knockBackValue: 450
+    knockBackPer: 1
     damageIncreaseValue: 0.45
     coolTimeDecreaseValue: 0
     magicRateStep: 0
@@ -36059,9 +36059,9 @@ MonoBehaviour:
     isNonTarget: 0
     damagePer: 1.1
     magicCount: 1
-    magicCoolTime: 4.1
+    magicCoolTime: 3.15
     penetration: 0
-    knockBackValue: 550
+    knockBackPer: 1.2
     damageIncreaseValue: 0.75
     coolTimeDecreaseValue: 0.35
     magicRateStep: 0
@@ -36075,9 +36075,9 @@ MonoBehaviour:
     isNonTarget: 0
     damagePer: 5.5
     magicCount: 1
-    magicCoolTime: 5.5
+    magicCoolTime: 4.25
     penetration: 0
-    knockBackValue: 1000
+    knockBackPer: 1.7
     damageIncreaseValue: 2.5
     coolTimeDecreaseValue: 0.5
     magicRateStep: 0
@@ -36089,12 +36089,12 @@ MonoBehaviour:
     magicCountIncrease: 1
     isFlying: 1
     isNonTarget: 1
-    damagePer: 1.75
+    damagePer: 2.3
     magicCount: 3
     magicCoolTime: 2.8
     penetration: 0
-    knockBackValue: 500
-    damageIncreaseValue: 0.25
+    knockBackPer: 1.2
+    damageIncreaseValue: 0.3
     coolTimeDecreaseValue: 0.3
     magicRateStep: 0
     magicSizeStep: 0
@@ -36105,11 +36105,11 @@ MonoBehaviour:
     magicCountIncrease: 0
     isFlying: 0
     isNonTarget: 0
-    damagePer: 1.75
+    damagePer: 1.9
     magicCount: 1
     magicCoolTime: 7.1
     penetration: 0
-    knockBackValue: 500
+    knockBackPer: 1.3
     damageIncreaseValue: 0.25
     coolTimeDecreaseValue: 0.5
     magicRateStep: 0
@@ -36121,11 +36121,11 @@ MonoBehaviour:
     magicCountIncrease: 0
     isFlying: 0
     isNonTarget: 0
-    damagePer: 2.75
+    damagePer: 3.25
     magicCount: 1
     magicCoolTime: 12.1
     penetration: 0
-    knockBackValue: 750
+    knockBackPer: 1.7
     damageIncreaseValue: 0.5
     coolTimeDecreaseValue: 1.5
     magicRateStep: 0
@@ -36137,11 +36137,11 @@ MonoBehaviour:
     magicCountIncrease: 0
     isFlying: 0
     isNonTarget: 0
-    damagePer: 1.85
+    damagePer: 1.95
     magicCount: 1
     magicCoolTime: 8.1
     penetration: 0
-    knockBackValue: 0
+    knockBackPer: 0
     damageIncreaseValue: 0.25
     coolTimeDecreaseValue: 0.5
     magicRateStep: 0
@@ -36153,11 +36153,11 @@ MonoBehaviour:
     magicCountIncrease: 0
     isFlying: 0
     isNonTarget: 1
-    damagePer: 1.75
+    damagePer: 2.25
     magicCount: 1
     magicCoolTime: 6.1
     penetration: 0
-    knockBackValue: 1500
+    knockBackPer: 2
     damageIncreaseValue: 0.45
     coolTimeDecreaseValue: 0.75
     magicRateStep: 0
@@ -43320,8 +43320,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 62.5, y: 0}
-  m_SizeDelta: {x: 69.1244, y: 30}
+  m_AnchoredPosition: {x: 70.806274, y: 0}
+  m_SizeDelta: {x: 85.7369, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1354218206
 MonoBehaviour:
@@ -43356,7 +43356,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 9999
+  m_Text: 99999
 --- !u!222 &1354218207
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -64632,7 +64632,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 18.199951}
+  m_AnchoredPosition: {x: -16.1, y: 18.199951}
   m_SizeDelta: {x: 120, y: 100}
   m_Pivot: {x: 1, y: 1}
 --- !u!1 &1771666496
@@ -76569,7 +76569,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -70.20001, y: -61}
+  m_AnchoredPosition: {x: -86.29999, y: -61}
   m_SizeDelta: {x: 53.333332, y: 53.333332}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &2059204954
@@ -77741,7 +77741,7 @@ MonoBehaviour:
   baseMoveSpeed: 3
   penetration: 1
   weaponNum: 1
-  knockBackValue: 500
+  knockBackValue: 1800
   initHealth: 100
   initAttack: 0
   initRate: 1.5
@@ -77757,8 +77757,8 @@ MonoBehaviour:
   statMaxLevels: 0a0000000a0000000a00000005000000040000000a0000000a0000000a0000000a0000000a0000000a0000000a000000
   statUpValue:
   - 2
-  - 0.05
-  - 0.05
+  - 0.1
+  - 0.1
   - 10
   - 1
   - 0.05
@@ -77767,14 +77767,14 @@ MonoBehaviour:
   - 0.1
   - 0.025
   - 0.2
-  burningDamagePer: 0.5
-  baseBurningDamagePer: 0.5
+  burningDamagePer: 0.4
+  baseBurningDamagePer: 0.4
   burningEffectTime: 3
   wettingDamagePer: 1.2
   baseWettingDamagePer: 1.2
   wettingEffectTime: 3
-  bulletDamagePer: 1.4
-  baseBulletDamagePer: 1.4
+  bulletDamagePer: 1.5
+  baseBulletDamagePer: 1.5
   restraintTime: 0.5
   baseRestraintTime: 0.5
   speedReducedEffectTime: 1.5

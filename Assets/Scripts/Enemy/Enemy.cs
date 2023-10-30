@@ -151,22 +151,26 @@ public class Enemy : MonoBehaviour
         {
             return;
         }
+        
 
         if (collision.gameObject.layer == 11) // 만약 마력탄이라면
         {
             knockBackValue = GameManager.instance.statManager.knockBackValue;
             StatusEffect();
             EnemyDamaged(collision.GetComponent<Bullet>().damage, 1);
+            damagedTime = 0.1f;
+            StartCoroutine(IsDamaged());
         }
         else // 마법이라면 
         {
             int number = collision.GetComponent<MagicNumber>().magicNumber;
             float damage = GameManager.instance.statManager.attack * GameManager.instance.magicManager.magicInfo[number].damagePer;
 
-            if (number == (int)MagicName.Inferno || number == (int)MagicName.Tornado || number == (int)MagicName.ElectricShock || number == (int)MagicName.Shovel)
+            damagedTime = number != (int)MagicName.Tornado && number != (int)MagicName.ElectricShock ? 0.15f : 1f;
+            StartCoroutine(IsDamaged());
+
+            if (number == (int)MagicName.Inferno || number == (int)MagicName.Tornado || number == (int)MagicName.ElectricShock)
             {
-                damagedTime = number == (int)MagicName.Shovel ? 0.1f : 1f;
-                StartCoroutine(IsDamaged());
                 if(number == (int)MagicName.ElectricShock)
                 {
                     GameObject elec = collision.gameObject;
@@ -175,11 +179,9 @@ public class Enemy : MonoBehaviour
                 }
             }
 
-            knockBackValue = GameManager.instance.magicManager.magicInfo[number].knockBackValue;
+            knockBackValue = GameManager.instance.magicManager.magicInfo[number].knockBackPer * GameManager.instance.statManager.knockBackValue;
 
             EnemyDamaged(damage, 2);
-
-
         }
     }
 

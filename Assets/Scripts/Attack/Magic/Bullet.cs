@@ -7,6 +7,8 @@ public class Bullet : MonoBehaviour
     public float damage;
     public int per; // °üÅë
 
+
+    private GameObject enemy;
     private Rigidbody2D rigid;
 
     private void Awake()
@@ -42,7 +44,12 @@ public class Bullet : MonoBehaviour
             return;
         }
 
-        per--;
+
+        if(collision.gameObject != enemy)
+        {
+            per--;
+        }
+        enemy = collision.gameObject;
 
         if (per == -1)
         {

@@ -54,6 +54,7 @@ MonoBehaviour:
   - 15
   - 30
   lerpTime: 0.5
+  stageClearRange: 10
   baseScanRange: 1
   scanRange: 1
   textPos: {x: 0, y: 0.75, z: 0}
