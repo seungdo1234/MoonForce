@@ -158,7 +158,7 @@ public class Enemy : MonoBehaviour
             knockBackValue = GameManager.instance.statManager.knockBackValue;
             StatusEffect();
             EnemyDamaged(collision.GetComponent<Bullet>().damage, 1);
-            damagedTime = 0.1f;
+            damagedTime = 0.1f; // 마력탄 연속 공격 판정 막기 위한 코드
             StartCoroutine(IsDamaged());
         }
         else // 마법이라면 

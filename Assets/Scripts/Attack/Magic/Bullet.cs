@@ -45,7 +45,7 @@ public class Bullet : MonoBehaviour
         }
 
 
-        if(collision.gameObject != enemy)
+        if(collision.gameObject != enemy) // 같은 enemy일 때는 관통력이 안 줄음
         {
             per--;
         }
