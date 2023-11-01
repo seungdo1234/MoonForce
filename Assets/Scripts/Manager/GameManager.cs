@@ -70,6 +70,7 @@ public class GameManager : MonoBehaviour
         // 자기 자신으로 초기화
         instance = this;
         Application.targetFrameRate = 60;
+        Screen.SetResolution(720, 1280, true);
     }
 
     private void Start()
