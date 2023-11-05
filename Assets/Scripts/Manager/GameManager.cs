@@ -28,6 +28,9 @@ public class GameManager : MonoBehaviour
     public ItemAttribute attribute; // Player의 무기 속성
     public int gold; // 골드
 
+    [Header("# Game Data")]
+    public int gemStone;
+
     [Header("# Stage Data")]
     public bool playTutorial; // 튜토리얼 플레이 중일 때
     public bool gameStop; // 게임이 멈췄을 때 true

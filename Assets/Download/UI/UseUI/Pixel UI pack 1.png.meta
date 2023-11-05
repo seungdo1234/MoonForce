@@ -20,11 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -44,7 +45,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 18
@@ -63,6 +64,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
@@ -75,6 +77,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -87,6 +90,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -99,6 +103,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -111,6 +116,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -126,7 +132,7 @@ TextureImporter:
         height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 12, y: 12, z: 12, w: 12}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -147,7 +153,7 @@ TextureImporter:
         height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 6, y: 6, z: 5, w: 6}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -210,7 +216,7 @@ TextureImporter:
         height: 38
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 8, y: 8, z: 8, w: 8}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -315,7 +321,7 @@ TextureImporter:
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 4, y: 4, z: 4, w: 4}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -399,7 +405,7 @@ TextureImporter:
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 4, y: 4, z: 4, w: 4}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -714,7 +720,7 @@ TextureImporter:
         height: 30
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 7, y: 7, z: 7, w: 7}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -735,7 +741,7 @@ TextureImporter:
         height: 30
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 7, y: 7, z: 6, w: 7}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -1010,50 +1016,49 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Pixel UI pack 1_0: 462698170
-      Pixel UI pack 1_20: 1072391148
-      Pixel UI pack 1_39: 1211178149
-      Pixel UI pack 1_27: -1059524042
-      Pixel UI pack 1_33: 2072009682
-      Pixel UI pack 1_38: -1626845165
-      Pixel UI pack 1_13: -1073730580
-      Pixel UI pack 1_24: -1077749551
-      Pixel UI pack 1_7: -1002239889
-      Pixel UI pack 1_26: 1701824168
-      Pixel UI pack 1_10: 275345846
-      Pixel UI pack 1_32: -991912345
-      Pixel UI pack 1_23: 1723787287
-      Pixel UI pack 1_29: 529160198
-      Pixel UI pack 1_21: 2113305175
-      Pixel UI pack 1_3: -674796211
       Pixel UI pack 1_1: -1234993598
-      Pixel UI pack 1_31: 803649308
-      Pixel UI pack 1_34: 1510196047
+      Pixel UI pack 1_10: 275345846
+      Pixel UI pack 1_11: -2137769340
+      Pixel UI pack 1_12: -411463606
+      Pixel UI pack 1_13: -1073730580
+      Pixel UI pack 1_14: 1472784849
       Pixel UI pack 1_15: 162068312
-      Pixel UI pack 1_41: -1103759484
+      Pixel UI pack 1_16: -1215679223
       Pixel UI pack 1_17: -319018300
       Pixel UI pack 1_18: -1757549928
-      Pixel UI pack 1_12: -411463606
-      Pixel UI pack 1_6: 526723995
-      Pixel UI pack 1_30: -593009642
-      Pixel UI pack 1_37: -992058741
       Pixel UI pack 1_19: 2052049416
-      Pixel UI pack 1_9: 602477686
-      Pixel UI pack 1_4: -764645791
-      Pixel UI pack 1_5: -36662292
-      Pixel UI pack 1_8: -1184392094
+      Pixel UI pack 1_2: -2089790757
+      Pixel UI pack 1_20: 1072391148
+      Pixel UI pack 1_21: 2113305175
+      Pixel UI pack 1_22: -1912924017
+      Pixel UI pack 1_23: 1723787287
+      Pixel UI pack 1_24: -1077749551
+      Pixel UI pack 1_25: -1652524081
+      Pixel UI pack 1_26: 1701824168
+      Pixel UI pack 1_27: -1059524042
+      Pixel UI pack 1_28: 531672750
+      Pixel UI pack 1_29: 529160198
+      Pixel UI pack 1_3: -674796211
+      Pixel UI pack 1_30: -593009642
+      Pixel UI pack 1_31: 803649308
+      Pixel UI pack 1_32: -991912345
+      Pixel UI pack 1_33: 2072009682
+      Pixel UI pack 1_34: 1510196047
       Pixel UI pack 1_35: -2116857828
       Pixel UI pack 1_36: -1353322159
-      Pixel UI pack 1_16: -1215679223
-      Pixel UI pack 1_11: -2137769340
-      Pixel UI pack 1_22: -1912924017
-      Pixel UI pack 1_28: 531672750
-      Pixel UI pack 1_25: -1652524081
-      Pixel UI pack 1_14: 1472784849
+      Pixel UI pack 1_37: -992058741
+      Pixel UI pack 1_38: -1626845165
+      Pixel UI pack 1_39: 1211178149
+      Pixel UI pack 1_4: -764645791
       Pixel UI pack 1_40: -2077920974
-      Pixel UI pack 1_2: -2089790757
-  spritePackingTag: 
+      Pixel UI pack 1_41: -1103759484
+      Pixel UI pack 1_5: -36662292
+      Pixel UI pack 1_6: 526723995
+      Pixel UI pack 1_7: -1002239889
+      Pixel UI pack 1_8: -1184392094
+      Pixel UI pack 1_9: 602477686
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
