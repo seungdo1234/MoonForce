@@ -1,48 +1,112 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+
+public enum EnforceName { BulletDamageUp, RateUp, SpeedUp, DeffenseUp, MagicDamageUp, MagicCoolTimeDown, HealthRecoveryUp, GoldUp, PenetrationUp }
 public class Enforce : MonoBehaviour
 {
+    [Header("# EnforceSlot")]
     public EnforceInfo[] enforceInfo;
+    public EnforceSlot[] enforceSlot;
+    public Sprite enforceSuccessImage;
 
+    [Header("# GemStone")]
+    public Text gemStoneText;
 
     [Header("# EnforceInfoWindow")]
     public Text enforceNameText;
     public Text enforceDescText;
     public Text enforcePriceText;
+    public GameObject gemStone;
     public Button buyBtn;
+    public int selectNum = -1;
 
     private void OnEnable()
+    {
+        EnforceInit();
+        GemStoneTextSet();
+        selectNum = -1;
+    }
+
+    private void EnforceInit() // 초기화
     {
         enforceNameText.text = null;
         enforceDescText.text = null;
         enforcePriceText.text = null;
+        buyBtn.gameObject.SetActive(false);
         buyBtn.interactable = false;
+        gemStone.SetActive(false);
     }
+    public void EnforceLoad() // 저장된 강화 정보 불러오기
+    {
+        for (int i = 0; i < enforceInfo.Length; i++)
+        {
+            if (PlayerPrefs.HasKey(enforceInfo[i].name))
+            {
+                int level = PlayerPrefs.GetInt(enforceInfo[i].name);
+                enforceInfo[i].curLevel = level;
+                enforceSlot[i].StepImageChange(level);
+            }
 
-    public void EnforceSelect(int num)
+        }
+
+    }
+    public void EnforceSelect(int num) // 강화 슬롯 선택
     {
         AudioManager.instance.SelectSfx();
 
-        int price = enforceInfo[num].initPrice + (enforceInfo[num].initPrice * enforceInfo[num].curLevel);
-
-        buyBtn.interactable = GameManager.instance.gemStone < price ? false : true;
-
-        enforceNameText.text = enforceInfo[num].name;
-        if(enforceInfo[num].curLevel < enforceInfo[num].maxLevel)
+        selectNum = num;
+        
+        DescLoad();
+    }
+    
+    public void DescLoad() // 강화 설명 로드
+    {
+        if (enforceInfo[selectNum].curLevel < enforceInfo[selectNum].maxLevel) // MAX 레벨이 아니라면
         {
-            enforceNameText.text += string.Format(" Lv.{0}", enforceInfo[num].curLevel + 1);
+            int price = enforceInfo[selectNum].initPrice + (enforceInfo[selectNum].initPrice * enforceInfo[selectNum].curLevel);
+
+            enforceNameText.text = string.Format("{0} Lv.{1}", enforceInfo[selectNum].name, enforceInfo[selectNum].curLevel + 1);
             enforcePriceText.text = string.Format("{0}", price);
+            buyBtn.interactable = PlayerPrefs.GetInt("GemStone") < price ? false : true;
+            gemStone.SetActive(true);
+            buyBtn.gameObject.SetActive(true);
         }
-        else
+        else // MAX레벨 이라면
         {
+            enforceNameText.text = string.Format("{0} Lv.Max", enforceInfo[selectNum].name);
             buyBtn.interactable = false;
-            enforceNameText.text += " Lv.Max";
-            enforcePriceText.text = "00";
+            gemStone.SetActive(false);
         }
-        enforceDescText.text = enforceInfo[num].enforceDesc;
+        enforceDescText.text = enforceInfo[selectNum].enforceDesc;
+    }
+    public void Buy() // 강화하기
+    {
+        int price = enforceInfo[selectNum].initPrice + (enforceInfo[selectNum].initPrice * enforceInfo[selectNum].curLevel);
+        PlayerPrefs.SetInt("GemStone", PlayerPrefs.GetInt("GemStone") - price);
+       
+        enforceInfo[selectNum].curLevel++;
+        PlayerPrefs.SetInt(enforceInfo[selectNum].name, enforceInfo[selectNum].curLevel);
+
+        AudioManager.instance.PlayerSfx(Sfx.BuySell);
+        GemStoneTextSet();
+        enforceSlot[selectNum].StepImageChange(enforceInfo[selectNum].curLevel);
+        DescLoad();
+    }
 
 
+    public void GemStoneTextSet() // 젬스톤 정보 불러오기
+    {
+        gemStoneText.text = string.Format("{0}", PlayerPrefs.GetInt("GemStone"));
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            PlayerPrefs.SetInt("GemStone", PlayerPrefs.GetInt("GemStone") + 100);
+            GemStoneTextSet();
+        }
     }
 
 }

@@ -26,7 +26,8 @@ public class SkillCoolTimeUI : MonoBehaviour
             if (magic.magicInfo[i].isMagicActive)
             {
                 slots[acitiveMagic].gameObject.SetActive(true);
-                slots[acitiveMagic].Init(skillSprites[i - 1], magic.magicInfo[i].magicCoolTime);
+                float coolTime = magic.magicInfo[i].magicCoolTime - (magic.magicInfo[i].magicCoolTime * GameManager.instance.enforce.enforceInfo[(int)EnforceName.MagicCoolTimeDown].curLevel * GameManager.instance.enforce.enforceInfo[(int)EnforceName.MagicCoolTimeDown].statIncrease);
+                slots[acitiveMagic].Init(skillSprites[i - 1], coolTime);
                 acitiveMagic++;
             }
 

@@ -21,15 +21,14 @@ public class GameManager : MonoBehaviour
     public Enchant enchant;
     public SkillCoolTimeUI coolTime;
     public Guide guide;
+    public Enforce enforce;
+    public MainMenu mainMenu;
     public Spawner spawner;
 
     [Header("# Player Data")]
     public int availablePoint; // 스테이지가 끝날때마다 스탯 레벨을 올릴 수 있는 포인트
     public ItemAttribute attribute; // Player의 무기 속성
     public int gold; // 골드
-
-    [Header("# Game Data")]
-    public int gemStone;
 
     [Header("# Stage Data")]
     public bool playTutorial; // 튜토리얼 플레이 중일 때
@@ -52,8 +51,6 @@ public class GameManager : MonoBehaviour
 
 
     [Header("# UI")]
-    public GameObject lobby;
-    public GameObject lobbyAnim;
     public GameObject clearReward;
     public GameObject hud;
     public RedMoonEffect redMoon;
@@ -74,6 +71,7 @@ public class GameManager : MonoBehaviour
         instance = this;
         Application.targetFrameRate = 60;
         Screen.SetResolution(720, 1280, true);
+        enforce.EnforceLoad();
     }
 
     private void Start()
@@ -110,8 +108,7 @@ public class GameManager : MonoBehaviour
     {
         guide.PageInit(); // 가이드 페이지 초기화
         level = 0; // 레벨 0
-        lobby.SetActive(true); 
-        lobbyAnim.SetActive(true);
+        mainMenu.LobbyUI();
         player.transform.position = Vector3.zero;
         background.SetActive(true);
         hud.SetActive(false);

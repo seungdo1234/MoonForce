@@ -67,16 +67,16 @@ public class StatManager : MonoBehaviour
 
     public void GameStart()
     {
-        penetration = 1;
+        penetration = 1 + GameManager.instance.enforce.enforceInfo[(int)EnforceName.PenetrationUp].curLevel;
         weaponNum = 1;
         maxHealth = initHealth;
-        curHealth = initHealth;
+        curHealth = maxHealth;
         attack = initAttack;
         baseAttack = initAttack;
-        rate = initRate;
-        baseRate = initRate;
-        moveSpeed = initMoveSpeed;
-        baseMoveSpeed = initMoveSpeed;
+        baseRate = initRate -( GameManager.instance.enforce.enforceInfo[(int)EnforceName.RateUp].statIncrease * GameManager.instance.enforce.enforceInfo[(int)EnforceName.RateUp].curLevel);
+        rate = baseRate  ;
+        baseMoveSpeed = initMoveSpeed + (GameManager.instance.enforce.enforceInfo[(int)EnforceName.SpeedUp].statIncrease * GameManager.instance.enforce.enforceInfo[(int)EnforceName.SpeedUp].curLevel); ;
+        moveSpeed = baseMoveSpeed;
         burningDamagePer = baseBurningDamagePer;
         wettingDamagePer = baseWettingDamagePer;
         bulletDamagePer = baseBulletDamagePer;

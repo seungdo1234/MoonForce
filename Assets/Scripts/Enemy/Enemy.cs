@@ -458,27 +458,42 @@ public class Enemy : MonoBehaviour
         exp.localScale = new Vector3(1, 1, 1) + new Vector3(expScale, expScale, expScale);
     }
 
-    public void EnemyDamaged(float damage, int hitType)
+    public void EnemyDamaged(float damage, int hitType) // hitType == 1 마력탄, 2 마법
     {
-        if (isWetting && hitType ==2)
-        {
-            damage *= GameManager.instance.statManager.wettingDamagePer;
-        }
 
         int damageValue = 0;
-
-        if (hitType == 1 && GameManager.instance.attribute == ItemAttribute.Holy)
+        switch (hitType) // 공격 별로 데미지를 다르게 계산 
         {
-            int random = Random.Range(1, 101);
+            case 1:
+                if (GameManager.instance.attribute == ItemAttribute.Holy)
+                {
+                    int random = Random.Range(1, 101);
 
-            if (GameManager.instance.statManager.instantKillPer >= random) // 즉사
-            {
-                Transform instantMotion = GameManager.instance.magicManager.Get(6).transform;
-                instantMotion.position = transform.position;
+                    if (GameManager.instance.statManager.instantKillPer >= random) // 즉사
+                    {
+                        Transform instantMotion = GameManager.instance.magicManager.Get(6).transform;
+                        instantMotion.position = transform.position;
 
-                damageValue = 999;
-            }
+                        damageValue = 999;
+                        break;
+                    }
+                }
+                // 강화한 만큼 데미지 ++
+                float bulletDamageUpPer = GameManager.instance.enforce.enforceInfo[(int)EnforceName.BulletDamageUp].curLevel * GameManager.instance.enforce.enforceInfo[(int)EnforceName.BulletDamageUp].statIncrease;
+                damage += damage * bulletDamageUpPer;
+                break;
+            case 2:
+                // 강화한 만큼 데미지 ++
+                float magicDamageUpPer = GameManager.instance.enforce.enforceInfo[(int)EnforceName.MagicDamageUp].curLevel * GameManager.instance.enforce.enforceInfo[(int)EnforceName.MagicDamageUp].statIncrease;
+                damage += damage * magicDamageUpPer;
+
+                if (isWetting)
+                {
+                    damage *= GameManager.instance.statManager.wettingDamagePer;
+                }
+                break;
         }
+
 
         if (damageValue == 0) // 즉사가 아니라면
         {

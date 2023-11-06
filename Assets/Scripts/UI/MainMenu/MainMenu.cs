@@ -8,6 +8,7 @@ public class MainMenu : MonoBehaviour
 
     public GameObject lobbyAnim;
     public GameObject chractorSelect;
+   
 
     private void OnEnable()
     {
@@ -26,6 +27,7 @@ public class MainMenu : MonoBehaviour
                 break;
 
             case 1:
+                GameManager.instance.enforce.gameObject.SetActive(true);
                 break;
 
             case 2:
@@ -34,5 +36,11 @@ public class MainMenu : MonoBehaviour
 
 
         }
+    }
+
+    public void LobbyUI()
+    {
+        gameObject.SetActive(true);
+        lobbyAnim.SetActive(true);
     }
 }

@@ -115,6 +115,7 @@ public class Player : MonoBehaviour
     }
     public void PlayerHit(int damage)
     {
+        damage -= GameManager.instance.enforce.enforceInfo[(int)EnforceName.DeffenseUp].curLevel;
 
         GameManager.instance.statManager.curHealth -= damage;
         //   AudioManager.instance.PlayerSfx(AudioManager.Sfx.Hit);
@@ -138,7 +139,6 @@ public class Player : MonoBehaviour
             isDamaged = false;
             anim.SetTrigger("Dead");
             GameManager.instance.GameEnd(1);
-
         }
     }
 }
