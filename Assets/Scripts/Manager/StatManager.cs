@@ -193,4 +193,19 @@ public class StatManager : MonoBehaviour
                 break;
         }
     }
+
+    public void PlayerHealthRecovery()
+    {
+        float recoveryHealthPer = GameManager.instance.enforce.enforceInfo[(int)EnforceName.HealthRecoveryUp].statIncrease * GameManager.instance.enforce.enforceInfo[(int)EnforceName.HealthRecoveryUp].curLevel;
+        float recoveryHealth = maxHealth * recoveryHealthPer;
+
+        Debug.Log(recoveryHealthPer);
+        Debug.Log(recoveryHealth);
+        curHealth = Mathf.Min(maxHealth, curHealth + recoveryHealth);
+
+        Vector3 pos = GameManager.instance.player.transform.position + new Vector3(0,0.75f,0);
+        GameManager.instance.damageTextPool.Get((int)TextType.Heal,(int) recoveryHealth, pos);
+        AudioManager.instance.PlayerSfx(Sfx.Heal);
+
+    }
 }

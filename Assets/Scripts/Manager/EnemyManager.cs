@@ -62,7 +62,7 @@ public class EnemyManager : MonoBehaviour
     public void EnemyLevelUp()
     {
         int level = GameManager.instance.level;
-        if ((level <= 10 && level % 2 == 0) || (level > 10 && (level - 10) % 3 == 0))
+        if ((level <= 14 && level % 2 == 0) || (level > 14 && (level - 10) % 3 == 0))
         {
             damage += increaseByDamage;
         }

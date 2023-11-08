@@ -134,6 +134,16 @@ public class GameManager : MonoBehaviour
     }
     private IEnumerator StageClear() // 스테이지 클리어
     {
+        if(enforce.enforceInfo[(int)EnforceName.HealthRecoveryUp].curLevel > 0) // 체력 회복 강화를 했다면
+        {
+            statManager.PlayerHealthRecovery();
+        }
+
+        if(enforce.enforceInfo[(int)EnforceName.GoldUp].curLevel != 0) // 골드 획특을 강화 했다면
+        {
+            enforce.ExtraGold();
+        }
+
         background.SetActive(true);
         isStage = false;
         gameStop = true;
@@ -149,6 +159,8 @@ public class GameManager : MonoBehaviour
         pause.gameObject.SetActive(false); // 퍼즈 버튼 비활성화
         AudioManager.instance.EndBgm(); // Bgm 끄기
         demeterOn = false;
+
+        PlayerPrefs.SetInt("GemStone", PlayerPrefs.GetInt("GemStone") + 1 ); // 스테이지 클리어 시 떄매다 젬스톤 + 1
         yield return new WaitForSeconds(1f);
 
         magicManager.PoolingReset();

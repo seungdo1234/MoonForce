@@ -64,7 +64,7 @@ public class Enforce : MonoBehaviour
     {
         if (enforceInfo[selectNum].curLevel < enforceInfo[selectNum].maxLevel) // MAX 레벨이 아니라면
         {
-            int price = enforceInfo[selectNum].initPrice + (enforceInfo[selectNum].initPrice * enforceInfo[selectNum].curLevel);
+            int price = enforceInfo[selectNum].initPrice + (enforceInfo[selectNum].priceIncrease * enforceInfo[selectNum].curLevel);
 
             enforceNameText.text = string.Format("{0} Lv.{1}", enforceInfo[selectNum].name, enforceInfo[selectNum].curLevel + 1);
             enforcePriceText.text = string.Format("{0}", price);
@@ -100,13 +100,24 @@ public class Enforce : MonoBehaviour
         gemStoneText.text = string.Format("{0}", PlayerPrefs.GetInt("GemStone"));
     }
 
+    public void ExtraGold() // 추가 골드
+    {
+        int getGold = 0;
+        for(int i = 0; i<GameManager.instance.spawner.enemySpawnNum.Length; i++)
+        {
+            getGold += GameManager.instance.spawner.enemySpawnNum[i] * (i + 1);
+        }
+
+        float percent = enforceInfo[(int)EnforceName.GoldUp].statIncrease * enforceInfo[(int)EnforceName.GoldUp].curLevel;
+
+        int gold = Mathf.FloorToInt(getGold * percent);
+
+        GameManager.instance.gold += gold;
+    }
+
+
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            PlayerPrefs.SetInt("GemStone", PlayerPrefs.GetInt("GemStone") + 100);
-            GemStoneTextSet();
-        }
     }
 
 }

@@ -128,7 +128,6 @@ public class MagicManager : MonoBehaviour
         float timer = 0;
         float coolTime = magicInfo[magicNumber].magicCoolTime - (magicInfo[magicNumber].magicCoolTime * GameManager.instance.enforce.enforceInfo[(int)EnforceName.MagicCoolTimeDown].curLevel * GameManager.instance.enforce.enforceInfo[(int)EnforceName.MagicCoolTimeDown].statIncrease);
 
-        Debug.Log(coolTime);
         while (!GameManager.instance.gameStop)
         {
             if (timer <= coolTime)
