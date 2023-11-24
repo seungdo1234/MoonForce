@@ -272,7 +272,6 @@ public class MagicManager : MonoBehaviour
 
         // 쿨타임 구하기
         float coolTime = Mathf.Max(0, magicInfo[magicNumber].magicCoolTime - (magicInfo[magicNumber].magicCoolTime * GameManager.instance.enforce.enforceInfo[(int)EnforceName.MagicCoolTimeDown].curLevel * GameManager.instance.enforce.enforceInfo[(int)EnforceName.MagicCoolTimeDown].statIncrease));
-        Debug.Log(coolTime);
         switch (magicNumber)
         {
             case (int)MagicName.Inferno:
